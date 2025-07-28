@@ -33,7 +33,7 @@ export default function CategoryProductsPage() {
   const {
     data: products = [],
     isLoading: productsLoading,
-  } = useProductsByCategory(slug);
+  } = useProductsByCategory(slug, slug);
   const {
     data: category,
     isLoading: categoryLoading,

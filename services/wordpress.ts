@@ -204,6 +204,7 @@ export const getTag = async (id: number | string): Promise<Tag> => {
 // 🔍 Filtered Product Search
 // -----------------------------
 
+
 export const getProductsWithFilters = async (filters: {
   search?: string;
   categories?: string[];
