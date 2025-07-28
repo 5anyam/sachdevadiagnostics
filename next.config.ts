@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['cms.decorationcart.com', 'remotePatterns', 'images.unsplash.com'],
+    domains: ['cms.decorationcart.com', 'images.remotePatterns', 'images.unsplash.com'],
   }
 };
 

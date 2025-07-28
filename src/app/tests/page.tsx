@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import React, { Suspense, useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Search, X, TestTube, Clock, Shield, Award, Users, Calendar, Star, SlidersHorizontal } from 'lucide-react';
 import Link from 'next/link';
 
-// UI Components
 import { Button } from '../../../components/ui/button';
 import { Input } from '../../../components/ui/input';
 import { Card, CardContent, CardFooter } from '../../../components/ui/card';
@@ -32,9 +31,103 @@ import { AspectRatio } from '../../../components/ui/aspect-ratio';
 // WordPress API integration
 import { getAllProducts, getProductCategories } from '../../../services/wordpress';
 
-const TestsPage = () => {
+// Filters Component
+const FiltersContent = ({
+  categories,
+  selectedCategories,
+  handleCategoryToggle,
+  priceRange,
+  setPriceRange,
+  clearFilters,
+}) => (
+  <div className="space-y-6">
+    <Card className="border border-gray-200">
+      <CardContent className="p-6">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-lg font-bold text-black">Filters</h3>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={clearFilters}
+            className="text-red-600 hover:text-red-700"
+          >
+            Clear All
+          </Button>
+        </div>
+
+        {/* Categories Filter */}
+        <div className="mb-6">
+          <h4 className="font-semibold text-black mb-3">Test Categories</h4>
+          <div className="space-y-2 max-h-48 overflow-y-auto">
+            {categories.map((category) => (
+              <div key={category.id} className="flex items-center space-x-2">
+                <Checkbox
+                  id={`category-${category.id}`}
+                  checked={selectedCategories.includes(category.name)}
+                  onCheckedChange={() => handleCategoryToggle(category.name)}
+                />
+                <label
+                  htmlFor={`category-${category.id}`}
+                  className="text-sm font-medium text-gray-700 cursor-pointer flex-1"
+                >
+                  {category.name} ({category.count || 0})
+                </label>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Price Range Filter */}
+        <div>
+          <h4 className="font-semibold text-black mb-3">Price Range</h4>
+          <div className="grid grid-cols-2 gap-2">
+            <Input
+              type="number"
+              placeholder="Min ₹"
+              value={priceRange.min}
+              onChange={e => setPriceRange(prev => ({ ...prev, min: e.target.value }))}
+              className="text-black font-medium border-gray-300 focus:border-[#194b8c]"
+            />
+            <Input
+              type="number"
+              placeholder="Max ₹"
+              value={priceRange.max}
+              onChange={e => setPriceRange(prev => ({ ...prev, max: e.target.value }))}
+              className="text-black font-medium border-gray-300 focus:border-[#194b8c]"
+            />
+          </div>
+        </div>
+
+        {/* Quick Price Filters */}
+        <div className="mt-4">
+          <h5 className="text-sm font-medium text-gray-700 mb-2">Quick Price Filters</h5>
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              { label: 'Under ₹500', min: '', max: '500' },
+              { label: '₹500 - ₹1000', min: '500', max: '1000' },
+              { label: '₹1000 - ₹2000', min: '1000', max: '2000' },
+              { label: 'Above ₹2000', min: '2000', max: '' },
+            ].map((range) => (
+              <Button
+                key={range.label}
+                variant="outline"
+                size="sm"
+                onClick={() => setPriceRange({ min: range.min, max: range.max })}
+                className="text-xs border-gray-300 text-black font-medium hover:bg-gray-50"
+              >
+                {range.label}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  </div>
+);
+
+function TestsPageContent() {
   const searchParams = useSearchParams();
-  
+
   // State Management
   const [tests, setTests] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -46,7 +139,7 @@ const TestsPage = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  
+
   const itemsPerPage = 16;
 
   // Fetch tests and categories from WordPress
@@ -54,26 +147,25 @@ const TestsPage = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        
+
         // Fetch all tests (products) and categories
         const [testsData, categoriesData] = await Promise.all([
-          getAllProducts({ 
-            per_page: 100, // Fetch more for client-side iltering
+          getAllProducts({
+            per_page: 100, // Fetch more for client-side filtering
             status: 'publish',
-            type: 'simple'
+            type: 'simple',
           }),
           getProductCategories()
         ]);
-        
+
         setTests(testsData || []);
         setCategories(categoriesData || []);
-        
+
         // Set initial category filter from URL
         const categoryParam = searchParams?.get('category');
         if (categoryParam) {
           setSelectedCategories([categoryParam]);
         }
-        
       } catch (error) {
         console.error('Error fetching tests:', error);
       } finally {
@@ -82,6 +174,7 @@ const TestsPage = () => {
     };
 
     fetchData();
+    // eslint-disable-next-line
   }, [searchParams]);
 
   // Filter and search logic
@@ -91,7 +184,7 @@ const TestsPage = () => {
     // Search filter
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(test => 
+      filtered = filtered.filter(test =>
         test.name.toLowerCase().includes(query) ||
         test.short_description?.toLowerCase().includes(query) ||
         test.categories?.some(cat => cat.name.toLowerCase().includes(query))
@@ -101,7 +194,7 @@ const TestsPage = () => {
     // Category filter
     if (selectedCategories.length > 0) {
       filtered = filtered.filter(test =>
-        test.categories?.some(cat => 
+        test.categories?.some(cat =>
           selectedCategories.includes(cat.name) || selectedCategories.includes(cat.id.toString())
         )
       );
@@ -141,9 +234,9 @@ const TestsPage = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const paginated = filteredTests.slice(startIndex, endIndex);
-    
+
     setTotalPages(Math.ceil(filteredTests.length / itemsPerPage));
-    
+
     return paginated;
   }, [filteredTests, currentPage]);
 
@@ -179,22 +272,19 @@ const TestsPage = () => {
   const getPaginationButtons = () => {
     const buttons = [];
     const maxVisible = 5;
-    
     let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
     const endPage = Math.min(totalPages, startPage + maxVisible - 1);
-    
+
     if (endPage - startPage < maxVisible - 1) {
       startPage = Math.max(1, endPage - maxVisible + 1);
     }
-    
+
     for (let i = startPage; i <= endPage; i++) {
       buttons.push(i);
     }
-    
     return buttons;
   };
 
-  // Loading skeleton
   const renderSkeleton = () => (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {Array(12).fill(null).map((_, index) => (
@@ -229,7 +319,6 @@ const TestsPage = () => {
       <Card className="overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 h-full cursor-pointer bg-white group-hover:scale-[1.02] flex flex-col">
         {/* Test Image */}
         <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-green-50">
-          
           {/* NABL Badge */}
           <div className="absolute top-3 left-3">
             <div className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
@@ -237,7 +326,6 @@ const TestsPage = () => {
               NABL
             </div>
           </div>
-
           {/* Test Type Badge */}
           <div className="absolute top-3 right-3">
             <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#194b8c] text-white">
@@ -246,18 +334,15 @@ const TestsPage = () => {
             </span>
           </div>
         </div>
-
         <CardContent className="p-4 flex-1">
           {/* Test Name */}
           <h3 className="font-bold text-lg text-black group-hover:text-[#194b8c] transition-colors mb-2 line-clamp-2 min-h-[3rem]">
             {test.name}
           </h3>
-          
           {/* Test Description */}
           <p className="text-sm text-gray-600 font-medium line-clamp-2 mb-3 min-h-[2.5rem]">
             {test.short_description?.replace(/<[^>]*>/g, '') || "Comprehensive diagnostic test with accurate results"}
           </p>
-
           {/* Test Features */}
           <div className="space-y-2 mb-4">
             <div className="flex items-center gap-2 text-xs text-gray-700">
@@ -269,7 +354,6 @@ const TestsPage = () => {
               <span className="font-medium">30+ Years Trusted</span>
             </div>
           </div>
-          
           {/* Price and Rating */}
           <div className="flex justify-between items-center">
             <div className="flex flex-col">
@@ -285,7 +369,6 @@ const TestsPage = () => {
               </div>
               <span className="text-xs text-gray-600 font-medium">Center Visit</span>
             </div>
-            
             <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-full">
               <Star className="h-3 w-3 text-yellow-500 fill-current" />
               <span className="text-xs font-semibold text-yellow-700">
@@ -293,7 +376,6 @@ const TestsPage = () => {
               </span>
             </div>
           </div>
-
           {/* Collection Options */}
           <div className="flex gap-2 mt-3">
             <div className="flex items-center gap-1 bg-blue-50 px-2 py-1 rounded text-xs">
@@ -306,7 +388,6 @@ const TestsPage = () => {
             </div>
           </div>
         </CardContent>
-
         <CardFooter className="p-4 pt-0 mt-auto">
           <Button className="w-full bg-gradient-to-r from-[#194b8c] to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white border-0 rounded-lg font-semibold transition-all duration-300 group-hover:shadow-lg">
             <TestTube className="h-4 w-4 mr-2" />
@@ -342,7 +423,6 @@ const TestsPage = () => {
           </div>
         </div>
       </div>
-
       <div className="container mx-auto px-4 py-8">
         {/* Search and Filters Header */}
         <div className="flex flex-col md:flex-row gap-4 mb-8">
@@ -357,7 +437,6 @@ const TestsPage = () => {
               className="pl-10 h-12 text-black font-medium border-gray-300 focus:border-[#194b8c]"
             />
           </div>
-
           {/* Sort Dropdown */}
           <Select value={sortBy} onValueChange={setSortBy}>
             <SelectTrigger className="w-full md:w-48 h-12 border-gray-300 focus:border-[#194b8c] bg-white text-black font-medium">
@@ -370,7 +449,6 @@ const TestsPage = () => {
               <SelectItem value="popularity" className="text-black hover:bg-gray-100 font-medium">Most Popular</SelectItem>
             </SelectContent>
           </Select>
-
           {/* Mobile Filter Button */}
           <Sheet open={showFilters} onOpenChange={setShowFilters}>
             <SheetTrigger asChild>
@@ -388,7 +466,7 @@ const TestsPage = () => {
               </SheetHeader>
               <div className="mt-6">
                 {/* Mobile filters content - same as desktop but in sheet */}
-                <FiltersContent 
+                <FiltersContent
                   categories={categories}
                   selectedCategories={selectedCategories}
                   handleCategoryToggle={handleCategoryToggle}
@@ -400,11 +478,10 @@ const TestsPage = () => {
             </SheetContent>
           </Sheet>
         </div>
-
         <div className="flex gap-8">
           {/* Desktop Filters Sidebar */}
           <div className="hidden md:block w-80 flex-shrink-0">
-            <FiltersContent 
+            <FiltersContent
               categories={categories}
               selectedCategories={selectedCategories}
               handleCategoryToggle={handleCategoryToggle}
@@ -413,7 +490,6 @@ const TestsPage = () => {
               clearFilters={clearFilters}
             />
           </div>
-
           {/* Main Content */}
           <div className="flex-1">
             {/* Results Header */}
@@ -428,7 +504,6 @@ const TestsPage = () => {
                   </p>
                 )}
               </div>
-
               {/* Active Filters */}
               {(selectedCategories.length > 0 || priceRange.min || priceRange.max) && (
                 <div className="flex items-center gap-2">
@@ -436,8 +511,8 @@ const TestsPage = () => {
                   {selectedCategories.map(category => (
                     <Badge key={category} variant="secondary" className="bg-[#194b8c] text-white">
                       {category}
-                      <X 
-                        className="h-3 w-3 ml-1 cursor-pointer" 
+                      <X
+                        className="h-3 w-3 ml-1 cursor-pointer"
                         onClick={() => handleCategoryToggle(category)}
                       />
                     </Badge>
@@ -448,7 +523,6 @@ const TestsPage = () => {
                 </div>
               )}
             </div>
-
             {/* Tests Grid */}
             {loading ? (
               renderSkeleton()
@@ -468,7 +542,6 @@ const TestsPage = () => {
                     <TestCard key={test.id} test={test} />
                   ))}
                 </div>
-
                 {/* Pagination */}
                 {totalPages > 1 && (
                   <div className="flex justify-center items-center gap-2 mt-8">
@@ -480,21 +553,20 @@ const TestsPage = () => {
                     >
                       Previous
                     </Button>
-                    
                     {getPaginationButtons().map(page => (
                       <Button
                         key={page}
                         variant={currentPage === page ? "default" : "outline"}
                         onClick={() => handlePageChange(page)}
-                        className={currentPage === page 
-                          ? "bg-[#194b8c] text-white" 
-                          : "border-gray-300 text-black font-medium hover:bg-gray-50"
+                        className={
+                          currentPage === page
+                            ? "bg-[#194b8c] text-white"
+                            : "border-gray-300 text-black font-medium hover:bg-gray-50"
                         }
                       >
                         {page}
                       </Button>
                     ))}
-                    
                     <Button
                       variant="outline"
                       onClick={() => handlePageChange(currentPage + 1)}
@@ -510,7 +582,6 @@ const TestsPage = () => {
           </div>
         </div>
       </div>
-
       {/* Global Styles */}
       <style jsx global>{`
         .line-clamp-2 {
@@ -519,7 +590,6 @@ const TestsPage = () => {
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
-        
         [data-radix-select-content] {
           background-color: white !important;
           color: black !important;
@@ -528,7 +598,6 @@ const TestsPage = () => {
           box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
           z-index: 50 !important;
         }
-        
         [data-radix-select-item] {
           color: black !important;
           background-color: white !important;
@@ -536,7 +605,6 @@ const TestsPage = () => {
           cursor: pointer !important;
           font-weight: 500 !important;
         }
-        
         [data-radix-select-item]:hover,
         [data-radix-select-item][data-highlighted] {
           background-color: #f3f4f6 !important;
@@ -545,95 +613,19 @@ const TestsPage = () => {
       `}</style>
     </div>
   );
-};
+}
 
-// Filters Component
-const FiltersContent = ({ 
-  categories, 
-  selectedCategories, 
-  handleCategoryToggle, 
-  priceRange, 
-  setPriceRange, 
-  clearFilters 
-}) => (
-  <div className="space-y-6">
-    <Card className="border border-gray-200">
-      <CardContent className="p-6">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-bold text-black">Filters</h3>
-          <Button variant="ghost" size="sm" onClick={clearFilters} className="text-red-600 hover:text-red-700">
-            Clear All
-          </Button>
+// --- Main export with Suspense for Next.js App Router!
+export default function TestsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center text-xl text-gray-700">
+          Loading tests...
         </div>
-
-        {/* Categories Filter */}
-        <div className="mb-6">
-          <h4 className="font-semibold text-black mb-3">Test Categories</h4>
-          <div className="space-y-2 max-h-48 overflow-y-auto">
-            {categories.map((category) => (
-              <div key={category.id} className="flex items-center space-x-2">
-                <Checkbox
-                  id={`category-${category.id}`}
-                  checked={selectedCategories.includes(category.name)}
-                  onCheckedChange={() => handleCategoryToggle(category.name)}
-                />
-                <label
-                  htmlFor={`category-${category.id}`}
-                  className="text-sm font-medium text-gray-700 cursor-pointer flex-1"
-                >
-                  {category.name} ({category.count || 0})
-                </label>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Price Range Filter */}
-        <div>
-          <h4 className="font-semibold text-black mb-3">Price Range</h4>
-          <div className="grid grid-cols-2 gap-2">
-            <Input
-              type="number"
-              placeholder="Min ₹"
-              value={priceRange.min}
-              onChange={(e) => setPriceRange(prev => ({ ...prev, min: e.target.value }))}
-              className="text-black font-medium border-gray-300 focus:border-[#194b8c]"
-            />
-            <Input
-              type="number"
-              placeholder="Max ₹"
-              value={priceRange.max}
-              onChange={(e) => setPriceRange(prev => ({ ...prev, max: e.target.value }))}
-              className="text-black font-medium border-gray-300 focus:border-[#194b8c]"
-            />
-          </div>
-        </div>
-
-        {/* Quick Price Filters */}
-        <div className="mt-4">
-          <h5 className="text-sm font-medium text-gray-700 mb-2">Quick Price Filters</h5>
-          <div className="grid grid-cols-2 gap-2">
-            {[
-              { label: 'Under ₹500', min: '', max: '500' },
-              { label: '₹500 - ₹1000', min: '500', max: '1000' },
-              { label: '₹1000 - ₹2000', min: '1000', max: '2000' },
-              { label: 'Above ₹2000', min: '2000', max: '' },
-            ].map((range) => (
-              <Button
-                key={range.label}
-                variant="outline"
-                size="sm"
-                onClick={() => setPriceRange({ min: range.min, max: range.max })}
-                className="text-xs border-gray-300 text-black font-medium hover:bg-gray-50"
-              >
-                {range.label}
-              </Button>
-            ))}
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  </div>
-);
-
-export default TestsPage;
+      }
+    >
+      <TestsPageContent />
+    </Suspense>
+  );
+}

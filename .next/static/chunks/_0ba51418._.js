@@ -193,8 +193,19 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/services/api.ts [app-client] (ecmascript)");
 ;
+// -----------------------------
+// 📦 Product Helpers
+// -----------------------------
+/**
+ * Utility to convert any number values in params to string
+ */ const toStringParams = (params = {})=>{
+    return Object.fromEntries(Object.entries(params).map(([key, value])=>[
+            key,
+            String(value)
+        ]));
+};
 const getProducts = async (params = {})=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', params);
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams(params));
 };
 const getAllProducts = async (params = {})=>{
     const defaultParams = {
@@ -203,7 +214,7 @@ const getAllProducts = async (params = {})=>{
         type: 'simple',
         ...params
     };
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', defaultParams);
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams(defaultParams));
 };
 const getProduct = async (id)=>{
     try {
@@ -224,22 +235,22 @@ const getProductBySlug = async (slug)=>{
     throw new Error('Product not found');
 };
 const searchProducts = async (search, params = {})=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         search,
         ...params
-    });
+    }));
 };
 const getFeaturedProducts = async (limit = 4)=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         featured: 'true',
-        per_page: String(limit)
-    });
+        per_page: limit
+    }));
 };
 const getProductsByCategory = async (categoryId, params = {})=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
-        category: String(categoryId),
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
+        category: categoryId,
         ...params
-    });
+    }));
 };
 const getRelatedProducts = async (categoryId, excludeProductId, limit = 8)=>{
     const params = {
@@ -255,88 +266,61 @@ const getRelatedProducts = async (categoryId, excludeProductId, limit = 8)=>{
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', params);
 };
 const getCategories = async (params = {})=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', params);
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', toStringParams(params));
 };
 const getProductCategories = async (params = {})=>{
     const defaultParams = {
-        per_page: 100,
-        hide_empty: true,
+        per_page: '100',
+        status: 'publish',
+        type: 'simple',
         ...params
     };
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', defaultParams);
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', toStringParams(defaultParams));
 };
 const getCategory = async (id)=>{
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/categories/${id}`);
 };
 const getTags = async (params = {})=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', params);
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', toStringParams(params));
 };
 const getProductTags = async (params = {})=>{
     const defaultParams = {
-        per_page: 100,
-        hide_empty: true,
+        per_page: '100',
+        status: 'publish',
+        type: 'simple',
         ...params
     };
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', defaultParams);
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', toStringParams(defaultParams));
 };
 const getTag = async (id)=>{
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/tags/${id}`);
 };
 const getProductsWithFilters = async (filters)=>{
     const params = {};
-    // Search query
-    if (filters.search) {
-        params.search = filters.search;
-    }
-    // Categories filter
-    if (filters.categories && filters.categories.length > 0) {
-        params.category = filters.categories.join(',');
-    }
-    // Tags filter
-    if (filters.tags && filters.tags.length > 0) {
-        params.tag = filters.tags.join(',');
-    }
-    // Price range
-    if (filters.min_price !== undefined) {
-        params.min_price = String(filters.min_price);
-    }
-    if (filters.max_price !== undefined) {
-        params.max_price = String(filters.max_price);
-    }
-    // Sorting
-    if (filters.orderby) {
-        params.orderby = filters.orderby;
-    }
-    if (filters.order) {
-        params.order = filters.order;
-    }
-    // Pagination
-    if (filters.per_page) {
-        params.per_page = String(filters.per_page);
-    }
-    if (filters.page) {
-        params.page = String(filters.page);
-    }
-    // Product status and type
-    if (filters.status) {
-        params.status = filters.status;
-    }
-    if (filters.type) {
-        params.type = filters.type;
-    }
+    if (filters.search) params.search = filters.search;
+    if (filters.categories?.length) params.category = filters.categories.join(',');
+    if (filters.tags?.length) params.tag = filters.tags.join(',');
+    if (filters.min_price !== undefined) params.min_price = String(filters.min_price);
+    if (filters.max_price !== undefined) params.max_price = String(filters.max_price);
+    if (filters.orderby) params.orderby = filters.orderby;
+    if (filters.order) params.order = filters.order;
+    if (filters.per_page !== undefined) params.per_page = String(filters.per_page);
+    if (filters.page !== undefined) params.page = String(filters.page);
+    if (filters.status) params.status = filters.status;
+    if (filters.type) params.type = filters.type;
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', params);
 };
 const getProductStats = async ()=>{
     try {
         const [products, categories, tags] = await Promise.all([
             (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
-                per_page: 1
+                per_page: '1'
             }),
             (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', {
-                per_page: 1
+                per_page: '1'
             }),
             (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', {
-                per_page: 1
+                per_page: '1'
             })
         ]);
         return {
@@ -354,32 +338,32 @@ const getProductStats = async ()=>{
     }
 };
 const getTestsByType = async (testType, limit = 10)=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         meta_key: 'test_type',
         meta_value: testType,
-        per_page: String(limit)
-    });
+        per_page: limit
+    }));
 };
 const getTestsByReportTAT = async (tat, limit = 10)=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         meta_key: 'report_tat',
         meta_value: tat,
-        per_page: String(limit)
-    });
+        per_page: limit
+    }));
 };
 const getHealthPackages = async (limit = 10)=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         meta_key: 'test_type',
         meta_value: 'Health Package',
-        per_page: String(limit)
-    });
+        per_page: limit
+    }));
 };
 const getPopularTests = async (limit = 10)=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         orderby: 'popularity',
         order: 'desc',
-        per_page: String(limit)
-    });
+        per_page: limit
+    }));
 };
 const getProductVariations = async (productId)=>{
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/${productId}/variations`);
