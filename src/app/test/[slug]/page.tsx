@@ -207,7 +207,7 @@ export default function TestDetailPage() {
       billing: {
         first_name: form.patientName.split(' ')[0] || 'Patient',
         last_name: form.patientName.split(' ').slice(1).join(' ') || 'Name',
-        email: 'patient@sachdevadiagnostics.com',
+        email: 'info@sachdevadiagnostics.com',
         phone: form.phoneNumber,
         address_1: form.collectionType === 'home' ? form.address : 'Sachdeva Diagnostics Center',
       },
@@ -374,20 +374,6 @@ export default function TestDetailPage() {
                 <div className="mb-6">
                   <h3 className="text-lg font-bold text-black mb-2">Also Known As:</h3>
                   <p className="text-gray-800 font-medium">{testData.alsoKnownAs}</p>
-                </div>
-              )}
-
-              {/* Test Image */}
-              {test.images?.length > 0 && (
-                <div className="mb-8">
-                  <img
-                    src={test.images[0].src}
-                    alt={test.name}
-                    className="w-full h-64 object-cover rounded-lg shadow-lg"
-                    onError={(e) => {
-                      e.currentTarget.src = '/test-placeholder.jpg';
-                    }}
-                  />
                 </div>
               )}
 
@@ -874,13 +860,8 @@ export default function TestDetailPage() {
               <h2 className="text-2xl font-bold mb-6 text-black">Related Tests</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {related.slice(0, 4).map((rt) => (
-                  <Card key={rt.id} className="group hover:shadow-lg transition-all duration-200 cursor-pointer" onClick={() => router.push(`/tests/${rt.slug}`)}>
+                  <Card key={rt.id} className="group hover:shadow-lg transition-all duration-200 cursor-pointer" onClick={() => router.push(`/test/${rt.slug}`)}>
                     <CardContent className="p-4">
-                      <img
-                        src={rt.images?.[0]?.src || '/test-placeholder.jpg'}
-                        alt={rt.name}
-                        className="w-full h-32 object-cover rounded-lg mb-3"
-                      />
                       <h3 className="font-bold text-sm mb-2 line-clamp-2 text-black">{rt.name}</h3>
                       <p className="text-[#194b8c] font-bold mb-2">
                         ₹{Number(rt.price).toLocaleString('en-IN')}
@@ -889,7 +870,7 @@ export default function TestDetailPage() {
                         size="sm"
                         className="w-full bg-[#194b8c] hover:bg-blue-700 text-white font-semibold"
                       >
-                        View Details
+                        Book Now
                       </Button>
                     </CardContent>
                   </Card>

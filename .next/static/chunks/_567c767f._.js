@@ -825,9 +825,9 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/axios/lib/axios.js [app-client] (ecmascript)");
 ;
-const API_URL = 'https://cms.decorationcart.com/wp-json/wc/v3';
-const CONSUMER_KEY = 'ck_19961c45bbba6b65c73e8b39d6b8ef9f43a15a3a';
-const CONSUMER_SECRET = 'cs_3de9c87226730300314a1470dd049d94db778f92';
+const API_URL = 'https://beige-dinosaur-443055.hostingersite.com//wp-json/wc/v3';
+const CONSUMER_KEY = 'ck_f3db9c54ccb91204a281d11979881bae4beae33c';
+const CONSUMER_SECRET = 'cs_91203108604f58127b42d9478d97412e766ec658';
 async function createOrder(orderData) {
     const authParams = {
         consumer_key: CONSUMER_KEY,
@@ -855,9 +855,9 @@ __turbopack_context__.s({
     "fetchFromAPI": (()=>fetchFromAPI),
     "fetchFromAPISimple": (()=>fetchFromAPISimple)
 });
-const API_URL = 'https://cms.decorationcart.com/wp-json/wc/v3';
-const CONSUMER_KEY = 'ck_19961c45bbba6b65c73e8b39d6b8ef9f43a15a3a';
-const CONSUMER_SECRET = 'cs_3de9c87226730300314a1470dd049d94db778f92';
+const API_URL = 'https://beige-dinosaur-443055.hostingersite.com//wp-json/wc/v3';
+const CONSUMER_KEY = 'ck_f3db9c54ccb91204a281d11979881bae4beae33c';
+const CONSUMER_SECRET = 'cs_91203108604f58127b42d9478d97412e766ec658';
 const fetchFromAPI = async (endpoint, params = {}, method = 'GET', body)=>{
     try {
         // Add auth credentials to params for GET requests or query string for POST
@@ -907,20 +907,56 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
+    "formatPrice": (()=>formatPrice),
+    "getAllProducts": (()=>getAllProducts),
     "getCategories": (()=>getCategories),
     "getCategory": (()=>getCategory),
     "getFeaturedProducts": (()=>getFeaturedProducts),
+    "getHealthPackages": (()=>getHealthPackages),
+    "getPopularTests": (()=>getPopularTests),
     "getProduct": (()=>getProduct),
     "getProductBySlug": (()=>getProductBySlug),
+    "getProductCategories": (()=>getProductCategories),
+    "getProductMetaValue": (()=>getProductMetaValue),
+    "getProductReviews": (()=>getProductReviews),
+    "getProductStats": (()=>getProductStats),
+    "getProductTags": (()=>getProductTags),
+    "getProductVariations": (()=>getProductVariations),
     "getProducts": (()=>getProducts),
     "getProductsByCategory": (()=>getProductsByCategory),
+    "getProductsWithFilters": (()=>getProductsWithFilters),
     "getRelatedProducts": (()=>getRelatedProducts),
+    "getTag": (()=>getTag),
+    "getTags": (()=>getTags),
+    "getTestsByReportTAT": (()=>getTestsByReportTAT),
+    "getTestsByType": (()=>getTestsByType),
+    "parseProductMeta": (()=>parseProductMeta),
     "searchProducts": (()=>searchProducts)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/services/api.ts [app-client] (ecmascript)");
 ;
+// -----------------------------
+// 📦 Product Helpers
+// -----------------------------
+/**
+ * Utility to convert any number values in params to string
+ */ const toStringParams = (params = {})=>{
+    return Object.fromEntries(Object.entries(params).map(([key, value])=>[
+            key,
+            String(value)
+        ]));
+};
 const getProducts = async (params = {})=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', params);
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams(params));
+};
+const getAllProducts = async (params = {})=>{
+    const defaultParams = {
+        per_page: 100,
+        status: 'publish',
+        type: 'simple',
+        ...params
+    };
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams(defaultParams));
 };
 const getProduct = async (id)=>{
     try {
@@ -941,22 +977,22 @@ const getProductBySlug = async (slug)=>{
     throw new Error('Product not found');
 };
 const searchProducts = async (search, params = {})=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         search,
         ...params
-    });
+    }));
 };
 const getFeaturedProducts = async (limit = 4)=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         featured: 'true',
-        per_page: String(limit)
-    });
+        per_page: limit
+    }));
 };
 const getProductsByCategory = async (categoryId, params = {})=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
-        category: String(categoryId),
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
+        category: categoryId,
         ...params
-    });
+    }));
 };
 const getRelatedProducts = async (categoryId, excludeProductId, limit = 8)=>{
     const params = {
@@ -967,15 +1003,145 @@ const getRelatedProducts = async (categoryId, excludeProductId, limit = 8)=>{
         const excludeList = Array.isArray(excludeProductId) ? excludeProductId : [
             excludeProductId
         ];
-        params.exclude = excludeList.map(String).join(','); // 👈 formatted correctly
+        params.exclude = excludeList.map(String).join(',');
     }
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', params);
 };
 const getCategories = async (params = {})=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', params);
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', toStringParams(params));
+};
+const getProductCategories = async (params = {})=>{
+    const defaultParams = {
+        per_page: '100',
+        status: 'publish',
+        type: 'simple',
+        ...params
+    };
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', toStringParams(defaultParams));
 };
 const getCategory = async (id)=>{
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/categories/${id}`);
+};
+const getTags = async (params = {})=>{
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', toStringParams(params));
+};
+const getProductTags = async (params = {})=>{
+    const defaultParams = {
+        per_page: '100',
+        status: 'publish',
+        type: 'simple',
+        ...params
+    };
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', toStringParams(defaultParams));
+};
+const getTag = async (id)=>{
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/tags/${id}`);
+};
+const getProductsWithFilters = async (filters)=>{
+    const params = {};
+    if (filters.search) params.search = filters.search;
+    if (filters.categories?.length) params.category = filters.categories.join(',');
+    if (filters.tags?.length) params.tag = filters.tags.join(',');
+    if (filters.min_price !== undefined) params.min_price = String(filters.min_price);
+    if (filters.max_price !== undefined) params.max_price = String(filters.max_price);
+    if (filters.orderby) params.orderby = filters.orderby;
+    if (filters.order) params.order = filters.order;
+    if (filters.per_page !== undefined) params.per_page = String(filters.per_page);
+    if (filters.page !== undefined) params.page = String(filters.page);
+    if (filters.status) params.status = filters.status;
+    if (filters.type) params.type = filters.type;
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', params);
+};
+const getProductStats = async ()=>{
+    try {
+        const [products, categories, tags] = await Promise.all([
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
+                per_page: '1'
+            }),
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', {
+                per_page: '1'
+            }),
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', {
+                per_page: '1'
+            })
+        ]);
+        return {
+            total_products: products.length || 0,
+            total_categories: categories.length || 0,
+            total_tags: tags.length || 0
+        };
+    } catch (error) {
+        console.error('Error fetching product stats:', error);
+        return {
+            total_products: 0,
+            total_categories: 0,
+            total_tags: 0
+        };
+    }
+};
+const getTestsByType = async (testType, limit = 10)=>{
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
+        meta_key: 'test_type',
+        meta_value: testType,
+        per_page: limit
+    }));
+};
+const getTestsByReportTAT = async (tat, limit = 10)=>{
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
+        meta_key: 'report_tat',
+        meta_value: tat,
+        per_page: limit
+    }));
+};
+const getHealthPackages = async (limit = 10)=>{
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
+        meta_key: 'test_type',
+        meta_value: 'Health Package',
+        per_page: limit
+    }));
+};
+const getPopularTests = async (limit = 10)=>{
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
+        orderby: 'popularity',
+        order: 'desc',
+        per_page: limit
+    }));
+};
+const getProductVariations = async (productId)=>{
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/${productId}/variations`);
+};
+const getProductReviews = async (productId)=>{
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/reviews`, {
+        product: String(productId)
+    });
+};
+const formatPrice = (price)=>{
+    const numPrice = typeof price === 'string' ? parseFloat(price) : price;
+    return new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    }).format(numPrice);
+};
+const getProductMetaValue = (product, metaKey)=>{
+    const metaItem = product.meta_data?.find((item)=>item.key === metaKey);
+    return metaItem ? String(metaItem.value) : '';
+};
+const parseProductMeta = (product)=>{
+    const getMetaValue = (key)=>getProductMetaValue(product, key);
+    return {
+        alsoKnownAs: getMetaValue('also_known_as'),
+        preparationInstructions: getMetaValue('preparation_instructions'),
+        fastingRequired: getMetaValue('fasting_required'),
+        reportTat: getMetaValue('report_tat') || 'Same Day',
+        testType: getMetaValue('test_type') || 'Diagnostic Test',
+        includedTests: getMetaValue('included_tests') ? JSON.parse(getMetaValue('included_tests')) : [],
+        sampleType: getMetaValue('sample_type') || 'Blood',
+        testComponents: getMetaValue('test_components') ? JSON.parse(getMetaValue('test_components')) : [],
+        normalRange: getMetaValue('normal_range'),
+        clinicalSignificance: getMetaValue('clinical_significance')
+    };
 };
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
@@ -1212,7 +1378,7 @@ function TestDetailPage() {
             billing: {
                 first_name: form.patientName.split(' ')[0] || 'Patient',
                 last_name: form.patientName.split(' ').slice(1).join(' ') || 'Name',
-                email: 'patient@sachdevadiagnostics.com',
+                email: 'info@sachdevadiagnostics.com',
                 phone: form.phoneNumber,
                 address_1: form.collectionType === 'home' ? form.address : 'Sachdeva Diagnostics Center'
             },
@@ -1619,25 +1785,6 @@ function TestDetailPage() {
                                                 lineNumber: 374,
                                                 columnNumber: 17
                                             }, this),
-                                            test.images?.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "jsx-941f1d67be2d07f4" + " " + "mb-8",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                    src: test.images[0].src,
-                                                    alt: test.name,
-                                                    onError: (e)=>{
-                                                        e.currentTarget.src = '/test-placeholder.jpg';
-                                                    },
-                                                    className: "jsx-941f1d67be2d07f4" + " " + "w-full h-64 object-cover rounded-lg shadow-lg"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                    lineNumber: 383,
-                                                    columnNumber: 19
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                lineNumber: 382,
-                                                columnNumber: 17
-                                            }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tabs"], {
                                                 defaultValue: "overview",
                                                 className: "mb-8",
@@ -1651,7 +1798,7 @@ function TestDetailPage() {
                                                                 children: "Overview"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                lineNumber: 397,
+                                                                lineNumber: 383,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -1660,7 +1807,7 @@ function TestDetailPage() {
                                                                 children: "Preparation"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                lineNumber: 400,
+                                                                lineNumber: 386,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -1669,7 +1816,7 @@ function TestDetailPage() {
                                                                 children: "Included Tests"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                lineNumber: 403,
+                                                                lineNumber: 389,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -1678,13 +1825,13 @@ function TestDetailPage() {
                                                                 children: "Reports"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                lineNumber: 406,
+                                                                lineNumber: 392,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                        lineNumber: 396,
+                                                        lineNumber: 382,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1700,19 +1847,19 @@ function TestDetailPage() {
                                                                                 className: "w-5 h-5 text-[#194b8c]"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 415,
+                                                                                lineNumber: 401,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             "Test Overview"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                        lineNumber: 414,
+                                                                        lineNumber: 400,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                    lineNumber: 413,
+                                                                    lineNumber: 399,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1726,12 +1873,12 @@ function TestDetailPage() {
                                                                                 className: "jsx-941f1d67be2d07f4" + " " + "prose prose-gray max-w-none [&_p]:text-gray-800 [&_p]:font-medium [&_li]:text-gray-800 [&_li]:font-medium [&_h1]:text-black [&_h2]:text-black [&_h3]:text-black [&_h4]:text-black [&_h5]:text-black [&_h6]:text-black [&_strong]:text-black [&_b]:text-black"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 423,
+                                                                                lineNumber: 409,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 422,
+                                                                            lineNumber: 408,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         test.description && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1742,7 +1889,7 @@ function TestDetailPage() {
                                                                                     children: "Detailed Information"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 435,
+                                                                                    lineNumber: 421,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1752,13 +1899,13 @@ function TestDetailPage() {
                                                                                     className: "jsx-941f1d67be2d07f4" + " " + "prose prose-gray max-w-none [&_p]:text-gray-800 [&_p]:font-medium [&_li]:text-gray-800 [&_li]:font-medium [&_h1]:text-black [&_h2]:text-black [&_h3]:text-black [&_h4]:text-black [&_h5]:text-black [&_h6]:text-black [&_strong]:text-black [&_b]:text-black"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 436,
+                                                                                    lineNumber: 422,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 434,
+                                                                            lineNumber: 420,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         testData.clinicalSignificance && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1769,7 +1916,7 @@ function TestDetailPage() {
                                                                                     children: "Clinical Significance"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 448,
+                                                                                    lineNumber: 434,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1777,13 +1924,13 @@ function TestDetailPage() {
                                                                                     children: testData.clinicalSignificance
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 449,
+                                                                                    lineNumber: 435,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 447,
+                                                                            lineNumber: 433,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1797,7 +1944,7 @@ function TestDetailPage() {
                                                                                             children: "Test Type"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 456,
+                                                                                            lineNumber: 442,
                                                                                             columnNumber: 27
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1805,13 +1952,13 @@ function TestDetailPage() {
                                                                                             children: testData.testType
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 457,
+                                                                                            lineNumber: 443,
                                                                                             columnNumber: 27
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 455,
+                                                                                    lineNumber: 441,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1822,7 +1969,7 @@ function TestDetailPage() {
                                                                                             children: "Sample Type"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 460,
+                                                                                            lineNumber: 446,
                                                                                             columnNumber: 27
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1830,13 +1977,13 @@ function TestDetailPage() {
                                                                                             children: testData.sampleType
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 461,
+                                                                                            lineNumber: 447,
                                                                                             columnNumber: 27
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 459,
+                                                                                    lineNumber: 445,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1847,7 +1994,7 @@ function TestDetailPage() {
                                                                                             children: "Report TAT"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 464,
+                                                                                            lineNumber: 450,
                                                                                             columnNumber: 27
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1855,13 +2002,13 @@ function TestDetailPage() {
                                                                                             children: testData.reportTat
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 465,
+                                                                                            lineNumber: 451,
                                                                                             columnNumber: 27
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 463,
+                                                                                    lineNumber: 449,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 testData.normalRange && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1872,7 +2019,7 @@ function TestDetailPage() {
                                                                                             children: "Normal Range"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 469,
+                                                                                            lineNumber: 455,
                                                                                             columnNumber: 29
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1880,36 +2027,36 @@ function TestDetailPage() {
                                                                                             children: testData.normalRange
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 470,
+                                                                                            lineNumber: 456,
                                                                                             columnNumber: 29
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 468,
+                                                                                    lineNumber: 454,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 454,
+                                                                            lineNumber: 440,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                    lineNumber: 419,
+                                                                    lineNumber: 405,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                            lineNumber: 412,
+                                                            lineNumber: 398,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                        lineNumber: 411,
+                                                        lineNumber: 397,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1925,19 +2072,19 @@ function TestDetailPage() {
                                                                                 className: "w-5 h-5 text-orange-500"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 482,
+                                                                                lineNumber: 468,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             "Test Preparation Instructions"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                        lineNumber: 481,
+                                                                        lineNumber: 467,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                    lineNumber: 480,
+                                                                    lineNumber: 466,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1951,12 +2098,12 @@ function TestDetailPage() {
                                                                                 className: "jsx-941f1d67be2d07f4" + " " + "prose prose-gray max-w-none [&_p]:text-gray-800 [&_p]:font-medium [&_li]:text-gray-800 [&_li]:font-medium [&_h1]:text-black [&_h2]:text-black [&_h3]:text-black [&_h4]:text-black [&_h5]:text-black [&_h6]:text-black [&_strong]:text-black [&_b]:text-black"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 489,
+                                                                                lineNumber: 475,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 488,
+                                                                            lineNumber: 474,
                                                                             columnNumber: 25
                                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "jsx-941f1d67be2d07f4" + " " + "space-y-4",
@@ -1968,7 +2115,7 @@ function TestDetailPage() {
                                                                                         children: "General Instructions:"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                        lineNumber: 499,
+                                                                                        lineNumber: 485,
                                                                                         columnNumber: 29
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1979,7 +2126,7 @@ function TestDetailPage() {
                                                                                                 children: "No special preparation required for most tests"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 501,
+                                                                                                lineNumber: 487,
                                                                                                 columnNumber: 31
                                                                                             }, this),
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1987,7 +2134,7 @@ function TestDetailPage() {
                                                                                                 children: "Fasting may be required for certain tests"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 502,
+                                                                                                lineNumber: 488,
                                                                                                 columnNumber: 31
                                                                                             }, this),
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1995,7 +2142,7 @@ function TestDetailPage() {
                                                                                                 children: "Inform about medications you are taking"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 503,
+                                                                                                lineNumber: 489,
                                                                                                 columnNumber: 31
                                                                                             }, this),
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -2003,24 +2150,24 @@ function TestDetailPage() {
                                                                                                 children: "Carry previous reports if available"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 504,
+                                                                                                lineNumber: 490,
                                                                                                 columnNumber: 31
                                                                                             }, this)
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                        lineNumber: 500,
+                                                                                        lineNumber: 486,
                                                                                         columnNumber: 29
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 498,
+                                                                                lineNumber: 484,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 497,
+                                                                            lineNumber: 483,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         testData.fastingRequired && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2031,7 +2178,7 @@ function TestDetailPage() {
                                                                                     children: "Fasting Required:"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 512,
+                                                                                    lineNumber: 498,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2039,30 +2186,30 @@ function TestDetailPage() {
                                                                                     children: testData.fastingRequired
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 513,
+                                                                                    lineNumber: 499,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 511,
+                                                                            lineNumber: 497,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                    lineNumber: 486,
+                                                                    lineNumber: 472,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                            lineNumber: 479,
+                                                            lineNumber: 465,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                        lineNumber: 478,
+                                                        lineNumber: 464,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -2078,19 +2225,19 @@ function TestDetailPage() {
                                                                                 className: "w-5 h-5 text-green-500"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 524,
+                                                                                lineNumber: 510,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             "Included Tests & Components"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                        lineNumber: 523,
+                                                                        lineNumber: 509,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                    lineNumber: 522,
+                                                                    lineNumber: 508,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2103,7 +2250,7 @@ function TestDetailPage() {
                                                                                     children: "This package includes:"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 531,
+                                                                                    lineNumber: 517,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2115,7 +2262,7 @@ function TestDetailPage() {
                                                                                                     className: "w-4 h-4 text-green-500"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                    lineNumber: 535,
+                                                                                                    lineNumber: 521,
                                                                                                     columnNumber: 33
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2123,24 +2270,24 @@ function TestDetailPage() {
                                                                                                     children: includedTest
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                    lineNumber: 536,
+                                                                                                    lineNumber: 522,
                                                                                                     columnNumber: 33
                                                                                                 }, this)
                                                                                             ]
                                                                                         }, index, true, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 534,
+                                                                                            lineNumber: 520,
                                                                                             columnNumber: 31
                                                                                         }, this))
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 532,
+                                                                                    lineNumber: 518,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 530,
+                                                                            lineNumber: 516,
                                                                             columnNumber: 25
                                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "jsx-941f1d67be2d07f4" + " " + "text-center py-8",
@@ -2149,7 +2296,7 @@ function TestDetailPage() {
                                                                                     className: "w-12 h-12 text-gray-400 mx-auto mb-4"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 543,
+                                                                                    lineNumber: 529,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2157,13 +2304,13 @@ function TestDetailPage() {
                                                                                     children: "Individual test - No sub-components"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 544,
+                                                                                    lineNumber: 530,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 542,
+                                                                            lineNumber: 528,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         testData.testComponents?.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2174,7 +2321,7 @@ function TestDetailPage() {
                                                                                     children: "Test Components:"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 550,
+                                                                                    lineNumber: 536,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2186,7 +2333,7 @@ function TestDetailPage() {
                                                                                                     className: "w-4 h-4 text-[#194b8c]"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                    lineNumber: 554,
+                                                                                                    lineNumber: 540,
                                                                                                     columnNumber: 33
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2194,41 +2341,41 @@ function TestDetailPage() {
                                                                                                     children: component
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                    lineNumber: 555,
+                                                                                                    lineNumber: 541,
                                                                                                     columnNumber: 33
                                                                                                 }, this)
                                                                                             ]
                                                                                         }, index, true, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 553,
+                                                                                            lineNumber: 539,
                                                                                             columnNumber: 31
                                                                                         }, this))
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 551,
+                                                                                    lineNumber: 537,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 549,
+                                                                            lineNumber: 535,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                    lineNumber: 528,
+                                                                    lineNumber: 514,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                            lineNumber: 521,
+                                                            lineNumber: 507,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                        lineNumber: 520,
+                                                        lineNumber: 506,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -2244,19 +2391,19 @@ function TestDetailPage() {
                                                                                 className: "w-5 h-5 text-[#194b8c]"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 569,
+                                                                                lineNumber: 555,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             "Report Information"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                        lineNumber: 568,
+                                                                        lineNumber: 554,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                    lineNumber: 567,
+                                                                    lineNumber: 553,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2276,7 +2423,7 @@ function TestDetailPage() {
                                                                                                         className: "w-5 h-5 text-[#194b8c]"
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                        lineNumber: 578,
+                                                                                                        lineNumber: 564,
                                                                                                         columnNumber: 31
                                                                                                     }, this),
                                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -2284,13 +2431,13 @@ function TestDetailPage() {
                                                                                                         children: "Report TAT"
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                        lineNumber: 579,
+                                                                                                        lineNumber: 565,
                                                                                                         columnNumber: 31
                                                                                                     }, this)
                                                                                                 ]
                                                                                             }, void 0, true, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 577,
+                                                                                                lineNumber: 563,
                                                                                                 columnNumber: 29
                                                                                             }, this),
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2298,7 +2445,7 @@ function TestDetailPage() {
                                                                                                 children: testData.reportTat
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 581,
+                                                                                                lineNumber: 567,
                                                                                                 columnNumber: 29
                                                                                             }, this),
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2306,13 +2453,13 @@ function TestDetailPage() {
                                                                                                 children: "*Available online and via email"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 582,
+                                                                                                lineNumber: 568,
                                                                                                 columnNumber: 29
                                                                                             }, this)
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                        lineNumber: 576,
+                                                                                        lineNumber: 562,
                                                                                         columnNumber: 27
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2325,7 +2472,7 @@ function TestDetailPage() {
                                                                                                         className: "w-5 h-5 text-green-600"
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                        lineNumber: 586,
+                                                                                                        lineNumber: 572,
                                                                                                         columnNumber: 31
                                                                                                     }, this),
                                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -2333,13 +2480,13 @@ function TestDetailPage() {
                                                                                                         children: "Digital Reports"
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                        lineNumber: 587,
+                                                                                                        lineNumber: 573,
                                                                                                         columnNumber: 31
                                                                                                     }, this)
                                                                                                 ]
                                                                                             }, void 0, true, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 585,
+                                                                                                lineNumber: 571,
                                                                                                 columnNumber: 29
                                                                                             }, this),
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2347,7 +2494,7 @@ function TestDetailPage() {
                                                                                                 children: "Download reports anytime from our portal"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 589,
+                                                                                                lineNumber: 575,
                                                                                                 columnNumber: 29
                                                                                             }, this),
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2355,7 +2502,73 @@ function TestDetailPage() {
                                                                                                 children: "Access Portal"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 590,
+                                                                                                lineNumber: 576,
+                                                                                                columnNumber: 29
+                                                                                            }, this)
+                                                                                        ]
+                                                                                    }, void 0, true, {
+                                                                                        fileName: "[project]/src/app/test/[slug]/page.tsx",
+                                                                                        lineNumber: 570,
+                                                                                        columnNumber: 27
+                                                                                    }, this)
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
+                                                                                lineNumber: 561,
+                                                                                columnNumber: 25
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                className: "jsx-941f1d67be2d07f4" + " " + "bg-blue-50 border-l-4 border-[#194b8c] p-4",
+                                                                                children: [
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                                                        className: "jsx-941f1d67be2d07f4" + " " + "font-bold text-[#194b8c] mb-2",
+                                                                                        children: "Report Features:"
+                                                                                    }, void 0, false, {
+                                                                                        fileName: "[project]/src/app/test/[slug]/page.tsx",
+                                                                                        lineNumber: 583,
+                                                                                        columnNumber: 27
+                                                                                    }, this),
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                                                                        className: "jsx-941f1d67be2d07f4" + " " + "list-disc list-inside space-y-1 text-gray-800 font-medium",
+                                                                                        children: [
+                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                                className: "jsx-941f1d67be2d07f4",
+                                                                                                children: "NABL accredited lab reports"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
+                                                                                                lineNumber: 585,
+                                                                                                columnNumber: 29
+                                                                                            }, this),
+                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                                className: "jsx-941f1d67be2d07f4",
+                                                                                                children: "Digital signature and verification"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
+                                                                                                lineNumber: 586,
+                                                                                                columnNumber: 29
+                                                                                            }, this),
+                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                                className: "jsx-941f1d67be2d07f4",
+                                                                                                children: "Reference ranges included"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
+                                                                                                lineNumber: 587,
+                                                                                                columnNumber: 29
+                                                                                            }, this),
+                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                                className: "jsx-941f1d67be2d07f4",
+                                                                                                children: "Doctor consultation available"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
+                                                                                                lineNumber: 588,
+                                                                                                columnNumber: 29
+                                                                                            }, this),
+                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                                                className: "jsx-941f1d67be2d07f4",
+                                                                                                children: "Secure online access"
+                                                                                            }, void 0, false, {
+                                                                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
+                                                                                                lineNumber: 589,
                                                                                                 columnNumber: 29
                                                                                             }, this)
                                                                                         ]
@@ -2367,101 +2580,35 @@ function TestDetailPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 575,
-                                                                                columnNumber: 25
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                className: "jsx-941f1d67be2d07f4" + " " + "bg-blue-50 border-l-4 border-[#194b8c] p-4",
-                                                                                children: [
-                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                                                        className: "jsx-941f1d67be2d07f4" + " " + "font-bold text-[#194b8c] mb-2",
-                                                                                        children: "Report Features:"
-                                                                                    }, void 0, false, {
-                                                                                        fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                        lineNumber: 597,
-                                                                                        columnNumber: 27
-                                                                                    }, this),
-                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                                                                        className: "jsx-941f1d67be2d07f4" + " " + "list-disc list-inside space-y-1 text-gray-800 font-medium",
-                                                                                        children: [
-                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                                className: "jsx-941f1d67be2d07f4",
-                                                                                                children: "NABL accredited lab reports"
-                                                                                            }, void 0, false, {
-                                                                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 599,
-                                                                                                columnNumber: 29
-                                                                                            }, this),
-                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                                className: "jsx-941f1d67be2d07f4",
-                                                                                                children: "Digital signature and verification"
-                                                                                            }, void 0, false, {
-                                                                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 600,
-                                                                                                columnNumber: 29
-                                                                                            }, this),
-                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                                className: "jsx-941f1d67be2d07f4",
-                                                                                                children: "Reference ranges included"
-                                                                                            }, void 0, false, {
-                                                                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 601,
-                                                                                                columnNumber: 29
-                                                                                            }, this),
-                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                                className: "jsx-941f1d67be2d07f4",
-                                                                                                children: "Doctor consultation available"
-                                                                                            }, void 0, false, {
-                                                                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 602,
-                                                                                                columnNumber: 29
-                                                                                            }, this),
-                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                                                className: "jsx-941f1d67be2d07f4",
-                                                                                                children: "Secure online access"
-                                                                                            }, void 0, false, {
-                                                                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 603,
-                                                                                                columnNumber: 29
-                                                                                            }, this)
-                                                                                        ]
-                                                                                    }, void 0, true, {
-                                                                                        fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                        lineNumber: 598,
-                                                                                        columnNumber: 27
-                                                                                    }, this)
-                                                                                ]
-                                                                            }, void 0, true, {
-                                                                                fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 596,
+                                                                                lineNumber: 582,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                        lineNumber: 574,
+                                                                        lineNumber: 560,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                    lineNumber: 573,
+                                                                    lineNumber: 559,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                            lineNumber: 566,
+                                                            lineNumber: 552,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                        lineNumber: 565,
+                                                        lineNumber: 551,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                lineNumber: 395,
+                                                lineNumber: 381,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2475,7 +2622,7 @@ function TestDetailPage() {
                                                                 children: "Categories:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                lineNumber: 616,
+                                                                lineNumber: 602,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2485,18 +2632,18 @@ function TestDetailPage() {
                                                                         children: category.name
                                                                     }, category.id, false, {
                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                        lineNumber: 619,
+                                                                        lineNumber: 605,
                                                                         columnNumber: 25
                                                                     }, this))
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                lineNumber: 617,
+                                                                lineNumber: 603,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                        lineNumber: 615,
+                                                        lineNumber: 601,
                                                         columnNumber: 19
                                                     }, this),
                                                     test.tags?.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2507,7 +2654,7 @@ function TestDetailPage() {
                                                                 children: "Tags:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                lineNumber: 629,
+                                                                lineNumber: 615,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2518,24 +2665,24 @@ function TestDetailPage() {
                                                                         children: tag.name
                                                                     }, tag.id, false, {
                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                        lineNumber: 632,
+                                                                        lineNumber: 618,
                                                                         columnNumber: 25
                                                                     }, this))
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                lineNumber: 630,
+                                                                lineNumber: 616,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                        lineNumber: 628,
+                                                        lineNumber: 614,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                lineNumber: 613,
+                                                lineNumber: 599,
                                                 columnNumber: 15
                                             }, this)
                                         ]
@@ -2568,7 +2715,7 @@ function TestDetailPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 652,
+                                                                                lineNumber: 638,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2576,13 +2723,13 @@ function TestDetailPage() {
                                                                                 children: form.collectionType === 'home' ? 'Home Collection' : 'Center Visit'
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 653,
+                                                                                lineNumber: 639,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                        lineNumber: 651,
+                                                                        lineNumber: 637,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2592,7 +2739,7 @@ function TestDetailPage() {
                                                                                 className: "w-8 h-8 mb-1"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 658,
+                                                                                lineNumber: 644,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2600,24 +2747,24 @@ function TestDetailPage() {
                                                                                 children: "NABL Certified"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 659,
+                                                                                lineNumber: 645,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                        lineNumber: 657,
+                                                                        lineNumber: 643,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                lineNumber: 650,
+                                                                lineNumber: 636,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                            lineNumber: 649,
+                                                            lineNumber: 635,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2633,7 +2780,7 @@ function TestDetailPage() {
                                                                                     className: "w-4 h-4 text-green-500"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 667,
+                                                                                    lineNumber: 653,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2644,13 +2791,13 @@ function TestDetailPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 668,
+                                                                                    lineNumber: 654,
                                                                                     columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 666,
+                                                                            lineNumber: 652,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2660,7 +2807,7 @@ function TestDetailPage() {
                                                                                     className: "w-4 h-4 text-green-500"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 671,
+                                                                                    lineNumber: 657,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2668,13 +2815,13 @@ function TestDetailPage() {
                                                                                     children: testData.testType
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 672,
+                                                                                    lineNumber: 658,
                                                                                     columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 670,
+                                                                            lineNumber: 656,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2684,7 +2831,7 @@ function TestDetailPage() {
                                                                                     className: "w-4 h-4 text-green-500"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 675,
+                                                                                    lineNumber: 661,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2697,19 +2844,19 @@ function TestDetailPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 676,
+                                                                                    lineNumber: 662,
                                                                                     columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 674,
+                                                                            lineNumber: 660,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                    lineNumber: 665,
+                                                                    lineNumber: 651,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2722,14 +2869,14 @@ function TestDetailPage() {
                                                                                     className: "w-5 h-5 text-[#194b8c]"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 683,
+                                                                                    lineNumber: 669,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 " Book Your Test"
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 682,
+                                                                            lineNumber: 668,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2740,7 +2887,7 @@ function TestDetailPage() {
                                                                             className: "border-gray-300 focus:border-[#194b8c] text-black font-medium placeholder:text-gray-600"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 687,
+                                                                            lineNumber: 673,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2755,7 +2902,7 @@ function TestDetailPage() {
                                                                                     className: "border-gray-300 focus:border-[#194b8c] text-black font-medium placeholder:text-gray-600"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 697,
+                                                                                    lineNumber: 683,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -2768,12 +2915,12 @@ function TestDetailPage() {
                                                                                                 placeholder: "Gender"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 707,
+                                                                                                lineNumber: 693,
                                                                                                 columnNumber: 29
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 706,
+                                                                                            lineNumber: 692,
                                                                                             columnNumber: 27
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -2785,7 +2932,7 @@ function TestDetailPage() {
                                                                                                     children: "Male"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                    lineNumber: 710,
+                                                                                                    lineNumber: 696,
                                                                                                     columnNumber: 29
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -2794,7 +2941,7 @@ function TestDetailPage() {
                                                                                                     children: "Female"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                    lineNumber: 711,
+                                                                                                    lineNumber: 697,
                                                                                                     columnNumber: 29
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -2803,25 +2950,25 @@ function TestDetailPage() {
                                                                                                     children: "Other"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                    lineNumber: 712,
+                                                                                                    lineNumber: 698,
                                                                                                     columnNumber: 29
                                                                                                 }, this)
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 709,
+                                                                                            lineNumber: 695,
                                                                                             columnNumber: 27
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 705,
+                                                                                    lineNumber: 691,
                                                                                     columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 696,
+                                                                            lineNumber: 682,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2831,7 +2978,7 @@ function TestDetailPage() {
                                                                                     className: "absolute left-3 top-3 w-4 h-4 text-[#194b8c]"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 719,
+                                                                                    lineNumber: 705,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2843,13 +2990,13 @@ function TestDetailPage() {
                                                                                     className: "pl-10 border-gray-300 focus:border-[#194b8c] text-black font-medium placeholder:text-gray-600"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 720,
+                                                                                    lineNumber: 706,
                                                                                     columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 718,
+                                                                            lineNumber: 704,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2860,7 +3007,7 @@ function TestDetailPage() {
                                                                                     children: "Collection Type"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 732,
+                                                                                    lineNumber: 718,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$radio$2d$group$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["RadioGroup"], {
@@ -2876,7 +3023,7 @@ function TestDetailPage() {
                                                                                                     id: "center-sidebar"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                    lineNumber: 739,
+                                                                                                    lineNumber: 725,
                                                                                                     columnNumber: 29
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -2887,7 +3034,7 @@ function TestDetailPage() {
                                                                                                             className: "h-4 w-4 text-[#194b8c] mr-2"
                                                                                                         }, void 0, false, {
                                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                            lineNumber: 741,
+                                                                                                            lineNumber: 727,
                                                                                                             columnNumber: 31
                                                                                                         }, this),
                                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2898,7 +3045,7 @@ function TestDetailPage() {
                                                                                                                     children: "Visit Center"
                                                                                                                 }, void 0, false, {
                                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                                    lineNumber: 743,
+                                                                                                                    lineNumber: 729,
                                                                                                                     columnNumber: 33
                                                                                                                 }, this),
                                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2909,25 +3056,25 @@ function TestDetailPage() {
                                                                                                                     ]
                                                                                                                 }, void 0, true, {
                                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                                    lineNumber: 744,
+                                                                                                                    lineNumber: 730,
                                                                                                                     columnNumber: 33
                                                                                                                 }, this)
                                                                                                             ]
                                                                                                         }, void 0, true, {
                                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                            lineNumber: 742,
+                                                                                                            lineNumber: 728,
                                                                                                             columnNumber: 31
                                                                                                         }, this)
                                                                                                     ]
                                                                                                 }, void 0, true, {
                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                    lineNumber: 740,
+                                                                                                    lineNumber: 726,
                                                                                                     columnNumber: 29
                                                                                                 }, this)
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 738,
+                                                                                            lineNumber: 724,
                                                                                             columnNumber: 27
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2938,7 +3085,7 @@ function TestDetailPage() {
                                                                                                     id: "home-sidebar"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                    lineNumber: 749,
+                                                                                                    lineNumber: 735,
                                                                                                     columnNumber: 29
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -2949,7 +3096,7 @@ function TestDetailPage() {
                                                                                                             className: "h-4 w-4 text-[#194b8c] mr-2"
                                                                                                         }, void 0, false, {
                                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                            lineNumber: 751,
+                                                                                                            lineNumber: 737,
                                                                                                             columnNumber: 31
                                                                                                         }, this),
                                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2960,7 +3107,7 @@ function TestDetailPage() {
                                                                                                                     children: "Home Collection"
                                                                                                                 }, void 0, false, {
                                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                                    lineNumber: 753,
+                                                                                                                    lineNumber: 739,
                                                                                                                     columnNumber: 33
                                                                                                                 }, this),
                                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2971,37 +3118,37 @@ function TestDetailPage() {
                                                                                                                     ]
                                                                                                                 }, void 0, true, {
                                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                                    lineNumber: 754,
+                                                                                                                    lineNumber: 740,
                                                                                                                     columnNumber: 33
                                                                                                                 }, this)
                                                                                                             ]
                                                                                                         }, void 0, true, {
                                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                            lineNumber: 752,
+                                                                                                            lineNumber: 738,
                                                                                                             columnNumber: 31
                                                                                                         }, this)
                                                                                                     ]
                                                                                                 }, void 0, true, {
                                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                    lineNumber: 750,
+                                                                                                    lineNumber: 736,
                                                                                                     columnNumber: 29
                                                                                                 }, this)
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 748,
+                                                                                            lineNumber: 734,
                                                                                             columnNumber: 27
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 733,
+                                                                                    lineNumber: 719,
                                                                                     columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 731,
+                                                                            lineNumber: 717,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         form.collectionType === 'home' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3011,7 +3158,7 @@ function TestDetailPage() {
                                                                                     className: "absolute left-3 top-3 w-4 h-4 text-[#194b8c]"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 764,
+                                                                                    lineNumber: 750,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -3022,13 +3169,13 @@ function TestDetailPage() {
                                                                                     className: "pl-10 border-gray-300 focus:border-[#194b8c] text-black font-medium placeholder:text-gray-600"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 765,
+                                                                                    lineNumber: 751,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 763,
+                                                                            lineNumber: 749,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$popover$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Popover"], {
@@ -3043,19 +3190,19 @@ function TestDetailPage() {
                                                                                                 className: "mr-2 h-4 w-4 text-[#194b8c]"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 782,
+                                                                                                lineNumber: 768,
                                                                                                 columnNumber: 29
                                                                                             }, this),
                                                                                             form.date ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$date$2d$fns$2f$format$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(form.date, 'PPP') : 'Select appointment date'
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                        lineNumber: 778,
+                                                                                        lineNumber: 764,
                                                                                         columnNumber: 27
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 777,
+                                                                                    lineNumber: 763,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$popover$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["PopoverContent"], {
@@ -3069,18 +3216,18 @@ function TestDetailPage() {
                                                                                         className: "bg-white"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                        lineNumber: 787,
+                                                                                        lineNumber: 773,
                                                                                         columnNumber: 27
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 786,
+                                                                                    lineNumber: 772,
                                                                                     columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 776,
+                                                                            lineNumber: 762,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -3096,25 +3243,25 @@ function TestDetailPage() {
                                                                                                 className: "mr-2 h-4 w-4 text-[#194b8c]"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 802,
+                                                                                                lineNumber: 788,
                                                                                                 columnNumber: 29
                                                                                             }, this),
                                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
                                                                                                 placeholder: "Select preferred time"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                                lineNumber: 803,
+                                                                                                lineNumber: 789,
                                                                                                 columnNumber: 29
                                                                                             }, this)
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                        lineNumber: 801,
+                                                                                        lineNumber: 787,
                                                                                         columnNumber: 27
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 800,
+                                                                                    lineNumber: 786,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -3125,18 +3272,18 @@ function TestDetailPage() {
                                                                                             children: formatTimeLabel(hour)
                                                                                         }, hour, false, {
                                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                            lineNumber: 808,
+                                                                                            lineNumber: 794,
                                                                                             columnNumber: 29
                                                                                         }, this))
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 806,
+                                                                                    lineNumber: 792,
                                                                                     columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 799,
+                                                                            lineNumber: 785,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -3150,14 +3297,14 @@ function TestDetailPage() {
                                                                                         className: "jsx-941f1d67be2d07f4" + " " + "w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                        lineNumber: 823,
+                                                                                        lineNumber: 809,
                                                                                         columnNumber: 29
                                                                                     }, this),
                                                                                     "Processing..."
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 822,
+                                                                                lineNumber: 808,
                                                                                 columnNumber: 27
                                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                 className: "jsx-941f1d67be2d07f4" + " " + "flex items-center gap-2",
@@ -3166,7 +3313,7 @@ function TestDetailPage() {
                                                                                         className: "w-4 h-4"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                        lineNumber: 828,
+                                                                                        lineNumber: 814,
                                                                                         columnNumber: 29
                                                                                     }, this),
                                                                                     "Book Test - ₹",
@@ -3174,18 +3321,18 @@ function TestDetailPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 827,
+                                                                                lineNumber: 813,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 816,
+                                                                            lineNumber: 802,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                    lineNumber: 681,
+                                                                    lineNumber: 667,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3198,7 +3345,7 @@ function TestDetailPage() {
                                                                                     className: "w-6 h-6 text-green-500 mx-auto mb-1"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 838,
+                                                                                    lineNumber: 824,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3206,13 +3353,13 @@ function TestDetailPage() {
                                                                                     children: "NABL Accredited"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 839,
+                                                                                    lineNumber: 825,
                                                                                     columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 837,
+                                                                            lineNumber: 823,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3222,7 +3369,7 @@ function TestDetailPage() {
                                                                                     className: "w-6 h-6 text-[#194b8c] mx-auto mb-1"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 842,
+                                                                                    lineNumber: 828,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3230,31 +3377,31 @@ function TestDetailPage() {
                                                                                     children: "30+ Years Trust"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                    lineNumber: 843,
+                                                                                    lineNumber: 829,
                                                                                     columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                            lineNumber: 841,
+                                                                            lineNumber: 827,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                    lineNumber: 836,
+                                                                    lineNumber: 822,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                            lineNumber: 663,
+                                                            lineNumber: 649,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                    lineNumber: 648,
+                                                    lineNumber: 634,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -3267,7 +3414,7 @@ function TestDetailPage() {
                                                                 children: "Need Help?"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                lineNumber: 852,
+                                                                lineNumber: 838,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3281,7 +3428,7 @@ function TestDetailPage() {
                                                                                 className: "w-4 h-4"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 855,
+                                                                                lineNumber: 841,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3289,13 +3436,13 @@ function TestDetailPage() {
                                                                                 children: "+91 99900 48085"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 856,
+                                                                                lineNumber: 842,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                        lineNumber: 854,
+                                                                        lineNumber: 840,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3305,7 +3452,7 @@ function TestDetailPage() {
                                                                                 className: "w-4 h-4"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 859,
+                                                                                lineNumber: 845,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3313,41 +3460,41 @@ function TestDetailPage() {
                                                                                 children: "Mon-Sat: 7 AM - 9 PM"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                                lineNumber: 860,
+                                                                                lineNumber: 846,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                        lineNumber: 858,
+                                                                        lineNumber: 844,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                                lineNumber: 853,
+                                                                lineNumber: 839,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                        lineNumber: 851,
+                                                        lineNumber: 837,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                    lineNumber: 850,
+                                                    lineNumber: 836,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                            lineNumber: 646,
+                                            lineNumber: 632,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                        lineNumber: 645,
+                                        lineNumber: 631,
                                         columnNumber: 13
                                     }, this)
                                 ]
@@ -3364,32 +3511,23 @@ function TestDetailPage() {
                                         children: "Related Tests"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                        lineNumber: 874,
+                                        lineNumber: 860,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "jsx-941f1d67be2d07f4" + " " + "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6",
                                         children: related.slice(0, 4).map((rt)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
                                                 className: "group hover:shadow-lg transition-all duration-200 cursor-pointer",
-                                                onClick: ()=>router.push(`/tests/${rt.slug}`),
+                                                onClick: ()=>router.push(`/test/${rt.slug}`),
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
                                                     className: "p-4",
                                                     children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                            src: rt.images?.[0]?.src || '/test-placeholder.jpg',
-                                                            alt: rt.name,
-                                                            className: "jsx-941f1d67be2d07f4" + " " + "w-full h-32 object-cover rounded-lg mb-3"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                            lineNumber: 879,
-                                                            columnNumber: 23
-                                                        }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                                             className: "jsx-941f1d67be2d07f4" + " " + "font-bold text-sm mb-2 line-clamp-2 text-black",
                                                             children: rt.name
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                            lineNumber: 884,
+                                                            lineNumber: 865,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3400,38 +3538,38 @@ function TestDetailPage() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                            lineNumber: 885,
+                                                            lineNumber: 866,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                                             size: "sm",
                                                             className: "w-full bg-[#194b8c] hover:bg-blue-700 text-white font-semibold",
-                                                            children: "View Details"
+                                                            children: "Book Now"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                            lineNumber: 888,
+                                                            lineNumber: 869,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                    lineNumber: 878,
+                                                    lineNumber: 864,
                                                     columnNumber: 21
                                                 }, this)
                                             }, rt.id, false, {
                                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                                lineNumber: 877,
+                                                lineNumber: 863,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                        lineNumber: 875,
+                                        lineNumber: 861,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/test/[slug]/page.tsx",
-                                lineNumber: 873,
+                                lineNumber: 859,
                                 columnNumber: 13
                             }, this)
                         ]

@@ -315,7 +315,7 @@ function TestsPageContent() {
 
   // Test card component
   const TestCard = ({ test }) => (
-    <Link href={`/tests/${test.slug}`} className="block group h-full">
+    <Link href={`/test/${test.slug}`} className="block group h-full">
       <Card className="overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 h-full cursor-pointer bg-white group-hover:scale-[1.02] flex flex-col">
         {/* Test Image */}
         <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-green-50">
