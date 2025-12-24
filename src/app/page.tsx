@@ -218,7 +218,7 @@ export default async function Index() {
                   
                   return (
                     <div key={service.id} className="group relative">
-                      <Link href={`/product/${service.slug}`} className="block h-full">
+                      <Link href={`/test/${service.slug}`} className="block h-full">
                         <div className="bg-white rounded-2xl border-2 border-slate-100 hover:border-blue-300 hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col">
                           
                           <div className="relative h-48 overflow-hidden bg-gradient-to-br from-blue-50 to-slate-50">
