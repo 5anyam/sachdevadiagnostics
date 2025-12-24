@@ -660,6 +660,7 @@ __turbopack_context__.s({
     "getAllProducts": (()=>getAllProducts),
     "getCategories": (()=>getCategories),
     "getCategory": (()=>getCategory),
+    "getDiscountPercentage": (()=>getDiscountPercentage),
     "getFeaturedProducts": (()=>getFeaturedProducts),
     "getHealthPackages": (()=>getHealthPackages),
     "getPopularTests": (()=>getPopularTests),
@@ -667,6 +668,7 @@ __turbopack_context__.s({
     "getProductBySlug": (()=>getProductBySlug),
     "getProductCategories": (()=>getProductCategories),
     "getProductMetaValue": (()=>getProductMetaValue),
+    "getProductPrice": (()=>getProductPrice),
     "getProductReviews": (()=>getProductReviews),
     "getProductStats": (()=>getProductStats),
     "getProductTags": (()=>getProductTags),
@@ -679,13 +681,15 @@ __turbopack_context__.s({
     "getTags": (()=>getTags),
     "getTestsByReportTAT": (()=>getTestsByReportTAT),
     "getTestsByType": (()=>getTestsByType),
+    "isProductOnSale": (()=>isProductOnSale),
     "parseProductMeta": (()=>parseProductMeta),
-    "searchProducts": (()=>searchProducts)
+    "searchProducts": (()=>searchProducts),
+    "stripHtml": (()=>stripHtml)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/services/api.ts [app-ssr] (ecmascript)");
 ;
 // -----------------------------
-// 📦 Product Helpers
+// 🛠️ Utility Functions
 // -----------------------------
 /**
  * Utility to convert any number values in params to string
@@ -695,10 +699,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$a
             String(value)
         ]));
 };
-const getProducts = async (params = {})=>{
+async function getProducts(params = {}) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams(params));
-};
-const getAllProducts = async (params = {})=>{
+}
+async function getAllProducts(params = {}) {
     const defaultParams = {
         per_page: 100,
         status: 'publish',
@@ -706,8 +710,8 @@ const getAllProducts = async (params = {})=>{
         ...params
     };
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams(defaultParams));
-};
-const getProduct = async (id)=>{
+}
+async function getProduct(id) {
     try {
         return await (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/${id}`);
     } catch (error) {
@@ -717,33 +721,59 @@ const getProduct = async (id)=>{
         }
         throw error;
     }
-};
-const getProductBySlug = async (slug)=>{
+}
+async function getProductBySlug(slug) {
     const products = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
         slug
     });
-    if (products?.length > 0) return products[0];
-    throw new Error('Product not found');
-};
-const searchProducts = async (search, params = {})=>{
+    if (products && products.length > 0) {
+        return products[0];
+    }
+    throw new Error(`Product not found with slug: ${slug}`);
+}
+async function searchProducts(search, params = {}) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         search,
         ...params
     }));
-};
-const getFeaturedProducts = async (limit = 4)=>{
+}
+async function getFeaturedProducts(limit = 4) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
-        featured: 'true',
+        featured: true,
         per_page: limit
     }));
-};
-const getProductsByCategory = async (categoryId, params = {})=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
-        category: categoryId,
-        ...params
-    }));
-};
-const getRelatedProducts = async (categoryId, excludeProductId, limit = 8)=>{
+}
+async function getProductsByCategory(categoryId, params = {}) {
+    try {
+        console.log('🔍 Fetching products for category:', categoryId);
+        let finalCategoryId = categoryId;
+        // If it's a string (slug), first get the category to find ID
+        if (typeof categoryId === 'string') {
+            console.log('📝 Category is slug, finding category ID...');
+            const categories = await getProductCategories({
+                slug: categoryId
+            });
+            if (categories.length === 0) {
+                console.warn('⚠️ No category found with slug:', categoryId);
+                return [];
+            }
+            finalCategoryId = categories[0].id;
+            console.log('✅ Found category ID:', finalCategoryId);
+        }
+        const products = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
+            category: finalCategoryId,
+            per_page: 100,
+            status: 'publish',
+            ...params
+        }));
+        console.log(`✅ Found ${products.length} products in category`);
+        return products;
+    } catch (error) {
+        console.error('❌ Error fetching products by category:', error);
+        return [];
+    }
+}
+async function getRelatedProducts(categoryId, excludeProductId, limit = 8) {
     const params = {
         category: String(categoryId),
         per_page: String(limit)
@@ -755,38 +785,55 @@ const getRelatedProducts = async (categoryId, excludeProductId, limit = 8)=>{
         params.exclude = excludeList.map(String).join(',');
     }
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', params);
-};
-const getCategories = async (params = {})=>{
+}
+async function getCategories(params = {}) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', toStringParams(params));
-};
-const getProductCategories = async (params = {})=>{
-    const defaultParams = {
-        per_page: '100',
-        status: 'publish',
-        type: 'simple',
-        ...params
-    };
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', toStringParams(defaultParams));
-};
-const getCategory = async (id)=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/categories/${id}`);
-};
-const getTags = async (params = {})=>{
+}
+async function getProductCategories(params = {}) {
+    try {
+        console.log('🔍 Fetching categories with params:', params);
+        const defaultParams = {
+            per_page: 100,
+            hide_empty: false,
+            ...params
+        };
+        const categories = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', toStringParams(defaultParams));
+        console.log(`✅ Found ${categories.length} categories`);
+        return categories;
+    } catch (error) {
+        console.error('❌ Error fetching categories:', error);
+        return [];
+    }
+}
+async function getCategory(id) {
+    try {
+        if (typeof id === 'number') {
+            return await (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/categories/${id}`);
+        } else {
+            const categories = await getProductCategories({
+                slug: id
+            });
+            return categories[0] || null;
+        }
+    } catch (error) {
+        console.error('❌ Error fetching category:', error);
+        return null;
+    }
+}
+async function getTags(params = {}) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', toStringParams(params));
-};
-const getProductTags = async (params = {})=>{
+}
+async function getProductTags(params = {}) {
     const defaultParams = {
-        per_page: '100',
-        status: 'publish',
-        type: 'simple',
+        per_page: 100,
         ...params
     };
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', toStringParams(defaultParams));
-};
-const getTag = async (id)=>{
+}
+async function getTag(id) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/tags/${id}`);
-};
-const getProductsWithFilters = async (filters)=>{
+}
+async function getProductsWithFilters(filters) {
     const params = {};
     if (filters.search) params.search = filters.search;
     if (filters.categories?.length) params.category = filters.categories.join(',');
@@ -799,9 +846,10 @@ const getProductsWithFilters = async (filters)=>{
     if (filters.page !== undefined) params.page = String(filters.page);
     if (filters.status) params.status = filters.status;
     if (filters.type) params.type = filters.type;
+    if (filters.featured !== undefined) params.featured = String(filters.featured);
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', params);
-};
-const getProductStats = async ()=>{
+}
+async function getProductStats() {
     try {
         const [products, categories, tags] = await Promise.all([
             (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
@@ -820,78 +868,109 @@ const getProductStats = async ()=>{
             total_tags: tags.length || 0
         };
     } catch (error) {
-        console.error('Error fetching product stats:', error);
+        console.error('❌ Error fetching product stats:', error);
         return {
             total_products: 0,
             total_categories: 0,
             total_tags: 0
         };
     }
-};
-const getTestsByType = async (testType, limit = 10)=>{
+}
+async function getTestsByType(testType, limit = 10) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         meta_key: 'test_type',
         meta_value: testType,
         per_page: limit
     }));
-};
-const getTestsByReportTAT = async (tat, limit = 10)=>{
+}
+async function getTestsByReportTAT(tat, limit = 10) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         meta_key: 'report_tat',
         meta_value: tat,
         per_page: limit
     }));
-};
-const getHealthPackages = async (limit = 100)=>{
+}
+async function getHealthPackages(limit = 100) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         meta_key: 'test_type',
         meta_value: 'Health Package',
         per_page: limit
     }));
-};
-const getPopularTests = async (limit = 100)=>{
+}
+async function getPopularTests(limit = 100) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
         orderby: 'popularity',
         order: 'desc',
         per_page: limit
     }));
-};
-const getProductVariations = async (productId)=>{
+}
+async function getProductVariations(productId) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/${productId}/variations`);
-};
-const getProductReviews = async (productId)=>{
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/reviews`, {
+}
+async function getProductReviews(productId) {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/reviews', {
         product: String(productId)
     });
-};
-const formatPrice = (price)=>{
+}
+function formatPrice(price) {
     const numPrice = typeof price === 'string' ? parseFloat(price) : price;
+    if (isNaN(numPrice)) {
+        return '₹0';
+    }
     return new Intl.NumberFormat('en-IN', {
         style: 'currency',
         currency: 'INR',
         minimumFractionDigits: 0,
         maximumFractionDigits: 0
     }).format(numPrice);
-};
-const getProductMetaValue = (product, metaKey)=>{
+}
+function getProductMetaValue(product, metaKey) {
     const metaItem = product.meta_data?.find((item)=>item.key === metaKey);
     return metaItem ? String(metaItem.value) : '';
-};
-const parseProductMeta = (product)=>{
+}
+function parseProductMeta(product) {
     const getMetaValue = (key)=>getProductMetaValue(product, key);
+    const safeJsonParse = (value, fallback = [])=>{
+        try {
+            if (!value) return fallback;
+            const parsed = JSON.parse(value);
+            return Array.isArray(parsed) ? parsed : fallback;
+        } catch  {
+            return fallback;
+        }
+    };
     return {
         alsoKnownAs: getMetaValue('also_known_as'),
         preparationInstructions: getMetaValue('preparation_instructions'),
         fastingRequired: getMetaValue('fasting_required'),
         reportTat: getMetaValue('report_tat') || 'Same Day',
         testType: getMetaValue('test_type') || 'Diagnostic Test',
-        includedTests: getMetaValue('included_tests') ? JSON.parse(getMetaValue('included_tests')) : [],
+        includedTests: safeJsonParse(getMetaValue('included_tests')),
         sampleType: getMetaValue('sample_type') || 'Blood',
-        testComponents: getMetaValue('test_components') ? JSON.parse(getMetaValue('test_components')) : [],
+        testComponents: safeJsonParse(getMetaValue('test_components')),
         normalRange: getMetaValue('normal_range'),
         clinicalSignificance: getMetaValue('clinical_significance')
     };
-};
+}
+function isProductOnSale(product) {
+    return !!(product.sale_price && parseFloat(product.sale_price) > 0);
+}
+function getDiscountPercentage(product) {
+    if (!isProductOnSale(product)) return 0;
+    const regular = parseFloat(product.regular_price);
+    const sale = parseFloat(product.sale_price);
+    if (regular === 0 || isNaN(regular) || isNaN(sale)) return 0;
+    return Math.round((regular - sale) / regular * 100);
+}
+function getProductPrice(product) {
+    if (isProductOnSale(product)) {
+        return parseFloat(product.sale_price);
+    }
+    return parseFloat(product.price) || parseFloat(product.regular_price) || 0;
+}
+function stripHtml(html) {
+    return html.replace(/<[^>]*>/g, '').trim();
+}
 }}),
 "[project]/src/app/tests/page.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
