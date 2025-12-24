@@ -622,8 +622,13 @@ var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_
 // WooCommerce API Configuration
 __turbopack_context__.s({
     "fetchFromAPI": (()=>fetchFromAPI),
+    "fetchFromAPILongCache": (()=>fetchFromAPILongCache),
+    "fetchFromAPIRealtime": (()=>fetchFromAPIRealtime),
+    "fetchFromAPIShortCache": (()=>fetchFromAPIShortCache),
     "fetchFromAPISimple": (()=>fetchFromAPISimple),
     "getAPIConfig": (()=>getAPIConfig),
+    "revalidateAllWooCommerceCache": (()=>revalidateAllWooCommerceCache),
+    "revalidateCacheTag": (()=>revalidateCacheTag),
     "testAPIConnection": (()=>testAPIConnection)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
@@ -639,7 +644,7 @@ console.log('🔧 API Configuration:', {
     hasKey: !!CONSUMER_KEY,
     hasSecret: !!CONSUMER_SECRET
 });
-async function fetchFromAPI(endpoint, params = {}, method = 'GET', body) {
+async function fetchFromAPI(endpoint, params = {}, method = 'GET', body, cacheOptions) {
     try {
         // Clean endpoint (remove leading slash if present)
         const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
@@ -655,16 +660,29 @@ async function fetchFromAPI(endpoint, params = {}, method = 'GET', body) {
             method,
             endpoint: cleanEndpoint,
             params: Object.keys(params),
-            url: url.replace(CONSUMER_SECRET, '***SECRET***')
+            cache: cacheOptions?.revalidate !== false ? `revalidate: ${cacheOptions?.revalidate || 3600}s` : 'no-store'
         });
         const requestOptions = {
             method,
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            },
-            cache: 'no-store'
+            }
         };
+        // ✅ Apply cache strategy based on options
+        if (cacheOptions?.revalidate === false) {
+            // No cache - for real-time data
+            requestOptions.cache = 'no-store';
+        } else {
+            // ISR with revalidation (default: 1 hour)
+            const revalidateTime = cacheOptions?.revalidate ?? 3600;
+            requestOptions.next = {
+                revalidate: revalidateTime,
+                tags: cacheOptions?.tags || [
+                    `woocommerce-${cleanEndpoint}`
+                ]
+            };
+        }
         if (method === 'POST' && body) {
             requestOptions.body = typeof body === 'string' ? body : JSON.stringify(body);
         }
@@ -683,8 +701,7 @@ async function fetchFromAPI(endpoint, params = {}, method = 'GET', body) {
                 status: response.status,
                 statusText: response.statusText,
                 endpoint: cleanEndpoint,
-                errorData: errorData || errorText,
-                url: url.replace(CONSUMER_SECRET, '***SECRET***')
+                errorData: errorData || errorText
             });
             const errorMessage = errorData?.message || `API error: ${response.status} ${response.statusText}`;
             const error = new Error(errorMessage);
@@ -709,13 +726,32 @@ async function fetchFromAPI(endpoint, params = {}, method = 'GET', body) {
     }
 }
 function fetchFromAPISimple(endpoint, params = {}) {
-    return fetchFromAPI(endpoint, params, 'GET');
+    return fetchFromAPI(endpoint, params, 'GET', undefined, {
+        revalidate: 3600
+    });
+}
+function fetchFromAPIRealtime(endpoint, params = {}) {
+    return fetchFromAPI(endpoint, params, 'GET', undefined, {
+        revalidate: false
+    });
+}
+function fetchFromAPIShortCache(endpoint, params = {}) {
+    return fetchFromAPI(endpoint, params, 'GET', undefined, {
+        revalidate: 300
+    });
+}
+function fetchFromAPILongCache(endpoint, params = {}) {
+    return fetchFromAPI(endpoint, params, 'GET', undefined, {
+        revalidate: 86400
+    });
 }
 async function testAPIConnection() {
     try {
         console.log('🧪 Testing API connection...');
         await fetchFromAPI('/products', {
             per_page: '1'
+        }, 'GET', undefined, {
+            revalidate: false
         });
         console.log('✅ API Connection Test: SUCCESS');
         return true;
@@ -732,6 +768,24 @@ function getAPIConfig() {
         consumerKeyLength: CONSUMER_KEY?.length || 0,
         isConfigured: !!(API_URL && CONSUMER_KEY && CONSUMER_SECRET)
     };
+}
+async function revalidateCacheTag(tag) {
+    try {
+        // This would be used in an API route with revalidateTag from next/cache
+        console.log(`♻️ Revalidating cache tag: ${tag}`);
+    // Note: Import revalidateTag from 'next/cache' in API routes to use this
+    } catch (error) {
+        console.error('❌ Cache revalidation failed:', error);
+    }
+}
+async function revalidateAllWooCommerceCache() {
+    try {
+        console.log('♻️ Revalidating all WooCommerce cache');
+    // Note: Import revalidateTag from 'next/cache' in API routes to use this
+    // revalidateTag('woocommerce-*');
+    } catch (error) {
+        console.error('❌ Full cache revalidation failed:', error);
+    }
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
@@ -786,17 +840,59 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$a
             String(value)
         ]));
 };
+/**
+ * Fetch all pages of data automatically (handles pagination)
+ */ async function fetchAllPages(endpoint, params = {}, maxPages = 10) {
+    const allData = [];
+    try {
+        // Fetch first page
+        const firstPageParams = {
+            ...params,
+            per_page: 100,
+            page: 1
+        };
+        const firstPage = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(endpoint, toStringParams(firstPageParams));
+        allData.push(...firstPage);
+        console.log(`📄 Fetched page 1 (${firstPage.length} items)`);
+        // If we got 100 items, there might be more pages
+        if (firstPage.length === 100) {
+            // Fetch remaining pages
+            for(let page = 2; page <= maxPages; page++){
+                const pageParams = {
+                    ...params,
+                    per_page: 100,
+                    page
+                };
+                const pageData = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(endpoint, toStringParams(pageParams));
+                if (pageData.length === 0) {
+                    console.log(`📄 No more data at page ${page}`);
+                    break;
+                }
+                allData.push(...pageData);
+                console.log(`📄 Fetched page ${page} (${pageData.length} items)`);
+                // If we got less than 100, this is the last page
+                if (pageData.length < 100) {
+                    console.log(`📄 Last page reached at page ${page}`);
+                    break;
+                }
+            }
+        }
+        console.log(`✅ Total items fetched: ${allData.length}`);
+        return allData;
+    } catch (error) {
+        console.error('❌ Error fetching all pages:', error);
+        throw error;
+    }
+}
 async function getProducts(params = {}) {
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams(params));
+    return fetchAllPages('/products', params);
 }
 async function getAllProducts(params = {}) {
     const defaultParams = {
-        per_page: 100,
         status: 'publish',
-        type: 'simple',
         ...params
     };
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams(defaultParams));
+    return fetchAllPages('/products', defaultParams);
 }
 async function getProduct(id) {
     try {
@@ -819,10 +915,10 @@ async function getProductBySlug(slug) {
     throw new Error(`Product not found with slug: ${slug}`);
 }
 async function searchProducts(search, params = {}) {
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
+    return fetchAllPages('/products', {
         search,
         ...params
-    }));
+    });
 }
 async function getFeaturedProducts(limit = 4) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
@@ -830,29 +926,29 @@ async function getFeaturedProducts(limit = 4) {
         per_page: limit
     }));
 }
-async function getProductsByCategory(categoryId, params = {}) {
+async function getProductsByCategory(categoryIdOrSlug, params = {}) {
     try {
-        console.log('🔍 Fetching products for category:', categoryId);
-        let finalCategoryId = categoryId;
+        console.log('🔍 Fetching products for category:', categoryIdOrSlug);
+        let finalCategoryId = categoryIdOrSlug;
         // If it's a string (slug), first get the category to find ID
-        if (typeof categoryId === 'string') {
+        if (typeof categoryIdOrSlug === 'string') {
             console.log('📝 Category is slug, finding category ID...');
             const categories = await getProductCategories({
-                slug: categoryId
+                slug: categoryIdOrSlug
             });
             if (categories.length === 0) {
-                console.warn('⚠️ No category found with slug:', categoryId);
+                console.warn('⚠️ No category found with slug:', categoryIdOrSlug);
                 return [];
             }
             finalCategoryId = categories[0].id;
             console.log('✅ Found category ID:', finalCategoryId);
         }
-        const products = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
+        // Fetch all products in this category with pagination
+        const products = await fetchAllPages('/products', {
             category: finalCategoryId,
-            per_page: 100,
             status: 'publish',
             ...params
-        }));
+        });
         console.log(`✅ Found ${products.length} products in category`);
         return products;
     } catch (error) {
@@ -874,17 +970,16 @@ async function getRelatedProducts(categoryId, excludeProductId, limit = 8) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', params);
 }
 async function getCategories(params = {}) {
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', toStringParams(params));
+    return fetchAllPages('/products/categories', params);
 }
 async function getProductCategories(params = {}) {
     try {
         console.log('🔍 Fetching categories with params:', params);
         const defaultParams = {
-            per_page: 100,
             hide_empty: false,
             ...params
         };
-        const categories = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', toStringParams(defaultParams));
+        const categories = await fetchAllPages('/products/categories', defaultParams);
         console.log(`✅ Found ${categories.length} categories`);
         return categories;
     } catch (error) {
@@ -892,13 +987,13 @@ async function getProductCategories(params = {}) {
         return [];
     }
 }
-async function getCategory(id) {
+async function getCategory(idOrSlug) {
     try {
-        if (typeof id === 'number') {
-            return await (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/categories/${id}`);
+        if (typeof idOrSlug === 'number') {
+            return await (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/categories/${idOrSlug}`);
         } else {
             const categories = await getProductCategories({
-                slug: id
+                slug: idOrSlug
             });
             return categories[0] || null;
         }
@@ -908,14 +1003,10 @@ async function getCategory(id) {
     }
 }
 async function getTags(params = {}) {
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', toStringParams(params));
+    return fetchAllPages('/products/tags', params);
 }
 async function getProductTags(params = {}) {
-    const defaultParams = {
-        per_page: 100,
-        ...params
-    };
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', toStringParams(defaultParams));
+    return fetchAllPages('/products/tags', params);
 }
 async function getTag(id) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/tags/${id}`);
@@ -925,34 +1016,32 @@ async function getProductsWithFilters(filters) {
     if (filters.search) params.search = filters.search;
     if (filters.categories?.length) params.category = filters.categories.join(',');
     if (filters.tags?.length) params.tag = filters.tags.join(',');
-    if (filters.min_price !== undefined) params.min_price = String(filters.min_price);
-    if (filters.max_price !== undefined) params.max_price = String(filters.max_price);
+    if (filters.min_price !== undefined) params.min_price = filters.min_price;
+    if (filters.max_price !== undefined) params.max_price = filters.max_price;
     if (filters.orderby) params.orderby = filters.orderby;
     if (filters.order) params.order = filters.order;
-    if (filters.per_page !== undefined) params.per_page = String(filters.per_page);
-    if (filters.page !== undefined) params.page = String(filters.page);
     if (filters.status) params.status = filters.status;
     if (filters.type) params.type = filters.type;
-    if (filters.featured !== undefined) params.featured = String(filters.featured);
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', params);
+    if (filters.featured !== undefined) params.featured = filters.featured;
+    // If specific page requested, don't use fetchAllPages
+    if (filters.page !== undefined || filters.per_page !== undefined) {
+        if (filters.per_page !== undefined) params.per_page = filters.per_page;
+        if (filters.page !== undefined) params.page = filters.page;
+        return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams(params));
+    }
+    return fetchAllPages('/products', params);
 }
 async function getProductStats() {
     try {
         const [products, categories, tags] = await Promise.all([
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', {
-                per_page: '1'
-            }),
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/categories', {
-                per_page: '1'
-            }),
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products/tags', {
-                per_page: '1'
-            })
+            getAllProducts(),
+            getProductCategories(),
+            getProductTags()
         ]);
         return {
-            total_products: products.length || 0,
-            total_categories: categories.length || 0,
-            total_tags: tags.length || 0
+            total_products: products.length,
+            total_categories: categories.length,
+            total_tags: tags.length
         };
     } catch (error) {
         console.error('❌ Error fetching product stats:', error);
@@ -977,19 +1066,27 @@ async function getTestsByReportTAT(tat, limit = 10) {
         per_page: limit
     }));
 }
-async function getHealthPackages(limit = 100) {
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
+async function getHealthPackages(limit) {
+    const params = {
         meta_key: 'test_type',
-        meta_value: 'Health Package',
-        per_page: limit
-    }));
+        meta_value: 'Health Package'
+    };
+    if (limit) {
+        params.per_page = limit;
+        return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams(params));
+    }
+    return fetchAllPages('/products', params);
 }
-async function getPopularTests(limit = 100) {
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams({
+async function getPopularTests(limit) {
+    const params = {
         orderby: 'popularity',
-        order: 'desc',
-        per_page: limit
-    }));
+        order: 'desc'
+    };
+    if (limit) {
+        params.per_page = limit;
+        return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])('/products', toStringParams(params));
+    }
+    return fetchAllPages('/products', params);
 }
 async function getProductVariations(productId) {
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$services$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFromAPISimple"])(`/products/${productId}/variations`);

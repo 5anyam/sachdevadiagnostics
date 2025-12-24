@@ -129,22 +129,69 @@ const toStringParams = (params: Record<string, string | number | boolean> = {}):
   );
 };
 
+/**
+ * Fetch all pages of data automatically (handles pagination)
+ */
+async function fetchAllPages<T>(
+  endpoint: string,
+  params: Record<string, string | number | boolean> = {},
+  maxPages = 10
+): Promise<T[]> {
+  const allData: T[] = [];
+  
+  try {
+    // Fetch first page
+    const firstPageParams = { ...params, per_page: 100, page: 1 };
+    const firstPage = await fetchFromAPI<T[]>(endpoint, toStringParams(firstPageParams));
+    
+    allData.push(...firstPage);
+    console.log(`📄 Fetched page 1 (${firstPage.length} items)`);
+    
+    // If we got 100 items, there might be more pages
+    if (firstPage.length === 100) {
+      // Fetch remaining pages
+      for (let page = 2; page <= maxPages; page++) {
+        const pageParams = { ...params, per_page: 100, page };
+        const pageData = await fetchFromAPI<T[]>(endpoint, toStringParams(pageParams));
+        
+        if (pageData.length === 0) {
+          console.log(`📄 No more data at page ${page}`);
+          break;
+        }
+        
+        allData.push(...pageData);
+        console.log(`📄 Fetched page ${page} (${pageData.length} items)`);
+        
+        // If we got less than 100, this is the last page
+        if (pageData.length < 100) {
+          console.log(`📄 Last page reached at page ${page}`);
+          break;
+        }
+      }
+    }
+    
+    console.log(`✅ Total items fetched: ${allData.length}`);
+    return allData;
+  } catch (error) {
+    console.error('❌ Error fetching all pages:', error);
+    throw error;
+  }
+}
+
 // -----------------------------
 // 📦 Product Helpers
 // -----------------------------
 
 export async function getProducts(params: Record<string, string | number> = {}): Promise<Product[]> {
-  return fetchFromAPI<Product[]>('/products', toStringParams(params));
+  return fetchAllPages<Product>('/products', params);
 }
 
 export async function getAllProducts(params: Record<string, string | number> = {}): Promise<Product[]> {
   const defaultParams = {
-    per_page: 100,
     status: 'publish',
-    type: 'simple',
     ...params
   };
-  return fetchFromAPI<Product[]>('/products', toStringParams(defaultParams));
+  return fetchAllPages<Product>('/products', defaultParams);
 }
 
 export async function getProduct(id: number | string): Promise<Product> {
@@ -171,7 +218,7 @@ export async function searchProducts(
   search: string,
   params: Record<string, string | number> = {}
 ): Promise<Product[]> {
-  return fetchFromAPI<Product[]>('/products', toStringParams({ search, ...params }));
+  return fetchAllPages<Product>('/products', { search, ...params });
 }
 
 export async function getFeaturedProducts(limit = 4): Promise<Product[]> {
@@ -182,21 +229,21 @@ export async function getFeaturedProducts(limit = 4): Promise<Product[]> {
 }
 
 export async function getProductsByCategory(
-  categoryId: number | string,
+  categoryIdOrSlug: number | string,
   params: Record<string, string | number> = {}
 ): Promise<Product[]> {
   try {
-    console.log('🔍 Fetching products for category:', categoryId);
+    console.log('🔍 Fetching products for category:', categoryIdOrSlug);
     
-    let finalCategoryId: number | string = categoryId;
+    let finalCategoryId: number | string = categoryIdOrSlug;
     
     // If it's a string (slug), first get the category to find ID
-    if (typeof categoryId === 'string') {
+    if (typeof categoryIdOrSlug === 'string') {
       console.log('📝 Category is slug, finding category ID...');
-      const categories = await getProductCategories({ slug: categoryId });
+      const categories = await getProductCategories({ slug: categoryIdOrSlug });
       
       if (categories.length === 0) {
-        console.warn('⚠️ No category found with slug:', categoryId);
+        console.warn('⚠️ No category found with slug:', categoryIdOrSlug);
         return [];
       }
       
@@ -204,12 +251,12 @@ export async function getProductsByCategory(
       console.log('✅ Found category ID:', finalCategoryId);
     }
     
-    const products = await fetchFromAPI<Product[]>('/products', toStringParams({
+    // Fetch all products in this category with pagination
+    const products = await fetchAllPages<Product>('/products', {
       category: finalCategoryId,
-      per_page: 100,
       status: 'publish',
       ...params,
-    }));
+    });
     
     console.log(`✅ Found ${products.length} products in category`);
     return products;
@@ -244,21 +291,20 @@ export async function getRelatedProducts(
 // -----------------------------
 
 export async function getCategories(params: Record<string, string | number> = {}): Promise<Category[]> {
-  return fetchFromAPI<Category[]>('/products/categories', toStringParams(params));
+  return fetchAllPages<Category>('/products/categories', params);
 }
 
 export async function getProductCategories(params: Record<string, string | number> = {}): Promise<Category[]> {
   try {
     console.log('🔍 Fetching categories with params:', params);
     const defaultParams = {
-      per_page: 100,
       hide_empty: false,
       ...params
     };
     
-    const categories = await fetchFromAPI<Category[]>(
+    const categories = await fetchAllPages<Category>(
       '/products/categories', 
-      toStringParams(defaultParams)
+      defaultParams
     );
     
     console.log(`✅ Found ${categories.length} categories`);
@@ -269,12 +315,12 @@ export async function getProductCategories(params: Record<string, string | numbe
   }
 }
 
-export async function getCategory(id: number | string): Promise<Category | null> {
+export async function getCategory(idOrSlug: number | string): Promise<Category | null> {
   try {
-    if (typeof id === 'number') {
-      return await fetchFromAPI<Category>(`/products/categories/${id}`);
+    if (typeof idOrSlug === 'number') {
+      return await fetchFromAPI<Category>(`/products/categories/${idOrSlug}`);
     } else {
-      const categories = await getProductCategories({ slug: id });
+      const categories = await getProductCategories({ slug: idOrSlug });
       return categories[0] || null;
     }
   } catch (error) {
@@ -288,15 +334,11 @@ export async function getCategory(id: number | string): Promise<Category | null>
 // -----------------------------
 
 export async function getTags(params: Record<string, string | number> = {}): Promise<Tag[]> {
-  return fetchFromAPI<Tag[]>('/products/tags', toStringParams(params));
+  return fetchAllPages<Tag>('/products/tags', params);
 }
 
 export async function getProductTags(params: Record<string, string | number> = {}): Promise<Tag[]> {
-  const defaultParams = {
-    per_page: 100,
-    ...params
-  };
-  return fetchFromAPI<Tag[]>('/products/tags', toStringParams(defaultParams));
+  return fetchAllPages<Tag>('/products/tags', params);
 }
 
 export async function getTag(id: number | string): Promise<Tag> {
@@ -323,22 +365,27 @@ export interface ProductFilters {
 }
 
 export async function getProductsWithFilters(filters: ProductFilters): Promise<Product[]> {
-  const params: Record<string, string> = {};
+  const params: Record<string, string | number | boolean> = {};
 
   if (filters.search) params.search = filters.search;
   if (filters.categories?.length) params.category = filters.categories.join(',');
   if (filters.tags?.length) params.tag = filters.tags.join(',');
-  if (filters.min_price !== undefined) params.min_price = String(filters.min_price);
-  if (filters.max_price !== undefined) params.max_price = String(filters.max_price);
+  if (filters.min_price !== undefined) params.min_price = filters.min_price;
+  if (filters.max_price !== undefined) params.max_price = filters.max_price;
   if (filters.orderby) params.orderby = filters.orderby;
   if (filters.order) params.order = filters.order;
-  if (filters.per_page !== undefined) params.per_page = String(filters.per_page);
-  if (filters.page !== undefined) params.page = String(filters.page);
   if (filters.status) params.status = filters.status;
   if (filters.type) params.type = filters.type;
-  if (filters.featured !== undefined) params.featured = String(filters.featured);
+  if (filters.featured !== undefined) params.featured = filters.featured;
 
-  return fetchFromAPI<Product[]>('/products', params);
+  // If specific page requested, don't use fetchAllPages
+  if (filters.page !== undefined || filters.per_page !== undefined) {
+    if (filters.per_page !== undefined) params.per_page = filters.per_page;
+    if (filters.page !== undefined) params.page = filters.page;
+    return fetchFromAPI<Product[]>('/products', toStringParams(params));
+  }
+
+  return fetchAllPages<Product>('/products', params);
 }
 
 // -----------------------------
@@ -348,15 +395,15 @@ export async function getProductsWithFilters(filters: ProductFilters): Promise<P
 export async function getProductStats(): Promise<ProductStats> {
   try {
     const [products, categories, tags] = await Promise.all([
-      fetchFromAPI<Product[]>('/products', { per_page: '1' }),
-      fetchFromAPI<Category[]>('/products/categories', { per_page: '1' }),
-      fetchFromAPI<Tag[]>('/products/tags', { per_page: '1' })
+      getAllProducts(),
+      getProductCategories(),
+      getProductTags()
     ]);
 
     return {
-      total_products: products.length || 0,
-      total_categories: categories.length || 0,
-      total_tags: tags.length || 0
+      total_products: products.length,
+      total_categories: categories.length,
+      total_tags: tags.length
     };
   } catch (error) {
     console.error('❌ Error fetching product stats:', error);
@@ -388,20 +435,32 @@ export async function getTestsByReportTAT(tat: string, limit = 10): Promise<Prod
   }));
 }
 
-export async function getHealthPackages(limit = 100): Promise<Product[]> {
-  return fetchFromAPI<Product[]>('/products', toStringParams({
+export async function getHealthPackages(limit?: number): Promise<Product[]> {
+  const params: Record<string, string | number> = {
     meta_key: 'test_type',
-    meta_value: 'Health Package',
-    per_page: limit
-  }));
+    meta_value: 'Health Package'
+  };
+  
+  if (limit) {
+    params.per_page = limit;
+    return fetchFromAPI<Product[]>('/products', toStringParams(params));
+  }
+  
+  return fetchAllPages<Product>('/products', params);
 }
 
-export async function getPopularTests(limit = 100): Promise<Product[]> {
-  return fetchFromAPI<Product[]>('/products', toStringParams({
+export async function getPopularTests(limit?: number): Promise<Product[]> {
+  const params: Record<string, string | number> = {
     orderby: 'popularity',
-    order: 'desc',
-    per_page: limit
-  }));
+    order: 'desc'
+  };
+  
+  if (limit) {
+    params.per_page = limit;
+    return fetchFromAPI<Product[]>('/products', toStringParams(params));
+  }
+  
+  return fetchAllPages<Product>('/products', params);
 }
 
 // -----------------------------

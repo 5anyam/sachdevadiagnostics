@@ -22,6 +22,12 @@ export interface APIError {
   code?: string;
 }
 
+// Cache options interface
+export interface CacheOptions {
+  revalidate?: number | false; // Seconds to revalidate, or false for no cache
+  tags?: string[]; // Cache tags for on-demand revalidation
+}
+
 // Request options interface
 interface FetchOptions extends RequestInit {
   method: 'GET' | 'POST';
@@ -39,19 +45,21 @@ console.log('🔧 API Configuration:', {
 });
 
 /**
- * Main API fetcher function supporting GET and POST requests
+ * Main API fetcher function supporting GET and POST requests with caching
  * @template T - The expected response type
  * @param endpoint - API endpoint (e.g., '/products')
  * @param params - Query parameters
  * @param method - HTTP method (GET or POST)
  * @param body - Request body for POST requests
+ * @param cacheOptions - Cache configuration options
  * @returns Promise with typed response
  */
 export async function fetchFromAPI<T = unknown>(
   endpoint: string, 
   params: Record<string, string> = {},
   method: 'GET' | 'POST' = 'GET',
-  body?: Record<string, unknown> | string
+  body?: Record<string, unknown> | string,
+  cacheOptions?: CacheOptions
 ): Promise<T> {
   try {
     // Clean endpoint (remove leading slash if present)
@@ -71,7 +79,7 @@ export async function fetchFromAPI<T = unknown>(
       method,
       endpoint: cleanEndpoint,
       params: Object.keys(params),
-      url: url.replace(CONSUMER_SECRET, '***SECRET***')
+      cache: cacheOptions?.revalidate !== false ? `revalidate: ${cacheOptions?.revalidate || 3600}s` : 'no-store'
     });
     
     const requestOptions: FetchOptions = {
@@ -80,8 +88,20 @@ export async function fetchFromAPI<T = unknown>(
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      cache: 'no-store',
     };
+
+    // ✅ Apply cache strategy based on options
+    if (cacheOptions?.revalidate === false) {
+      // No cache - for real-time data
+      requestOptions.cache = 'no-store';
+    } else {
+      // ISR with revalidation (default: 1 hour)
+      const revalidateTime = cacheOptions?.revalidate ?? 3600;
+      requestOptions.next = { 
+        revalidate: revalidateTime,
+        tags: cacheOptions?.tags || [`woocommerce-${cleanEndpoint}`]
+      };
+    }
 
     if (method === 'POST' && body) {
       requestOptions.body = typeof body === 'string' ? body : JSON.stringify(body);
@@ -107,7 +127,6 @@ export async function fetchFromAPI<T = unknown>(
         statusText: response.statusText,
         endpoint: cleanEndpoint,
         errorData: errorData || errorText,
-        url: url.replace(CONSUMER_SECRET, '***SECRET***')
       });
       
       const errorMessage = errorData?.message || 
@@ -140,7 +159,7 @@ export async function fetchFromAPI<T = unknown>(
 }
 
 /**
- * Simple GET request helper (for compatibility)
+ * Simple GET request with default caching (1 hour)
  * @template T - The expected response type
  * @param endpoint - API endpoint
  * @param params - Query parameters
@@ -150,7 +169,49 @@ export function fetchFromAPISimple<T = unknown>(
   endpoint: string, 
   params: Record<string, string> = {}
 ): Promise<T> {
-  return fetchFromAPI<T>(endpoint, params, 'GET');
+  return fetchFromAPI<T>(endpoint, params, 'GET', undefined, { revalidate: 3600 });
+}
+
+/**
+ * Fetch with no cache - for real-time data
+ * @template T - The expected response type
+ * @param endpoint - API endpoint
+ * @param params - Query parameters
+ * @returns Promise with typed response
+ */
+export function fetchFromAPIRealtime<T = unknown>(
+  endpoint: string, 
+  params: Record<string, string> = {}
+): Promise<T> {
+  return fetchFromAPI<T>(endpoint, params, 'GET', undefined, { revalidate: false });
+}
+
+/**
+ * Fetch with short cache (5 minutes)
+ * @template T - The expected response type
+ * @param endpoint - API endpoint
+ * @param params - Query parameters
+ * @returns Promise with typed response
+ */
+export function fetchFromAPIShortCache<T = unknown>(
+  endpoint: string, 
+  params: Record<string, string> = {}
+): Promise<T> {
+  return fetchFromAPI<T>(endpoint, params, 'GET', undefined, { revalidate: 300 });
+}
+
+/**
+ * Fetch with long cache (24 hours)
+ * @template T - The expected response type
+ * @param endpoint - API endpoint
+ * @param params - Query parameters
+ * @returns Promise with typed response
+ */
+export function fetchFromAPILongCache<T = unknown>(
+  endpoint: string, 
+  params: Record<string, string> = {}
+): Promise<T> {
+  return fetchFromAPI<T>(endpoint, params, 'GET', undefined, { revalidate: 86400 });
 }
 
 /**
@@ -160,7 +221,7 @@ export function fetchFromAPISimple<T = unknown>(
 export async function testAPIConnection(): Promise<boolean> {
   try {
     console.log('🧪 Testing API connection...');
-    await fetchFromAPI('/products', { per_page: '1' });
+    await fetchFromAPI('/products', { per_page: '1' }, 'GET', undefined, { revalidate: false });
     console.log('✅ API Connection Test: SUCCESS');
     return true;
   } catch (error) {
@@ -181,4 +242,31 @@ export function getAPIConfig(): APIConfig {
     consumerKeyLength: CONSUMER_KEY?.length || 0,
     isConfigured: !!(API_URL && CONSUMER_KEY && CONSUMER_SECRET)
   };
+}
+
+/**
+ * Clear cache for specific tag (for use in API routes or server actions)
+ * @param tag - Cache tag to revalidate
+ */
+export async function revalidateCacheTag(tag: string): Promise<void> {
+  try {
+    // This would be used in an API route with revalidateTag from next/cache
+    console.log(`♻️ Revalidating cache tag: ${tag}`);
+    // Note: Import revalidateTag from 'next/cache' in API routes to use this
+  } catch (error) {
+    console.error('❌ Cache revalidation failed:', error);
+  }
+}
+
+/**
+ * Clear all WooCommerce cache (for use in API routes or server actions)
+ */
+export async function revalidateAllWooCommerceCache(): Promise<void> {
+  try {
+    console.log('♻️ Revalidating all WooCommerce cache');
+    // Note: Import revalidateTag from 'next/cache' in API routes to use this
+    // revalidateTag('woocommerce-*');
+  } catch (error) {
+    console.error('❌ Full cache revalidation failed:', error);
+  }
 }
