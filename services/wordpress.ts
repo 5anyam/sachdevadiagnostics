@@ -15,33 +15,39 @@ export interface Category {
   name: string;
   slug: string;
   image?: { src: string };
-  count?: number; // ✅ Added for category filter counts
+  count?: number;
+  description?: string;
+  parent?: number;
 }
 
 export interface ProductImage {
   id: number;
   src: string;
   alt: string;
+  name?: string;
 }
 
 export interface ProductAttribute {
   id: number;
   name: string;
   options: string[];
+  position?: number;
+  visible?: boolean;
+  variation?: boolean;
 }
 
 export interface ProductMetaData {
   id: number;
   key: string;
-  value: unknown; // better than "any", but flexible
+  value: unknown;
 }
 
-// ✅ Added Tag interface for test tags
 export interface Tag {
   id: number;
   name: string;
   slug: string;
   count?: number;
+  description?: string;
 }
 
 export interface Product {
@@ -54,52 +60,96 @@ export interface Product {
   description: string;
   short_description: string;
   categories: Category[];
-  tags?: Tag[]; // ✅ Added tags support
+  tags?: Tag[];
   images: ProductImage[];
   attributes: ProductAttribute[];
   average_rating: string;
   rating_count: number;
   related_ids: number[];
   meta_data: ProductMetaData[];
-  total_sales?: string; // ✅ Added for popularity sorting
-  status?: string; // ✅ Added for filtering published products
-  type?: string; // ✅ Added for product type filtering
+  total_sales?: string;
+  status?: string;
+  type?: string;
+  featured?: boolean;
+  stock_status?: string;
+  stock_quantity?: number;
+}
+
+export interface ProductReview {
+  id: number;
+  product_id: number;
+  reviewer: string;
+  reviewer_email: string;
+  review: string;
+  rating: number;
+  date_created: string;
+  verified: boolean;
+}
+
+export interface ProductVariation {
+  id: number;
+  product_id: number;
+  attributes: ProductAttribute[];
+  price: string;
+  regular_price: string;
+  sale_price: string;
+  stock_status: string;
+  image: ProductImage;
+}
+
+export interface ProductStats {
+  total_products: number;
+  total_categories: number;
+  total_tags: number;
+}
+
+export interface ParsedProductMeta {
+  alsoKnownAs: string;
+  preparationInstructions: string;
+  fastingRequired: string;
+  reportTat: string;
+  testType: string;
+  includedTests: string[];
+  sampleType: string;
+  testComponents: string[];
+  normalRange: string;
+  clinicalSignificance: string;
 }
 
 // -----------------------------
-// 📦 Product Helpers
+// 🛠️ Utility Functions
 // -----------------------------
 
 /**
  * Utility to convert any number values in params to string
  */
-const toStringParams = (params: Record<string, string | number> = {}): Record<string, string> => {
-  return Object.fromEntries(Object.entries(params).map(([key, value]) => [key, String(value)]));
+const toStringParams = (params: Record<string, string | number | boolean> = {}): Record<string, string> => {
+  return Object.fromEntries(
+    Object.entries(params).map(([key, value]) => [key, String(value)])
+  );
 };
-
-// ... (keep all your type definitions as-is, no need to change anything there)
 
 // -----------------------------
 // 📦 Product Helpers
 // -----------------------------
 
-export const getProducts = async (params = {}): Promise<Product[]> => {
-  return fetchFromAPI('/products', toStringParams(params));
-};
+export async function getProducts(params: Record<string, string | number> = {}): Promise<Product[]> {
+  return fetchFromAPI<Product[]>('/products', toStringParams(params));
+}
 
-export const getAllProducts = async (params = {}): Promise<Product[]> => {
+export async function getAllProducts(params: Record<string, string | number> = {}): Promise<Product[]> {
   const defaultParams = {
     per_page: 100,
     status: 'publish',
     type: 'simple',
     ...params
   };
-  return fetchFromAPI('/products', toStringParams(defaultParams));
-};
+  return fetchFromAPI<Product[]>('/products', toStringParams(defaultParams));
+}
 
-export const getProduct = async (id: number | string): Promise<Product> => {
+export async function getProduct(id: number | string): Promise<Product> {
   try {
-    return await fetchFromAPI(`/products/${id}`);
+    return await fetchFromAPI<Product>(`/products/${id}`);
   } catch (error) {
     console.error('[Woo] Failed by ID, trying slug:', error);
     if (typeof id === 'string' && isNaN(Number(id))) {
@@ -107,40 +157,73 @@ export const getProduct = async (id: number | string): Promise<Product> => {
     }
     throw error;
   }
-};
+}
 
-export const getProductBySlug = async (slug: string): Promise<Product> => {
-  const products: Product[] = await fetchFromAPI('/products', { slug });
-  if (products?.length > 0) return products[0];
-  throw new Error('Product not found');
-};
+export async function getProductBySlug(slug: string): Promise<Product> {
+  const products = await fetchFromAPI<Product[]>('/products', { slug });
+  if (products && products.length > 0) {
+    return products[0];
+  }
+  throw new Error(`Product not found with slug: ${slug}`);
+}
 
-export const searchProducts = async (
+export async function searchProducts(
   search: string,
-  params = {}
-): Promise<Product[]> => {
-  return fetchFromAPI('/products', toStringParams({ search, ...params }));
-};
+  params: Record<string, string | number> = {}
+): Promise<Product[]> {
+  return fetchFromAPI<Product[]>('/products', toStringParams({ search, ...params }));
+}
 
-export const getFeaturedProducts = async (limit = 4): Promise<Product[]> => {
-  return fetchFromAPI('/products', toStringParams({ featured: 'true', per_page: limit }));
-};
-
-export const getProductsByCategory = async (
-  categoryId: number | string,
-  params = {}
-): Promise<Product[]> => {
-  return fetchFromAPI('/products', toStringParams({
-    category: categoryId,
-    ...params,
+export async function getFeaturedProducts(limit = 4): Promise<Product[]> {
+  return fetchFromAPI<Product[]>('/products', toStringParams({ 
+    featured: true, 
+    per_page: limit 
   }));
-};
+}
 
-export const getRelatedProducts = async (
+export async function getProductsByCategory(
+  categoryId: number | string,
+  params: Record<string, string | number> = {}
+): Promise<Product[]> {
+  try {
+    console.log('🔍 Fetching products for category:', categoryId);
+    
+    let finalCategoryId: number | string = categoryId;
+    
+    // If it's a string (slug), first get the category to find ID
+    if (typeof categoryId === 'string') {
+      console.log('📝 Category is slug, finding category ID...');
+      const categories = await getProductCategories({ slug: categoryId });
+      
+      if (categories.length === 0) {
+        console.warn('⚠️ No category found with slug:', categoryId);
+        return [];
+      }
+      
+      finalCategoryId = categories[0].id;
+      console.log('✅ Found category ID:', finalCategoryId);
+    }
+    
+    const products = await fetchFromAPI<Product[]>('/products', toStringParams({
+      category: finalCategoryId,
+      per_page: 100,
+      status: 'publish',
+      ...params,
+    }));
+    
+    console.log(`✅ Found ${products.length} products in category`);
+    return products;
+  } catch (error) {
+    console.error('❌ Error fetching products by category:', error);
+    return [];
+  }
+}
+
+export async function getRelatedProducts(
   categoryId: number | string,
   excludeProductId?: number | string | number[],
   limit = 8
-): Promise<Product[]> => {
+): Promise<Product[]> {
   const params: Record<string, string> = {
     category: String(categoryId),
     per_page: String(limit),
@@ -153,59 +236,78 @@ export const getRelatedProducts = async (
     params.exclude = excludeList.map(String).join(',');
   }
 
-  return fetchFromAPI('/products', params);
-};
+  return fetchFromAPI<Product[]>('/products', params);
+}
 
 // -----------------------------
 // 🗂 Category Helpers
 // -----------------------------
 
-export const getCategories = async (params = {}): Promise<Category[]> => {
-  return fetchFromAPI('/products/categories', toStringParams(params));
-};
+export async function getCategories(params: Record<string, string | number> = {}): Promise<Category[]> {
+  return fetchFromAPI<Category[]>('/products/categories', toStringParams(params));
+}
 
-export const getProductCategories = async (params = {}): Promise<Category[]> => {
-  const defaultParams = {
-    per_page: '100',
-  status: 'publish',
-  type: 'simple',
-    ...params
-  };
-  return fetchFromAPI('/products/categories', toStringParams(defaultParams));
-};
+export async function getProductCategories(params: Record<string, string | number> = {}): Promise<Category[]> {
+  try {
+    console.log('🔍 Fetching categories with params:', params);
+    const defaultParams = {
+      per_page: 100,
+      hide_empty: false,
+      ...params
+    };
+    
+    const categories = await fetchFromAPI<Category[]>(
+      '/products/categories', 
+      toStringParams(defaultParams)
+    );
+    
+    console.log(`✅ Found ${categories.length} categories`);
+    return categories;
+  } catch (error) {
+    console.error('❌ Error fetching categories:', error);
+    return [];
+  }
+}
 
-export const getCategory = async (id: number | string): Promise<Category> => {
-  return fetchFromAPI(`/products/categories/${id}`);
-};
+export async function getCategory(id: number | string): Promise<Category | null> {
+  try {
+    if (typeof id === 'number') {
+      return await fetchFromAPI<Category>(`/products/categories/${id}`);
+    } else {
+      const categories = await getProductCategories({ slug: id });
+      return categories[0] || null;
+    }
+  } catch (error) {
+    console.error('❌ Error fetching category:', error);
+    return null;
+  }
+}
 
 // -----------------------------
 // 🏷 Tag Helpers
 // -----------------------------
 
-export const getTags = async (params = {}): Promise<Tag[]> => {
-  return fetchFromAPI('/products/tags', toStringParams(params));
-};
+export async function getTags(params: Record<string, string | number> = {}): Promise<Tag[]> {
+  return fetchFromAPI<Tag[]>('/products/tags', toStringParams(params));
+}
 
-export const getProductTags = async (params = {}): Promise<Tag[]> => {
+export async function getProductTags(params: Record<string, string | number> = {}): Promise<Tag[]> {
   const defaultParams = {
-    per_page: '100',
-  status: 'publish',
-  type: 'simple',
+    per_page: 100,
     ...params
   };
-  return fetchFromAPI('/products/tags', toStringParams(defaultParams));
-};
+  return fetchFromAPI<Tag[]>('/products/tags', toStringParams(defaultParams));
+}
 
-export const getTag = async (id: number | string): Promise<Tag> => {
-  return fetchFromAPI(`/products/tags/${id}`);
-};
+export async function getTag(id: number | string): Promise<Tag> {
+  return fetchFromAPI<Tag>(`/products/tags/${id}`);
+}
 
 // -----------------------------
 // 🔍 Filtered Product Search
 // -----------------------------
 
-
-export const getProductsWithFilters = async (filters: {
+export interface ProductFilters {
   search?: string;
   categories?: string[];
   tags?: string[];
@@ -217,7 +319,10 @@ export const getProductsWithFilters = async (filters: {
   page?: number;
   status?: string;
   type?: string;
-}): Promise<Product[]> => {
+  featured?: boolean;
+}
+
+export async function getProductsWithFilters(filters: ProductFilters): Promise<Product[]> {
   const params: Record<string, string> = {};
 
   if (filters.search) params.search = filters.search;
@@ -231,24 +336,21 @@ export const getProductsWithFilters = async (filters: {
   if (filters.page !== undefined) params.page = String(filters.page);
   if (filters.status) params.status = filters.status;
   if (filters.type) params.type = filters.type;
+  if (filters.featured !== undefined) params.featured = String(filters.featured);
 
-  return fetchFromAPI('/products', params);
-};
+  return fetchFromAPI<Product[]>('/products', params);
+}
 
 // -----------------------------
 // 📊 Stats
 // -----------------------------
 
-export const getProductStats = async (): Promise<{
-  total_products: number;
-  total_categories: number;
-  total_tags: number;
-}> => {
+export async function getProductStats(): Promise<ProductStats> {
   try {
     const [products, categories, tags] = await Promise.all([
-      fetchFromAPI('/products', { per_page: '1' }),
-      fetchFromAPI('/products/categories', { per_page: '1' }),
-      fetchFromAPI('/products/tags', { per_page: '1' })
+      fetchFromAPI<Product[]>('/products', { per_page: '1' }),
+      fetchFromAPI<Category[]>('/products/categories', { per_page: '1' }),
+      fetchFromAPI<Tag[]>('/products/tags', { per_page: '1' })
     ]);
 
     return {
@@ -257,97 +359,152 @@ export const getProductStats = async (): Promise<{
       total_tags: tags.length || 0
     };
   } catch (error) {
-    console.error('Error fetching product stats:', error);
+    console.error('❌ Error fetching product stats:', error);
     return {
       total_products: 0,
       total_categories: 0,
       total_tags: 0
     };
   }
-};
+}
 
 // -----------------------------
 // 🧪 Medical Test Helpers
 // -----------------------------
 
-export const getTestsByType = async (testType: string, limit = 10): Promise<Product[]> => {
-  return fetchFromAPI('/products', toStringParams({
+export async function getTestsByType(testType: string, limit = 10): Promise<Product[]> {
+  return fetchFromAPI<Product[]>('/products', toStringParams({
     meta_key: 'test_type',
     meta_value: testType,
     per_page: limit
   }));
-};
+}
 
-export const getTestsByReportTAT = async (tat: string, limit = 10): Promise<Product[]> => {
-  return fetchFromAPI('/products', toStringParams({
+export async function getTestsByReportTAT(tat: string, limit = 10): Promise<Product[]> {
+  return fetchFromAPI<Product[]>('/products', toStringParams({
     meta_key: 'report_tat',
     meta_value: tat,
     per_page: limit
   }));
-};
+}
 
-export const getHealthPackages = async (limit = 10): Promise<Product[]> => {
-  return fetchFromAPI('/products', toStringParams({
+export async function getHealthPackages(limit = 100): Promise<Product[]> {
+  return fetchFromAPI<Product[]>('/products', toStringParams({
     meta_key: 'test_type',
     meta_value: 'Health Package',
     per_page: limit
   }));
-};
+}
 
-export const getPopularTests = async (limit = 10): Promise<Product[]> => {
-  return fetchFromAPI('/products', toStringParams({
+export async function getPopularTests(limit = 100): Promise<Product[]> {
+  return fetchFromAPI<Product[]>('/products', toStringParams({
     orderby: 'popularity',
     order: 'desc',
     per_page: limit
   }));
-};
+}
 
 // -----------------------------
 // 🛒 Woo Product Add-ons
 // -----------------------------
 
-export const getProductVariations = async (productId: number): Promise<[]> => {
-  return fetchFromAPI(`/products/${productId}/variations`);
-};
+export async function getProductVariations(productId: number): Promise<ProductVariation[]> {
+  return fetchFromAPI<ProductVariation[]>(`/products/${productId}/variations`);
+}
 
-export const getProductReviews = async (productId: number): Promise<[]> => {
-  return fetchFromAPI(`/products/reviews`, { product: String(productId) });
-};
+export async function getProductReviews(productId: number): Promise<ProductReview[]> {
+  return fetchFromAPI<ProductReview[]>('/products/reviews', { product: String(productId) });
+}
 
 // -----------------------------
 // 💡 Utilities
 // -----------------------------
 
-export const formatPrice = (price: string | number): string => {
+export function formatPrice(price: string | number): string {
   const numPrice = typeof price === 'string' ? parseFloat(price) : price;
+  
+  if (isNaN(numPrice)) {
+    return '₹0';
+  }
+  
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',
     currency: 'INR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(numPrice);
-};
+}
 
-export const getProductMetaValue = (product: Product, metaKey: string): string => {
+export function getProductMetaValue(product: Product, metaKey: string): string {
   const metaItem = product.meta_data?.find(item => item.key === metaKey);
   return metaItem ? String(metaItem.value) : '';
-};
+}
 
-export const parseProductMeta = (product: Product) => {
-  const getMetaValue = (key: string) => getProductMetaValue(product, key);
+export function parseProductMeta(product: Product): ParsedProductMeta {
+  const getMetaValue = (key: string): string => getProductMetaValue(product, key);
   
+  const safeJsonParse = (value: string, fallback: string[] = []): string[] => {
+    try {
+      if (!value) return fallback;
+      const parsed = JSON.parse(value);
+      return Array.isArray(parsed) ? parsed : fallback;
+    } catch {
+      return fallback;
+    }
+  };
+
   return {
     alsoKnownAs: getMetaValue('also_known_as'),
     preparationInstructions: getMetaValue('preparation_instructions'),
     fastingRequired: getMetaValue('fasting_required'),
     reportTat: getMetaValue('report_tat') || 'Same Day',
     testType: getMetaValue('test_type') || 'Diagnostic Test',
-    includedTests: getMetaValue('included_tests') ? 
-      JSON.parse(getMetaValue('included_tests')) : [],
+    includedTests: safeJsonParse(getMetaValue('included_tests')),
     sampleType: getMetaValue('sample_type') || 'Blood',
-    testComponents: getMetaValue('test_components') ? 
-      JSON.parse(getMetaValue('test_components')) : [],
+    testComponents: safeJsonParse(getMetaValue('test_components')),
     normalRange: getMetaValue('normal_range'),
     clinicalSignificance: getMetaValue('clinical_significance'),
   };
-};
+}
+
+// -----------------------------
+// 🔧 Helper: Check if product is on sale
+// -----------------------------
+
+export function isProductOnSale(product: Product): boolean {
+  return !!(product.sale_price && parseFloat(product.sale_price) > 0);
+}
+
+// -----------------------------
+// 🔧 Helper: Get discount percentage
+// -----------------------------
+
+export function getDiscountPercentage(product: Product): number {
+  if (!isProductOnSale(product)) return 0;
+  
+  const regular = parseFloat(product.regular_price);
+  const sale = parseFloat(product.sale_price);
+  
+  if (regular === 0 || isNaN(regular) || isNaN(sale)) return 0;
+  
+  return Math.round(((regular - sale) / regular) * 100);
+}
+
+// -----------------------------
+// 🔧 Helper: Get product price (sale or regular)
+// -----------------------------
+
+export function getProductPrice(product: Product): number {
+  if (isProductOnSale(product)) {
+    return parseFloat(product.sale_price);
+  }
+  return parseFloat(product.price) || parseFloat(product.regular_price) || 0;
+}
+
+// -----------------------------
+// 🔧 Helper: Strip HTML tags
+// -----------------------------
+
+export function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, '').trim();
+}

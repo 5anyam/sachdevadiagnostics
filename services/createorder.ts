@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { OrderData } from './orders'; // or just use directly if same file
 
-const API_URL = 'https://beige-dinosaur-443055.hostingersite.com//wp-json/wc/v3';
+const API_URL = 'https://thesiswriting.xyz/wp-json/wc/v3';
 const CONSUMER_KEY = 'ck_f3db9c54ccb91204a281d11979881bae4beae33c';
 const CONSUMER_SECRET = 'cs_91203108604f58127b42d9478d97412e766ec658';
 
