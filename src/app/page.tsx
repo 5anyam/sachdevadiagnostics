@@ -8,6 +8,7 @@ import {
   ChevronRight, TestTube
 } from "lucide-react";
 import CircularCategoriesCarousel from "../../components/CircularCategoriesCarousel";
+import HeroImageSlider from "../../components/HeroImageSlider";
 import { 
   getProductsByCategory, 
   getProductCategories, 
@@ -39,22 +40,6 @@ const CATEGORY_GROUPS = [
     slugs: ["health-packages", "special-ultrasound"],
     icon: TestTube,
     gradient: "from-green-500 to-emerald-500"
-  }
-];
-
-// Diagnostic center images for slider
-const DIAGNOSTIC_IMAGES = [
-  {
-    src: "/images/diagnostic-center-1.jpg",
-    alt: "Modern Ultrasound Room with Latest Equipment"
-  },
-  {
-    src: "/images/diagnostic-center-2.jpg",
-    alt: "Expert Radiologist Performing Scan"
-  },
-  {
-    src: "/images/diagnostic-center-3.jpg",
-    alt: "NABL Accredited Laboratory"
   }
 ];
 
@@ -102,7 +87,6 @@ function getCategoryTitle(products: Product[]): string {
   const categoryName = products[0].categories?.[0]?.name;
   if (!categoryName) return "";
   
-  // Return the actual category name from products
   return categoryName;
 }
 
@@ -200,7 +184,6 @@ function CategorySection({
 }) {
   if (products.length === 0) return null;
 
-  // Get actual category name from products
   const actualCategoryName = getCategoryTitle(products) || title;
 
   return (
@@ -239,47 +222,6 @@ function CategorySection({
   );
 }
 
-// Client-side Image Slider Component
-function HeroImageSlider() {
-  return (
-    <div className="relative h-[300px] sm:h-[450px] w-full">
-      <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white h-full">
-        {/* Image Carousel - Add your slider library here (e.g., swiper, embla) */}
-        <div className="bg-gradient-to-br from-blue-100 to-slate-100 h-full flex items-center justify-center text-slate-400 font-semibold text-sm sm:text-base">
-          [Diagnostic Center Image Slider]
-        </div>
-
-        {/* NABL Badge */}
-        <div className="absolute top-3 sm:top-6 right-3 sm:right-6 bg-white/95 backdrop-blur-sm px-3 sm:px-4 py-2 sm:py-3 rounded-xl sm:rounded-2xl shadow-xl border border-slate-100">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="bg-blue-100 p-1.5 sm:p-2.5 rounded-full">
-              <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-blue-700" />
-            </div>
-            <div>
-              <p className="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase">Certified</p>
-              <p className="text-xs sm:text-sm font-bold text-slate-900">NABL Accredited</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Quick Report Badge */}
-        <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 bg-white/95 backdrop-blur-sm px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl shadow-xl border border-slate-100">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="bg-green-100 p-1.5 sm:p-2.5 rounded-full">
-              <Zap className="h-4 w-4 sm:h-6 sm:w-6 text-green-600" />
-            </div>
-            <div>
-              <p className="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase">Quick Turnaround</p>
-              <p className="text-sm sm:text-lg font-bold text-slate-900">Reports in 6 Hours</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 w-48 h-48 sm:w-72 sm:h-72 bg-blue-100/50 rounded-full blur-3xl -z-10"></div>
-    </div>
-  );
-}
-
 export default async function Index() {
   const [ultrasoundProducts, xrayProducts, healthPackages, categories] = await Promise.all([
     getCategoryGroupProducts(CATEGORY_GROUPS[0].slugs),
@@ -310,7 +252,7 @@ export default async function Index() {
         </div>
       </div>
 
-      {/* 2. HERO SECTION - Mobile Optimized */}
+      {/* 2. HERO SECTION */}
       <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-white py-6 sm:py-12 md:py-16 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-0 left-0 w-48 h-48 sm:w-96 sm:h-96 bg-blue-500 rounded-full blur-3xl"></div>
@@ -334,11 +276,10 @@ export default async function Index() {
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-xl leading-relaxed">
-                North West Delhi most trusted diagnostic center. 
+                North West Delhi&apos;s most trusted diagnostic center. 
                 <span className="font-semibold text-slate-900"> NABL certified</span> with latest equipment.
               </p>
 
-              {/* Stats Grid */}
               <div className="grid grid-cols-3 gap-3 sm:gap-4 py-3 sm:py-4">
                 {[
                   { value: "6 Hrs", label: "Report Time" },
@@ -352,7 +293,6 @@ export default async function Index() {
                 ))}
               </div>
 
-              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link href="/tests" className="flex-1 sm:flex-initial">
                   <Button className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 bg-blue-700 hover:bg-blue-800 text-white font-bold text-base sm:text-lg rounded-xl shadow-lg shadow-blue-700/30 hover:shadow-xl transition-all">
@@ -368,7 +308,6 @@ export default async function Index() {
                 </a>
               </div>
 
-              {/* Features */}
               <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 sm:gap-6 pt-3 sm:pt-4 border-t border-slate-200">
                 <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-600">
                   <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
