@@ -1,2 +1,116 @@
-[00:00:01.588] Server  LOG     ✓ Ready in 1151ms
-[00:00:05.601] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:01.554] Server  LOG     ✓ Ready in 1108ms
+[00:00:03.829] Server  LOG     🔧 API Configuration: {}
+[00:00:03.915] Server  LOG     🔍 Fetching categories with params: {}
+[00:00:03.919] Server  LOG     🌐 API Request: {}
+[00:00:04.015] Server  LOG     🔍 Fetching categories with params: {}
+[00:00:04.017] Server  LOG     🌐 API Request: {}
+[00:00:04.023] Server  LOG     🔍 Fetching categories with params: {}
+[00:00:04.029] Server  LOG     🌐 API Request: {}
+[00:00:04.041] Server  LOG     🔍 Fetching categories with params: {}
+[00:00:04.043] Server  LOG     🌐 API Request: {}
+[00:00:05.355] Server  LOG     📡 Response Status: 200 ""
+[00:00:05.366] Server  LOG     📡 Response Status: 200 ""
+[00:00:05.372] Server  LOG     ✅ API Response Success: {}
+[00:00:05.373] Server  LOG     📡 Response Status: 200 ""
+[00:00:05.392] Server  LOG     📄 Fetched page 1 (9 items)
+[00:00:05.392] Server  LOG     ✅ Total items fetched: 9
+[00:00:05.394] Server  LOG     ✅ Found 9 categories
+[00:00:05.553] Server  LOG     🔍 Fetching products for category: 15
+[00:00:05.592] Server  LOG     🌐 API Request: {}
+[00:00:05.621] Server  LOG     🔍 Fetching products for category: 184
+[00:00:05.622] Server  LOG     🌐 API Request: {}
+[00:00:05.624] Server  LOG     🔍 Fetching products for category: 183
+[00:00:05.625] Server  LOG     🌐 API Request: {}
+[00:00:05.630] Server  LOG     🔍 Fetching products for category: 185
+[00:00:05.635] Server  LOG     🌐 API Request: {}
+[00:00:05.646] Server  LOG     ✅ API Response Success: {}
+[00:00:05.649] Server  LOG     📄 Fetched page 1 (9 items)
+[00:00:05.672] Server  LOG     ✅ Total items fetched: 9
+[00:00:05.731] Server  LOG     ✅ Found 9 categories
+[00:00:05.732] Server  LOG     ✅ API Response Success: {}
+[00:00:05.733] Server  LOG     📄 Fetched page 1 (9 items)
+[00:00:05.733] Server  LOG     ✅ Total items fetched: 9
+[00:00:05.733] Server  LOG     ✅ Found 9 categories
+[00:00:05.734] Server  LOG     🔍 Fetching products for category: 187
+[00:00:05.734] Server  LOG     🌐 API Request: {}
+[00:00:05.753] Server  LOG     📡 Response Status: 200 ""
+[00:00:05.762] Server  LOG     ✅ API Response Success: {}
+[00:00:05.766] Server  LOG     📄 Fetched page 1 (9 items)
+[00:00:05.780] Server  LOG     ✅ Total items fetched: 9
+[00:00:05.782] Server  LOG     ✅ Found 9 categories
+[00:00:05.987] Server  LOG     📡 Response Status: 200 ""
+[00:00:06.020] Server  LOG     ✅ API Response Success: {}
+[00:00:06.020] Server  LOG     📄 Fetched page 1 (6 items)
+[00:00:06.021] Server  LOG     ✅ Total items fetched: 6
+[00:00:06.021] Server  LOG     ✅ Found 6 products in category
+[00:00:06.071] Server  LOG     📡 Response Status: 200 ""
+[00:00:06.074] Server  LOG     ✅ API Response Success: {}
+[00:00:06.075] Server  LOG     📄 Fetched page 1 (26 items)
+[00:00:06.075] Server  LOG     ✅ Total items fetched: 26
+[00:00:06.075] Server  LOG     ✅ Found 26 products in category
+[00:00:06.080] Server  LOG     📡 Response Status: 200 ""
+[00:00:06.083] Server  LOG     ✅ API Response Success: {}
+[00:00:06.083] Server  LOG     📄 Fetched page 1 (28 items)
+[00:00:06.084] Server  LOG     ✅ Total items fetched: 28
+[00:00:06.084] Server  LOG     ✅ Found 28 products in category
+[00:00:06.086] Server  LOG     📡 Response Status: 200 ""
+[00:00:06.092] Server  LOG     ✅ API Response Success: {}
+[00:00:06.095] Server  LOG     📄 Fetched page 1 (11 items)
+[00:00:06.096] Server  LOG     ✅ Total items fetched: 11
+[00:00:06.104] Server  LOG     ✅ Found 11 products in category
+[00:00:06.125] Server  LOG     📡 Response Status: 200 ""
+[00:00:06.262] Server  LOG     ✅ API Response Success: {}
+[00:00:06.262] Server  LOG     📄 Fetched page 1 (18 items)
+[00:00:06.263] Server  LOG     ✅ Total items fetched: 18
+[00:00:06.263] Server  LOG     ✅ Found 18 products in category
+[00:00:09.074] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:12.027] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+                <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+                  <RedirectBoundary>
+                    <RedirectErrorBoundary router={{...}}>
+                      <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} ...>
+                        <SegmentViewNode type="page" pagePath="/Documents...">
+                          <SegmentTrieNode>
+                          <Index>
+                            <div
++                             className="min-h-screen bg-white font-sans text-slate-900"
+-                             className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-2 sm:py..."
+                            >
+                              <div
++                               className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-2 sm:..."
+-                               className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-cent..."
+                              >
+                                <div
++                                 className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-ce..."
+-                                 className="flex gap-3 sm:gap-6 flex-wrap justify-center text-center"
+                                >
++                                 <div className="flex gap-3 sm:gap-6 flex-wrap justify-center text-center">
+-                                 <span className="flex items-center gap-1 sm:gap-1.5 font-semibold">
+                                  ...
+                              ...
+                        ...
+                      ...
+          ...
+    ...
+
+[00:00:12.032] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/0c80446a-14b6-4948-b8a5-6404ca25b764.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:00:12.094] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/efcd77e5-549b-4d33-9a18-648b4ada9154.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:00:12.094] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/2b128fe5-0667-474e-a48c-b84a136ccf78.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.

@@ -20461,6 +20461,11 @@ const configEnv = ("TURBOPACK compile-time value", {
             "pathname": ("TURBOPACK compile-time value", "/**")
         }),
         ("TURBOPACK compile-time value", {
+            "protocol": ("TURBOPACK compile-time value", "http"),
+            "hostname": ("TURBOPACK compile-time value", "thesiswriting.xyz"),
+            "pathname": ("TURBOPACK compile-time value", "/**")
+        }),
+        ("TURBOPACK compile-time value", {
             "protocol": ("TURBOPACK compile-time value", "https"),
             "hostname": ("TURBOPACK compile-time value", "images.unsplash.com"),
             "pathname": ("TURBOPACK compile-time value", "/**")
@@ -20821,6 +20826,11 @@ function getImageProps(imgProps) {
             "remotePatterns": ("TURBOPACK compile-time value", [
                 ("TURBOPACK compile-time value", {
                     "protocol": ("TURBOPACK compile-time value", "https"),
+                    "hostname": ("TURBOPACK compile-time value", "thesiswriting.xyz"),
+                    "pathname": ("TURBOPACK compile-time value", "/**")
+                }),
+                ("TURBOPACK compile-time value", {
+                    "protocol": ("TURBOPACK compile-time value", "http"),
                     "hostname": ("TURBOPACK compile-time value", "thesiswriting.xyz"),
                     "pathname": ("TURBOPACK compile-time value", "/**")
                 }),
