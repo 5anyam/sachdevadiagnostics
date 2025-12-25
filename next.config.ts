@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['cms.sachdevadiagnostics.com', 'images.remotePatterns', 'images.unsplash.com'],
+    domains: ['thesiswriting.xyz', 'images.remotePatterns', 'images.unsplash.com'],
   }
 };
 
