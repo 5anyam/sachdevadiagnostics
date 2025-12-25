@@ -114,3 +114,4 @@ https://react.dev/link/hydration-mismatch
 [00:00:12.032] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/0c80446a-14b6-4948-b8a5-6404ca25b764.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
 [00:00:12.094] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/efcd77e5-549b-4d33-9a18-648b4ada9154.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
 [00:00:12.094] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/2b128fe5-0667-474e-a48c-b84a136ccf78.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:06:48.384] Server  LOG     ✓ Compiled in 1361ms

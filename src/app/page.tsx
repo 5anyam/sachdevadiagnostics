@@ -5,7 +5,7 @@ import { Badge } from "../../components/ui/badge";
 import { 
   ArrowRight, CheckCircle, Clock, Phone, Shield, 
   Activity, Zap, Award, Users, Star, Calendar, Download, 
-  ChevronRight, TestTube
+  ChevronRight, TestTube, Microscope
 } from "lucide-react";
 import CircularCategoriesCarousel from "../../components/CircularCategoriesCarousel";
 import HeroImageSlider from "../../components/HeroImageSlider";
@@ -40,10 +40,17 @@ const CATEGORY_GROUPS = [
     slugs: ["health-packages", "special-ultrasound"],
     icon: TestTube,
     gradient: "from-green-500 to-emerald-500"
+  },
+  {
+    title: "Lab Tests",
+    description: "Complete blood tests and pathology services",
+    slugs: ["lab-tests", "blood-tests", "pathology"],
+    icon: Microscope,
+    gradient: "from-orange-500 to-red-500"
   }
 ];
 
-// Fetch products for a category group
+// Fetch products for a category group (limit to 4)
 async function getCategoryGroupProducts(slugs: string[]): Promise<Product[]> {
   try {
     const categories = await getProductCategories({ per_page: 100 });
@@ -53,12 +60,12 @@ async function getCategoryGroupProducts(slugs: string[]): Promise<Product[]> {
         const category = categories.find(cat => cat.slug === slug);
         if (!category) return [];
         
-        const products = await getProductsByCategory(category.id, { per_page: 6 });
+        const products = await getProductsByCategory(category.id, { per_page: 4 });
         return products;
       })
     );
     
-    return categoryProducts.flat().slice(0, 6);
+    return categoryProducts.flat().slice(0, 4);
   } catch (error) {
     console.error('Error fetching category group products:', error);
     return [];
@@ -90,6 +97,16 @@ function getCategoryTitle(products: Product[]): string {
   return categoryName;
 }
 
+// Get category slug for view all link
+function getCategorySlug(products: Product[]): string {
+  if (products.length === 0) return "/tests";
+  
+  const categorySlug = products[0].categories?.[0]?.slug;
+  if (!categorySlug) return "/tests";
+  
+  return `/category/${categorySlug}`;
+}
+
 // Product Card Component
 function ProductCard({ product }: { product: Product }) {
   const reportTat = getProductMetaValue(product, 'report_tat') || 'Same Day';
@@ -108,7 +125,7 @@ function ProductCard({ product }: { product: Product }) {
                 alt={product.images[0].alt || product.name}
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-slate-300">
@@ -185,6 +202,7 @@ function CategorySection({
   if (products.length === 0) return null;
 
   const actualCategoryName = getCategoryTitle(products) || title;
+  const categoryLink = getCategorySlug(products);
 
   return (
     <section className="py-8 sm:py-16 bg-white border-b border-slate-100">
@@ -204,7 +222,7 @@ function CategorySection({
             </div>
           </div>
           
-          <Link href="/tests">
+          <Link href={categoryLink}>
             <Button variant="outline" className="border-2 border-blue-700 text-blue-700 hover:bg-blue-50 font-bold px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl flex items-center text-sm sm:text-base">
               View All
               <ChevronRight className="ml-1 sm:ml-2 w-4 h-4 sm:w-5 sm:h-5" />
@@ -212,7 +230,7 @@ function CategorySection({
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -223,10 +241,11 @@ function CategorySection({
 }
 
 export default async function Index() {
-  const [ultrasoundProducts, xrayProducts, healthPackages, categories] = await Promise.all([
+  const [ultrasoundProducts, xrayProducts, healthPackages, labTests, categories] = await Promise.all([
     getCategoryGroupProducts(CATEGORY_GROUPS[0].slugs),
     getCategoryGroupProducts(CATEGORY_GROUPS[1].slugs),
     getCategoryGroupProducts(CATEGORY_GROUPS[2].slugs),
+    getCategoryGroupProducts(CATEGORY_GROUPS[3].slugs),
     getFeaturedCategories()
   ]);
 
@@ -246,8 +265,8 @@ export default async function Index() {
               <Users className="w-3 h-3 sm:w-4 sm:h-4 text-blue-300" /> 50,000+ Patients
             </span>
           </div>
-          <a href="tel:+919990048085" className="font-bold hover:text-blue-200 transition-colors flex items-center gap-1.5 sm:gap-2 bg-white/10 px-2 sm:px-3 py-1 rounded-full">
-            <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> +91 99900 48085
+          <a href="tel:+919811582086" className="font-bold hover:text-blue-200 transition-colors flex items-center gap-1.5 sm:gap-2 bg-white/10 px-2 sm:px-3 py-1 rounded-full">
+            <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> +91 98115 82086
           </a>
         </div>
       </div>
@@ -300,7 +319,7 @@ export default async function Index() {
                     Book Test Now
                   </Button>
                 </Link>
-                <a href="tel:+919990048085" className="flex-1 sm:flex-initial">
+                <a href="tel:+919811582086" className="flex-1 sm:flex-initial">
                   <Button variant="outline" className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 border-2 border-slate-300 hover:border-blue-700 hover:bg-blue-50 font-semibold text-base sm:text-lg rounded-xl">
                     <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                     Call Expert
@@ -349,6 +368,14 @@ export default async function Index() {
         products={healthPackages}
         icon={CATEGORY_GROUPS[2].icon}
         gradient={CATEGORY_GROUPS[2].gradient}
+      />
+
+      <CategorySection 
+        title={CATEGORY_GROUPS[3].title}
+        description={CATEGORY_GROUPS[3].description}
+        products={labTests}
+        icon={CATEGORY_GROUPS[3].icon}
+        gradient={CATEGORY_GROUPS[3].gradient}
       />
 
       {/* 4. WHY CHOOSE US */}
@@ -486,9 +513,9 @@ export default async function Index() {
               <p className="text-blue-200 text-sm sm:text-base md:text-lg">Our healthcare experts are available. Call now for free consultation.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full md:w-auto">
-              <a href="tel:+919990048085" className="flex-1 sm:flex-initial">
+              <a href="tel:+919811582086" className="flex-1 sm:flex-initial">
                 <Button className="w-full bg-white text-blue-900 hover:bg-blue-50 px-6 sm:px-8 py-5 sm:py-7 text-base sm:text-lg font-bold rounded-xl shadow-2xl hover:shadow-white/20 transition-all">
-                  <Phone className="mr-2 h-5 w-5 sm:h-6 sm:w-6" /> Call: +91 99900 48085
+                  <Phone className="mr-2 h-5 w-5 sm:h-6 sm:w-6" /> Call: +91 98115 82086
                 </Button>
               </a>
               <Link href="/reports" className="flex-1 sm:flex-initial">
