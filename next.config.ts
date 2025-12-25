@@ -1,12 +1,24 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
+  typescript: {
+    ignoreBuildErrors: false,
   },
   images: {
-    domains: ['thesiswriting.xyz', 'images.remotePatterns', 'images.unsplash.com'],
-  }
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'thesiswriting.xyz',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+    ],
+  },
+  reactStrictMode: true,
 };
 
 export default nextConfig;
