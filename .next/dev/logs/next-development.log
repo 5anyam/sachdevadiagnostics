@@ -1,117 +1,594 @@
-[00:00:01.554] Server  LOG     ✓ Ready in 1108ms
-[00:00:03.829] Server  LOG     🔧 API Configuration: {}
-[00:00:03.915] Server  LOG     🔍 Fetching categories with params: {}
-[00:00:03.919] Server  LOG     🌐 API Request: {}
-[00:00:04.015] Server  LOG     🔍 Fetching categories with params: {}
-[00:00:04.017] Server  LOG     🌐 API Request: {}
-[00:00:04.023] Server  LOG     🔍 Fetching categories with params: {}
-[00:00:04.029] Server  LOG     🌐 API Request: {}
-[00:00:04.041] Server  LOG     🔍 Fetching categories with params: {}
-[00:00:04.043] Server  LOG     🌐 API Request: {}
-[00:00:05.355] Server  LOG     📡 Response Status: 200 ""
-[00:00:05.366] Server  LOG     📡 Response Status: 200 ""
-[00:00:05.372] Server  LOG     ✅ API Response Success: {}
-[00:00:05.373] Server  LOG     📡 Response Status: 200 ""
-[00:00:05.392] Server  LOG     📄 Fetched page 1 (9 items)
-[00:00:05.392] Server  LOG     ✅ Total items fetched: 9
-[00:00:05.394] Server  LOG     ✅ Found 9 categories
-[00:00:05.553] Server  LOG     🔍 Fetching products for category: 15
-[00:00:05.592] Server  LOG     🌐 API Request: {}
-[00:00:05.621] Server  LOG     🔍 Fetching products for category: 184
-[00:00:05.622] Server  LOG     🌐 API Request: {}
-[00:00:05.624] Server  LOG     🔍 Fetching products for category: 183
-[00:00:05.625] Server  LOG     🌐 API Request: {}
-[00:00:05.630] Server  LOG     🔍 Fetching products for category: 185
-[00:00:05.635] Server  LOG     🌐 API Request: {}
-[00:00:05.646] Server  LOG     ✅ API Response Success: {}
-[00:00:05.649] Server  LOG     📄 Fetched page 1 (9 items)
-[00:00:05.672] Server  LOG     ✅ Total items fetched: 9
-[00:00:05.731] Server  LOG     ✅ Found 9 categories
-[00:00:05.732] Server  LOG     ✅ API Response Success: {}
-[00:00:05.733] Server  LOG     📄 Fetched page 1 (9 items)
-[00:00:05.733] Server  LOG     ✅ Total items fetched: 9
-[00:00:05.733] Server  LOG     ✅ Found 9 categories
-[00:00:05.734] Server  LOG     🔍 Fetching products for category: 187
-[00:00:05.734] Server  LOG     🌐 API Request: {}
-[00:00:05.753] Server  LOG     📡 Response Status: 200 ""
-[00:00:05.762] Server  LOG     ✅ API Response Success: {}
-[00:00:05.766] Server  LOG     📄 Fetched page 1 (9 items)
-[00:00:05.780] Server  LOG     ✅ Total items fetched: 9
-[00:00:05.782] Server  LOG     ✅ Found 9 categories
-[00:00:05.987] Server  LOG     📡 Response Status: 200 ""
-[00:00:06.020] Server  LOG     ✅ API Response Success: {}
-[00:00:06.020] Server  LOG     📄 Fetched page 1 (6 items)
-[00:00:06.021] Server  LOG     ✅ Total items fetched: 6
-[00:00:06.021] Server  LOG     ✅ Found 6 products in category
-[00:00:06.071] Server  LOG     📡 Response Status: 200 ""
-[00:00:06.074] Server  LOG     ✅ API Response Success: {}
-[00:00:06.075] Server  LOG     📄 Fetched page 1 (26 items)
-[00:00:06.075] Server  LOG     ✅ Total items fetched: 26
-[00:00:06.075] Server  LOG     ✅ Found 26 products in category
-[00:00:06.080] Server  LOG     📡 Response Status: 200 ""
-[00:00:06.083] Server  LOG     ✅ API Response Success: {}
-[00:00:06.083] Server  LOG     📄 Fetched page 1 (28 items)
-[00:00:06.084] Server  LOG     ✅ Total items fetched: 28
-[00:00:06.084] Server  LOG     ✅ Found 28 products in category
-[00:00:06.086] Server  LOG     📡 Response Status: 200 ""
-[00:00:06.092] Server  LOG     ✅ API Response Success: {}
-[00:00:06.095] Server  LOG     📄 Fetched page 1 (11 items)
-[00:00:06.096] Server  LOG     ✅ Total items fetched: 11
-[00:00:06.104] Server  LOG     ✅ Found 11 products in category
-[00:00:06.125] Server  LOG     📡 Response Status: 200 ""
-[00:00:06.262] Server  LOG     ✅ API Response Success: {}
-[00:00:06.262] Server  LOG     📄 Fetched page 1 (18 items)
-[00:00:06.263] Server  LOG     ✅ Total items fetched: 18
-[00:00:06.263] Server  LOG     ✅ Found 18 products in category
-[00:00:09.074] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:12.027] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-https://react.dev/link/hydration-mismatch
-
-  ...
-    <RenderFromTemplateContext>
-      <ScrollAndFocusHandler segmentPath={[...]}>
-        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
-          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
-            <LoadingBoundary name="/" loading={null}>
-              <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
-                <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
-                  <RedirectBoundary>
-                    <RedirectErrorBoundary router={{...}}>
-                      <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} ...>
-                        <SegmentViewNode type="page" pagePath="/Documents...">
-                          <SegmentTrieNode>
-                          <Index>
-                            <div
-+                             className="min-h-screen bg-white font-sans text-slate-900"
--                             className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-2 sm:py..."
-                            >
-                              <div
-+                               className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-2 sm:..."
--                               className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-cent..."
-                              >
-                                <div
-+                                 className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-ce..."
--                                 className="flex gap-3 sm:gap-6 flex-wrap justify-center text-center"
-                                >
-+                                 <div className="flex gap-3 sm:gap-6 flex-wrap justify-center text-center">
--                                 <span className="flex items-center gap-1 sm:gap-1.5 font-semibold">
-                                  ...
-                              ...
-                        ...
-                      ...
-          ...
-    ...
-
-[00:00:12.032] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/0c80446a-14b6-4948-b8a5-6404ca25b764.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
-[00:00:12.094] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/efcd77e5-549b-4d33-9a18-648b4ada9154.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
-[00:00:12.094] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/2b128fe5-0667-474e-a48c-b84a136ccf78.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
-[00:06:48.384] Server  LOG     ✓ Compiled in 1361ms
+[00:00:08.828] Server  LOG     ✓ Ready in 7.7s
+[00:00:19.978] Server  LOG     ○ Compiling / ...
+[00:00:24.476] Server  LOG     🔧 API Configuration: {}
+[00:00:24.634] Server  LOG     🔍 Fetching categories with params: {}
+[00:00:24.638] Server  LOG     🌐 API Request: {}
+[00:00:24.732] Server  LOG     🔍 Fetching categories with params: {}
+[00:00:24.733] Server  LOG     🌐 API Request: {}
+[00:00:24.736] Server  LOG     🔍 Fetching categories with params: {}
+[00:00:24.738] Server  LOG     🌐 API Request: {}
+[00:00:24.743] Server  LOG     🔍 Fetching categories with params: {}
+[00:00:24.744] Server  LOG     🌐 API Request: {}
+[00:00:24.752] Server  LOG     🔍 Fetching categories with params: {}
+[00:00:24.759] Server  LOG     🌐 API Request: {}
+[00:00:25.229] Server  LOG     📡 Response Status: 200 ""
+[00:00:25.238] Server  LOG     📡 Response Status: 200 ""
+[00:00:25.241] Server  LOG     ✅ API Response Success: {}
+[00:00:25.242] Server  LOG     📡 Response Status: 200 ""
+[00:00:25.243] Server  LOG     📄 Fetched page 1 (9 items)
+[00:00:25.243] Server  LOG     ✅ Total items fetched: 9
+[00:00:25.243] Server  LOG     ✅ Found 9 categories
+[00:00:25.244] Server  LOG     🔍 Fetching products for category: 15
+[00:00:25.245] Server  LOG     🌐 API Request: {}
+[00:00:25.246] Server  LOG     🔍 Fetching products for category: 184
+[00:00:25.247] Server  LOG     🌐 API Request: {}
+[00:00:25.248] Server  LOG     🔍 Fetching products for category: 183
+[00:00:25.249] Server  LOG     🌐 API Request: {}
+[00:00:25.252] Server  LOG     🔍 Fetching products for category: 185
+[00:00:25.252] Server  LOG     🌐 API Request: {}
+[00:00:25.254] Server  LOG     ✅ API Response Success: {}
+[00:00:25.255] Server  LOG     📡 Response Status: 200 ""
+[00:00:25.257] Server  LOG     📄 Fetched page 1 (9 items)
+[00:00:25.257] Server  LOG     ✅ Total items fetched: 9
+[00:00:25.262] Server  LOG     ✅ Found 9 categories
+[00:00:25.263] Server  LOG     ✅ API Response Success: {}
+[00:00:25.263] Server  LOG     📄 Fetched page 1 (9 items)
+[00:00:25.263] Server  LOG     ✅ Total items fetched: 9
+[00:00:25.263] Server  LOG     ✅ Found 9 categories
+[00:00:25.264] Server  LOG     🔍 Fetching products for category: 187
+[00:00:25.265] Server  LOG     🌐 API Request: {}
+[00:00:25.267] Server  LOG     ✅ API Response Success: {}
+[00:00:25.267] Server  LOG     📄 Fetched page 1 (9 items)
+[00:00:25.268] Server  LOG     ✅ Total items fetched: 9
+[00:00:25.269] Server  LOG     ✅ Found 9 categories
+[00:00:25.278] Server  LOG     📡 Response Status: 200 ""
+[00:00:25.280] Server  LOG     ✅ API Response Success: {}
+[00:00:25.280] Server  LOG     📄 Fetched page 1 (9 items)
+[00:00:25.280] Server  LOG     ✅ Total items fetched: 9
+[00:00:25.281] Server  LOG     ✅ Found 9 categories
+[00:00:25.310] Server  LOG     📡 Response Status: 200 ""
+[00:00:25.313] Server  LOG     ✅ API Response Success: {}
+[00:00:25.313] Server  LOG     📄 Fetched page 1 (6 items)
+[00:00:25.314] Server  LOG     ✅ Total items fetched: 6
+[00:00:25.314] Server  LOG     ✅ Found 6 products in category
+[00:00:25.322] Server  LOG     📡 Response Status: 200 ""
+[00:00:25.326] Server  LOG     ✅ API Response Success: {}
+[00:00:25.326] Server  LOG     📄 Fetched page 1 (26 items)
+[00:00:25.326] Server  LOG     ✅ Total items fetched: 26
+[00:00:25.327] Server  LOG     ✅ Found 26 products in category
+[00:00:25.338] Server  LOG     📡 Response Status: 200 ""
+[00:00:25.341] Server  LOG     ✅ API Response Success: {}
+[00:00:25.341] Server  LOG     📄 Fetched page 1 (28 items)
+[00:00:25.341] Server  LOG     ✅ Total items fetched: 28
+[00:00:25.342] Server  LOG     ✅ Found 28 products in category
+[00:00:25.348] Server  LOG     📡 Response Status: 200 ""
+[00:00:25.350] Server  LOG     ✅ API Response Success: {}
+[00:00:25.350] Server  LOG     📄 Fetched page 1 (11 items)
+[00:00:25.351] Server  LOG     ✅ Total items fetched: 11
+[00:00:25.351] Server  LOG     ✅ Found 11 products in category
+[00:00:25.364] Server  LOG     📡 Response Status: 200 ""
+[00:00:25.366] Server  LOG     ✅ API Response Success: {}
+[00:00:25.367] Server  LOG     📄 Fetched page 1 (18 items)
+[00:00:25.368] Server  LOG     ✅ Total items fetched: 18
+[00:00:25.368] Server  LOG     ✅ Found 18 products in category
+[00:00:30.404] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:30.855] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/0c80446a-14b6-4948-b8a5-6404ca25b764.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:00:30.855] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/efcd77e5-549b-4d33-9a18-648b4ada9154.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:00:30.855] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/2b128fe5-0667-474e-a48c-b84a136ccf78.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:08:16.520] Server  LOG     ✓ Compiled in 2.9s
+[00:09:50.735] Server  LOG     ✓ Compiled in 713ms
+[00:10:12.960] Server  LOG     ✓ Compiled in 136ms
+[00:11:10.170] Server  LOG     ✓ Compiled in 680ms
+[00:11:21.184] Server  LOG     🔧 API Configuration: {}
+[00:11:21.242] Server  LOG     🔍 Fetching categories with params: {}
+[00:11:21.242] Server  LOG     🌐 API Request: {}
+[00:11:21.279] Server  LOG     🔍 Fetching categories with params: {}
+[00:11:21.280] Server  LOG     🌐 API Request: {}
+[00:11:21.281] Server  LOG     🔍 Fetching categories with params: {}
+[00:11:21.281] Server  LOG     🌐 API Request: {}
+[00:11:21.282] Server  LOG     🔍 Fetching categories with params: {}
+[00:11:21.283] Server  LOG     🌐 API Request: {}
+[00:11:21.284] Server  LOG     🔍 Fetching categories with params: {}
+[00:11:21.284] Server  LOG     🌐 API Request: {}
+[00:11:21.310] Server  LOG     📡 Response Status: 200 ""
+[00:11:21.313] Server  LOG     📡 Response Status: 200 ""
+[00:11:21.316] Server  LOG     📡 Response Status: 200 ""
+[00:11:21.319] Server  LOG     ✅ API Response Success: {}
+[00:11:21.320] Server  LOG     ✅ API Response Success: {}
+[00:11:21.320] Server  LOG     📡 Response Status: 200 ""
+[00:11:21.321] Server  LOG     📄 Fetched page 1 (9 items)
+[00:11:21.321] Server  LOG     ✅ Total items fetched: 9
+[00:11:21.322] Server  LOG     📄 Fetched page 1 (9 items)
+[00:11:21.322] Server  LOG     ✅ Total items fetched: 9
+[00:11:21.323] Server  LOG     ✅ Found 9 categories
+[00:11:21.323] Server  LOG     ✅ Found 9 categories
+[00:11:21.324] Server  LOG     🔍 Fetching products for category: 15
+[00:11:21.326] Server  LOG     🌐 API Request: {}
+[00:11:21.328] Server  LOG     🔍 Fetching products for category: 184
+[00:11:21.329] Server  LOG     🌐 API Request: {}
+[00:11:21.330] Server  LOG     🔍 Fetching products for category: 183
+[00:11:21.330] Server  LOG     🌐 API Request: {}
+[00:11:21.332] Server  LOG     🔍 Fetching products for category: 185
+[00:11:21.332] Server  LOG     🌐 API Request: {}
+[00:11:21.334] Server  LOG     ✅ API Response Success: {}
+[00:11:21.334] Server  LOG     📡 Response Status: 200 ""
+[00:11:21.335] Server  LOG     📄 Fetched page 1 (9 items)
+[00:11:21.335] Server  LOG     ✅ Total items fetched: 9
+[00:11:21.336] Server  LOG     ✅ Found 9 categories
+[00:11:21.337] Server  LOG     ✅ API Response Success: {}
+[00:11:21.348] Server  LOG     📄 Fetched page 1 (9 items)
+[00:11:21.348] Server  LOG     ✅ Total items fetched: 9
+[00:11:21.348] Server  LOG     ✅ Found 9 categories
+[00:11:21.349] Server  LOG     🔍 Fetching products for category: 187
+[00:11:21.349] Server  LOG     🌐 API Request: {}
+[00:11:21.350] Server  LOG     ✅ API Response Success: {}
+[00:11:21.351] Server  LOG     📄 Fetched page 1 (9 items)
+[00:11:21.351] Server  LOG     ✅ Total items fetched: 9
+[00:11:21.352] Server  LOG     ✅ Found 9 categories
+[00:11:21.354] Server  LOG     📡 Response Status: 200 ""
+[00:11:21.356] Server  LOG     📡 Response Status: 200 ""
+[00:11:21.357] Server  LOG     📡 Response Status: 200 ""
+[00:11:21.358] Server  LOG     📡 Response Status: 200 ""
+[00:11:21.366] Server  LOG     ✅ API Response Success: {}
+[00:11:21.366] Server  LOG     ✅ API Response Success: {}
+[00:11:21.366] Server  LOG     ✅ API Response Success: {}
+[00:11:21.367] Server  LOG     ✅ API Response Success: {}
+[00:11:21.367] Server  LOG     📡 Response Status: 200 ""
+[00:11:21.369] Server  LOG     📄 Fetched page 1 (6 items)
+[00:11:21.369] Server  LOG     ✅ Total items fetched: 6
+[00:11:21.369] Server  LOG     📄 Fetched page 1 (26 items)
+[00:11:21.370] Server  LOG     ✅ Total items fetched: 26
+[00:11:21.370] Server  LOG     📄 Fetched page 1 (28 items)
+[00:11:21.370] Server  LOG     ✅ Total items fetched: 28
+[00:11:21.370] Server  LOG     📄 Fetched page 1 (11 items)
+[00:11:21.371] Server  LOG     ✅ Total items fetched: 11
+[00:11:21.371] Server  LOG     ✅ Found 6 products in category
+[00:11:21.371] Server  LOG     ✅ Found 26 products in category
+[00:11:21.371] Server  LOG     ✅ Found 28 products in category
+[00:11:21.371] Server  LOG     ✅ Found 11 products in category
+[00:11:21.372] Server  LOG     ✅ API Response Success: {}
+[00:11:21.372] Server  LOG     📄 Fetched page 1 (18 items)
+[00:11:21.372] Server  LOG     ✅ Total items fetched: 18
+[00:11:21.372] Server  LOG     ✅ Found 18 products in category
+[00:11:22.091] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:22.349] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/0c80446a-14b6-4948-b8a5-6404ca25b764.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:11:22.350] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/efcd77e5-549b-4d33-9a18-648b4ada9154.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:11:22.350] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/2b128fe5-0667-474e-a48c-b84a136ccf78.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:11:55.049] Server  LOG     ✓ Compiled in 248ms
+[00:12:03.049] Server  LOG     ✓ Compiled in 151ms
+[00:12:08.762] Server  LOG     🔧 API Configuration: {}
+[00:12:08.778] Server  LOG     🔍 Fetching categories with params: {}
+[00:12:08.778] Server  LOG     🌐 API Request: {}
+[00:12:08.794] Server  LOG     🔍 Fetching categories with params: {}
+[00:12:08.794] Server  LOG     🌐 API Request: {}
+[00:12:08.795] Server  LOG     🔍 Fetching categories with params: {}
+[00:12:08.795] Server  LOG     🌐 API Request: {}
+[00:12:08.796] Server  LOG     🔍 Fetching categories with params: {}
+[00:12:08.796] Server  LOG     🌐 API Request: {}
+[00:12:08.797] Server  LOG     🔍 Fetching categories with params: {}
+[00:12:08.797] Server  LOG     🌐 API Request: {}
+[00:12:08.806] Server  LOG     📡 Response Status: 200 ""
+[00:12:08.807] Server  LOG     📡 Response Status: 200 ""
+[00:12:08.809] Server  LOG     📡 Response Status: 200 ""
+[00:12:08.810] Server  LOG     ✅ API Response Success: {}
+[00:12:08.810] Server  LOG     ✅ API Response Success: {}
+[00:12:08.810] Server  LOG     📡 Response Status: 200 ""
+[00:12:08.811] Server  LOG     📄 Fetched page 1 (9 items)
+[00:12:08.811] Server  LOG     ✅ Total items fetched: 9
+[00:12:08.811] Server  LOG     📄 Fetched page 1 (9 items)
+[00:12:08.811] Server  LOG     ✅ Total items fetched: 9
+[00:12:08.811] Server  LOG     ✅ Found 9 categories
+[00:12:08.811] Server  LOG     ✅ Found 9 categories
+[00:12:08.812] Server  LOG     🔍 Fetching products for category: 15
+[00:12:08.812] Server  LOG     🌐 API Request: {}
+[00:12:08.813] Server  LOG     🔍 Fetching products for category: 184
+[00:12:08.814] Server  LOG     🌐 API Request: {}
+[00:12:08.814] Server  LOG     🔍 Fetching products for category: 183
+[00:12:08.815] Server  LOG     🌐 API Request: {}
+[00:12:08.815] Server  LOG     🔍 Fetching products for category: 185
+[00:12:08.816] Server  LOG     🌐 API Request: {}
+[00:12:08.817] Server  LOG     ✅ API Response Success: {}
+[00:12:08.817] Server  LOG     📡 Response Status: 200 ""
+[00:12:08.818] Server  LOG     📄 Fetched page 1 (9 items)
+[00:12:08.818] Server  LOG     ✅ Total items fetched: 9
+[00:12:08.818] Server  LOG     ✅ Found 9 categories
+[00:12:08.819] Server  LOG     ✅ API Response Success: {}
+[00:12:08.820] Server  LOG     📄 Fetched page 1 (9 items)
+[00:12:08.820] Server  LOG     ✅ Total items fetched: 9
+[00:12:08.820] Server  LOG     ✅ Found 9 categories
+[00:12:08.820] Server  LOG     🔍 Fetching products for category: 187
+[00:12:08.820] Server  LOG     🌐 API Request: {}
+[00:12:08.825] Server  LOG     ✅ API Response Success: {}
+[00:12:08.826] Server  LOG     📄 Fetched page 1 (9 items)
+[00:12:08.826] Server  LOG     ✅ Total items fetched: 9
+[00:12:08.826] Server  LOG     ✅ Found 9 categories
+[00:12:08.826] Server  LOG     📡 Response Status: 200 ""
+[00:12:08.827] Server  LOG     📡 Response Status: 200 ""
+[00:12:08.827] Server  LOG     📡 Response Status: 200 ""
+[00:12:08.828] Server  LOG     📡 Response Status: 200 ""
+[00:12:08.830] Server  LOG     ✅ API Response Success: {}
+[00:12:08.830] Server  LOG     ✅ API Response Success: {}
+[00:12:08.830] Server  LOG     ✅ API Response Success: {}
+[00:12:08.830] Server  LOG     ✅ API Response Success: {}
+[00:12:08.831] Server  LOG     📡 Response Status: 200 ""
+[00:12:08.831] Server  LOG     📄 Fetched page 1 (6 items)
+[00:12:08.831] Server  LOG     ✅ Total items fetched: 6
+[00:12:08.831] Server  LOG     📄 Fetched page 1 (26 items)
+[00:12:08.831] Server  LOG     ✅ Total items fetched: 26
+[00:12:08.832] Server  LOG     📄 Fetched page 1 (28 items)
+[00:12:08.832] Server  LOG     ✅ Total items fetched: 28
+[00:12:08.832] Server  LOG     📄 Fetched page 1 (11 items)
+[00:12:08.832] Server  LOG     ✅ Total items fetched: 11
+[00:12:08.832] Server  LOG     ✅ Found 6 products in category
+[00:12:08.832] Server  LOG     ✅ Found 26 products in category
+[00:12:08.832] Server  LOG     ✅ Found 28 products in category
+[00:12:08.832] Server  LOG     ✅ Found 11 products in category
+[00:12:08.832] Server  LOG     ✅ API Response Success: {}
+[00:12:08.833] Server  LOG     📄 Fetched page 1 (18 items)
+[00:12:08.833] Server  LOG     ✅ Total items fetched: 18
+[00:12:08.833] Server  LOG     ✅ Found 18 products in category
+[00:12:10.013] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:10.293] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/0c80446a-14b6-4948-b8a5-6404ca25b764.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:12:10.293] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/efcd77e5-549b-4d33-9a18-648b4ada9154.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:12:10.293] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/2b128fe5-0667-474e-a48c-b84a136ccf78.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:12:51.299] Server  LOG     ✓ Compiled in 187ms
+[00:12:58.011] Server  LOG     🔧 API Configuration: {}
+[00:12:58.036] Server  LOG     🔍 Fetching categories with params: {}
+[00:12:58.036] Server  LOG     🌐 API Request: {}
+[00:12:58.054] Server  LOG     🔍 Fetching categories with params: {}
+[00:12:58.054] Server  LOG     🌐 API Request: {}
+[00:12:58.058] Server  LOG     🔍 Fetching categories with params: {}
+[00:12:58.059] Server  LOG     🌐 API Request: {}
+[00:12:58.061] Server  LOG     🔍 Fetching categories with params: {}
+[00:12:58.061] Server  LOG     🌐 API Request: {}
+[00:12:58.063] Server  LOG     🔍 Fetching categories with params: {}
+[00:12:58.064] Server  LOG     🌐 API Request: {}
+[00:12:58.075] Server  LOG     📡 Response Status: 200 ""
+[00:12:58.076] Server  LOG     📡 Response Status: 200 ""
+[00:12:58.079] Server  LOG     📡 Response Status: 200 ""
+[00:12:58.084] Server  LOG     ✅ API Response Success: {}
+[00:12:58.085] Server  LOG     ✅ API Response Success: {}
+[00:12:58.085] Server  LOG     📡 Response Status: 200 ""
+[00:12:58.086] Server  LOG     📄 Fetched page 1 (9 items)
+[00:12:58.087] Server  LOG     ✅ Total items fetched: 9
+[00:12:58.087] Server  LOG     📄 Fetched page 1 (9 items)
+[00:12:58.087] Server  LOG     ✅ Total items fetched: 9
+[00:12:58.087] Server  LOG     ✅ Found 9 categories
+[00:12:58.087] Server  LOG     ✅ Found 9 categories
+[00:12:58.089] Server  LOG     🔍 Fetching products for category: 15
+[00:12:58.089] Server  LOG     🌐 API Request: {}
+[00:12:58.091] Server  LOG     🔍 Fetching products for category: 184
+[00:12:58.091] Server  LOG     🌐 API Request: {}
+[00:12:58.095] Server  LOG     🔍 Fetching products for category: 183
+[00:12:58.095] Server  LOG     🌐 API Request: {}
+[00:12:58.096] Server  LOG     🔍 Fetching products for category: 185
+[00:12:58.097] Server  LOG     🌐 API Request: {}
+[00:12:58.097] Server  LOG     ✅ API Response Success: {}
+[00:12:58.098] Server  LOG     📡 Response Status: 200 ""
+[00:12:58.099] Server  LOG     📄 Fetched page 1 (9 items)
+[00:12:58.099] Server  LOG     ✅ Total items fetched: 9
+[00:12:58.100] Server  LOG     ✅ Found 9 categories
+[00:12:58.101] Server  LOG     ✅ API Response Success: {}
+[00:12:58.102] Server  LOG     📄 Fetched page 1 (9 items)
+[00:12:58.102] Server  LOG     ✅ Total items fetched: 9
+[00:12:58.102] Server  LOG     ✅ Found 9 categories
+[00:12:58.103] Server  LOG     🔍 Fetching products for category: 187
+[00:12:58.103] Server  LOG     🌐 API Request: {}
+[00:12:58.104] Server  LOG     ✅ API Response Success: {}
+[00:12:58.104] Server  LOG     📄 Fetched page 1 (9 items)
+[00:12:58.105] Server  LOG     ✅ Total items fetched: 9
+[00:12:58.105] Server  LOG     ✅ Found 9 categories
+[00:12:58.106] Server  LOG     📡 Response Status: 200 ""
+[00:12:58.106] Server  LOG     📡 Response Status: 200 ""
+[00:12:58.107] Server  LOG     📡 Response Status: 200 ""
+[00:12:58.107] Server  LOG     📡 Response Status: 200 ""
+[00:12:58.112] Server  LOG     ✅ API Response Success: {}
+[00:12:58.112] Server  LOG     ✅ API Response Success: {}
+[00:12:58.112] Server  LOG     ✅ API Response Success: {}
+[00:12:58.112] Server  LOG     ✅ API Response Success: {}
+[00:12:58.112] Server  LOG     📡 Response Status: 200 ""
+[00:12:58.113] Server  LOG     📄 Fetched page 1 (6 items)
+[00:12:58.114] Server  LOG     ✅ Total items fetched: 6
+[00:12:58.114] Server  LOG     📄 Fetched page 1 (26 items)
+[00:12:58.114] Server  LOG     ✅ Total items fetched: 26
+[00:12:58.114] Server  LOG     📄 Fetched page 1 (28 items)
+[00:12:58.114] Server  LOG     ✅ Total items fetched: 28
+[00:12:58.114] Server  LOG     📄 Fetched page 1 (11 items)
+[00:12:58.114] Server  LOG     ✅ Total items fetched: 11
+[00:12:58.114] Server  LOG     ✅ Found 6 products in category
+[00:12:58.114] Server  LOG     ✅ Found 26 products in category
+[00:12:58.114] Server  LOG     ✅ Found 28 products in category
+[00:12:58.115] Server  LOG     ✅ Found 11 products in category
+[00:12:58.115] Server  LOG     ✅ API Response Success: {}
+[00:12:58.115] Server  LOG     📄 Fetched page 1 (18 items)
+[00:12:58.115] Server  LOG     ✅ Total items fetched: 18
+[00:12:58.115] Server  LOG     ✅ Found 18 products in category
+[00:12:58.531] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:58.742] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/0c80446a-14b6-4948-b8a5-6404ca25b764.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:12:58.742] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/efcd77e5-549b-4d33-9a18-648b4ada9154.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:12:58.742] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/2b128fe5-0667-474e-a48c-b84a136ccf78.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:13:18.634] Server  LOG     ✓ Compiled in 125ms
+[00:13:23.925] Server  LOG     ✓ Compiled in 160ms
+[00:13:29.508] Server  LOG     ✓ Compiled in 128ms
+[00:13:35.974] Server  LOG     ✓ Compiled in 202ms
+[00:16:26.392] Server  LOG     ✓ Compiled in 257ms
+[00:16:26.942] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/sachdevadiagnostics_logo.png" "received" null
+[00:16:27.027] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/sachdevadiagnostics_logo.png" "received" null
+[00:16:32.588] Server  LOG     🔧 API Configuration: {}
+[00:16:32.604] Server  LOG     🔍 Fetching categories with params: {}
+[00:16:32.604] Server  LOG     🌐 API Request: {}
+[00:16:32.631] Server  LOG     🔍 Fetching categories with params: {}
+[00:16:32.631] Server  LOG     🌐 API Request: {}
+[00:16:32.632] Server  LOG     🔍 Fetching categories with params: {}
+[00:16:32.633] Server  LOG     🌐 API Request: {}
+[00:16:32.634] Server  LOG     🔍 Fetching categories with params: {}
+[00:16:32.634] Server  LOG     🌐 API Request: {}
+[00:16:32.636] Server  LOG     🔍 Fetching categories with params: {}
+[00:16:32.636] Server  LOG     🌐 API Request: {}
+[00:16:32.648] Server  LOG     📡 Response Status: 200 ""
+[00:16:32.650] Server  LOG     📡 Response Status: 200 ""
+[00:16:32.657] Server  LOG     📡 Response Status: 200 ""
+[00:16:32.658] Server  LOG     ✅ API Response Success: {}
+[00:16:32.658] Server  LOG     ✅ API Response Success: {}
+[00:16:32.659] Server  LOG     📡 Response Status: 200 ""
+[00:16:32.659] Server  LOG     📄 Fetched page 1 (9 items)
+[00:16:32.659] Server  LOG     ✅ Total items fetched: 9
+[00:16:32.660] Server  LOG     📄 Fetched page 1 (9 items)
+[00:16:32.660] Server  LOG     ✅ Total items fetched: 9
+[00:16:32.660] Server  LOG     ✅ Found 9 categories
+[00:16:32.660] Server  LOG     ✅ Found 9 categories
+[00:16:32.661] Server  LOG     🔍 Fetching products for category: 15
+[00:16:32.661] Server  LOG     🌐 API Request: {}
+[00:16:32.662] Server  LOG     🔍 Fetching products for category: 184
+[00:16:32.663] Server  LOG     🌐 API Request: {}
+[00:16:32.664] Server  LOG     🔍 Fetching products for category: 183
+[00:16:32.664] Server  LOG     🌐 API Request: {}
+[00:16:32.664] Server  LOG     🔍 Fetching products for category: 185
+[00:16:32.665] Server  LOG     🌐 API Request: {}
+[00:16:32.665] Server  LOG     ✅ API Response Success: {}
+[00:16:32.666] Server  LOG     📡 Response Status: 200 ""
+[00:16:32.666] Server  LOG     📄 Fetched page 1 (9 items)
+[00:16:32.666] Server  LOG     ✅ Total items fetched: 9
+[00:16:32.667] Server  LOG     ✅ Found 9 categories
+[00:16:32.668] Server  LOG     ✅ API Response Success: {}
+[00:16:32.669] Server  LOG     📄 Fetched page 1 (9 items)
+[00:16:32.669] Server  LOG     ✅ Total items fetched: 9
+[00:16:32.669] Server  LOG     ✅ Found 9 categories
+[00:16:32.669] Server  LOG     🔍 Fetching products for category: 187
+[00:16:32.669] Server  LOG     🌐 API Request: {}
+[00:16:32.670] Server  LOG     ✅ API Response Success: {}
+[00:16:32.671] Server  LOG     📄 Fetched page 1 (9 items)
+[00:16:32.671] Server  LOG     ✅ Total items fetched: 9
+[00:16:32.671] Server  LOG     ✅ Found 9 categories
+[00:16:32.672] Server  LOG     📡 Response Status: 200 ""
+[00:16:32.672] Server  LOG     📡 Response Status: 200 ""
+[00:16:32.673] Server  LOG     📡 Response Status: 200 ""
+[00:16:32.674] Server  LOG     📡 Response Status: 200 ""
+[00:16:32.679] Server  LOG     ✅ API Response Success: {}
+[00:16:32.680] Server  LOG     ✅ API Response Success: {}
+[00:16:32.680] Server  LOG     ✅ API Response Success: {}
+[00:16:32.680] Server  LOG     ✅ API Response Success: {}
+[00:16:32.680] Server  LOG     📡 Response Status: 200 ""
+[00:16:32.681] Server  LOG     📄 Fetched page 1 (6 items)
+[00:16:32.681] Server  LOG     ✅ Total items fetched: 6
+[00:16:32.681] Server  LOG     📄 Fetched page 1 (26 items)
+[00:16:32.681] Server  LOG     ✅ Total items fetched: 26
+[00:16:32.681] Server  LOG     📄 Fetched page 1 (28 items)
+[00:16:32.681] Server  LOG     ✅ Total items fetched: 28
+[00:16:32.681] Server  LOG     📄 Fetched page 1 (11 items)
+[00:16:32.682] Server  LOG     ✅ Total items fetched: 11
+[00:16:32.682] Server  LOG     ✅ Found 6 products in category
+[00:16:32.682] Server  LOG     ✅ Found 26 products in category
+[00:16:32.682] Server  LOG     ✅ Found 28 products in category
+[00:16:32.682] Server  LOG     ✅ Found 11 products in category
+[00:16:32.683] Server  LOG     ✅ API Response Success: {}
+[00:16:32.683] Server  LOG     📄 Fetched page 1 (18 items)
+[00:16:32.683] Server  LOG     ✅ Total items fetched: 18
+[00:16:32.683] Server  LOG     ✅ Found 18 products in category
+[00:16:33.214] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/sachdevadiagnostics_logo.png" "received" null
+[00:16:33.449] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:33.742] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/0c80446a-14b6-4948-b8a5-6404ca25b764.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:16:33.743] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/efcd77e5-549b-4d33-9a18-648b4ada9154.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:16:33.743] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/2b128fe5-0667-474e-a48c-b84a136ccf78.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:16:39.119] Server  LOG     🔍 Fetching categories with params: {}
+[00:16:39.120] Server  LOG     🌐 API Request: {}
+[00:16:39.121] Server  LOG     🔍 Fetching categories with params: {}
+[00:16:39.121] Server  LOG     🌐 API Request: {}
+[00:16:39.122] Server  LOG     🔍 Fetching categories with params: {}
+[00:16:39.122] Server  LOG     🌐 API Request: {}
+[00:16:39.123] Server  LOG     🔍 Fetching categories with params: {}
+[00:16:39.123] Server  LOG     🌐 API Request: {}
+[00:16:39.123] Server  LOG     🔍 Fetching categories with params: {}
+[00:16:39.124] Server  LOG     🌐 API Request: {}
+[00:16:39.136] Server  LOG     📡 Response Status: 200 ""
+[00:16:39.137] Server  LOG     📡 Response Status: 200 ""
+[00:16:39.139] Server  LOG     📡 Response Status: 200 ""
+[00:16:39.140] Server  LOG     ✅ API Response Success: {}
+[00:16:39.141] Server  LOG     ✅ API Response Success: {}
+[00:16:39.141] Server  LOG     📡 Response Status: 200 ""
+[00:16:39.142] Server  LOG     📄 Fetched page 1 (9 items)
+[00:16:39.142] Server  LOG     ✅ Total items fetched: 9
+[00:16:39.142] Server  LOG     📄 Fetched page 1 (9 items)
+[00:16:39.142] Server  LOG     ✅ Total items fetched: 9
+[00:16:39.142] Server  LOG     ✅ Found 9 categories
+[00:16:39.143] Server  LOG     ✅ Found 9 categories
+[00:16:39.143] Server  LOG     🔍 Fetching products for category: 15
+[00:16:39.143] Server  LOG     🌐 API Request: {}
+[00:16:39.144] Server  LOG     🔍 Fetching products for category: 184
+[00:16:39.145] Server  LOG     🌐 API Request: {}
+[00:16:39.145] Server  LOG     🔍 Fetching products for category: 183
+[00:16:39.145] Server  LOG     🌐 API Request: {}
+[00:16:39.146] Server  LOG     🔍 Fetching products for category: 185
+[00:16:39.146] Server  LOG     🌐 API Request: {}
+[00:16:39.147] Server  LOG     ✅ API Response Success: {}
+[00:16:39.148] Server  LOG     📡 Response Status: 200 ""
+[00:16:39.148] Server  LOG     📄 Fetched page 1 (9 items)
+[00:16:39.148] Server  LOG     ✅ Total items fetched: 9
+[00:16:39.149] Server  LOG     ✅ Found 9 categories
+[00:16:39.149] Server  LOG     ✅ API Response Success: {}
+[00:16:39.151] Server  LOG     📄 Fetched page 1 (9 items)
+[00:16:39.151] Server  LOG     ✅ Total items fetched: 9
+[00:16:39.151] Server  LOG     ✅ Found 9 categories
+[00:16:39.151] Server  LOG     🔍 Fetching products for category: 187
+[00:16:39.151] Server  LOG     🌐 API Request: {}
+[00:16:39.152] Server  LOG     ✅ API Response Success: {}
+[00:16:39.152] Server  LOG     📄 Fetched page 1 (9 items)
+[00:16:39.152] Server  LOG     ✅ Total items fetched: 9
+[00:16:39.153] Server  LOG     ✅ Found 9 categories
+[00:16:39.153] Server  LOG     📡 Response Status: 200 ""
+[00:16:39.153] Server  LOG     📡 Response Status: 200 ""
+[00:16:39.154] Server  LOG     📡 Response Status: 200 ""
+[00:16:39.154] Server  LOG     📡 Response Status: 200 ""
+[00:16:39.157] Server  LOG     ✅ API Response Success: {}
+[00:16:39.157] Server  LOG     ✅ API Response Success: {}
+[00:16:39.157] Server  LOG     ✅ API Response Success: {}
+[00:16:39.157] Server  LOG     ✅ API Response Success: {}
+[00:16:39.157] Server  LOG     📡 Response Status: 200 ""
+[00:16:39.158] Server  LOG     📄 Fetched page 1 (6 items)
+[00:16:39.158] Server  LOG     ✅ Total items fetched: 6
+[00:16:39.158] Server  LOG     📄 Fetched page 1 (26 items)
+[00:16:39.158] Server  LOG     ✅ Total items fetched: 26
+[00:16:39.158] Server  LOG     📄 Fetched page 1 (28 items)
+[00:16:39.158] Server  LOG     ✅ Total items fetched: 28
+[00:16:39.158] Server  LOG     📄 Fetched page 1 (11 items)
+[00:16:39.158] Server  LOG     ✅ Total items fetched: 11
+[00:16:39.159] Server  LOG     ✅ Found 6 products in category
+[00:16:39.159] Server  LOG     ✅ Found 26 products in category
+[00:16:39.159] Server  LOG     ✅ Found 28 products in category
+[00:16:39.159] Server  LOG     ✅ Found 11 products in category
+[00:16:39.159] Server  LOG     ✅ API Response Success: {}
+[00:16:39.159] Server  LOG     📄 Fetched page 1 (18 items)
+[00:16:39.159] Server  LOG     ✅ Total items fetched: 18
+[00:16:39.159] Server  LOG     ✅ Found 18 products in category
+[00:16:39.399] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/sachdevadiagnostics_logo.png" "received" null
+[00:16:39.532] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:39.789] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/0c80446a-14b6-4948-b8a5-6404ca25b764.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:16:39.789] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/efcd77e5-549b-4d33-9a18-648b4ada9154.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:16:39.789] Browser WARN    Image with src "http://thesiswriting.xyz/wp-content/uploads/2025/12/2b128fe5-0667-474e-a48c-b84a136ccf78.jpg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[00:16:52.332] Server  LOG     ✓ Compiled in 179ms
+[00:17:49.852] Server  LOG     ✓ Compiled in 327ms
+[00:18:38.728] Server  LOG     ✓ Compiled in 220ms
+[00:19:24.542] Browser LOG     🔧 API Configuration: {"hasKey":true,"hasSecret":true,"url":"https://thesiswriting.xyz/wp-json/wc/v3"}
+[00:19:24.542] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:19:24.542] Browser LOG     🔍 Fetching categories with params: {}
+[00:19:24.543] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products/categories","method":"GET","params":["hide_empty","per_page","page"]}
+[00:19:24.543] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:19:24.543] Browser LOG     🔍 Fetching categories with params: {}
+[00:19:24.543] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products/categories","method":"GET","params":["hide_empty","per_page","page"]}
+[00:19:25.942] Server  LOG     🔧 API Configuration: {}
+[00:19:25.958] Server  LOG     🔍 Fetching categories with params: {}
+[00:19:25.959] Server  LOG     🌐 API Request: {}
+[00:19:25.979] Server  LOG     🔍 Fetching categories with params: {}
+[00:19:25.979] Server  LOG     🌐 API Request: {}
+[00:19:25.980] Server  LOG     🔍 Fetching categories with params: {}
+[00:19:25.980] Server  LOG     🌐 API Request: {}
+[00:19:25.981] Server  LOG     🔍 Fetching categories with params: {}
+[00:19:25.981] Server  LOG     🌐 API Request: {}
+[00:19:25.982] Server  LOG     🔍 Fetching categories with params: {}
+[00:19:25.982] Server  LOG     🌐 API Request: {}
+[00:19:25.992] Server  LOG     📡 Response Status: 200 ""
+[00:19:25.992] Server  LOG     📡 Response Status: 200 ""
+[00:19:25.994] Server  LOG     📡 Response Status: 200 ""
+[00:19:25.995] Server  LOG     ✅ API Response Success: {}
+[00:19:25.995] Server  LOG     ✅ API Response Success: {}
+[00:19:25.996] Server  LOG     📡 Response Status: 200 ""
+[00:19:25.996] Server  LOG     📄 Fetched page 1 (9 items)
+[00:19:25.996] Server  LOG     ✅ Total items fetched: 9
+[00:19:25.996] Server  LOG     📄 Fetched page 1 (9 items)
+[00:19:25.996] Server  LOG     ✅ Total items fetched: 9
+[00:19:25.996] Server  LOG     ✅ Found 9 categories
+[00:19:25.996] Server  LOG     ✅ Found 9 categories
+[00:19:25.997] Server  LOG     🔍 Fetching products for category: 15
+[00:19:25.997] Server  LOG     🌐 API Request: {}
+[00:19:25.998] Server  LOG     🔍 Fetching products for category: 184
+[00:19:25.998] Server  LOG     🌐 API Request: {}
+[00:19:25.999] Server  LOG     🔍 Fetching products for category: 183
+[00:19:25.999] Server  LOG     🌐 API Request: {}
+[00:19:25.999] Server  LOG     🔍 Fetching products for category: 185
+[00:19:25.999] Server  LOG     🌐 API Request: {}
+[00:19:26.000] Server  LOG     ✅ API Response Success: {}
+[00:19:26.001] Server  LOG     📡 Response Status: 200 ""
+[00:19:26.001] Server  LOG     📄 Fetched page 1 (9 items)
+[00:19:26.001] Server  LOG     ✅ Total items fetched: 9
+[00:19:26.002] Server  LOG     ✅ Found 9 categories
+[00:19:26.005] Server  LOG     ✅ API Response Success: {}
+[00:19:26.007] Server  LOG     📄 Fetched page 1 (9 items)
+[00:19:26.007] Server  LOG     ✅ Total items fetched: 9
+[00:19:26.007] Server  LOG     ✅ Found 9 categories
+[00:19:26.008] Server  LOG     🔍 Fetching products for category: 187
+[00:19:26.008] Server  LOG     🌐 API Request: {}
+[00:19:26.009] Server  LOG     ✅ API Response Success: {}
+[00:19:26.009] Server  LOG     📄 Fetched page 1 (9 items)
+[00:19:26.009] Server  LOG     ✅ Total items fetched: 9
+[00:19:26.009] Server  LOG     ✅ Found 9 categories
+[00:19:26.010] Server  LOG     📡 Response Status: 200 ""
+[00:19:26.010] Server  LOG     📡 Response Status: 200 ""
+[00:19:26.011] Server  LOG     📡 Response Status: 200 ""
+[00:19:26.012] Server  LOG     📡 Response Status: 200 ""
+[00:19:26.015] Server  LOG     ✅ API Response Success: {}
+[00:19:26.015] Server  LOG     ✅ API Response Success: {}
+[00:19:26.015] Server  LOG     ✅ API Response Success: {}
+[00:19:26.015] Server  LOG     ✅ API Response Success: {}
+[00:19:26.015] Server  LOG     📡 Response Status: 200 ""
+[00:19:26.016] Server  LOG     📄 Fetched page 1 (6 items)
+[00:19:26.016] Server  LOG     ✅ Total items fetched: 6
+[00:19:26.016] Server  LOG     📄 Fetched page 1 (26 items)
+[00:19:26.016] Server  LOG     ✅ Total items fetched: 26
+[00:19:26.016] Server  LOG     📄 Fetched page 1 (28 items)
+[00:19:26.016] Server  LOG     ✅ Total items fetched: 28
+[00:19:26.016] Server  LOG     📄 Fetched page 1 (11 items)
+[00:19:26.016] Server  LOG     ✅ Total items fetched: 11
+[00:19:26.016] Server  LOG     ✅ Found 6 products in category
+[00:19:26.016] Server  LOG     ✅ Found 26 products in category
+[00:19:26.017] Server  LOG     ✅ Found 28 products in category
+[00:19:26.017] Server  LOG     ✅ Found 11 products in category
+[00:19:26.017] Server  LOG     ✅ API Response Success: {}
+[00:19:26.017] Server  LOG     📄 Fetched page 1 (18 items)
+[00:19:26.017] Server  LOG     ✅ Total items fetched: 18
+[00:19:26.018] Server  LOG     ✅ Found 18 products in category
+[00:19:27.642] Browser LOG     📡 Response Status: 200 
+[00:19:27.642] Browser LOG     ✅ API Response Success: {"dataType":"array[9]","endpoint":"/products/categories","hasData":true}
+[00:19:27.642] Browser LOG     📄 Fetched page 1 (9 items)
+[00:19:27.642] Browser LOG     ✅ Total items fetched: 9
+[00:19:27.642] Browser LOG     ✅ Found 9 categories
+[00:19:27.901] Browser LOG     📡 Response Status: 200 
+[00:19:27.901] Browser LOG     ✅ API Response Success: {"dataType":"array[9]","endpoint":"/products/categories","hasData":true}
+[00:19:27.901] Browser LOG     📄 Fetched page 1 (9 items)
+[00:19:27.901] Browser LOG     ✅ Total items fetched: 9
+[00:19:27.901] Browser LOG     ✅ Found 9 categories
+[00:19:28.165] Browser LOG     📡 Response Status: 200 
+[00:19:28.165] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:19:28.165] Browser LOG     📄 Fetched page 1 (100 items)
+[00:19:28.165] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:19:28.983] Browser LOG     📡 Response Status: 200 
+[00:19:28.983] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:19:28.983] Browser LOG     📄 Fetched page 1 (100 items)
+[00:19:28.983] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:19:29.377] Browser LOG     📡 Response Status: 200 
+[00:19:29.377] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:19:29.378] Browser LOG     📄 Fetched page 2 (100 items)
+[00:19:29.378] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:19:30.258] Browser LOG     📡 Response Status: 200 
+[00:19:30.258] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:19:30.258] Browser LOG     📄 Fetched page 2 (100 items)
+[00:19:30.258] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:19:30.540] Browser LOG     📡 Response Status: 200 
+[00:19:30.540] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:19:30.540] Browser LOG     📄 Fetched page 3 (100 items)
+[00:19:30.540] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:19:31.053] Browser LOG     📡 Response Status: 200 
+[00:19:31.054] Browser LOG     ✅ API Response Success: {"dataType":"array[19]","endpoint":"/products","hasData":true}
+[00:19:31.054] Browser LOG     📄 Fetched page 4 (19 items)
+[00:19:31.054] Browser LOG     📄 Last page reached at page 4
+[00:19:31.054] Browser LOG     ✅ Total items fetched: 319
+[00:19:31.293] Browser LOG     📡 Response Status: 200 
+[00:19:31.293] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:19:31.294] Browser LOG     📄 Fetched page 3 (100 items)
+[00:19:31.294] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:19:31.605] Browser LOG     📡 Response Status: 200 
+[00:19:31.605] Browser LOG     ✅ API Response Success: {"dataType":"array[19]","endpoint":"/products","hasData":true}
+[00:19:31.605] Browser LOG     📄 Fetched page 4 (19 items)
+[00:19:31.605] Browser LOG     📄 Last page reached at page 4
+[00:19:31.605] Browser LOG     ✅ Total items fetched: 319
+[00:20:14.881] Browser WARN    Image with src "/sachdeva-diagnostics-logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:20:25.073] Browser WARN    Image with src "/sachdeva-diagnostics-logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.

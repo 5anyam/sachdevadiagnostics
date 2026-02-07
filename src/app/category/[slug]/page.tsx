@@ -115,19 +115,6 @@ export default function CategoryProductsPage() {
     return (
       <Link href={`/test/${product.slug}`} className="block group h-full">
         <Card className="overflow-hidden border-2 border-slate-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-300 h-full flex flex-col bg-white group-hover:-translate-y-1">
-          <div className="relative h-56 bg-gradient-to-br from-blue-50 via-white to-slate-50 overflow-hidden">
-            {product.images?.[0]?.src ? (
-              <img 
-                src={product.images[0].src} 
-                alt={product.images[0].alt || product.name}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center">
-                <TestTube className="w-24 h-24 text-slate-200" />
-              </div>
-            )}
-
             <div className="absolute top-3 left-3 flex flex-col gap-2">
               <Badge className="bg-green-500 text-white font-bold text-xs shadow-lg border-0">
                 <Award className="h-3 w-3 mr-1" />
@@ -154,7 +141,6 @@ export default function CategoryProductsPage() {
                 {product.categories?.[0]?.name || category?.name}
               </Badge>
             </div>
-          </div>
 
           <CardContent className="p-5 flex-1 flex flex-col">
             <h3 className="font-bold text-lg text-slate-900 group-hover:text-blue-700 transition-colors mb-3 line-clamp-2 min-h-[3.5rem]">

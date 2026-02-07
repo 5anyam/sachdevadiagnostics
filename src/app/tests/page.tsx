@@ -330,16 +330,19 @@ function TestsPageContent() {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {Array(12).fill(null).map((_, index) => (
         <Card key={index} className="overflow-hidden border border-slate-200 h-full">
-          <Skeleton className="h-48 w-full" />
-          <CardContent className="p-5 space-y-3">
-            <Skeleton className="h-4 w-24 rounded-full" />
+          {/* Replaced Image Skeleton with just content padding */}
+          <CardContent className="p-5 space-y-3 pt-6">
+            <div className="flex gap-2 mb-2">
+                <Skeleton className="h-6 w-20 rounded-md" />
+                <Skeleton className="h-6 w-16 rounded-md" />
+            </div>
             <Skeleton className="h-6 w-full rounded" />
             <Skeleton className="h-4 w-3/4 rounded" />
             <div className="space-y-2 pt-3">
               <Skeleton className="h-3 w-full rounded" />
               <Skeleton className="h-3 w-2/3 rounded" />
             </div>
-            <div className="flex justify-between items-center pt-3">
+            <div className="flex justify-between items-center pt-3 mt-4 border-t border-slate-100">
               <Skeleton className="h-8 w-24 rounded" />
               <Skeleton className="h-5 w-16 rounded-full" />
             </div>
@@ -356,58 +359,35 @@ function TestsPageContent() {
   const TestCardGrid = ({ test }) => {
     const isPopular = test.total_sales && parseInt(test.total_sales) > 50;
     const hasDiscount = test.regular_price && test.regular_price !== test.price;
-    const discountPercent = hasDiscount 
-      ? Math.round(((Number(test.regular_price) - Number(test.price)) / Number(test.regular_price)) * 100)
-      : 0;
 
     return (
       <Link href={`/test/${test.slug}`} className="block group h-full">
-        <Card className="overflow-hidden border-2 border-slate-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-300 h-full flex flex-col bg-white group-hover:-translate-y-1">
-          {/* Image Section */}
-          <div className="relative h-48 bg-gradient-to-br from-blue-50 via-white to-slate-50 overflow-hidden">
-            {test.images?.[0]?.src ? (
-              <img 
-                src={test.images[0].src} 
-                alt={test.name}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center">
-                <TestTube className="w-20 h-20 text-slate-200" />
-              </div>
-            )}
-
-            {/* Badges */}
-            <div className="absolute top-3 left-3 flex flex-col gap-2">
-              <Badge className="bg-green-500 text-white font-bold text-xs shadow-lg border-0">
+        <Card className="overflow-hidden border-2 border-slate-200 hover:border-blue-400 hover:shadow-xl transition-all duration-300 h-full flex flex-col bg-white group-hover:-translate-y-1">
+          
+          <CardContent className="p-5 flex-1 flex flex-col">
+            {/* Badges Row - Moved here from Image Section and reorganized */}
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+               {/* Category Badge */}
+               <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 font-semibold">
+                {test.categories[0]?.name || "Test"}
+              </Badge>
+              
+               {/* NABL Badge */}
+              <Badge className="bg-green-100 text-green-700 hover:bg-green-200 border-0 font-bold shadow-none">
                 <Award className="h-3 w-3 mr-1" />
                 NABL
               </Badge>
+
+              {/* Popular Badge */}
               {isPopular && (
-                <Badge className="bg-orange-500 text-white font-bold text-xs shadow-lg border-0 animate-pulse">
+                <Badge className="bg-orange-100 text-orange-700 hover:bg-orange-200 border-0 font-bold animate-pulse shadow-none">
                   <TrendingUp className="h-3 w-3 mr-1" />
                   Popular
                 </Badge>
               )}
+
             </div>
 
-            {hasDiscount && (
-              <div className="absolute top-3 right-3">
-                <Badge className="bg-red-500 text-white font-bold shadow-lg border-0">
-                  {discountPercent}% OFF
-                </Badge>
-              </div>
-            )}
-
-            {/* Category Badge */}
-            <div className="absolute bottom-3 right-3">
-              <Badge className="bg-white/95 backdrop-blur-sm text-blue-700 font-semibold text-xs shadow-md border border-blue-200">
-                {test.categories[0]?.name || "Test"}
-              </Badge>
-            </div>
-          </div>
-
-          <CardContent className="p-5 flex-1 flex flex-col">
             {/* Test Name */}
             <h3 className="font-bold text-lg text-slate-900 group-hover:text-blue-700 transition-colors mb-3 line-clamp-2 min-h-[3.5rem]">
               {test.name}

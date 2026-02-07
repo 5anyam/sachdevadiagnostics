@@ -66,7 +66,15 @@ const Header = () => {
             <div className="flex items-center space-x-6">
               <a href="tel:+919811582086" className="flex items-center gap-2 hover:text-yellow-300 transition-colors duration-200 group">
                 <Phone size={14} className="text-green-400 group-hover:text-yellow-300" />
-                <span className="font-semibold">+91-9811582086</span>
+                <span className="font-semibold">+919811582086</span>
+              </a>
+              <a href="tel:+919811582086" className="flex items-center gap-2 hover:text-yellow-300 transition-colors duration-200 group">
+                <Phone size={14} className="text-green-400 group-hover:text-yellow-300" />
+                <span className="font-semibold">+919911380288</span>
+              </a>
+              <a href="tel:+919811582086" className="flex items-center gap-2 hover:text-yellow-300 transition-colors duration-200 group">
+                <Phone size={14} className="text-green-400 group-hover:text-yellow-300" />
+                <span className="font-semibold">+917303562146</span>
               </a>
               <div className="flex items-center gap-2">
                 <MapPin size={14} className="text-green-400" />
@@ -74,7 +82,7 @@ const Header = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Clock size={14} className="text-blue-300" />
-                <span>Mon-Sat: 7 AM - 9 PM | Sun: 8 AM - 6 PM</span>
+                <span>Mon-Sat: 8 AM - 8 PM | Sun: 8:30 AM - 1 PM</span>
               </div>
             </div>
             <div className="flex items-center space-x-4">
@@ -103,11 +111,11 @@ const Header = () => {
             <Link href="/" className="flex items-center group flex-shrink-0">
               <div className="relative">
                 <Image 
-                  src="/sachdeva-diagnostics-logo.png" 
+                  src="/sachdevadiagnostic_logo.png" 
                   alt='Sachdeva Diagnostics' 
-                  height={120} 
-                  width={120}
-                  className="h-12 w-12 sm:h-20 sm:w-24 object-contain"
+                  height={240} 
+                  width={240}
+                  className="h-24 w-24 sm:h-36 sm:w-40 object-contain"
                   priority
                 />
               </div>
