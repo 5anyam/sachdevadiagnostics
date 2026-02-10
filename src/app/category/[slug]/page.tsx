@@ -178,7 +178,7 @@ export default function CategoryProductsPage() {
                         ₹{Number(product.regular_price).toLocaleString('en-IN')}
                       </span>
                     )}
-                  </div>
+                   </div>
                   <span className="text-xs text-slate-500 font-medium">+ Free Home Collection</span>
                 </div>
                 <div className="flex items-center gap-1 bg-gradient-to-r from-yellow-50 to-orange-50 px-2.5 py-1.5 rounded-lg border border-yellow-200">

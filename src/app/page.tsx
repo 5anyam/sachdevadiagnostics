@@ -3,12 +3,12 @@ import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
 import { 
-  ArrowRight, CheckCircle, Clock, Phone, Shield, 
-  Activity, Zap, Award, Users, Star, Calendar, Download, 
+  ArrowRight, Clock, Phone, Shield, 
+  Activity, Zap, Users, Star, Download, 
   ChevronRight, TestTube, Microscope
 } from "lucide-react";
 import CircularCategoriesCarousel from "../../components/CircularCategoriesCarousel";
-import HeroImageSlider from "../../components/HeroImageSlider";
+import HeroCarousel from "../../components/HeroCarousel";
 import { 
   getProductsByCategory, 
   getProductCategories, 
@@ -252,98 +252,9 @@ export default async function Index() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
       {/* 1. TRUST BAR */}
-      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-2 sm:py-2.5 text-[10px] sm:text-xs md:text-sm border-b border-blue-700">
-        <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex gap-3 sm:gap-6 flex-wrap justify-center text-center">
-            <span className="flex items-center gap-1 sm:gap-1.5 font-semibold">
-              <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-green-400" /> NABL Accredited
-            </span>
-            <span className="flex items-center gap-1 sm:gap-1.5">
-              <Award className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400" /> 30+ Years
-            </span>
-            <span className="flex items-center gap-1 sm:gap-1.5">
-              <Users className="w-3 h-3 sm:w-4 sm:h-4 text-blue-300" /> 50,000+ Patients
-            </span>
-          </div>
-          <a href="tel:+919811582086" className="font-bold hover:text-blue-200 transition-colors flex items-center gap-1.5 sm:gap-2 bg-white/10 px-2 sm:px-3 py-1 rounded-full">
-            <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> +91 98115 82086
-          </a>
-        </div>
-      </div>
-
+      
       {/* 2. HERO SECTION */}
-      <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-white py-6 sm:py-12 md:py-16 overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-48 h-48 sm:w-96 sm:h-96 bg-blue-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-48 h-48 sm:w-96 sm:h-96 bg-green-500 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-12 items-center">
-            
-            {/* Left Content */}
-            <div className="space-y-4 sm:space-y-6">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-green-50 border border-green-200 text-green-800 text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
-                <Activity className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span>Same Day Reports Available</span>
-              </div>
-
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
-                Advanced Ultrasound<br/>
-                <span className="text-blue-700">& Digital X-Ray</span><br/>
-                Services
-              </h1>
-
-              <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-xl leading-relaxed">
-                North West Delhi&apos;s most trusted diagnostic center. 
-                <span className="font-semibold text-slate-900"> NABL certified</span> with latest equipment.
-              </p>
-
-              <div className="grid grid-cols-3 gap-3 sm:gap-4 py-3 sm:py-4">
-                {[
-                  { value: "6 Hrs", label: "Report Time" },
-                  { value: "₹499", label: "Starting Price" },
-                  { value: "4.9★", label: "Patient Rating" }
-                ].map((stat, i) => (
-                  <div key={i} className="text-center">
-                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-700">{stat.value}</div>
-                    <div className="text-[10px] sm:text-xs md:text-sm text-slate-500 font-medium">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Link href="/tests" className="flex-1 sm:flex-initial">
-                  <Button className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 bg-blue-700 hover:bg-blue-800 text-white font-bold text-base sm:text-lg rounded-xl shadow-lg shadow-blue-700/30 hover:shadow-xl transition-all">
-                    <Calendar className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                    Book Test Now
-                  </Button>
-                </Link>
-                <a href="tel:+919811582086" className="flex-1 sm:flex-initial">
-                  <Button variant="outline" className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 border-2 border-slate-300 hover:border-blue-700 hover:bg-blue-50 font-semibold text-base sm:text-lg rounded-xl">
-                    <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                    Call Expert
-                  </Button>
-                </a>
-              </div>
-
-              <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 sm:gap-6 pt-3 sm:pt-4 border-t border-slate-200">
-                <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-600">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
-                  <span className="font-medium">Free Home Collection</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-600">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
-                  <span className="font-medium">Digital Reports via WhatsApp</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Image Slider */}
-            <HeroImageSlider />
-          </div>
-        </div>
-      </section>
+      <HeroCarousel/>
 
       {/* 3. CATEGORY SECTIONS */}
       <CategorySection 
