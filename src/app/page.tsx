@@ -5,7 +5,7 @@ import { Badge } from "../../components/ui/badge";
 import { 
   ArrowRight, Clock, Phone, Shield, 
   Activity, Zap, Users, Star, Download, 
-  ChevronRight, TestTube, Microscope
+  ChevronRight, TestTube, Microscope, TrendingUp
 } from "lucide-react";
 import CircularCategoriesCarousel from "../../components/CircularCategoriesCarousel";
 import HeroCarousel from "../../components/HeroCarousel";
@@ -50,7 +50,7 @@ const CATEGORY_GROUPS = [
   }
 ];
 
-// Fetch products for a category group (limit to 4)
+// Fetch ONLY FEATURED products for a category group (limit to 4)
 async function getCategoryGroupProducts(slugs: string[]): Promise<Product[]> {
   try {
     const categories = await getProductCategories({ per_page: 100 });
@@ -60,12 +60,21 @@ async function getCategoryGroupProducts(slugs: string[]): Promise<Product[]> {
         const category = categories.find(cat => cat.slug === slug);
         if (!category) return [];
         
-        const products = await getProductsByCategory(category.id, { per_page: 4 });
-        return products;
+        // Fetch more products initially since we'll filter
+        const products = await getProductsByCategory(category.id, { 
+          per_page: 20  // Fetch more to ensure we get 4 featured ones
+        });
+        
+        // Filter for featured products only
+        return products.filter(product => product.featured === true);
       })
     );
     
-    return categoryProducts.flat().slice(0, 4);
+    // Flatten, ensure featured, and limit to 4
+    return categoryProducts
+      .flat()
+      .filter(product => product.featured === true)
+      .slice(0, 4);
   } catch (error) {
     console.error('Error fetching category group products:', error);
     return [];
@@ -107,76 +116,99 @@ function getCategorySlug(products: Product[]): string {
   return `/category/${categorySlug}`;
 }
 
-// Product Card Component
+// Product Card Component - WITHOUT IMAGES
 function ProductCard({ product }: { product: Product }) {
   const reportTat = getProductMetaValue(product, 'report_tat') || 'Same Day';
   const isPopular = product.total_sales && parseInt(product.total_sales) > 50;
   const hasDiscount = product.regular_price && product.regular_price !== product.price;
+  const discountPercent = hasDiscount 
+    ? Math.round(((Number(product.regular_price) - Number(product.price)) / Number(product.regular_price)) * 100)
+    : 0;
   
   return (
     <div className="group relative">
       <Link href={`/test/${product.slug}`} className="block h-full">
-        <div className="bg-white rounded-2xl border-2 border-slate-100 hover:border-blue-300 hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+        <div className="bg-white rounded-2xl border-2 border-slate-100 hover:border-blue-300 hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col group-hover:-translate-y-1">
           
-          <div className="relative h-40 sm:h-48 overflow-hidden bg-gradient-to-br from-blue-50 to-slate-50">
-            {product.images?.[0]?.src ? (
-              <Image 
-                src={product.images[0].src} 
-                alt={product.images[0].alt || product.name}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-slate-300">
-                <Activity className="w-12 h-12 sm:w-16 sm:h-16" />
-              </div>
-            )}
+          {/* Card Content - No Image Section */}
+          <div className="p-4 sm:p-6 flex-1 flex flex-col">
             
-            <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-              <Badge className="bg-white/95 text-blue-800 font-bold text-[10px] sm:text-xs shadow-md">
+            {/* Badges Row at Top */}
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              {/* Category Badge */}
+              <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 font-semibold text-[10px] sm:text-xs">
                 {product.categories?.[0]?.name || 'Diagnostic Test'}
               </Badge>
-            </div>
-            
-            {isPopular && (
-              <div className="absolute top-2 sm:top-3 right-2 sm:right-3">
-                <Badge className="bg-orange-500 text-white font-bold text-[10px] sm:text-xs shadow-md flex items-center gap-1">
-                  <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-white" /> Popular
+              
+              {/* Featured Badge - Since all are featured */}
+              <Badge className="bg-yellow-100 text-yellow-700 border-0 font-bold text-[10px] sm:text-xs shadow-none">
+                <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1 fill-yellow-600" />
+                Featured
+              </Badge>
+
+              {/* Popular Badge */}
+              {isPopular && (
+                <Badge className="bg-orange-100 text-orange-700 border-0 font-bold text-[10px] sm:text-xs shadow-none">
+                  <TrendingUp className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1" />
+                  Popular
                 </Badge>
-              </div>
-            )}
+              )}
 
-            <div className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 bg-green-500 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold flex items-center gap-1 shadow-lg">
-              <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> {reportTat}
+              {/* Discount Badge */}
+              {hasDiscount && (
+                <Badge className="ml-auto bg-red-100 text-red-700 border-0 font-bold text-[10px] sm:text-xs shadow-none">
+                  {discountPercent}% OFF
+                </Badge>
+              )}
             </div>
-          </div>
 
-          <div className="p-3 sm:p-5 flex-1 flex flex-col">
-            <h3 className="text-sm sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2 group-hover:text-blue-700 transition-colors leading-tight line-clamp-2">
+            {/* Test Name */}
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2 sm:mb-3 group-hover:text-blue-700 transition-colors leading-tight line-clamp-2 min-h-[2.5rem] sm:min-h-[3rem]">
               {product.name}
             </h3>
+
+            {/* Test Description */}
             <div 
-              className="text-slate-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-2 flex-1"
+              className="text-slate-600 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 flex-1 min-h-[2.5rem]"
               dangerouslySetInnerHTML={{ 
                 __html: product.short_description || product.description 
               }}
             />
 
-            <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-slate-100">
-              <div>
-                {hasDiscount && (
-                  <div className="text-slate-400 text-[10px] sm:text-xs line-through">
-                    {formatPrice(product.regular_price)}
-                  </div>
-                )}
-                <div className="text-blue-700 font-bold text-lg sm:text-2xl">
-                  {formatPrice(product.price)}
+            {/* Features */}
+            <div className="space-y-2 mb-4">
+              <div className="flex items-center gap-2 text-xs text-slate-700">
+                <div className="bg-green-100 p-1.5 rounded">
+                  <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-700" />
                 </div>
+                <span className="font-semibold">Report: {reportTat}</span>
               </div>
-              <Button size="sm" className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-3 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm rounded-lg shadow-md hover:shadow-lg transition-all">
-                Book <ArrowRight className="ml-1 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4" />
-              </Button>
+              <div className="flex items-center gap-2 text-xs text-slate-700">
+                <div className="bg-blue-100 p-1.5 rounded">
+                  <Shield className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-700" />
+                </div>
+                <span className="font-semibold">NABL Certified Lab</span>
+              </div>
+            </div>
+
+            {/* Price Section */}
+            <div className="pt-4 border-t border-slate-100">
+              <div className="flex items-center justify-between">
+                <div>
+                  {hasDiscount && (
+                    <div className="text-slate-400 text-[10px] sm:text-xs line-through mb-0.5">
+                      {formatPrice(product.regular_price)}
+                    </div>
+                  )}
+                  <div className="text-blue-700 font-bold text-xl sm:text-2xl">
+                    {formatPrice(product.price)}
+                  </div>
+                  <span className="text-[10px] sm:text-xs text-slate-500 font-medium">+ Free Home Collection</span>
+                </div>
+                <Button size="sm" className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm rounded-lg shadow-md hover:shadow-lg transition-all">
+                  Book <ArrowRight className="ml-1 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -210,7 +242,7 @@ function CategorySection({
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-10 gap-4">
           <div className="flex-1">
             <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-              <div className={`bg-gradient-to-r ${gradient} p-2 sm:p-3 rounded-lg sm:rounded-xl`}>
+              <div className={`bg-gradient-to-r ${gradient} p-2 sm:p-3 rounded-lg sm:rounded-xl shadow-lg`}>
                 <Icon className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
               </div>
               <div>
@@ -223,7 +255,7 @@ function CategorySection({
           </div>
           
           <Link href={categoryLink}>
-            <Button variant="outline" className="border-2 border-blue-700 text-blue-700 hover:bg-blue-50 font-bold px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl flex items-center text-sm sm:text-base">
+            <Button variant="outline" className="border-2 border-blue-700 text-blue-700 hover:bg-blue-50 font-bold px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl flex items-center text-sm sm:text-base shadow-sm hover:shadow-md transition-all">
               View All
               <ChevronRight className="ml-1 sm:ml-2 w-4 h-4 sm:w-5 sm:h-5" />
             </Button>
@@ -256,7 +288,7 @@ export default async function Index() {
       {/* 2. HERO SECTION */}
       <HeroCarousel/>
 
-      {/* 3. CATEGORY SECTIONS */}
+      {/* 3. CATEGORY SECTIONS - Only Featured Tests */}
       <CategorySection 
         title={CATEGORY_GROUPS[0].title}
         description={CATEGORY_GROUPS[0].description}
