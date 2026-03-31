@@ -52,7 +52,7 @@ const Header = () => {
   const navItems = [
     { href: '/', label: 'Home', icon: null },
     { href: '/tests', label: 'Tests', icon: FileText },
-    { href: '/packages', label: 'Health Packages', icon: Package },
+    { href: '/category/health-checkups', label: 'Health Packages', icon: Package },
     { href: '/reports', label: 'Reports', icon: FileText },
     { href: '/about', label: 'About', icon: null }
   ];
