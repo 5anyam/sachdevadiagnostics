@@ -23,7 +23,7 @@ const CATEGORY_GROUPS = [
   {
     title: "Health Checkups",
     description: "Comprehensive diagnostic and health screening packages",
-    slugs: ["health-checkups", "special-ultrasound"],
+    slugs: ["health-checkups", "health-checkup"],
     icon: TestTube,
     gradient: "from-green-500 to-emerald-500"
   },

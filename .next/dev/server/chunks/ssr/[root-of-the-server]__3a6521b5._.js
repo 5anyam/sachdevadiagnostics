@@ -804,7 +804,7 @@ const CATEGORY_GROUPS = [
         description: "Comprehensive diagnostic and health screening packages",
         slugs: [
             "health-checkups",
-            "special-ultrasound"
+            "health-checkup"
         ],
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$test$2d$tube$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__TestTube$3e$__["TestTube"],
         gradient: "from-green-500 to-emerald-500"
