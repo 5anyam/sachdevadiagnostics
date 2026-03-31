@@ -21,9 +21,9 @@ import {
 
 const CATEGORY_GROUPS = [
   {
-    title: "Health Packages",
+    title: "Health Checkups",
     description: "Comprehensive diagnostic and health screening packages",
-    slugs: ["health-packages", "special-ultrasound"],
+    slugs: ["health-checkups", "special-ultrasound"],
     icon: TestTube,
     gradient: "from-green-500 to-emerald-500"
   },
