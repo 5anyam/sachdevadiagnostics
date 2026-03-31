@@ -2107,3 +2107,147 @@
 [01:33:16.252] Server  LOG     ✅ Found 26 products in category
 [01:33:16.252] Server  LOG     ✅ Found 28 products in category
 [01:33:16.252] Server  LOG     ✅ Found 11 products in category
+[01:33:29.252] Server  LOG     🔍 Fetching categories with params: {}
+[01:33:29.252] Server  LOG     🌐 API Request: {}
+[01:33:29.256] Server  LOG     🔍 Fetching categories with params: {}
+[01:33:29.256] Server  LOG     🌐 API Request: {}
+[01:33:29.257] Server  LOG     🔍 Fetching categories with params: {}
+[01:33:29.257] Server  LOG     🌐 API Request: {}
+[01:33:29.258] Server  LOG     🔍 Fetching categories with params: {}
+[01:33:29.258] Server  LOG     🌐 API Request: {}
+[01:33:29.259] Server  LOG     🔍 Fetching categories with params: {}
+[01:33:29.260] Server  LOG     🌐 API Request: {}
+[01:33:29.274] Server  LOG     📡 Response Status: 200 ""
+[01:33:29.275] Server  LOG     📡 Response Status: 200 ""
+[01:33:29.278] Server  LOG     📡 Response Status: 200 ""
+[01:33:29.280] Server  LOG     ✅ API Response Success: {}
+[01:33:29.280] Server  LOG     ✅ API Response Success: {}
+[01:33:29.280] Server  LOG     📡 Response Status: 200 ""
+[01:33:29.281] Server  LOG     📄 Fetched page 1 (35 items)
+[01:33:29.281] Server  LOG     ✅ Total items fetched: 35
+[01:33:29.281] Server  LOG     📄 Fetched page 1 (35 items)
+[01:33:29.281] Server  LOG     ✅ Total items fetched: 35
+[01:33:29.281] Server  LOG     ✅ Found 35 categories
+[01:33:29.281] Server  LOG     ✅ Found 35 categories
+[01:33:29.281] Server  LOG     🔍 Fetching products for category: 213
+[01:33:29.282] Server  LOG     🌐 API Request: {}
+[01:33:29.282] Server  LOG     ✅ API Response Success: {}
+[01:33:29.283] Server  LOG     📡 Response Status: 200 ""
+[01:33:29.283] Server  LOG     📄 Fetched page 1 (35 items)
+[01:33:29.283] Server  LOG     ✅ Total items fetched: 35
+[01:33:29.284] Server  LOG     ✅ Found 35 categories
+[01:33:29.284] Server  LOG     🔍 Fetching products for category: 15
+[01:33:29.284] Server  LOG     🌐 API Request: {}
+[01:33:29.285] Server  LOG     🔍 Fetching products for category: 184
+[01:33:29.285] Server  LOG     🌐 API Request: {}
+[01:33:29.285] Server  LOG     🔍 Fetching products for category: 183
+[01:33:29.286] Server  LOG     🌐 API Request: {}
+[01:33:29.286] Server  LOG     🔍 Fetching products for category: 185
+[01:33:29.286] Server  LOG     🌐 API Request: {}
+[01:33:29.287] Server  LOG     ✅ API Response Success: {}
+[01:33:29.288] Server  LOG     📄 Fetched page 1 (35 items)
+[01:33:29.288] Server  LOG     ✅ Total items fetched: 35
+[01:33:29.289] Server  LOG     ✅ Found 35 categories
+[01:33:29.290] Server  LOG     ✅ API Response Success: {}
+[01:33:29.291] Server  LOG     📄 Fetched page 1 (35 items)
+[01:33:29.291] Server  LOG     ✅ Total items fetched: 35
+[01:33:29.291] Server  LOG     ✅ Found 35 categories
+[01:33:29.292] Server  LOG     📡 Response Status: 200 ""
+[01:33:29.293] Server  LOG     📡 Response Status: 200 ""
+[01:33:29.294] Server  LOG     📡 Response Status: 200 ""
+[01:33:29.295] Server  LOG     📡 Response Status: 200 ""
+[01:33:29.295] Server  LOG     📡 Response Status: 200 ""
+[01:33:29.311] Server  LOG     ✅ API Response Success: {}
+[01:33:29.312] Server  LOG     📄 Fetched page 1 (22 items)
+[01:33:29.312] Server  LOG     ✅ Total items fetched: 22
+[01:33:29.312] Server  LOG     ✅ Found 22 products in category
+[01:33:29.312] Server  LOG     ✅ API Response Success: {}
+[01:33:29.312] Server  LOG     ✅ API Response Success: {}
+[01:33:29.313] Server  LOG     ✅ API Response Success: {}
+[01:33:29.313] Server  LOG     ✅ API Response Success: {}
+[01:33:29.313] Server  LOG     📄 Fetched page 1 (6 items)
+[01:33:29.313] Server  LOG     ✅ Total items fetched: 6
+[01:33:29.313] Server  LOG     📄 Fetched page 1 (26 items)
+[01:33:29.313] Server  LOG     ✅ Total items fetched: 26
+[01:33:29.313] Server  LOG     📄 Fetched page 1 (28 items)
+[01:33:29.313] Server  LOG     ✅ Total items fetched: 28
+[01:33:29.313] Server  LOG     📄 Fetched page 1 (11 items)
+[01:33:29.313] Server  LOG     ✅ Total items fetched: 11
+[01:33:29.313] Server  LOG     ✅ Found 6 products in category
+[01:33:29.313] Server  LOG     ✅ Found 26 products in category
+[01:33:29.314] Server  LOG     ✅ Found 28 products in category
+[01:33:29.314] Server  LOG     ✅ Found 11 products in category
+[01:33:30.817] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:33:33.224] Browser WARN    Image with src "/sachdeva-diagnostics-logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:34:00.894] Server  LOG     ✓ Compiled in 209ms
+[01:34:01.291] Server  LOG     🔧 API Configuration: {}
+[01:34:01.334] Server  LOG     🔍 Fetching categories with params: {}
+[01:34:01.335] Server  LOG     🌐 API Request: {}
+[01:34:01.365] Server  LOG     🔍 Fetching categories with params: {}
+[01:34:01.365] Server  LOG     🌐 API Request: {}
+[01:34:01.366] Server  LOG     🔍 Fetching categories with params: {}
+[01:34:01.367] Server  LOG     🌐 API Request: {}
+[01:34:01.375] Server  LOG     🔍 Fetching categories with params: {}
+[01:34:01.375] Server  LOG     🌐 API Request: {}
+[01:34:01.376] Server  LOG     🔍 Fetching categories with params: {}
+[01:34:01.377] Server  LOG     🌐 API Request: {}
+[01:34:01.389] Server  LOG     📡 Response Status: 200 ""
+[01:34:01.391] Server  LOG     📡 Response Status: 200 ""
+[01:34:01.392] Server  LOG     📡 Response Status: 200 ""
+[01:34:01.392] Server  LOG     📡 Response Status: 200 ""
+[01:34:01.392] Server  LOG     📡 Response Status: 200 ""
+[01:34:01.400] Server  LOG     ✅ API Response Success: {}
+[01:34:01.400] Server  LOG     ✅ API Response Success: {}
+[01:34:01.400] Server  LOG     ✅ API Response Success: {}
+[01:34:01.401] Server  LOG     ✅ API Response Success: {}
+[01:34:01.401] Server  LOG     ✅ API Response Success: {}
+[01:34:01.401] Server  LOG     📄 Fetched page 1 (35 items)
+[01:34:01.401] Server  LOG     ✅ Total items fetched: 35
+[01:34:01.401] Server  LOG     📄 Fetched page 1 (35 items)
+[01:34:01.401] Server  LOG     ✅ Total items fetched: 35
+[01:34:01.402] Server  LOG     📄 Fetched page 1 (35 items)
+[01:34:01.402] Server  LOG     ✅ Total items fetched: 35
+[01:34:01.402] Server  LOG     📄 Fetched page 1 (35 items)
+[01:34:01.402] Server  LOG     ✅ Total items fetched: 35
+[01:34:01.402] Server  LOG     📄 Fetched page 1 (35 items)
+[01:34:01.402] Server  LOG     ✅ Total items fetched: 35
+[01:34:01.402] Server  LOG     ✅ Found 35 categories
+[01:34:01.402] Server  LOG     ✅ Found 35 categories
+[01:34:01.402] Server  LOG     ✅ Found 35 categories
+[01:34:01.403] Server  LOG     ✅ Found 35 categories
+[01:34:01.403] Server  LOG     ✅ Found 35 categories
+[01:34:01.403] Server  LOG     🔍 Fetching products for category: 187
+[01:34:01.403] Server  LOG     🌐 API Request: {}
+[01:34:01.404] Server  LOG     🔍 Fetching products for category: 15
+[01:34:01.404] Server  LOG     🌐 API Request: {}
+[01:34:01.405] Server  LOG     🔍 Fetching products for category: 184
+[01:34:01.406] Server  LOG     🌐 API Request: {}
+[01:34:01.406] Server  LOG     🔍 Fetching products for category: 183
+[01:34:01.406] Server  LOG     🌐 API Request: {}
+[01:34:01.407] Server  LOG     🔍 Fetching products for category: 185
+[01:34:01.408] Server  LOG     🌐 API Request: {}
+[01:34:01.413] Server  LOG     📡 Response Status: 200 ""
+[01:34:01.414] Server  LOG     📡 Response Status: 200 ""
+[01:34:01.414] Server  LOG     📡 Response Status: 200 ""
+[01:34:01.415] Server  LOG     📡 Response Status: 200 ""
+[01:34:01.415] Server  LOG     📡 Response Status: 200 ""
+[01:34:01.420] Server  LOG     ✅ API Response Success: {}
+[01:34:01.420] Server  LOG     ✅ API Response Success: {}
+[01:34:01.420] Server  LOG     ✅ API Response Success: {}
+[01:34:01.420] Server  LOG     ✅ API Response Success: {}
+[01:34:01.420] Server  LOG     ✅ API Response Success: {}
+[01:34:01.420] Server  LOG     📄 Fetched page 1 (18 items)
+[01:34:01.420] Server  LOG     ✅ Total items fetched: 18
+[01:34:01.420] Server  LOG     📄 Fetched page 1 (6 items)
+[01:34:01.421] Server  LOG     ✅ Total items fetched: 6
+[01:34:01.421] Server  LOG     📄 Fetched page 1 (26 items)
+[01:34:01.421] Server  LOG     ✅ Total items fetched: 26
+[01:34:01.421] Server  LOG     📄 Fetched page 1 (28 items)
+[01:34:01.421] Server  LOG     ✅ Total items fetched: 28
+[01:34:01.421] Server  LOG     📄 Fetched page 1 (11 items)
+[01:34:01.421] Server  LOG     ✅ Total items fetched: 11
+[01:34:01.421] Server  LOG     ✅ Found 18 products in category
+[01:34:01.421] Server  LOG     ✅ Found 6 products in category
+[01:34:01.421] Server  LOG     ✅ Found 26 products in category
+[01:34:01.422] Server  LOG     ✅ Found 28 products in category
+[01:34:01.422] Server  LOG     ✅ Found 11 products in category
