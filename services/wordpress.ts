@@ -135,7 +135,7 @@ const toStringParams = (params: Record<string, string | number | boolean> = {}):
 async function fetchAllPages<T>(
   endpoint: string,
   params: Record<string, string | number | boolean> = {},
-  maxPages = 10
+  maxPages = 20
 ): Promise<T[]> {
   const allData: T[] = [];
   

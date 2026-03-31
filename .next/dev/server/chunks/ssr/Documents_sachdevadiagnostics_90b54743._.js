@@ -257,7 +257,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnos
 };
 /**
  * Fetch all pages of data automatically (handles pagination)
- */ async function fetchAllPages(endpoint, params = {}, maxPages = 10) {
+ */ async function fetchAllPages(endpoint, params = {}, maxPages = 20) {
     const allData = [];
     try {
         // Fetch first page
