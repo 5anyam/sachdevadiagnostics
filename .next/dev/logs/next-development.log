@@ -2323,3 +2323,15 @@
 [01:37:34.548] Server  LOG     ✅ Found 11 products in category
 [01:37:36.595] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
 [01:40:32.270] Browser WARN    Image with src "/sachdeva-diagnostics-logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:44:09.191] Browser LOG     🔧 API Configuration: {"hasKey":true,"hasSecret":true,"url":"https://thesiswriting.xyz/wp-json/wc/v3"}
+[01:44:09.192] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["search","per_page","page"]}
+[01:44:09.192] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products/categories","method":"GET","params":["per_page","page"]}
+[01:44:09.882] Browser LOG     📡 Response Status: 200 
+[01:44:09.883] Browser LOG     ✅ API Response Success: {"dataType":"array[5]","endpoint":"/products","hasData":true}
+[01:44:09.883] Browser LOG     📄 Fetched page 1 (5 items)
+[01:44:09.883] Browser LOG     ✅ Total items fetched: 5
+[01:44:09.883] Browser LOG     📡 Response Status: 200 
+[01:44:09.883] Browser LOG     ✅ API Response Success: {"dataType":"array[35]","endpoint":"/products/categories","hasData":true}
+[01:44:09.883] Browser LOG     📄 Fetched page 1 (35 items)
+[01:44:09.883] Browser LOG     ✅ Total items fetched: 35
+[01:46:01.590] Server  LOG     ✓ Compiled in 476ms

@@ -51,7 +51,7 @@ const SearchContent = () => {
   // ✅ Price high to low sort
   const sortedResults = useMemo(() => {
     if (!searchResults) return [];
-    return [...searchResults].sort((a, b) => Number(b.price) - Number(a.price));
+    return [...searchResults].sort((a, b) => Number(a.price) - Number(b.price));
   }, [searchResults]);
 
   useEffect(() => {
