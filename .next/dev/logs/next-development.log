@@ -939,3 +939,911 @@
 [00:46:29.822] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
 [00:46:29.822] Browser LOG     📄 Fetched page 3 (100 items)
 [00:46:29.822] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:30.520] Browser LOG     📡 Response Status: 200 
+[00:46:30.520] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:30.520] Browser LOG     📄 Fetched page 4 (100 items)
+[00:46:30.520] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:31.234] Browser LOG     📡 Response Status: 200 
+[00:46:31.234] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:31.234] Browser LOG     📄 Fetched page 5 (100 items)
+[00:46:31.234] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:31.957] Browser LOG     📡 Response Status: 200 
+[00:46:31.957] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:31.957] Browser LOG     📄 Fetched page 6 (100 items)
+[00:46:31.957] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:32.653] Browser LOG     📡 Response Status: 200 
+[00:46:32.653] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:32.653] Browser LOG     📄 Fetched page 7 (100 items)
+[00:46:32.653] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:33.367] Browser LOG     📡 Response Status: 200 
+[00:46:33.367] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:33.367] Browser LOG     📄 Fetched page 8 (100 items)
+[00:46:33.367] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:34.136] Browser LOG     📡 Response Status: 200 
+[00:46:34.136] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:34.136] Browser LOG     📄 Fetched page 9 (100 items)
+[00:46:34.136] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:34.808] Browser LOG     📡 Response Status: 200 
+[00:46:34.808] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:34.808] Browser LOG     📄 Fetched page 10 (100 items)
+[00:46:34.808] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:35.525] Browser LOG     📡 Response Status: 200 
+[00:46:35.525] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:35.525] Browser LOG     📄 Fetched page 11 (100 items)
+[00:46:35.525] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:36.221] Browser LOG     📡 Response Status: 200 
+[00:46:36.221] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:36.221] Browser LOG     📄 Fetched page 12 (100 items)
+[00:46:36.221] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:36.913] Browser LOG     📡 Response Status: 200 
+[00:46:36.913] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:36.913] Browser LOG     📄 Fetched page 13 (100 items)
+[00:46:36.913] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:37.525] Browser LOG     📡 Response Status: 200 
+[00:46:37.525] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:37.525] Browser LOG     📄 Fetched page 14 (100 items)
+[00:46:37.525] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:38.158] Browser LOG     📡 Response Status: 200 
+[00:46:38.158] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:38.158] Browser LOG     📄 Fetched page 15 (100 items)
+[00:46:38.158] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:38.809] Browser LOG     📡 Response Status: 200 
+[00:46:38.809] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:38.809] Browser LOG     📄 Fetched page 16 (100 items)
+[00:46:38.810] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:39.553] Browser LOG     📡 Response Status: 200 
+[00:46:39.553] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:39.553] Browser LOG     📄 Fetched page 17 (100 items)
+[00:46:39.553] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:40.272] Browser LOG     📡 Response Status: 200 
+[00:46:40.272] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:40.272] Browser LOG     📄 Fetched page 18 (100 items)
+[00:46:40.272] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:40.973] Browser LOG     📡 Response Status: 200 
+[00:46:40.973] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:46:40.973] Browser LOG     📄 Fetched page 19 (100 items)
+[00:46:40.973] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:46:41.606] Browser LOG     📡 Response Status: 200 
+[00:46:41.607] Browser LOG     ✅ API Response Success: {"dataType":"array[65]","endpoint":"/products","hasData":true}
+[00:46:41.607] Browser LOG     📄 Fetched page 20 (65 items)
+[00:46:41.607] Browser LOG     📄 Last page reached at page 20
+[00:46:41.607] Browser LOG     ✅ Total items fetched: 1965
+[00:59:00.274] Server  LOG     ✓ Compiled in 603ms
+[00:59:01.704] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:01.704] Browser LOG     🔍 Fetching categories with params: {}
+[00:59:01.704] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products/categories","method":"GET","params":["hide_empty","per_page","page"]}
+[00:59:01.704] Browser LOG     📡 Response Status: 200 
+[00:59:01.704] Browser LOG     ✅ API Response Success: {"dataType":"array[35]","endpoint":"/products/categories","hasData":true}
+[00:59:01.704] Browser LOG     📄 Fetched page 1 (35 items)
+[00:59:01.704] Browser LOG     ✅ Total items fetched: 35
+[00:59:01.704] Browser LOG     ✅ Found 35 categories
+[00:59:02.698] Browser LOG     📡 Response Status: 200 
+[00:59:02.698] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:02.698] Browser LOG     📄 Fetched page 1 (100 items)
+[00:59:02.698] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:02.698] Browser LOG     📡 Response Status: 200 
+[00:59:02.699] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:02.699] Browser LOG     📄 Fetched page 2 (100 items)
+[00:59:02.699] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:03.699] Browser LOG     📡 Response Status: 200 
+[00:59:03.699] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:03.699] Browser LOG     📄 Fetched page 3 (100 items)
+[00:59:03.699] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:04.709] Browser LOG     📡 Response Status: 200 
+[00:59:04.709] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:04.709] Browser LOG     📄 Fetched page 4 (100 items)
+[00:59:04.709] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:05.701] Browser LOG     📡 Response Status: 200 
+[00:59:05.701] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:05.702] Browser LOG     📄 Fetched page 5 (100 items)
+[00:59:05.702] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:05.702] Browser LOG     📡 Response Status: 200 
+[00:59:05.702] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:05.702] Browser LOG     📄 Fetched page 6 (100 items)
+[00:59:05.702] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:06.698] Browser LOG     📡 Response Status: 200 
+[00:59:06.699] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:06.699] Browser LOG     📄 Fetched page 7 (100 items)
+[00:59:06.699] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:07.698] Browser LOG     📡 Response Status: 200 
+[00:59:07.699] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:07.699] Browser LOG     📄 Fetched page 8 (100 items)
+[00:59:07.699] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:08.699] Browser LOG     📡 Response Status: 200 
+[00:59:08.699] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:08.699] Browser LOG     📄 Fetched page 9 (100 items)
+[00:59:08.699] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:09.700] Browser LOG     📡 Response Status: 200 
+[00:59:09.700] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:09.700] Browser LOG     📄 Fetched page 10 (100 items)
+[00:59:09.700] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:09.700] Browser LOG     📡 Response Status: 200 
+[00:59:09.700] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:09.700] Browser LOG     📄 Fetched page 11 (100 items)
+[00:59:09.700] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:10.699] Browser LOG     📡 Response Status: 200 
+[00:59:10.700] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:10.700] Browser LOG     📄 Fetched page 12 (100 items)
+[00:59:10.700] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:11.700] Browser LOG     📡 Response Status: 200 
+[00:59:11.700] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:11.700] Browser LOG     📄 Fetched page 13 (100 items)
+[00:59:11.700] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:12.698] Browser LOG     📡 Response Status: 200 
+[00:59:12.698] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:12.698] Browser LOG     📄 Fetched page 14 (100 items)
+[00:59:12.698] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:12.698] Browser LOG     📡 Response Status: 200 
+[00:59:12.698] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:12.698] Browser LOG     📄 Fetched page 15 (100 items)
+[00:59:12.698] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:13.699] Browser LOG     📡 Response Status: 200 
+[00:59:13.699] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:13.699] Browser LOG     📄 Fetched page 16 (100 items)
+[00:59:13.699] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:14.699] Browser LOG     📡 Response Status: 200 
+[00:59:14.699] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:14.699] Browser LOG     📄 Fetched page 17 (100 items)
+[00:59:14.699] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:15.699] Browser LOG     📡 Response Status: 200 
+[00:59:15.699] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:15.699] Browser LOG     📄 Fetched page 18 (100 items)
+[00:59:15.699] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:16.704] Browser LOG     📡 Response Status: 200 
+[00:59:16.704] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[00:59:16.704] Browser LOG     📄 Fetched page 19 (100 items)
+[00:59:16.704] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[00:59:16.704] Browser LOG     📡 Response Status: 200 
+[00:59:16.704] Browser LOG     ✅ API Response Success: {"dataType":"array[65]","endpoint":"/products","hasData":true}
+[00:59:16.704] Browser LOG     📄 Fetched page 20 (65 items)
+[00:59:16.704] Browser LOG     📄 Last page reached at page 20
+[00:59:16.704] Browser LOG     ✅ Total items fetched: 1965
+[01:00:51.958] Server  LOG     ✓ Compiled in 948ms
+[01:00:52.723] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:00:52.723] Browser LOG     🔍 Fetching categories with params: {}
+[01:00:52.723] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products/categories","method":"GET","params":["hide_empty","per_page","page"]}
+[01:00:53.710] Browser LOG     📡 Response Status: 200 
+[01:00:53.711] Browser LOG     ✅ API Response Success: {"dataType":"array[35]","endpoint":"/products/categories","hasData":true}
+[01:00:53.711] Browser LOG     📄 Fetched page 1 (35 items)
+[01:00:53.711] Browser LOG     ✅ Total items fetched: 35
+[01:00:53.711] Browser LOG     ✅ Found 35 categories
+[01:00:53.711] Browser LOG     📡 Response Status: 200 
+[01:00:53.711] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:00:53.711] Browser LOG     📄 Fetched page 1 (100 items)
+[01:00:53.711] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:00:54.721] Browser LOG     📡 Response Status: 200 
+[01:00:54.721] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:00:54.722] Browser LOG     📄 Fetched page 2 (100 items)
+[01:00:54.722] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:00:55.702] Browser LOG     📡 Response Status: 200 
+[01:00:55.705] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:00:55.706] Browser LOG     📄 Fetched page 3 (100 items)
+[01:00:55.706] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:00:56.698] Browser LOG     📡 Response Status: 200 
+[01:00:56.698] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:00:56.698] Browser LOG     📄 Fetched page 4 (100 items)
+[01:00:56.698] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:00:57.701] Browser LOG     📡 Response Status: 200 
+[01:00:57.701] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:00:57.701] Browser LOG     📄 Fetched page 5 (100 items)
+[01:00:57.701] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:00:57.701] Browser LOG     📡 Response Status: 200 
+[01:00:57.701] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:00:57.701] Browser LOG     📄 Fetched page 6 (100 items)
+[01:00:57.701] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:00:58.699] Browser LOG     📡 Response Status: 200 
+[01:00:58.714] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:00:58.714] Browser LOG     📄 Fetched page 7 (100 items)
+[01:00:58.714] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:00:59.701] Browser LOG     📡 Response Status: 200 
+[01:00:59.701] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:00:59.701] Browser LOG     📄 Fetched page 8 (100 items)
+[01:00:59.701] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:01:00.766] Browser LOG     📡 Response Status: 200 
+[01:01:00.766] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:01:00.767] Browser LOG     📄 Fetched page 9 (100 items)
+[01:01:00.767] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:01:00.767] Browser LOG     📡 Response Status: 200 
+[01:01:00.767] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:01:00.767] Browser LOG     📄 Fetched page 10 (100 items)
+[01:01:00.767] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:01:02.712] Browser LOG     📡 Response Status: 200 
+[01:01:02.713] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:01:02.713] Browser LOG     📄 Fetched page 11 (100 items)
+[01:01:02.713] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:01:02.713] Browser LOG     📡 Response Status: 200 
+[01:01:02.713] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:01:02.713] Browser LOG     📄 Fetched page 12 (100 items)
+[01:01:02.713] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:01:03.703] Browser LOG     📡 Response Status: 200 
+[01:01:03.703] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:01:03.703] Browser LOG     📄 Fetched page 13 (100 items)
+[01:01:03.703] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:01:05.701] Browser LOG     📡 Response Status: 200 
+[01:01:05.702] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:01:05.702] Browser LOG     📄 Fetched page 14 (100 items)
+[01:01:05.702] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:01:05.702] Browser LOG     📡 Response Status: 200 
+[01:01:05.702] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:01:05.702] Browser LOG     📄 Fetched page 15 (100 items)
+[01:01:05.702] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:01:05.702] Browser LOG     📡 Response Status: 200 
+[01:01:05.702] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:01:05.702] Browser LOG     📄 Fetched page 16 (100 items)
+[01:01:05.702] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:01:06.698] Browser LOG     📡 Response Status: 200 
+[01:01:06.698] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:01:06.698] Browser LOG     📄 Fetched page 17 (100 items)
+[01:01:06.698] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:01:08.701] Browser LOG     📡 Response Status: 200 
+[01:01:08.701] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:01:08.701] Browser LOG     📄 Fetched page 18 (100 items)
+[01:01:08.701] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:01:08.701] Browser LOG     📡 Response Status: 200 
+[01:01:08.701] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:01:08.701] Browser LOG     📄 Fetched page 19 (100 items)
+[01:01:08.701] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:01:08.701] Browser LOG     📡 Response Status: 200 
+[01:01:08.701] Browser LOG     ✅ API Response Success: {"dataType":"array[65]","endpoint":"/products","hasData":true}
+[01:01:08.701] Browser LOG     📄 Fetched page 20 (65 items)
+[01:01:08.701] Browser LOG     📄 Last page reached at page 20
+[01:01:08.701] Browser LOG     ✅ Total items fetched: 1965
+[01:04:15.917] Server  LOG     🔧 API Configuration: {}
+[01:04:15.963] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:15.964] Server  LOG     🌐 API Request: {}
+[01:04:16.062] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:16.064] Server  LOG     🌐 API Request: {}
+[01:04:16.066] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:16.066] Server  LOG     🌐 API Request: {}
+[01:04:16.072] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:16.072] Server  LOG     🌐 API Request: {}
+[01:04:16.076] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:16.077] Server  LOG     🌐 API Request: {}
+[01:04:16.173] Server  LOG     📡 Response Status: 200 ""
+[01:04:16.179] Server  LOG     📡 Response Status: 200 ""
+[01:04:16.190] Server  LOG     📡 Response Status: 200 ""
+[01:04:16.193] Server  LOG     ✅ API Response Success: {}
+[01:04:16.193] Server  LOG     ✅ API Response Success: {}
+[01:04:16.193] Server  LOG     📡 Response Status: 200 ""
+[01:04:16.194] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:16.194] Server  LOG     ✅ Total items fetched: 32
+[01:04:16.194] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:16.194] Server  LOG     ✅ Total items fetched: 32
+[01:04:16.194] Server  LOG     ✅ Found 32 categories
+[01:04:16.194] Server  LOG     ✅ Found 32 categories
+[01:04:16.196] Server  LOG     🔍 Fetching products for category: 187
+[01:04:16.196] Server  LOG     🌐 API Request: {}
+[01:04:16.198] Server  LOG     ✅ API Response Success: {}
+[01:04:16.199] Server  LOG     📡 Response Status: 200 ""
+[01:04:16.201] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:16.201] Server  LOG     ✅ Total items fetched: 32
+[01:04:16.201] Server  LOG     ✅ Found 32 categories
+[01:04:16.202] Server  LOG     🔍 Fetching products for category: 15
+[01:04:16.202] Server  LOG     🌐 API Request: {}
+[01:04:16.203] Server  LOG     🔍 Fetching products for category: 184
+[01:04:16.203] Server  LOG     🌐 API Request: {}
+[01:04:16.204] Server  LOG     🔍 Fetching products for category: 183
+[01:04:16.205] Server  LOG     🌐 API Request: {}
+[01:04:16.230] Server  LOG     🔍 Fetching products for category: 185
+[01:04:16.231] Server  LOG     🌐 API Request: {}
+[01:04:16.232] Server  LOG     ✅ API Response Success: {}
+[01:04:16.239] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:16.240] Server  LOG     ✅ Total items fetched: 32
+[01:04:16.241] Server  LOG     ✅ Found 32 categories
+[01:04:16.244] Server  LOG     ✅ API Response Success: {}
+[01:04:16.293] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:16.294] Server  LOG     ✅ Total items fetched: 32
+[01:04:16.295] Server  LOG     ✅ Found 32 categories
+[01:04:16.308] Server  LOG     📡 Response Status: 200 ""
+[01:04:16.336] Server  LOG     📡 Response Status: 200 ""
+[01:04:16.337] Server  LOG     📡 Response Status: 200 ""
+[01:04:16.338] Server  LOG     📡 Response Status: 200 ""
+[01:04:16.339] Server  LOG     📡 Response Status: 200 ""
+[01:04:16.348] Server  LOG     ✅ API Response Success: {}
+[01:04:16.348] Server  LOG     📄 Fetched page 1 (54 items)
+[01:04:16.348] Server  LOG     ✅ Total items fetched: 54
+[01:04:16.349] Server  LOG     ✅ Found 54 products in category
+[01:04:16.350] Server  LOG     ✅ API Response Success: {}
+[01:04:16.350] Server  LOG     ✅ API Response Success: {}
+[01:04:16.350] Server  LOG     ✅ API Response Success: {}
+[01:04:16.350] Server  LOG     ✅ API Response Success: {}
+[01:04:16.351] Server  LOG     📄 Fetched page 1 (18 items)
+[01:04:16.351] Server  LOG     ✅ Total items fetched: 18
+[01:04:16.351] Server  LOG     📄 Fetched page 1 (78 items)
+[01:04:16.351] Server  LOG     ✅ Total items fetched: 78
+[01:04:16.351] Server  LOG     📄 Fetched page 1 (84 items)
+[01:04:16.351] Server  LOG     ✅ Total items fetched: 84
+[01:04:16.351] Server  LOG     📄 Fetched page 1 (33 items)
+[01:04:16.352] Server  LOG     ✅ Total items fetched: 33
+[01:04:16.352] Server  LOG     ✅ Found 18 products in category
+[01:04:16.352] Server  LOG     ✅ Found 78 products in category
+[01:04:16.352] Server  LOG     ✅ Found 84 products in category
+[01:04:16.352] Server  LOG     ✅ Found 33 products in category
+[01:04:30.463] Server  LOG     ✓ Compiled in 467ms
+[01:04:30.668] Server  LOG     🔧 API Configuration: {}
+[01:04:30.690] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:30.690] Server  LOG     🌐 API Request: {}
+[01:04:30.715] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:30.715] Server  LOG     🌐 API Request: {}
+[01:04:30.716] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:30.716] Server  LOG     🌐 API Request: {}
+[01:04:30.717] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:30.717] Server  LOG     🌐 API Request: {}
+[01:04:30.718] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:30.718] Server  LOG     🌐 API Request: {}
+[01:04:30.729] Server  LOG     📡 Response Status: 200 ""
+[01:04:30.731] Server  LOG     📡 Response Status: 200 ""
+[01:04:30.731] Server  LOG     📡 Response Status: 200 ""
+[01:04:30.732] Server  LOG     📡 Response Status: 200 ""
+[01:04:30.732] Server  LOG     📡 Response Status: 200 ""
+[01:04:30.737] Server  LOG     ✅ API Response Success: {}
+[01:04:30.737] Server  LOG     ✅ API Response Success: {}
+[01:04:30.737] Server  LOG     ✅ API Response Success: {}
+[01:04:30.737] Server  LOG     ✅ API Response Success: {}
+[01:04:30.737] Server  LOG     ✅ API Response Success: {}
+[01:04:30.737] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:30.737] Server  LOG     ✅ Total items fetched: 32
+[01:04:30.737] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:30.738] Server  LOG     ✅ Total items fetched: 32
+[01:04:30.738] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:30.738] Server  LOG     ✅ Total items fetched: 32
+[01:04:30.738] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:30.738] Server  LOG     ✅ Total items fetched: 32
+[01:04:30.738] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:30.738] Server  LOG     ✅ Total items fetched: 32
+[01:04:30.738] Server  LOG     ✅ Found 32 categories
+[01:04:30.738] Server  LOG     ✅ Found 32 categories
+[01:04:30.739] Server  LOG     ✅ Found 32 categories
+[01:04:30.739] Server  LOG     ✅ Found 32 categories
+[01:04:30.739] Server  LOG     ✅ Found 32 categories
+[01:04:30.739] Server  LOG     🔍 Fetching products for category: 187
+[01:04:30.740] Server  LOG     🌐 API Request: {}
+[01:04:30.740] Server  LOG     🔍 Fetching products for category: 15
+[01:04:30.741] Server  LOG     🌐 API Request: {}
+[01:04:30.741] Server  LOG     🔍 Fetching products for category: 184
+[01:04:30.742] Server  LOG     🌐 API Request: {}
+[01:04:30.743] Server  LOG     🔍 Fetching products for category: 183
+[01:04:30.744] Server  LOG     🌐 API Request: {}
+[01:04:30.745] Server  LOG     🔍 Fetching products for category: 185
+[01:04:30.745] Server  LOG     🌐 API Request: {}
+[01:04:30.750] Server  LOG     📡 Response Status: 200 ""
+[01:04:30.750] Server  LOG     📡 Response Status: 200 ""
+[01:04:30.751] Server  LOG     📡 Response Status: 200 ""
+[01:04:30.751] Server  LOG     📡 Response Status: 200 ""
+[01:04:30.751] Server  LOG     📡 Response Status: 200 ""
+[01:04:30.757] Server  LOG     ✅ API Response Success: {}
+[01:04:30.757] Server  LOG     ✅ API Response Success: {}
+[01:04:30.758] Server  LOG     ✅ API Response Success: {}
+[01:04:30.758] Server  LOG     ✅ API Response Success: {}
+[01:04:30.758] Server  LOG     ✅ API Response Success: {}
+[01:04:30.758] Server  LOG     📄 Fetched page 1 (54 items)
+[01:04:30.759] Server  LOG     ✅ Total items fetched: 54
+[01:04:30.759] Server  LOG     📄 Fetched page 1 (18 items)
+[01:04:30.760] Server  LOG     ✅ Total items fetched: 18
+[01:04:30.760] Server  LOG     📄 Fetched page 1 (78 items)
+[01:04:30.760] Server  LOG     ✅ Total items fetched: 78
+[01:04:30.760] Server  LOG     📄 Fetched page 1 (84 items)
+[01:04:30.760] Server  LOG     ✅ Total items fetched: 84
+[01:04:30.760] Server  LOG     📄 Fetched page 1 (33 items)
+[01:04:30.760] Server  LOG     ✅ Total items fetched: 33
+[01:04:30.761] Server  LOG     ✅ Found 54 products in category
+[01:04:30.761] Server  LOG     ✅ Found 18 products in category
+[01:04:30.761] Server  LOG     ✅ Found 78 products in category
+[01:04:30.761] Server  LOG     ✅ Found 84 products in category
+[01:04:30.761] Server  LOG     ✅ Found 33 products in category
+[01:04:40.028] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:40.029] Server  LOG     🌐 API Request: {}
+[01:04:40.033] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:40.034] Server  LOG     🌐 API Request: {}
+[01:04:40.035] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:40.036] Server  LOG     🌐 API Request: {}
+[01:04:40.039] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:40.039] Server  LOG     🌐 API Request: {}
+[01:04:40.042] Server  LOG     🔍 Fetching categories with params: {}
+[01:04:40.042] Server  LOG     🌐 API Request: {}
+[01:04:40.054] Server  LOG     📡 Response Status: 200 ""
+[01:04:40.056] Server  LOG     📡 Response Status: 200 ""
+[01:04:40.059] Server  LOG     📡 Response Status: 200 ""
+[01:04:40.060] Server  LOG     ✅ API Response Success: {}
+[01:04:40.060] Server  LOG     ✅ API Response Success: {}
+[01:04:40.061] Server  LOG     📡 Response Status: 200 ""
+[01:04:40.061] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:40.061] Server  LOG     ✅ Total items fetched: 32
+[01:04:40.061] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:40.061] Server  LOG     ✅ Total items fetched: 32
+[01:04:40.061] Server  LOG     ✅ Found 32 categories
+[01:04:40.061] Server  LOG     ✅ Found 32 categories
+[01:04:40.062] Server  LOG     🔍 Fetching products for category: 187
+[01:04:40.062] Server  LOG     🌐 API Request: {}
+[01:04:40.063] Server  LOG     ✅ API Response Success: {}
+[01:04:40.063] Server  LOG     📡 Response Status: 200 ""
+[01:04:40.063] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:40.064] Server  LOG     ✅ Total items fetched: 32
+[01:04:40.064] Server  LOG     ✅ Found 32 categories
+[01:04:40.064] Server  LOG     🔍 Fetching products for category: 15
+[01:04:40.064] Server  LOG     🌐 API Request: {}
+[01:04:40.065] Server  LOG     🔍 Fetching products for category: 184
+[01:04:40.065] Server  LOG     🌐 API Request: {}
+[01:04:40.065] Server  LOG     🔍 Fetching products for category: 183
+[01:04:40.066] Server  LOG     🌐 API Request: {}
+[01:04:40.066] Server  LOG     🔍 Fetching products for category: 185
+[01:04:40.067] Server  LOG     🌐 API Request: {}
+[01:04:40.068] Server  LOG     ✅ API Response Success: {}
+[01:04:40.068] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:40.068] Server  LOG     ✅ Total items fetched: 32
+[01:04:40.069] Server  LOG     ✅ Found 32 categories
+[01:04:40.070] Server  LOG     ✅ API Response Success: {}
+[01:04:40.079] Server  LOG     📄 Fetched page 1 (32 items)
+[01:04:40.079] Server  LOG     ✅ Total items fetched: 32
+[01:04:40.079] Server  LOG     ✅ Found 32 categories
+[01:04:40.080] Server  LOG     📡 Response Status: 200 ""
+[01:04:40.084] Server  LOG     📡 Response Status: 200 ""
+[01:04:40.111] Server  LOG     📡 Response Status: 200 ""
+[01:04:40.113] Server  LOG     📡 Response Status: 200 ""
+[01:04:40.113] Server  LOG     📡 Response Status: 200 ""
+[01:04:40.122] Server  LOG     ✅ API Response Success: {}
+[01:04:40.122] Server  LOG     📄 Fetched page 1 (54 items)
+[01:04:40.122] Server  LOG     ✅ Total items fetched: 54
+[01:04:40.122] Server  LOG     ✅ Found 54 products in category
+[01:04:40.123] Server  LOG     ✅ API Response Success: {}
+[01:04:40.123] Server  LOG     ✅ API Response Success: {}
+[01:04:40.123] Server  LOG     ✅ API Response Success: {}
+[01:04:40.123] Server  LOG     ✅ API Response Success: {}
+[01:04:40.123] Server  LOG     📄 Fetched page 1 (18 items)
+[01:04:40.123] Server  LOG     ✅ Total items fetched: 18
+[01:04:40.123] Server  LOG     📄 Fetched page 1 (78 items)
+[01:04:40.123] Server  LOG     ✅ Total items fetched: 78
+[01:04:40.123] Server  LOG     📄 Fetched page 1 (84 items)
+[01:04:40.123] Server  LOG     ✅ Total items fetched: 84
+[01:04:40.123] Server  LOG     📄 Fetched page 1 (33 items)
+[01:04:40.123] Server  LOG     ✅ Total items fetched: 33
+[01:04:40.124] Server  LOG     ✅ Found 18 products in category
+[01:04:40.124] Server  LOG     ✅ Found 78 products in category
+[01:04:40.124] Server  LOG     ✅ Found 84 products in category
+[01:04:40.124] Server  LOG     ✅ Found 33 products in category
+[01:04:41.810] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:05:21.213] Server  LOG     ✓ Compiled in 1610ms
+[01:05:21.881] Server  LOG     🔧 API Configuration: {}
+[01:05:21.970] Server  LOG     🔍 Fetching categories with params: {}
+[01:05:21.971] Server  LOG     🌐 API Request: {}
+[01:05:22.023] Server  LOG     🔍 Fetching categories with params: {}
+[01:05:22.023] Server  LOG     🌐 API Request: {}
+[01:05:22.024] Server  LOG     🔍 Fetching categories with params: {}
+[01:05:22.024] Server  LOG     🌐 API Request: {}
+[01:05:22.048] Server  LOG     🔍 Fetching categories with params: {}
+[01:05:22.049] Server  LOG     🌐 API Request: {}
+[01:05:22.055] Server  LOG     🔍 Fetching categories with params: {}
+[01:05:22.056] Server  LOG     🌐 API Request: {}
+[01:05:22.129] Server  LOG     📡 Response Status: 200 ""
+[01:05:22.148] Server  LOG     📡 Response Status: 200 ""
+[01:05:22.148] Server  LOG     📡 Response Status: 200 ""
+[01:05:22.149] Server  LOG     📡 Response Status: 200 ""
+[01:05:22.150] Server  LOG     📡 Response Status: 200 ""
+[01:05:22.198] Server  LOG     ✅ API Response Success: {}
+[01:05:22.198] Server  LOG     ✅ API Response Success: {}
+[01:05:22.199] Server  LOG     ✅ API Response Success: {}
+[01:05:22.199] Server  LOG     ✅ API Response Success: {}
+[01:05:22.199] Server  LOG     ✅ API Response Success: {}
+[01:05:22.199] Server  LOG     📄 Fetched page 1 (32 items)
+[01:05:22.200] Server  LOG     ✅ Total items fetched: 32
+[01:05:22.200] Server  LOG     📄 Fetched page 1 (32 items)
+[01:05:22.200] Server  LOG     ✅ Total items fetched: 32
+[01:05:22.201] Server  LOG     📄 Fetched page 1 (32 items)
+[01:05:22.201] Server  LOG     ✅ Total items fetched: 32
+[01:05:22.201] Server  LOG     📄 Fetched page 1 (32 items)
+[01:05:22.201] Server  LOG     ✅ Total items fetched: 32
+[01:05:22.201] Server  LOG     📄 Fetched page 1 (32 items)
+[01:05:22.201] Server  LOG     ✅ Total items fetched: 32
+[01:05:22.202] Server  LOG     ✅ Found 32 categories
+[01:05:22.202] Server  LOG     ✅ Found 32 categories
+[01:05:22.202] Server  LOG     ✅ Found 32 categories
+[01:05:22.202] Server  LOG     ✅ Found 32 categories
+[01:05:22.203] Server  LOG     ✅ Found 32 categories
+[01:05:22.204] Server  LOG     🔍 Fetching products for category: 187
+[01:05:22.204] Server  LOG     🌐 API Request: {}
+[01:05:22.205] Server  LOG     🔍 Fetching products for category: 15
+[01:05:22.205] Server  LOG     🌐 API Request: {}
+[01:05:22.207] Server  LOG     🔍 Fetching products for category: 184
+[01:05:22.207] Server  LOG     🌐 API Request: {}
+[01:05:22.209] Server  LOG     🔍 Fetching products for category: 183
+[01:05:22.210] Server  LOG     🌐 API Request: {}
+[01:05:22.224] Server  LOG     🔍 Fetching products for category: 185
+[01:05:22.232] Server  LOG     🌐 API Request: {}
+[01:05:22.323] Server  LOG     📡 Response Status: 200 ""
+[01:05:22.324] Server  LOG     📡 Response Status: 200 ""
+[01:05:22.324] Server  LOG     📡 Response Status: 200 ""
+[01:05:22.325] Server  LOG     📡 Response Status: 200 ""
+[01:05:22.327] Server  LOG     📡 Response Status: 200 ""
+[01:05:22.394] Server  LOG     ✅ API Response Success: {}
+[01:05:22.395] Server  LOG     ✅ API Response Success: {}
+[01:05:22.396] Server  LOG     ✅ API Response Success: {}
+[01:05:22.396] Server  LOG     ✅ API Response Success: {}
+[01:05:22.396] Server  LOG     ✅ API Response Success: {}
+[01:05:22.397] Server  LOG     📄 Fetched page 1 (54 items)
+[01:05:22.397] Server  LOG     ✅ Total items fetched: 54
+[01:05:22.397] Server  LOG     📄 Fetched page 1 (18 items)
+[01:05:22.398] Server  LOG     ✅ Total items fetched: 18
+[01:05:22.398] Server  LOG     📄 Fetched page 1 (78 items)
+[01:05:22.398] Server  LOG     ✅ Total items fetched: 78
+[01:05:22.398] Server  LOG     📄 Fetched page 1 (84 items)
+[01:05:22.398] Server  LOG     ✅ Total items fetched: 84
+[01:05:22.399] Server  LOG     📄 Fetched page 1 (33 items)
+[01:05:22.399] Server  LOG     ✅ Total items fetched: 33
+[01:05:22.400] Server  LOG     ✅ Found 54 products in category
+[01:05:22.400] Server  LOG     ✅ Found 18 products in category
+[01:05:22.400] Server  LOG     ✅ Found 78 products in category
+[01:05:22.400] Server  LOG     ✅ Found 84 products in category
+[01:05:22.400] Server  LOG     ✅ Found 33 products in category
+[01:07:20.914] Server  LOG     🔍 Fetching categories with params: {}
+[01:07:20.916] Server  LOG     🌐 API Request: {}
+[01:07:20.922] Server  LOG     🔍 Fetching categories with params: {}
+[01:07:20.923] Server  LOG     🌐 API Request: {}
+[01:07:20.925] Server  LOG     🔍 Fetching categories with params: {}
+[01:07:20.925] Server  LOG     🌐 API Request: {}
+[01:07:20.928] Server  LOG     🔍 Fetching categories with params: {}
+[01:07:20.929] Server  LOG     🌐 API Request: {}
+[01:07:20.932] Server  LOG     🔍 Fetching categories with params: {}
+[01:07:20.933] Server  LOG     🌐 API Request: {}
+[01:07:20.967] Server  LOG     📡 Response Status: 200 ""
+[01:07:20.972] Server  LOG     📡 Response Status: 200 ""
+[01:07:20.981] Server  LOG     📡 Response Status: 200 ""
+[01:07:20.984] Server  LOG     ✅ API Response Success: {}
+[01:07:20.984] Server  LOG     ✅ API Response Success: {}
+[01:07:20.984] Server  LOG     📡 Response Status: 200 ""
+[01:07:20.985] Server  LOG     📄 Fetched page 1 (32 items)
+[01:07:20.985] Server  LOG     ✅ Total items fetched: 32
+[01:07:20.985] Server  LOG     📄 Fetched page 1 (32 items)
+[01:07:20.985] Server  LOG     ✅ Total items fetched: 32
+[01:07:20.986] Server  LOG     ✅ Found 32 categories
+[01:07:20.986] Server  LOG     ✅ Found 32 categories
+[01:07:20.988] Server  LOG     🔍 Fetching products for category: 187
+[01:07:20.989] Server  LOG     🌐 API Request: {}
+[01:07:20.990] Server  LOG     ✅ API Response Success: {}
+[01:07:20.991] Server  LOG     📡 Response Status: 200 ""
+[01:07:20.991] Server  LOG     📄 Fetched page 1 (32 items)
+[01:07:20.992] Server  LOG     ✅ Total items fetched: 32
+[01:07:20.992] Server  LOG     ✅ Found 32 categories
+[01:07:20.992] Server  LOG     🔍 Fetching products for category: 15
+[01:07:20.993] Server  LOG     🌐 API Request: {}
+[01:07:20.993] Server  LOG     🔍 Fetching products for category: 184
+[01:07:20.994] Server  LOG     🌐 API Request: {}
+[01:07:20.995] Server  LOG     🔍 Fetching products for category: 183
+[01:07:20.996] Server  LOG     🌐 API Request: {}
+[01:07:20.997] Server  LOG     🔍 Fetching products for category: 185
+[01:07:20.997] Server  LOG     🌐 API Request: {}
+[01:07:20.998] Server  LOG     ✅ API Response Success: {}
+[01:07:21.001] Server  LOG     📄 Fetched page 1 (32 items)
+[01:07:21.001] Server  LOG     ✅ Total items fetched: 32
+[01:07:21.002] Server  LOG     ✅ Found 32 categories
+[01:07:21.003] Server  LOG     ✅ API Response Success: {}
+[01:07:21.007] Server  LOG     📄 Fetched page 1 (32 items)
+[01:07:21.007] Server  LOG     ✅ Total items fetched: 32
+[01:07:21.007] Server  LOG     ✅ Found 32 categories
+[01:07:21.009] Server  LOG     📡 Response Status: 200 ""
+[01:07:21.011] Server  LOG     📡 Response Status: 200 ""
+[01:07:21.013] Server  LOG     📡 Response Status: 200 ""
+[01:07:21.014] Server  LOG     📡 Response Status: 200 ""
+[01:07:21.015] Server  LOG     📡 Response Status: 200 ""
+[01:07:21.024] Server  LOG     ✅ API Response Success: {}
+[01:07:21.024] Server  LOG     📄 Fetched page 1 (54 items)
+[01:07:21.024] Server  LOG     ✅ Total items fetched: 54
+[01:07:21.024] Server  LOG     ✅ Found 54 products in category
+[01:07:21.024] Server  LOG     ✅ API Response Success: {}
+[01:07:21.024] Server  LOG     ✅ API Response Success: {}
+[01:07:21.024] Server  LOG     ✅ API Response Success: {}
+[01:07:21.025] Server  LOG     ✅ API Response Success: {}
+[01:07:21.025] Server  LOG     📄 Fetched page 1 (18 items)
+[01:07:21.025] Server  LOG     ✅ Total items fetched: 18
+[01:07:21.025] Server  LOG     📄 Fetched page 1 (78 items)
+[01:07:21.025] Server  LOG     ✅ Total items fetched: 78
+[01:07:21.025] Server  LOG     📄 Fetched page 1 (84 items)
+[01:07:21.025] Server  LOG     ✅ Total items fetched: 84
+[01:07:21.025] Server  LOG     📄 Fetched page 1 (33 items)
+[01:07:21.025] Server  LOG     ✅ Total items fetched: 33
+[01:07:21.025] Server  LOG     ✅ Found 18 products in category
+[01:07:21.025] Server  LOG     ✅ Found 78 products in category
+[01:07:21.025] Server  LOG     ✅ Found 84 products in category
+[01:07:21.026] Server  LOG     ✅ Found 33 products in category
+[01:07:22.831] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:09:02.424] Server  LOG     🔍 Fetching categories with params: {}
+[01:09:02.425] Server  LOG     🌐 API Request: {}
+[01:09:02.457] Server  LOG     🔍 Fetching categories with params: {}
+[01:09:02.458] Server  LOG     🌐 API Request: {}
+[01:09:02.459] Server  LOG     🔍 Fetching categories with params: {}
+[01:09:02.460] Server  LOG     🌐 API Request: {}
+[01:09:02.461] Server  LOG     🔍 Fetching categories with params: {}
+[01:09:02.461] Server  LOG     🌐 API Request: {}
+[01:09:02.462] Server  LOG     🔍 Fetching categories with params: {}
+[01:09:02.462] Server  LOG     🌐 API Request: {}
+[01:09:02.486] Server  LOG     📡 Response Status: 200 ""
+[01:09:02.488] Server  LOG     📡 Response Status: 200 ""
+[01:09:02.491] Server  LOG     📡 Response Status: 200 ""
+[01:09:02.493] Server  LOG     ✅ API Response Success: {}
+[01:09:02.493] Server  LOG     ✅ API Response Success: {}
+[01:09:02.493] Server  LOG     📡 Response Status: 200 ""
+[01:09:02.498] Server  LOG     📄 Fetched page 1 (32 items)
+[01:09:02.498] Server  LOG     ✅ Total items fetched: 32
+[01:09:02.498] Server  LOG     📄 Fetched page 1 (32 items)
+[01:09:02.498] Server  LOG     ✅ Total items fetched: 32
+[01:09:02.498] Server  LOG     ✅ Found 32 categories
+[01:09:02.498] Server  LOG     ✅ Found 32 categories
+[01:09:02.499] Server  LOG     🔍 Fetching products for category: 187
+[01:09:02.500] Server  LOG     🌐 API Request: {}
+[01:09:02.501] Server  LOG     ✅ API Response Success: {}
+[01:09:02.501] Server  LOG     📡 Response Status: 200 ""
+[01:09:02.501] Server  LOG     📄 Fetched page 1 (32 items)
+[01:09:02.501] Server  LOG     ✅ Total items fetched: 32
+[01:09:02.502] Server  LOG     ✅ Found 32 categories
+[01:09:02.502] Server  LOG     🔍 Fetching products for category: 15
+[01:09:02.502] Server  LOG     🌐 API Request: {}
+[01:09:02.503] Server  LOG     🔍 Fetching products for category: 184
+[01:09:02.510] Server  LOG     🌐 API Request: {}
+[01:09:02.511] Server  LOG     🔍 Fetching products for category: 183
+[01:09:02.511] Server  LOG     🌐 API Request: {}
+[01:09:02.512] Server  LOG     🔍 Fetching products for category: 185
+[01:09:02.512] Server  LOG     🌐 API Request: {}
+[01:09:02.513] Server  LOG     ✅ API Response Success: {}
+[01:09:02.514] Server  LOG     📄 Fetched page 1 (32 items)
+[01:09:02.514] Server  LOG     ✅ Total items fetched: 32
+[01:09:02.517] Server  LOG     ✅ Found 32 categories
+[01:09:02.518] Server  LOG     ✅ API Response Success: {}
+[01:09:02.523] Server  LOG     📄 Fetched page 1 (32 items)
+[01:09:02.523] Server  LOG     ✅ Total items fetched: 32
+[01:09:02.523] Server  LOG     ✅ Found 32 categories
+[01:09:02.524] Server  LOG     📡 Response Status: 200 ""
+[01:09:02.528] Server  LOG     📡 Response Status: 200 ""
+[01:09:02.530] Server  LOG     📡 Response Status: 200 ""
+[01:09:02.531] Server  LOG     📡 Response Status: 200 ""
+[01:09:02.532] Server  LOG     📡 Response Status: 200 ""
+[01:09:02.538] Server  LOG     ✅ API Response Success: {}
+[01:09:02.538] Server  LOG     📄 Fetched page 1 (54 items)
+[01:09:02.538] Server  LOG     ✅ Total items fetched: 54
+[01:09:02.538] Server  LOG     ✅ Found 54 products in category
+[01:09:02.538] Server  LOG     ✅ API Response Success: {}
+[01:09:02.538] Server  LOG     ✅ API Response Success: {}
+[01:09:02.538] Server  LOG     ✅ API Response Success: {}
+[01:09:02.538] Server  LOG     ✅ API Response Success: {}
+[01:09:02.539] Server  LOG     📄 Fetched page 1 (18 items)
+[01:09:02.539] Server  LOG     ✅ Total items fetched: 18
+[01:09:02.541] Server  LOG     📄 Fetched page 1 (78 items)
+[01:09:02.541] Server  LOG     ✅ Total items fetched: 78
+[01:09:02.542] Server  LOG     📄 Fetched page 1 (84 items)
+[01:09:02.542] Server  LOG     ✅ Total items fetched: 84
+[01:09:02.542] Server  LOG     📄 Fetched page 1 (33 items)
+[01:09:02.542] Server  LOG     ✅ Total items fetched: 33
+[01:09:02.542] Server  LOG     ✅ Found 18 products in category
+[01:09:02.542] Server  LOG     ✅ Found 78 products in category
+[01:09:02.542] Server  LOG     ✅ Found 84 products in category
+[01:09:02.542] Server  LOG     ✅ Found 33 products in category
+[01:09:02.994] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:09:15.198] Server  LOG     🔍 Fetching categories with params: {}
+[01:09:15.199] Server  LOG     🌐 API Request: {}
+[01:09:15.205] Server  LOG     🔍 Fetching categories with params: {}
+[01:09:15.205] Server  LOG     🌐 API Request: {}
+[01:09:15.206] Server  LOG     🔍 Fetching categories with params: {}
+[01:09:15.207] Server  LOG     🌐 API Request: {}
+[01:09:15.209] Server  LOG     🔍 Fetching categories with params: {}
+[01:09:15.209] Server  LOG     🌐 API Request: {}
+[01:09:15.211] Server  LOG     🔍 Fetching categories with params: {}
+[01:09:15.211] Server  LOG     🌐 API Request: {}
+[01:09:15.225] Server  LOG     📡 Response Status: 200 ""
+[01:09:15.227] Server  LOG     📡 Response Status: 200 ""
+[01:09:15.229] Server  LOG     📡 Response Status: 200 ""
+[01:09:15.231] Server  LOG     ✅ API Response Success: {}
+[01:09:15.231] Server  LOG     ✅ API Response Success: {}
+[01:09:15.231] Server  LOG     📡 Response Status: 200 ""
+[01:09:15.231] Server  LOG     📄 Fetched page 1 (32 items)
+[01:09:15.232] Server  LOG     ✅ Total items fetched: 32
+[01:09:15.232] Server  LOG     📄 Fetched page 1 (32 items)
+[01:09:15.232] Server  LOG     ✅ Total items fetched: 32
+[01:09:15.232] Server  LOG     ✅ Found 32 categories
+[01:09:15.250] Server  LOG     ✅ Found 32 categories
+[01:09:15.250] Server  LOG     🔍 Fetching products for category: 187
+[01:09:15.250] Server  LOG     🌐 API Request: {}
+[01:09:15.251] Server  LOG     ✅ API Response Success: {}
+[01:09:15.251] Server  LOG     📡 Response Status: 200 ""
+[01:09:15.252] Server  LOG     📄 Fetched page 1 (32 items)
+[01:09:15.252] Server  LOG     ✅ Total items fetched: 32
+[01:09:15.252] Server  LOG     ✅ Found 32 categories
+[01:09:15.253] Server  LOG     🔍 Fetching products for category: 15
+[01:09:15.253] Server  LOG     🌐 API Request: {}
+[01:09:15.253] Server  LOG     🔍 Fetching products for category: 184
+[01:09:15.254] Server  LOG     🌐 API Request: {}
+[01:09:15.254] Server  LOG     🔍 Fetching products for category: 183
+[01:09:15.254] Server  LOG     🌐 API Request: {}
+[01:09:15.255] Server  LOG     🔍 Fetching products for category: 185
+[01:09:15.255] Server  LOG     🌐 API Request: {}
+[01:09:15.256] Server  LOG     ✅ API Response Success: {}
+[01:09:15.257] Server  LOG     📄 Fetched page 1 (32 items)
+[01:09:15.261] Server  LOG     ✅ Total items fetched: 32
+[01:09:15.262] Server  LOG     ✅ Found 32 categories
+[01:09:15.263] Server  LOG     ✅ API Response Success: {}
+[01:09:15.270] Server  LOG     📄 Fetched page 1 (32 items)
+[01:09:15.271] Server  LOG     ✅ Total items fetched: 32
+[01:09:15.271] Server  LOG     ✅ Found 32 categories
+[01:09:15.272] Server  LOG     📡 Response Status: 200 ""
+[01:09:15.283] Server  LOG     📡 Response Status: 200 ""
+[01:09:15.284] Server  LOG     📡 Response Status: 200 ""
+[01:09:15.285] Server  LOG     📡 Response Status: 200 ""
+[01:09:15.286] Server  LOG     📡 Response Status: 200 ""
+[01:09:15.300] Server  LOG     ✅ API Response Success: {}
+[01:09:15.301] Server  LOG     📄 Fetched page 1 (54 items)
+[01:09:15.304] Server  LOG     ✅ Total items fetched: 54
+[01:09:15.305] Server  LOG     ✅ Found 54 products in category
+[01:09:15.312] Server  LOG     ✅ API Response Success: {}
+[01:09:15.314] Server  LOG     ✅ API Response Success: {}
+[01:09:15.315] Server  LOG     ✅ API Response Success: {}
+[01:09:15.316] Server  LOG     ✅ API Response Success: {}
+[01:09:15.317] Server  LOG     📄 Fetched page 1 (18 items)
+[01:09:15.318] Server  LOG     ✅ Total items fetched: 18
+[01:09:15.319] Server  LOG     📄 Fetched page 1 (78 items)
+[01:09:15.320] Server  LOG     ✅ Total items fetched: 78
+[01:09:15.325] Server  LOG     📄 Fetched page 1 (84 items)
+[01:09:15.328] Server  LOG     ✅ Total items fetched: 84
+[01:09:15.328] Server  LOG     📄 Fetched page 1 (33 items)
+[01:09:15.329] Server  LOG     ✅ Total items fetched: 33
+[01:09:15.329] Server  LOG     ✅ Found 18 products in category
+[01:09:15.329] Server  LOG     ✅ Found 78 products in category
+[01:09:15.330] Server  LOG     ✅ Found 84 products in category
+[01:09:15.330] Server  LOG     ✅ Found 33 products in category
+[01:09:16.072] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:24:16.459] Browser WARN    Image with src "/sachdeva-diagnostics-logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:24:21.288] Server  LOG     🔍 Fetching categories with params: {}
+[01:24:21.291] Server  LOG     🌐 API Request: {}
+[01:24:21.300] Server  LOG     🔍 Fetching categories with params: {}
+[01:24:21.306] Server  LOG     🌐 API Request: {}
+[01:24:21.318] Server  LOG     🔍 Fetching categories with params: {}
+[01:24:21.319] Server  LOG     🌐 API Request: {}
+[01:24:21.322] Server  LOG     🔍 Fetching categories with params: {}
+[01:24:21.328] Server  LOG     🌐 API Request: {}
+[01:24:21.331] Server  LOG     🔍 Fetching categories with params: {}
+[01:24:21.331] Server  LOG     🌐 API Request: {}
+[01:24:21.548] Server  LOG     📡 Response Status: 200 ""
+[01:24:21.551] Server  LOG     📡 Response Status: 200 ""
+[01:24:21.565] Server  LOG     📡 Response Status: 200 ""
+[01:24:21.572] Server  LOG     ✅ API Response Success: {}
+[01:24:21.572] Server  LOG     ✅ API Response Success: {}
+[01:24:21.573] Server  LOG     📡 Response Status: 200 ""
+[01:24:21.575] Server  LOG     📄 Fetched page 1 (32 items)
+[01:24:21.576] Server  LOG     ✅ Total items fetched: 32
+[01:24:21.576] Server  LOG     📄 Fetched page 1 (32 items)
+[01:24:21.576] Server  LOG     ✅ Total items fetched: 32
+[01:24:21.577] Server  LOG     ✅ Found 32 categories
+[01:24:21.577] Server  LOG     ✅ Found 32 categories
+[01:24:21.581] Server  LOG     🔍 Fetching products for category: 187
+[01:24:21.582] Server  LOG     🌐 API Request: {}
+[01:24:21.591] Server  LOG     ✅ API Response Success: {}
+[01:24:21.593] Server  LOG     📡 Response Status: 200 ""
+[01:24:21.595] Server  LOG     📄 Fetched page 1 (32 items)
+[01:24:21.596] Server  LOG     ✅ Total items fetched: 32
+[01:24:21.599] Server  LOG     ✅ Found 32 categories
+[01:24:21.600] Server  LOG     🔍 Fetching products for category: 15
+[01:24:21.600] Server  LOG     🌐 API Request: {}
+[01:24:21.603] Server  LOG     🔍 Fetching products for category: 184
+[01:24:21.604] Server  LOG     🌐 API Request: {}
+[01:24:21.605] Server  LOG     🔍 Fetching products for category: 183
+[01:24:21.605] Server  LOG     🌐 API Request: {}
+[01:24:21.606] Server  LOG     🔍 Fetching products for category: 185
+[01:24:21.607] Server  LOG     🌐 API Request: {}
+[01:24:21.610] Server  LOG     ✅ API Response Success: {}
+[01:24:21.623] Server  LOG     📄 Fetched page 1 (32 items)
+[01:24:21.623] Server  LOG     ✅ Total items fetched: 32
+[01:24:21.625] Server  LOG     ✅ Found 32 categories
+[01:24:21.627] Server  LOG     ✅ API Response Success: {}
+[01:24:21.674] Server  LOG     📄 Fetched page 1 (32 items)
+[01:24:21.674] Server  LOG     ✅ Total items fetched: 32
+[01:24:21.675] Server  LOG     ✅ Found 32 categories
+[01:24:21.677] Server  LOG     📡 Response Status: 200 ""
+[01:24:21.685] Server  LOG     📡 Response Status: 200 ""
+[01:24:21.687] Server  LOG     📡 Response Status: 200 ""
+[01:24:21.688] Server  LOG     📡 Response Status: 200 ""
+[01:24:21.689] Server  LOG     📡 Response Status: 200 ""
+[01:24:21.708] Server  LOG     ✅ API Response Success: {}
+[01:24:21.708] Server  LOG     📄 Fetched page 1 (54 items)
+[01:24:21.708] Server  LOG     ✅ Total items fetched: 54
+[01:24:21.709] Server  LOG     ✅ Found 54 products in category
+[01:24:21.714] Server  LOG     ✅ API Response Success: {}
+[01:24:21.714] Server  LOG     ✅ API Response Success: {}
+[01:24:21.714] Server  LOG     ✅ API Response Success: {}
+[01:24:21.714] Server  LOG     ✅ API Response Success: {}
+[01:24:21.714] Server  LOG     📄 Fetched page 1 (18 items)
+[01:24:21.715] Server  LOG     ✅ Total items fetched: 18
+[01:24:21.715] Server  LOG     📄 Fetched page 1 (78 items)
+[01:24:21.715] Server  LOG     ✅ Total items fetched: 78
+[01:24:21.715] Server  LOG     📄 Fetched page 1 (84 items)
+[01:24:21.715] Server  LOG     ✅ Total items fetched: 84
+[01:24:21.715] Server  LOG     📄 Fetched page 1 (33 items)
+[01:24:21.715] Server  LOG     ✅ Total items fetched: 33
+[01:24:21.779] Server  LOG     ✅ Found 18 products in category
+[01:24:21.780] Server  LOG     ✅ Found 78 products in category
+[01:24:21.780] Server  LOG     ✅ Found 84 products in category
+[01:24:21.781] Server  LOG     ✅ Found 33 products in category
+[01:24:22.505] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:28:58.886] Browser LOG     🔧 API Configuration: {"hasKey":true,"hasSecret":true,"url":"https://thesiswriting.xyz/wp-json/wc/v3"}
+[01:28:58.889] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:28:58.890] Browser LOG     🔍 Fetching categories with params: {}
+[01:28:58.890] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products/categories","method":"GET","params":["hide_empty","per_page","page"]}
+[01:28:58.890] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:28:58.890] Browser LOG     🔍 Fetching categories with params: {}
+[01:28:58.890] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products/categories","method":"GET","params":["hide_empty","per_page","page"]}
+[01:28:59.452] Browser LOG     📡 Response Status: 200 
+[01:28:59.452] Browser LOG     ✅ API Response Success: {"dataType":"array[35]","endpoint":"/products/categories","hasData":true}
+[01:28:59.452] Browser LOG     📄 Fetched page 1 (35 items)
+[01:28:59.452] Browser LOG     ✅ Total items fetched: 35
+[01:28:59.452] Browser LOG     ✅ Found 35 categories
+[01:28:59.685] Browser LOG     📡 Response Status: 200 
+[01:28:59.685] Browser LOG     ✅ API Response Success: {"dataType":"array[35]","endpoint":"/products/categories","hasData":true}
+[01:28:59.685] Browser LOG     📄 Fetched page 1 (35 items)
+[01:28:59.685] Browser LOG     ✅ Total items fetched: 35
+[01:28:59.685] Browser LOG     ✅ Found 35 categories
+[01:28:59.827] Browser LOG     📡 Response Status: 200 
+[01:28:59.827] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:28:59.827] Browser LOG     📄 Fetched page 1 (100 items)
+[01:28:59.827] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:00.321] Browser LOG     📡 Response Status: 200 
+[01:29:00.321] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:00.321] Browser LOG     📄 Fetched page 1 (100 items)
+[01:29:00.321] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:00.499] Browser LOG     📡 Response Status: 200 
+[01:29:00.499] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:00.500] Browser LOG     📄 Fetched page 2 (100 items)
+[01:29:00.500] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:00.983] Browser LOG     📡 Response Status: 200 
+[01:29:00.983] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:00.983] Browser LOG     📄 Fetched page 2 (100 items)
+[01:29:00.983] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:01.176] Browser LOG     📡 Response Status: 200 
+[01:29:01.176] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:01.176] Browser LOG     📄 Fetched page 3 (100 items)
+[01:29:01.176] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:01.718] Browser LOG     📡 Response Status: 200 
+[01:29:01.718] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:01.718] Browser LOG     📄 Fetched page 3 (100 items)
+[01:29:01.718] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:01.859] Browser LOG     📡 Response Status: 200 
+[01:29:01.859] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:01.859] Browser LOG     📄 Fetched page 4 (100 items)
+[01:29:01.859] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:02.205] Browser WARN    Image with src "/sachdeva-diagnostics-logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:29:02.386] Browser LOG     📡 Response Status: 200 
+[01:29:02.386] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:02.386] Browser LOG     📄 Fetched page 4 (100 items)
+[01:29:02.386] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:02.561] Browser LOG     📡 Response Status: 200 
+[01:29:02.561] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:02.561] Browser LOG     📄 Fetched page 5 (100 items)
+[01:29:02.561] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:03.135] Browser LOG     📡 Response Status: 200 
+[01:29:03.135] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:03.136] Browser LOG     📄 Fetched page 5 (100 items)
+[01:29:03.136] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:03.277] Browser LOG     📡 Response Status: 200 
+[01:29:03.277] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:03.277] Browser LOG     📄 Fetched page 6 (100 items)
+[01:29:03.277] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:03.805] Browser LOG     📡 Response Status: 200 
+[01:29:03.805] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:03.805] Browser LOG     📄 Fetched page 6 (100 items)
+[01:29:03.805] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:03.981] Browser LOG     📡 Response Status: 200 
+[01:29:03.981] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:03.981] Browser LOG     📄 Fetched page 7 (100 items)
+[01:29:03.981] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:04.459] Browser LOG     📡 Response Status: 200 
+[01:29:04.459] Browser LOG     ✅ API Response Success: {"dataType":"array[100]","endpoint":"/products","hasData":true}
+[01:29:04.459] Browser LOG     📄 Fetched page 7 (100 items)
+[01:29:04.459] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:29:04.662] Browser LOG     📡 Response Status: 200 
+[01:29:04.662] Browser LOG     ✅ API Response Success: {"dataType":"array[73]","endpoint":"/products","hasData":true}
+[01:29:04.663] Browser LOG     📄 Fetched page 8 (73 items)
+[01:29:04.663] Browser LOG     📄 Last page reached at page 8
+[01:29:04.663] Browser LOG     ✅ Total items fetched: 773
+[01:29:05.047] Browser LOG     📡 Response Status: 200 
+[01:29:05.048] Browser LOG     ✅ API Response Success: {"dataType":"array[73]","endpoint":"/products","hasData":true}
+[01:29:05.048] Browser LOG     📄 Fetched page 8 (73 items)
+[01:29:05.048] Browser LOG     📄 Last page reached at page 8
+[01:29:05.048] Browser LOG     ✅ Total items fetched: 773
+[01:31:42.198] Server  LOG     ✓ Compiled in 1833ms
+[01:31:43.730] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products","method":"GET","params":["status","per_page","type","page"]}
+[01:31:43.731] Browser LOG     🔍 Fetching categories with params: {}
+[01:31:43.731] Browser LOG     🌐 API Request: {"cache":"revalidate: 3600s","endpoint":"/products/categories","method":"GET","params":["hide_empty","per_page","page"]}

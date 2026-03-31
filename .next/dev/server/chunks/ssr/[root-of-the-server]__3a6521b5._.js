@@ -784,7 +784,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnos
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__ = __turbopack_context__.i("[project]/Documents/sachdevadiagnostics/node_modules/lucide-react/dist/esm/icons/chevron-right.js [app-rsc] (ecmascript) <export default as ChevronRight>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$test$2d$tube$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__TestTube$3e$__ = __turbopack_context__.i("[project]/Documents/sachdevadiagnostics/node_modules/lucide-react/dist/esm/icons/test-tube.js [app-rsc] (ecmascript) <export default as TestTube>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$microscope$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__Microscope$3e$__ = __turbopack_context__.i("[project]/Documents/sachdevadiagnostics/node_modules/lucide-react/dist/esm/icons/microscope.js [app-rsc] (ecmascript) <export default as Microscope>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$up$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingUp$3e$__ = __turbopack_context__.i("[project]/Documents/sachdevadiagnostics/node_modules/lucide-react/dist/esm/icons/trending-up.js [app-rsc] (ecmascript) <export default as TrendingUp>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$building$2d$2$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__Building2$3e$__ = __turbopack_context__.i("[project]/Documents/sachdevadiagnostics/node_modules/lucide-react/dist/esm/icons/building-2.js [app-rsc] (ecmascript) <export default as Building2>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$house$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__Home$3e$__ = __turbopack_context__.i("[project]/Documents/sachdevadiagnostics/node_modules/lucide-react/dist/esm/icons/house.js [app-rsc] (ecmascript) <export default as Home>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$components$2f$CircularCategoriesCarousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/sachdevadiagnostics/components/CircularCategoriesCarousel.tsx [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$components$2f$HeroCarousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/sachdevadiagnostics/components/HeroCarousel.tsx [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$services$2f$wordpress$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/sachdevadiagnostics/services/wordpress.ts [app-rsc] (ecmascript)");
@@ -797,8 +798,17 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnos
 ;
 ;
 ;
-// Define category groups for organized display
 const CATEGORY_GROUPS = [
+    {
+        title: "Health Packages",
+        description: "Comprehensive diagnostic and health screening packages",
+        slugs: [
+            "health-packages",
+            "special-ultrasound"
+        ],
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$test$2d$tube$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__TestTube$3e$__["TestTube"],
+        gradient: "from-green-500 to-emerald-500"
+    },
     {
         title: "Ultrasound Services",
         description: "Advanced 3D/4D ultrasound imaging with expert radiologists",
@@ -821,16 +831,6 @@ const CATEGORY_GROUPS = [
         gradient: "from-purple-500 to-pink-500"
     },
     {
-        title: "Health Packages",
-        description: "Comprehensive diagnostic and health screening packages",
-        slugs: [
-            "health-packages",
-            "special-ultrasound"
-        ],
-        icon: __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$test$2d$tube$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__TestTube$3e$__["TestTube"],
-        gradient: "from-green-500 to-emerald-500"
-    },
-    {
         title: "Lab Tests",
         description: "Complete blood tests and pathology services",
         slugs: [
@@ -842,7 +842,19 @@ const CATEGORY_GROUPS = [
         gradient: "from-orange-500 to-red-500"
     }
 ];
-// Fetch ONLY FEATURED products for a category group (limit to 4)
+// ✅ Ye slugs wale products mein Home Collection nahi dikhegi
+const NO_HOME_COLLECTION_SLUGS = [
+    "3d-4d-ultrasound",
+    "pregnancy-ultrasound",
+    "color-doppler-ultrasound",
+    "routine-ultrasound",
+    "special-ultrasound",
+    "x-ray-test"
+];
+// ✅ Helper function
+function isNoHomeCollection(product) {
+    return product.categories?.some((cat)=>NO_HOME_COLLECTION_SLUGS.includes(cat.slug)) ?? false;
+}
 async function getCategoryGroupProducts(slugs) {
     try {
         const categories = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$services$2f$wordpress$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getProductCategories"])({
@@ -851,14 +863,11 @@ async function getCategoryGroupProducts(slugs) {
         const categoryProducts = await Promise.all(slugs.map(async (slug)=>{
             const category = categories.find((cat)=>cat.slug === slug);
             if (!category) return [];
-            // Fetch more products initially since we'll filter
             const products = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$services$2f$wordpress$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getProductsByCategory"])(category.id, {
-                per_page: 20 // Fetch more to ensure we get 4 featured ones
+                per_page: 20
             });
-            // Filter for featured products only
             return products.filter((product)=>product.featured === true);
         }));
-        // Flatten, ensure featured, and limit to 4
         return categoryProducts.flat().filter((product)=>product.featured === true).slice(0, 4);
     } catch (error) {
         console.error('Error fetching category group products:', error);
@@ -878,26 +887,21 @@ async function getFeaturedCategories() {
         return [];
     }
 }
-// Get proper category title from actual products
 function getCategoryTitle(products) {
     if (products.length === 0) return "";
-    const categoryName = products[0].categories?.[0]?.name;
-    if (!categoryName) return "";
-    return categoryName;
+    return products[0].categories?.[0]?.name || "";
 }
-// Get category slug for view all link
 function getCategorySlug(products) {
     if (products.length === 0) return "/tests";
     const categorySlug = products[0].categories?.[0]?.slug;
-    if (!categorySlug) return "/tests";
-    return `/category/${categorySlug}`;
+    return categorySlug ? `/category/${categorySlug}` : "/tests";
 }
-// Product Card Component - WITHOUT IMAGES
+// ✅ UPDATED ProductCard — Home Collection conditional
 function ProductCard({ product }) {
     const reportTat = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$services$2f$wordpress$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getProductMetaValue"])(product, 'report_tat') || 'Same Day';
-    const isPopular = product.total_sales && parseInt(product.total_sales) > 50;
     const hasDiscount = product.regular_price && product.regular_price !== product.price;
-    const discountPercent = hasDiscount ? Math.round((Number(product.regular_price) - Number(product.price)) / Number(product.regular_price) * 100) : 0;
+    // ✅ Ultrasound / X-Ray check
+    const hideHomeCollection = isNoHomeCollection(product);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "group relative",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -917,7 +921,7 @@ function ProductCard({ product }) {
                                     children: product.categories?.[0]?.name || 'Diagnostic Test'
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 139,
+                                    lineNumber: 140,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Badge"], {
@@ -927,48 +931,20 @@ function ProductCard({ product }) {
                                             className: "w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1 fill-yellow-600"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 145,
+                                            lineNumber: 144,
                                             columnNumber: 17
                                         }, this),
                                         "Featured"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 144,
+                                    lineNumber: 143,
                                     columnNumber: 15
-                                }, this),
-                                isPopular && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Badge"], {
-                                    className: "bg-orange-100 text-orange-700 border-0 font-bold text-[10px] sm:text-xs shadow-none",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$up$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingUp$3e$__["TrendingUp"], {
-                                            className: "w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1"
-                                        }, void 0, false, {
-                                            fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 152,
-                                            columnNumber: 19
-                                        }, this),
-                                        "Popular"
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 151,
-                                    columnNumber: 17
-                                }, this),
-                                hasDiscount && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Badge"], {
-                                    className: "ml-auto bg-red-100 text-red-700 border-0 font-bold text-[10px] sm:text-xs shadow-none",
-                                    children: [
-                                        discountPercent,
-                                        "% OFF"
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 159,
-                                    columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 137,
+                            lineNumber: 139,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -976,7 +952,7 @@ function ProductCard({ product }) {
                             children: product.name
                         }, void 0, false, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 166,
+                            lineNumber: 150,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -986,7 +962,7 @@ function ProductCard({ product }) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 171,
+                            lineNumber: 155,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1001,12 +977,12 @@ function ProductCard({ product }) {
                                                 className: "w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-700"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 182,
+                                                lineNumber: 164,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 181,
+                                            lineNumber: 163,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1017,13 +993,13 @@ function ProductCard({ product }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 184,
+                                            lineNumber: 166,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 180,
+                                    lineNumber: 162,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1035,12 +1011,12 @@ function ProductCard({ product }) {
                                                 className: "w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-700"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 188,
+                                                lineNumber: 170,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 187,
+                                            lineNumber: 169,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1048,110 +1024,168 @@ function ProductCard({ product }) {
                                             children: "NABL Certified Lab"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 190,
+                                            lineNumber: 172,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 186,
+                                    lineNumber: 168,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 179,
+                            lineNumber: 161,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "pt-4 border-t border-slate-100",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center justify-between",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        children: [
-                                            hasDiscount && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "text-slate-400 text-[10px] sm:text-xs line-through mb-0.5",
-                                                children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$services$2f$wordpress$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatPrice"])(product.regular_price)
-                                            }, void 0, false, {
-                                                fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 199,
-                                                columnNumber: 21
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "text-blue-700 font-bold text-xl sm:text-2xl",
-                                                children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$services$2f$wordpress$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatPrice"])(product.price)
-                                            }, void 0, false, {
-                                                fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 203,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-[10px] sm:text-xs text-slate-500 font-medium",
-                                                children: "+ Free Home Collection"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 206,
-                                                columnNumber: 19
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 197,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Button"], {
-                                        size: "sm",
-                                        className: "bg-blue-700 hover:bg-blue-800 text-white font-semibold px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm rounded-lg shadow-md hover:shadow-lg transition-all",
-                                        children: [
-                                            "Book ",
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
-                                                className: "ml-1 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 209,
-                                                columnNumber: 24
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 208,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                lineNumber: 196,
-                                columnNumber: 15
-                            }, this)
-                        }, void 0, false, {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex items-center justify-between mb-3",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                hasDiscount && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "text-slate-400 text-[10px] sm:text-xs line-through mb-0.5",
+                                                    children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$services$2f$wordpress$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatPrice"])(product.regular_price)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                                    lineNumber: 181,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "text-blue-700 font-bold text-xl sm:text-2xl",
+                                                    children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$services$2f$wordpress$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatPrice"])(product.price)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                                    lineNumber: 185,
+                                                    columnNumber: 19
+                                                }, this),
+                                                !hideHomeCollection && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "text-[10px] sm:text-xs text-slate-500 font-medium",
+                                                    children: "+ Free Home Collection"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                                    lineNumber: 190,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                            lineNumber: 179,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Button"], {
+                                            size: "sm",
+                                            className: "bg-blue-700 hover:bg-blue-800 text-white font-semibold px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm rounded-lg shadow-md hover:shadow-lg transition-all",
+                                            children: [
+                                                "Book ",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
+                                                    className: "ml-1 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                                    lineNumber: 196,
+                                                    columnNumber: 24
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                            lineNumber: 195,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                    lineNumber: 178,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex gap-2 mt-1",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex-1 flex items-center justify-center gap-1 bg-blue-50 px-2 py-1.5 rounded-lg border border-blue-200",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$building$2d$2$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__Building2$3e$__["Building2"], {
+                                                    className: "w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-700"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                                    lineNumber: 203,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "text-[10px] sm:text-xs text-blue-700 font-bold",
+                                                    children: "Center Visit"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                                    lineNumber: 204,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                            lineNumber: 202,
+                                            columnNumber: 17
+                                        }, this),
+                                        !hideHomeCollection && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex-1 flex items-center justify-center gap-1 bg-green-50 px-2 py-1.5 rounded-lg border border-green-200",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$house$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__Home$3e$__["Home"], {
+                                                    className: "w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-700"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                                    lineNumber: 209,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "text-[10px] sm:text-xs text-green-700 font-bold",
+                                                    children: "Home"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                                    lineNumber: 210,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                            lineNumber: 208,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                                    lineNumber: 201,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 195,
+                            lineNumber: 177,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                    lineNumber: 134,
+                    lineNumber: 136,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                lineNumber: 131,
+                lineNumber: 135,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-            lineNumber: 130,
+            lineNumber: 134,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-        lineNumber: 129,
+        lineNumber: 133,
         columnNumber: 5
     }, this);
 }
-// Category Section Component
 function CategorySection({ title, description, products, icon: Icon, gradient }) {
     if (products.length === 0) return null;
     const actualCategoryName = getCategoryTitle(products) || title;
@@ -1175,12 +1209,12 @@ function CategorySection({ title, description, products, icon: Icon, gradient })
                                             className: "w-4 h-4 sm:w-6 sm:h-6 text-white"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 246,
+                                            lineNumber: 245,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 245,
+                                        lineNumber: 244,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1190,7 +1224,7 @@ function CategorySection({ title, description, products, icon: Icon, gradient })
                                                 children: actualCategoryName
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 249,
+                                                lineNumber: 248,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1198,24 +1232,24 @@ function CategorySection({ title, description, products, icon: Icon, gradient })
                                                 children: description
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 252,
+                                                lineNumber: 251,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 248,
+                                        lineNumber: 247,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                lineNumber: 244,
+                                lineNumber: 243,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 243,
+                            lineNumber: 242,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -1229,24 +1263,24 @@ function CategorySection({ title, description, products, icon: Icon, gradient })
                                         className: "ml-1 sm:ml-2 w-4 h-4 sm:w-5 sm:h-5"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 260,
+                                        lineNumber: 258,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                lineNumber: 258,
+                                lineNumber: 256,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 257,
+                            lineNumber: 255,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                    lineNumber: 242,
+                    lineNumber: 241,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1255,32 +1289,29 @@ function CategorySection({ title, description, products, icon: Icon, gradient })
                             product: product
                         }, product.id, false, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 267,
+                            lineNumber: 265,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                    lineNumber: 265,
+                    lineNumber: 263,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-            lineNumber: 241,
+            lineNumber: 240,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-        lineNumber: 240,
+        lineNumber: 239,
         columnNumber: 5
     }, this);
 }
 async function Index() {
-    const [ultrasoundProducts, xrayProducts, healthPackages, labTests, categories] = await Promise.all([
-        getCategoryGroupProducts(CATEGORY_GROUPS[0].slugs),
-        getCategoryGroupProducts(CATEGORY_GROUPS[1].slugs),
-        getCategoryGroupProducts(CATEGORY_GROUPS[2].slugs),
-        getCategoryGroupProducts(CATEGORY_GROUPS[3].slugs),
+    const [allGroupProducts, categories] = await Promise.all([
+        Promise.all(CATEGORY_GROUPS.map((group)=>getCategoryGroupProducts(group.slugs))),
         getFeaturedCategories()
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1288,53 +1319,20 @@ async function Index() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$components$2f$HeroCarousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                lineNumber: 289,
+                lineNumber: 283,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(CategorySection, {
-                title: CATEGORY_GROUPS[0].title,
-                description: CATEGORY_GROUPS[0].description,
-                products: ultrasoundProducts,
-                icon: CATEGORY_GROUPS[0].icon,
-                gradient: CATEGORY_GROUPS[0].gradient
-            }, void 0, false, {
-                fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                lineNumber: 292,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(CategorySection, {
-                title: CATEGORY_GROUPS[1].title,
-                description: CATEGORY_GROUPS[1].description,
-                products: xrayProducts,
-                icon: CATEGORY_GROUPS[1].icon,
-                gradient: CATEGORY_GROUPS[1].gradient
-            }, void 0, false, {
-                fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                lineNumber: 300,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(CategorySection, {
-                title: CATEGORY_GROUPS[2].title,
-                description: CATEGORY_GROUPS[2].description,
-                products: healthPackages,
-                icon: CATEGORY_GROUPS[2].icon,
-                gradient: CATEGORY_GROUPS[2].gradient
-            }, void 0, false, {
-                fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                lineNumber: 308,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(CategorySection, {
-                title: CATEGORY_GROUPS[3].title,
-                description: CATEGORY_GROUPS[3].description,
-                products: labTests,
-                icon: CATEGORY_GROUPS[3].icon,
-                gradient: CATEGORY_GROUPS[3].gradient
-            }, void 0, false, {
-                fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                lineNumber: 316,
-                columnNumber: 7
-            }, this),
+            CATEGORY_GROUPS.map((group, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(CategorySection, {
+                    title: group.title,
+                    description: group.description,
+                    products: allGroupProducts[index],
+                    icon: group.icon,
+                    gradient: group.gradient
+                }, group.title, false, {
+                    fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
+                    lineNumber: 286,
+                    columnNumber: 9
+                }, this)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                 className: "py-8 sm:py-16 bg-slate-50",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1348,7 +1346,7 @@ async function Index() {
                                     children: "Why Sachdeva Diagnostics?"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 328,
+                                    lineNumber: 300,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1356,13 +1354,13 @@ async function Index() {
                                     children: "30+ years of delivering accurate diagnostic services"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 329,
+                                    lineNumber: 301,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 327,
+                            lineNumber: 299,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1373,7 +1371,7 @@ async function Index() {
                                         className: "w-6 h-6 sm:w-8 sm:h-8"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 335,
+                                        lineNumber: 305,
                                         columnNumber: 23
                                     }, this),
                                     title: "NABL Certified",
@@ -1385,7 +1383,7 @@ async function Index() {
                                         className: "w-6 h-6 sm:w-8 sm:h-8"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 341,
+                                        lineNumber: 306,
                                         columnNumber: 23
                                     }, this),
                                     title: "Latest Equipment",
@@ -1397,7 +1395,7 @@ async function Index() {
                                         className: "w-6 h-6 sm:w-8 sm:h-8"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 347,
+                                        lineNumber: 307,
                                         columnNumber: 23
                                     }, this),
                                     title: "Fast Reports",
@@ -1409,7 +1407,7 @@ async function Index() {
                                         className: "w-6 h-6 sm:w-8 sm:h-8"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 353,
+                                        lineNumber: 308,
                                         columnNumber: 23
                                     }, this),
                                     title: "Expert Team",
@@ -1424,7 +1422,7 @@ async function Index() {
                                             children: feature.icon
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 360,
+                                            lineNumber: 311,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1432,7 +1430,7 @@ async function Index() {
                                             children: feature.title
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 363,
+                                            lineNumber: 314,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1440,29 +1438,29 @@ async function Index() {
                                             children: feature.desc
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 364,
+                                            lineNumber: 315,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, i, true, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 359,
+                                    lineNumber: 310,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 332,
+                            lineNumber: 303,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                    lineNumber: 326,
+                    lineNumber: 298,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                lineNumber: 325,
+                lineNumber: 297,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1478,7 +1476,7 @@ async function Index() {
                                     children: "Browse Tests by Category"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 375,
+                                    lineNumber: 326,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1486,13 +1484,13 @@ async function Index() {
                                     children: "Find the right diagnostic test for your health needs"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 376,
+                                    lineNumber: 327,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 374,
+                            lineNumber: 325,
                             columnNumber: 11
                         }, this),
                         categories.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1511,7 +1509,7 @@ async function Index() {
                                                 className: "w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 rounded-full object-cover"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 389,
+                                                lineNumber: 335,
                                                 columnNumber: 23
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 bg-blue-100 rounded-full flex items-center justify-center",
@@ -1519,12 +1517,12 @@ async function Index() {
                                                     className: "w-6 h-6 sm:w-8 sm:h-8 text-blue-700"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                    lineNumber: 398,
+                                                    lineNumber: 338,
                                                     columnNumber: 25
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 397,
+                                                lineNumber: 337,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1532,7 +1530,7 @@ async function Index() {
                                                 children: category.name
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 401,
+                                                lineNumber: 341,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1544,38 +1542,38 @@ async function Index() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 404,
+                                                lineNumber: 342,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 387,
+                                        lineNumber: 333,
                                         columnNumber: 19
                                     }, this)
                                 }, category.id, false, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 382,
+                                    lineNumber: 332,
                                     columnNumber: 17
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 380,
+                            lineNumber: 330,
                             columnNumber: 13
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$components$2f$CircularCategoriesCarousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 412,
+                            lineNumber: 348,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                    lineNumber: 373,
+                    lineNumber: 324,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                lineNumber: 372,
+                lineNumber: 323,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1591,7 +1589,7 @@ async function Index() {
                                     children: "What Our Patients Say"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 421,
+                                    lineNumber: 357,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1603,7 +1601,7 @@ async function Index() {
                                                 className: "w-4 h-4 sm:w-6 sm:h-6 fill-yellow-500"
                                             }, i, false, {
                                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                lineNumber: 423,
+                                                lineNumber: 359,
                                                 columnNumber: 44
                                             }, this)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1611,7 +1609,7 @@ async function Index() {
                                             children: "4.9/5"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 424,
+                                            lineNumber: 360,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1619,19 +1617,19 @@ async function Index() {
                                             children: "(2,500+ reviews)"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 425,
+                                            lineNumber: 361,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 422,
+                                    lineNumber: 358,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 420,
+                            lineNumber: 356,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1666,12 +1664,12 @@ async function Index() {
                                                     className: "w-3 h-3 sm:w-4 sm:h-4 fill-yellow-500"
                                                 }, idx, false, {
                                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                    lineNumber: 437,
+                                                    lineNumber: 372,
                                                     columnNumber: 67
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 436,
+                                            lineNumber: 371,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1679,7 +1677,7 @@ async function Index() {
                                             children: testimonial.review
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 439,
+                                            lineNumber: 374,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1690,7 +1688,7 @@ async function Index() {
                                                     children: testimonial.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                    lineNumber: 441,
+                                                    lineNumber: 376,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1698,35 +1696,35 @@ async function Index() {
                                                     children: testimonial.test
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                    lineNumber: 442,
+                                                    lineNumber: 377,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 440,
+                                            lineNumber: 375,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, i, true, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                    lineNumber: 435,
+                                    lineNumber: 370,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                            lineNumber: 429,
+                            lineNumber: 364,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                    lineNumber: 419,
+                    lineNumber: 355,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                lineNumber: 418,
+                lineNumber: 354,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1744,7 +1742,7 @@ async function Index() {
                                         children: "Need Help Choosing a Test?"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 455,
+                                        lineNumber: 390,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1752,13 +1750,13 @@ async function Index() {
                                         children: "Our healthcare experts are available. Call now for free consultation."
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 456,
+                                        lineNumber: 391,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                lineNumber: 454,
+                                lineNumber: 389,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1774,19 +1772,19 @@ async function Index() {
                                                     className: "mr-2 h-5 w-5 sm:h-6 sm:w-6"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                    lineNumber: 461,
+                                                    lineNumber: 396,
                                                     columnNumber: 19
                                                 }, this),
                                                 " Call: +91 98115 82086"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 460,
+                                            lineNumber: 395,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 459,
+                                        lineNumber: 394,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -1800,47 +1798,47 @@ async function Index() {
                                                     className: "mr-2 h-5 w-5 sm:h-6 sm:w-6"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                                    lineNumber: 466,
+                                                    lineNumber: 401,
                                                     columnNumber: 19
                                                 }, this),
                                                 " Download Reports"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                            lineNumber: 465,
+                                            lineNumber: 400,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                        lineNumber: 464,
+                                        lineNumber: 399,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                                lineNumber: 458,
+                                lineNumber: 393,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                        lineNumber: 453,
+                        lineNumber: 388,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                    lineNumber: 452,
+                    lineNumber: 387,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-                lineNumber: 451,
+                lineNumber: 386,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/sachdevadiagnostics/src/app/page.tsx",
-        lineNumber: 285,
+        lineNumber: 281,
         columnNumber: 5
     }, this);
 }
