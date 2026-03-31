@@ -1,7 +1,7 @@
 module.exports = [
 "[project]/Documents/sachdevadiagnostics/src/app/favicon.ico (static in ecmascript, tag client)", ((__turbopack_context__) => {
 
-__turbopack_context__.v("/_next/static/media/favicon.8270bd46.ico");}),
+__turbopack_context__.v("/_next/static/media/favicon.8e9bedcf.ico");}),
 "[project]/Documents/sachdevadiagnostics/src/app/favicon.ico.mjs { IMAGE => \"[project]/Documents/sachdevadiagnostics/src/app/favicon.ico (static in ecmascript, tag client)\" } [app-rsc] (structured image object, ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
