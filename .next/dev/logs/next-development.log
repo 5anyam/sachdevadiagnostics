@@ -2251,3 +2251,75 @@
 [01:34:01.421] Server  LOG     ✅ Found 26 products in category
 [01:34:01.422] Server  LOG     ✅ Found 28 products in category
 [01:34:01.422] Server  LOG     ✅ Found 11 products in category
+[01:37:34.335] Server  LOG     🔍 Fetching categories with params: {}
+[01:37:34.337] Server  LOG     🌐 API Request: {}
+[01:37:34.351] Server  LOG     🔍 Fetching categories with params: {}
+[01:37:34.351] Server  LOG     🌐 API Request: {}
+[01:37:34.353] Server  LOG     🔍 Fetching categories with params: {}
+[01:37:34.354] Server  LOG     🌐 API Request: {}
+[01:37:34.355] Server  LOG     🔍 Fetching categories with params: {}
+[01:37:34.356] Server  LOG     🌐 API Request: {}
+[01:37:34.360] Server  LOG     🔍 Fetching categories with params: {}
+[01:37:34.363] Server  LOG     🌐 API Request: {}
+[01:37:34.421] Server  LOG     📡 Response Status: 200 ""
+[01:37:34.424] Server  LOG     📡 Response Status: 200 ""
+[01:37:34.435] Server  LOG     📡 Response Status: 200 ""
+[01:37:34.439] Server  LOG     ✅ API Response Success: {}
+[01:37:34.440] Server  LOG     ✅ API Response Success: {}
+[01:37:34.440] Server  LOG     📡 Response Status: 200 ""
+[01:37:34.441] Server  LOG     📄 Fetched page 1 (35 items)
+[01:37:34.442] Server  LOG     ✅ Total items fetched: 35
+[01:37:34.442] Server  LOG     📄 Fetched page 1 (35 items)
+[01:37:34.442] Server  LOG     ✅ Total items fetched: 35
+[01:37:34.442] Server  LOG     ✅ Found 35 categories
+[01:37:34.442] Server  LOG     ✅ Found 35 categories
+[01:37:34.443] Server  LOG     🔍 Fetching products for category: 187
+[01:37:34.444] Server  LOG     🌐 API Request: {}
+[01:37:34.446] Server  LOG     ✅ API Response Success: {}
+[01:37:34.447] Server  LOG     📡 Response Status: 200 ""
+[01:37:34.448] Server  LOG     📄 Fetched page 1 (35 items)
+[01:37:34.448] Server  LOG     ✅ Total items fetched: 35
+[01:37:34.448] Server  LOG     ✅ Found 35 categories
+[01:37:34.449] Server  LOG     🔍 Fetching products for category: 15
+[01:37:34.517] Server  LOG     🌐 API Request: {}
+[01:37:34.519] Server  LOG     🔍 Fetching products for category: 184
+[01:37:34.519] Server  LOG     🌐 API Request: {}
+[01:37:34.521] Server  LOG     🔍 Fetching products for category: 183
+[01:37:34.521] Server  LOG     🌐 API Request: {}
+[01:37:34.521] Server  LOG     🔍 Fetching products for category: 185
+[01:37:34.522] Server  LOG     🌐 API Request: {}
+[01:37:34.524] Server  LOG     ✅ API Response Success: {}
+[01:37:34.526] Server  LOG     📄 Fetched page 1 (35 items)
+[01:37:34.526] Server  LOG     ✅ Total items fetched: 35
+[01:37:34.527] Server  LOG     ✅ Found 35 categories
+[01:37:34.529] Server  LOG     ✅ API Response Success: {}
+[01:37:34.535] Server  LOG     📄 Fetched page 1 (35 items)
+[01:37:34.535] Server  LOG     ✅ Total items fetched: 35
+[01:37:34.535] Server  LOG     ✅ Found 35 categories
+[01:37:34.538] Server  LOG     📡 Response Status: 200 ""
+[01:37:34.541] Server  LOG     📡 Response Status: 200 ""
+[01:37:34.542] Server  LOG     📡 Response Status: 200 ""
+[01:37:34.542] Server  LOG     📡 Response Status: 200 ""
+[01:37:34.545] Server  LOG     📡 Response Status: 200 ""
+[01:37:34.546] Server  LOG     ✅ API Response Success: {}
+[01:37:34.547] Server  LOG     📄 Fetched page 1 (18 items)
+[01:37:34.547] Server  LOG     ✅ Total items fetched: 18
+[01:37:34.547] Server  LOG     ✅ Found 18 products in category
+[01:37:34.547] Server  LOG     ✅ API Response Success: {}
+[01:37:34.547] Server  LOG     ✅ API Response Success: {}
+[01:37:34.547] Server  LOG     ✅ API Response Success: {}
+[01:37:34.547] Server  LOG     ✅ API Response Success: {}
+[01:37:34.547] Server  LOG     📄 Fetched page 1 (6 items)
+[01:37:34.547] Server  LOG     ✅ Total items fetched: 6
+[01:37:34.548] Server  LOG     📄 Fetched page 1 (26 items)
+[01:37:34.548] Server  LOG     ✅ Total items fetched: 26
+[01:37:34.548] Server  LOG     📄 Fetched page 1 (28 items)
+[01:37:34.548] Server  LOG     ✅ Total items fetched: 28
+[01:37:34.548] Server  LOG     📄 Fetched page 1 (11 items)
+[01:37:34.548] Server  LOG     ✅ Total items fetched: 11
+[01:37:34.548] Server  LOG     ✅ Found 6 products in category
+[01:37:34.548] Server  LOG     ✅ Found 26 products in category
+[01:37:34.548] Server  LOG     ✅ Found 28 products in category
+[01:37:34.548] Server  LOG     ✅ Found 11 products in category
+[01:37:36.595] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:40:32.270] Browser WARN    Image with src "/sachdeva-diagnostics-logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
