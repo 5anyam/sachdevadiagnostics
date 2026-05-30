@@ -291,13 +291,9 @@ export default async function Index() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
             {BROCHURE_SERVICES.map((svc, i) => {
-              const Icon = svc.icon;
               return (
                 <Link key={i} href={svc.href}>
-                  <div className={`group bg-white rounded-xl border border-slate-200 ${svc.border} hover:shadow-md transition-all duration-200 p-4 text-center h-full flex flex-col items-center hover:-translate-y-0.5`}>
-                    <div className={`${svc.iconBg} w-11 h-11 rounded-xl flex items-center justify-center mb-2.5 group-hover:scale-105 transition-transform`}>
-                      <Icon className={`w-5 h-5 ${svc.iconColor}`} />
-                    </div>
+                  <div className={`group bg-white rounded-xl border border-slate-200 ${svc.border} hover:shadow-md transition-all duration-200 p-4 text-center h-full flex flex-col items-center justify-center hover:-translate-y-0.5`}>
                     <p className="font-semibold text-slate-700 text-xs leading-snug group-hover:text-sky-600 transition-colors">
                       {svc.name}
                     </p>
