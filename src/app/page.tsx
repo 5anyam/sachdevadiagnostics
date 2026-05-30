@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
 import {
@@ -364,19 +363,6 @@ export default async function Index() {
               {categories.map(cat => (
                 <Link key={cat.id} href={`/category/${cat.slug}`} className="group">
                   <div className="bg-white rounded-xl p-4 sm:p-5 border border-slate-200 hover:border-sky-300 hover:shadow-lg transition-all text-center hover:-translate-y-0.5">
-                    {cat.image?.src ? (
-                      <Image
-                        src={cat.image.src}
-                        alt={cat.name}
-                        width={56}
-                        height={56}
-                        className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 sm:mb-3 rounded-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 sm:mb-3 bg-sky-100 rounded-full flex items-center justify-center">
-                        <Activity className="w-5 h-5 sm:w-6 sm:h-6 text-sky-600" />
-                      </div>
-                    )}
                     <h3 className="font-semibold text-slate-800 mb-0.5 group-hover:text-sky-600 transition-colors text-xs sm:text-sm leading-snug">
                       {cat.name}
                     </h3>
