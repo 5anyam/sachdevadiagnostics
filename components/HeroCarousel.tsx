@@ -14,7 +14,7 @@ const banners: Banner[] = [
   {
     image: "https://navajowhite-turkey-121983.hostingersite.com/wp-content/uploads/2026/02/1.jpg",
     title: "Ultrasound Services",
-    link: "/category/3d-4d-ultrasound",
+    link: "/category/ultrasound",
   },
   {
     image: "https://navajowhite-turkey-121983.hostingersite.com/wp-content/uploads/2026/02/Advanced-Ultrasound-Tests-1-e1770455982133.jpg",

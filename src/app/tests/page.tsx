@@ -257,6 +257,8 @@ function TestsPageContent() {
     }
 
     filtered.sort((a, b) => {
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
       switch (sortBy) {
         case 'price-low':
           return Number(a.price) - Number(b.price);

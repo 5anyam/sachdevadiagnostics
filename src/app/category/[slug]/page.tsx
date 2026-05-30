@@ -86,6 +86,8 @@ export default function CategoryProductsPage() {
   }
 
   const sortedProducts: Product[] = [...filteredProducts].sort((a: Product, b: Product) => {
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
     if (sortBy === "price-low") return Number(a.price) - Number(b.price);
     if (sortBy === "price-high") return Number(b.price) - Number(a.price);
     if (sortBy === "rating") return Number(b.average_rating) - Number(a.average_rating);
