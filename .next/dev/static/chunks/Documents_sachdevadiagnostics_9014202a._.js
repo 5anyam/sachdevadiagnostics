@@ -691,7 +691,7 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/Documents/sachdevadiagnostics/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 // services/api.ts
 // WooCommerce API Configuration
-const API_URL = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_WORDPRESS_API_URL || 'https://thesiswriting.xyz/wp-json/wc/v3';
+const API_URL = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_WORDPRESS_API_URL || 'https://navajowhite-turkey-121983.hostingersite.com/wp-json/wc/v3';
 const CONSUMER_KEY = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_WC_CONSUMER_KEY || 'ck_f3db9c54ccb91204a281d11979881bae4beae33c';
 const CONSUMER_SECRET = __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_WC_CONSUMER_SECRET || 'cs_91203108604f58127b42d9478d97412e766ec658';
 // Validate configuration

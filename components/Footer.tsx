@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link";
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, MessageCircle, TestTube, Shield, Award, Clock, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, TestTube, Shield, Award, Clock, ExternalLink } from "lucide-react";
 import Image from "next/image";
 
 const Footer = () => {
@@ -10,17 +10,17 @@ const Footer = () => {
     <>
       {/* Fixed Contact Buttons */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
-        <a 
-          href="https://wa.me/919811582086" 
-          target="_blank" 
+        <a
+          href="https://wa.me/919811582086"
+          target="_blank"
           rel="noopener noreferrer"
           className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110"
           aria-label="WhatsApp"
         >
           <MessageCircle className="h-6 w-6" />
         </a>
-        <a 
-          href="tel:+919811582086"
+        <a
+          href="tel:+919911380288"
           className="bg-blue-700 hover:bg-blue-800 text-white p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110"
           aria-label="Call Now"
         >
@@ -63,14 +63,14 @@ const Footer = () => {
 
               {/* Social Links */}
               <div className="flex gap-3">
-                <a href="https://facebook.com/sachdevadiagnostics" className="bg-blue-600 hover:bg-blue-700 p-3 rounded-lg transition-all" aria-label="Facebook">
-                  <Facebook size={18} className="text-white" />
+                <a href="https://facebook.com/sachdevadiagnostics" className="bg-blue-600 hover:bg-blue-700 w-10 h-10 rounded-lg transition-all flex items-center justify-center" aria-label="Facebook">
+                  <span className="text-white font-bold text-sm">f</span>
                 </a>
-                <a href="https://instagram.com/sachdevadiagnostics" className="bg-pink-600 hover:bg-pink-700 p-3 rounded-lg transition-all" aria-label="Instagram">
-                  <Instagram size={18} className="text-white" />
+                <a href="https://instagram.com/sachdevadiagnostics" className="bg-gradient-to-br from-pink-500 to-orange-400 hover:from-pink-600 hover:to-orange-500 w-10 h-10 rounded-lg transition-all flex items-center justify-center" aria-label="Instagram">
+                  <span className="text-white font-bold text-xs">IG</span>
                 </a>
-                <a href="https://twitter.com/sachdevadiagnostics" className="bg-blue-500 hover:bg-blue-600 p-3 rounded-lg transition-all" aria-label="Twitter">
-                  <Twitter size={18} className="text-white" />
+                <a href="https://wa.me/919811582086" target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 w-10 h-10 rounded-lg transition-all flex items-center justify-center" aria-label="WhatsApp">
+                  <MessageCircle size={18} className="text-white" />
                 </a>
               </div>
             </div>
@@ -104,16 +104,17 @@ const Footer = () => {
               <h3 className="text-lg font-bold mb-6 text-white">Our Services</h3>
               <ul className="space-y-3">
                 {[
-                  { name: 'Ultrasound', href: '/tests?category=ultrasound' },
-                  { name: 'X-Ray Tests', href: '/tests?category=x-ray' },
-                  { name: 'Doppler Scan', href: '/tests?category=doppler' },
-                  { name: 'Health Packages', href: '/packages' },
-                  { name: 'LifeCell Delhi', href: '/lifecell' },
-                  { name: 'Home Collection', href: '/home-collection' }
+                  { name: '3D/4D Ultrasound', href: '/category/3d-4d-ultrasound' },
+                  { name: 'Fetal Echo & Color Doppler', href: '/category/color-doppler-ultrasound' },
+                  { name: 'Digital X-Ray & OPG', href: '/category/x-ray-test' },
+                  { name: 'ECG & Fibro Scan', href: '/tests' },
+                  { name: 'Pathology Lab (mfine)', href: '/category/lab-tests' },
+                  { name: 'Bone Densitometry (Dexa)', href: '/tests' },
+                  { name: 'Home Sample Collection', href: '/book-test' },
                 ].map((item) => (
                   <li key={item.name}>
-                    <Link 
-                      href={item.href} 
+                    <Link
+                      href={item.href}
                       className="text-slate-300 hover:text-white hover:pl-2 transition-all duration-200 flex items-center text-sm"
                     >
                       {item.name}
@@ -122,11 +123,11 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-            
+
             {/* Contact Info */}
             <div>
               <h3 className="text-lg font-bold mb-6 text-white">Contact Info</h3>
-              
+
               {/* Operating Hours */}
               <div className="mb-6 p-4 bg-slate-800 rounded-lg border border-slate-700">
                 <div className="flex items-center gap-2 mb-2">
@@ -134,41 +135,52 @@ const Footer = () => {
                   <span className="text-sm font-semibold text-white">Operating Hours</span>
                 </div>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Mon-Sat: 7:00 AM - 8:00 PM<br />
-                  Sunday: 8:00 AM - 6:00 PM
+                  Mon – Sat: 7:00 AM – 8:00 PM<br />
+                  Sunday: 8:00 AM – 2:00 PM
                 </p>
               </div>
 
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <a 
-                    href="https://maps.google.com/?q=E-991,+Block+E,+Saraswati+Vihar,+Pitampura,+Delhi,+110034"
+                  <a
+                    href="https://maps.google.com/?q=E-991,+Saraswati+Vihar,+Delhi+110034"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-slate-300 hover:text-white transition-colors"
                   >
-                    E-991, Block E, Saraswati Vihar,<br/>
-                    Pitampura, Delhi - 110034<br/>
-                    <span className="text-green-400 text-xs">Serving: Punjabi Bagh & nearby</span>
+                    E-991, Saraswati Vihar,<br />
+                    Delhi – 110034
+                  </a>
+                </li>
+                <li className="flex flex-col gap-1.5">
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <a href="tel:+919911380288" className="text-sm text-slate-300 hover:text-white transition-colors font-medium">
+                      +91 9911-380288
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3 pl-8">
+                    <a href="tel:+919811582086" className="text-sm text-slate-300 hover:text-white transition-colors font-medium">
+                      +91 9811-582086
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3 pl-8">
+                    <a href="tel:01145725538" className="text-sm text-slate-300 hover:text-white transition-colors">
+                      011 4572 5538
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                  <a href="mailto:sachdevadiagnostics@gmail.com" className="text-xs text-slate-300 hover:text-white transition-colors break-all">
+                    sachdevadiagnostics@gmail.com
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-green-400" />
-                  <a href="tel:+919811582086" className="text-sm text-slate-300 hover:text-white transition-colors font-medium">
-                    098115 82086
-                  </a>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-blue-400" />
-                  <a href="mailto:info@sachdevadiagnostics.com" className="text-xs text-slate-300 hover:text-white transition-colors break-all">
-                    info@sachdevadiagnostics.com
-                  </a>
-                </li>
-                <li className="flex items-center gap-3">
-                  <ExternalLink className="w-5 h-5 text-purple-400" />
-                  <a 
-                    href="http://sachdevadiagnostics.com" 
+                  <ExternalLink className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                  <a
+                    href="https://sachdevadiagnostics.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-slate-300 hover:text-white transition-colors"

@@ -499,7 +499,7 @@ const AboutUsPage = () => {
               className="border-white text-white hover:bg-white hover:text-[#194b8c] font-semibold px-8 py-3"
             >
               <Phone className="w-5 h-5 mr-2" />
-              Call +91 99900 48085
+              Call +91 9811-582086
             </Button>
           </div>
 
@@ -515,14 +515,14 @@ const AboutUsPage = () => {
               <Clock className="w-6 h-6" />
               <div className="text-left">
                 <div className="font-semibold">Operating Hours</div>
-                <div className="text-sm opacity-90">Mon-Sat: 7AM-9PM</div>
+                <div className="text-sm opacity-90">Mon-Sat: 7AM–8PM</div>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3">
               <Mail className="w-6 h-6" />
               <div className="text-left">
                 <div className="font-semibold">Email Us</div>
-                <div className="text-sm opacity-90">info@sachdevadiagnostics.com</div>
+                <div className="text-sm opacity-90">sachdevadiagnostics@gmail.com</div>
               </div>
             </div>
           </div>

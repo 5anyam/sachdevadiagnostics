@@ -8,12 +8,12 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'thesiswriting.xyz',
+        hostname: 'navajowhite-turkey-121983.hostingersite.com',
         pathname: '/**',
       },
       {
         protocol: 'http',
-        hostname: 'thesiswriting.xyz',
+        hostname: 'navajowhite-turkey-121983.hostingersite.com',
         pathname: '/**',
       },
       {

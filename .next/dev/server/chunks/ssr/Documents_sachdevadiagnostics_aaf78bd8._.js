@@ -1438,7 +1438,7 @@ const AboutUsPage = ()=>{
                                             lineNumber: 501,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
-                                        "Call +91 99900 48085"
+                                        "Call +91 9811-582086"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/about/page.tsx",
@@ -1518,7 +1518,7 @@ const AboutUsPage = ()=>{
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "text-sm opacity-90",
-                                                    children: "Mon-Sat: 7AM-9PM"
+                                                    children: "Mon-Sat: 7AM–8PM"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/about/page.tsx",
                                                     lineNumber: 518,
@@ -1559,7 +1559,7 @@ const AboutUsPage = ()=>{
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$sachdevadiagnostics$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "text-sm opacity-90",
-                                                    children: "info@sachdevadiagnostics.com"
+                                                    children: "sachdevadiagnostics@gmail.com"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/sachdevadiagnostics/src/app/about/page.tsx",
                                                     lineNumber: 525,

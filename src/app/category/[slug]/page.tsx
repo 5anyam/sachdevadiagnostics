@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { 
   Search, ChevronRight, X, Grid3x3, List, 
-  Star, Clock, Shield, Award, TrendingUp, Package,
+  Star, Clock, Shield, Award, TrendingUp,
   ArrowUpDown, Home as HomeIcon, Building2,
   TestTube, Calendar, CheckCircle2
 } from "lucide-react";
@@ -114,19 +114,15 @@ export default function CategoryProductsPage() {
 
     return (
       <Link href={`/test/${product.slug}`} className="block group h-full">
-        <Card className="overflow-hidden border-2 border-slate-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-300 h-full flex flex-col bg-white group-hover:-translate-y-1">
-            <div className="absolute top-3 left-3 flex flex-col gap-2">
-              <Badge className="bg-green-500 text-white font-bold text-xs shadow-lg border-0">
-                <Award className="h-3 w-3 mr-1" />
-                NABL
-              </Badge>
-              {isPopular && (
+        <Card className="relative overflow-hidden border-2 border-slate-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-300 h-full flex flex-col bg-white group-hover:-translate-y-1">
+            {isPopular && (
+              <div className="absolute top-3 left-3">
                 <Badge className="bg-orange-500 text-white font-bold text-xs shadow-lg border-0">
                   <TrendingUp className="h-3 w-3 mr-1" />
                   Popular
                 </Badge>
-              )}
-            </div>
+              </div>
+            )}
 
             {hasDiscount && (
               <div className="absolute top-3 right-3">
@@ -243,20 +239,20 @@ export default function CategoryProductsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white py-16 shadow-2xl">
+      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white py-8 sm:py-14 shadow-2xl">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <nav className="flex items-center mb-6 text-sm text-blue-200">
+            <nav className="flex items-center mb-4 sm:mb-6 text-xs sm:text-sm text-blue-200">
               <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
-                <HomeIcon className="h-4 w-4" />
+                <HomeIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 Home
               </Link>
-              <ChevronRight className="h-4 w-4 mx-2" />
+              <ChevronRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 mx-1.5 sm:mx-2" />
               <Link href="/tests" className="hover:text-white transition-colors">
                 All Tests
               </Link>
-              <ChevronRight className="h-4 w-4 mx-2" />
-              <span className="text-white font-semibold">
+              <ChevronRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 mx-1.5 sm:mx-2" />
+              <span className="text-white font-semibold truncate max-w-[120px] sm:max-w-none">
                 {categoryLoading ? "Loading…" : (category?.name || slug || "Category")}
               </span>
             </nav>
@@ -264,34 +260,29 @@ export default function CategoryProductsPage() {
             <div className="text-center">
               {categoryLoading ? (
                 <div className="space-y-4">
-                  <Skeleton className="h-12 w-64 mx-auto bg-white/20" />
-                  <Skeleton className="h-16 w-96 mx-auto bg-white/20" />
+                  <Skeleton className="h-8 sm:h-12 w-48 sm:w-64 mx-auto bg-white/20" />
+                  <Skeleton className="h-12 sm:h-16 w-72 sm:w-96 mx-auto bg-white/20" />
                 </div>
               ) : (
                 <>
-                  <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
-                    <Package className="h-4 w-4 text-blue-300" />
-                    <span className="text-sm font-semibold">Test Category</span>
-                  </div>
-                  <h1 className="text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
+                  <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
                     {category?.name || slug || "Tests"}
                   </h1>
-                  <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-                    {category?.description?.replace(/<[^>]*>/g, '') || 
+                  <p className="text-sm sm:text-lg text-blue-100 max-w-2xl mx-auto leading-relaxed">
+                    {category?.description?.replace(/<[^>]*>/g, '') ||
                      `Browse our comprehensive range of diagnostic tests with accurate results and fast reports`}
                   </p>
                 </>
               )}
 
-              <div className="flex items-center justify-center gap-8 mt-8 text-sm flex-wrap">
+              <div className="flex items-center justify-center gap-2 sm:gap-4 mt-5 sm:mt-8 text-xs sm:text-sm flex-wrap">
                 {[
                   { icon: TestTube, text: `${products.length} Tests`, color: "text-blue-300" },
                   { icon: Clock, text: "Same Day Reports", color: "text-green-300" },
                   { icon: Award, text: "NABL Certified", color: "text-yellow-300" },
-                  { icon: Shield, text: "100% Accurate", color: "text-purple-300" }
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <item.icon className={`h-4 w-4 ${item.color}`} />
+                  <div key={i} className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg">
+                    <item.icon className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${item.color}`} />
                     <span className="font-semibold">{item.text}</span>
                   </div>
                 ))}
@@ -304,75 +295,75 @@ export default function CategoryProductsPage() {
       <div className="container mx-auto px-4 py-10">
         {/* Search and Controls Bar */}
         <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-5 mb-8">
-          <div className="flex flex-col lg:flex-row gap-4 items-stretch">
-            <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+          <div className="flex flex-col gap-3">
+            {/* Search */}
+            <div className="relative">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
               <Input
                 type="search"
                 placeholder="Search tests in this category..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 h-14 text-slate-900 font-medium border-slate-300 focus:border-blue-600 rounded-xl text-base"
+                className="pl-10 h-11 text-slate-900 font-medium border-slate-300 focus:border-blue-600 rounded-xl text-sm"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
                   type="button"
                   aria-label="Clear search"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-4 w-4" />
                 </button>
               )}
             </div>
 
-            <div className="flex gap-2">
+            {/* Controls row */}
+            <div className="flex gap-2 flex-wrap">
               <Input
                 type="number"
                 placeholder="Min ₹"
                 value={priceRange.min}
                 onChange={(e) => setPriceRange(prev => ({ ...prev, min: e.target.value }))}
-                className="w-28 h-14 text-slate-900 font-semibold border-slate-300 focus:border-blue-600 rounded-xl"
+                className="w-24 sm:w-28 h-10 text-slate-900 font-semibold border-slate-300 focus:border-blue-600 rounded-xl text-sm"
               />
               <Input
                 type="number"
                 placeholder="Max ₹"
                 value={priceRange.max}
                 onChange={(e) => setPriceRange(prev => ({ ...prev, max: e.target.value }))}
-                className="w-28 h-14 text-slate-900 font-semibold border-slate-300 focus:border-blue-600 rounded-xl"
+                className="w-24 sm:w-28 h-10 text-slate-900 font-semibold border-slate-300 focus:border-blue-600 rounded-xl text-sm"
               />
-            </div>
-
-            <Select value={sortBy} onValueChange={(value: string) => setSortBy(value as SortOption)}>
-              <SelectTrigger className="w-full lg:w-56 h-14 border-slate-300 focus:border-blue-600 bg-white rounded-xl font-semibold">
-                <ArrowUpDown className="h-4 w-4 mr-2" />
-                <SelectValue placeholder="Sort by" />
-              </SelectTrigger>
-              <SelectContent className="bg-white border border-slate-300 rounded-xl shadow-xl">
-                <SelectItem value="popularity" className="font-semibold">Most Popular</SelectItem>
-                <SelectItem value="price-low" className="font-semibold">Price: Low to High</SelectItem>
-                <SelectItem value="price-high" className="font-semibold">Price: High to Low</SelectItem>
-                <SelectItem value="rating" className="font-semibold">Highest Rated</SelectItem>
-              </SelectContent>
-            </Select>
-
-            <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-lg">
-              <Button
-                variant={viewMode === 'grid' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => setViewMode('grid')}
-                className={`h-12 px-4 ${viewMode === 'grid' ? 'bg-white shadow-sm' : ''}`}
-              >
-                <Grid3x3 className="h-4 w-4" />
-              </Button>
-              <Button
-                variant={viewMode === 'list' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => setViewMode('list')}
-                className={`h-12 px-4 ${viewMode === 'list' ? 'bg-white shadow-sm' : ''}`}
-              >
-                <List className="h-4 w-4" />
-              </Button>
+              <Select value={sortBy} onValueChange={(value: string) => setSortBy(value as SortOption)}>
+                <SelectTrigger className="flex-1 min-w-[140px] h-10 border-slate-300 focus:border-blue-600 bg-white rounded-xl font-semibold text-sm">
+                  <ArrowUpDown className="h-3.5 w-3.5 mr-1.5 flex-shrink-0" />
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent className="bg-white border border-slate-300 rounded-xl shadow-xl">
+                  <SelectItem value="popularity" className="font-semibold">Most Popular</SelectItem>
+                  <SelectItem value="price-low" className="font-semibold">Price: Low to High</SelectItem>
+                  <SelectItem value="price-high" className="font-semibold">Price: High to Low</SelectItem>
+                  <SelectItem value="rating" className="font-semibold">Highest Rated</SelectItem>
+                </SelectContent>
+              </Select>
+              <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg">
+                <Button
+                  variant={viewMode === 'grid' ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => setViewMode('grid')}
+                  className={`h-8 w-8 p-0 ${viewMode === 'grid' ? 'bg-white shadow-sm' : ''}`}
+                >
+                  <Grid3x3 className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant={viewMode === 'list' ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => setViewMode('list')}
+                  className={`h-8 w-8 p-0 ${viewMode === 'list' ? 'bg-white shadow-sm' : ''}`}
+                >
+                  <List className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -409,41 +400,23 @@ export default function CategoryProductsPage() {
           )}
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <div className="flex flex-wrap justify-between items-center gap-3 mb-5 bg-white px-4 py-3 rounded-xl border border-slate-200 shadow-sm">
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              {productsLoading ? (
-                'Loading Tests...'
-              ) : (
-                <>
-                  <span className="text-blue-700">{sortedProducts.length}</span>
-                  <span className="text-slate-600">
-                    {sortedProducts.length === 1 ? 'Test' : 'Tests'} Available
-                  </span>
-                </>
+            <p className="text-base sm:text-lg font-bold text-slate-900">
+              {productsLoading ? 'Loading…' : (
+                <><span className="text-blue-700">{sortedProducts.length}</span> {sortedProducts.length === 1 ? 'Test' : 'Tests'} Available</>
               )}
-            </h2>
-            <p className="text-sm text-slate-600 mt-1">
-              {searchTerm ? `Showing results for "${searchTerm}"` : `All ${category?.name || ''} diagnostic tests`}
+            </p>
+            <p className="text-xs text-slate-500 mt-0.5">
+              {searchTerm ? `Results for "${searchTerm}"` : `All ${category?.name || ''} tests`}
             </p>
           </div>
-
           <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setPriceRange({ min: '', max: '1000' })}
-              className="text-xs border-slate-300 font-semibold hover:bg-blue-50 hover:text-blue-700"
-            >
+            <Button variant="outline" size="sm" onClick={() => setPriceRange({ min: '', max: '1000' })} className="text-xs border-slate-300 font-semibold hover:bg-blue-50 hover:text-blue-700">
               Under ₹1000
             </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setSortBy('popularity')}
-              className="text-xs border-slate-300 font-semibold hover:bg-blue-50 hover:text-blue-700"
-            >
-              Most Popular
+            <Button variant="outline" size="sm" onClick={() => setSortBy('popularity')} className="text-xs border-slate-300 font-semibold hover:bg-blue-50 hover:text-blue-700">
+              Popular
             </Button>
           </div>
         </div>
