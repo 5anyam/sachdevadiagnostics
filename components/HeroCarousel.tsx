@@ -22,7 +22,7 @@ const banners: Banner[] = [
     link: "/category/routine-ultrasound",
   },
   {
-    image: "https://navajowhite-turkey-121983.hostingersite.com/wp-content/uploads/2026/02/3.jpg",
+    image: "https://navajowhite-turkey-121983.hostingersite.com/wp-content/uploads/2026/06/Fetal-Echo-scaled.jpg",
     title: "Digital X-Ray",
     link: "/category/x-ray-test",
   },

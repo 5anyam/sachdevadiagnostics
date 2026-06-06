@@ -179,9 +179,10 @@ function TestCardGrid({ test }: { test: Product }) {
         </h3>
 
         {/* Description */}
-        <p className="text-xs text-slate-500 line-clamp-2 mb-3 flex-1 leading-relaxed">
-          {test.short_description?.replace(/<[^>]*>/g, '') || "Professional diagnostic test with accurate results."}
-        </p>
+        <div
+          className="text-xs text-slate-500 mb-3 flex-1 leading-relaxed [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_li]:mb-0.5 [&_p]:mb-1 [&_strong]:font-semibold [&_br]:block"
+          dangerouslySetInnerHTML={{ __html: test.description || test.short_description || "Professional diagnostic test with accurate results." }}
+        />
 
         {/* Report + Trust */}
         <div className="flex gap-3 mb-3 text-xs">
@@ -276,9 +277,10 @@ function TestCardList({ test }: { test: Product }) {
           <h3 className="font-bold text-sm text-slate-800 group-hover:text-sky-600 transition-colors leading-snug line-clamp-1">
             {test.name}
           </h3>
-          <p className="text-xs text-slate-400 mt-0.5 line-clamp-1">
-            {test.short_description?.replace(/<[^>]*>/g, '') || "Accurate results with same-day reports."}
-          </p>
+          <div
+            className="text-xs text-slate-400 mt-0.5 leading-relaxed [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_li]:mb-0.5 [&_p]:mb-1 [&_strong]:font-semibold"
+            dangerouslySetInnerHTML={{ __html: test.description || test.short_description || "Accurate results with same-day reports." }}
+          />
           <div className="flex items-center gap-3 mt-1.5 text-xs text-slate-500">
             <span className="flex items-center gap-1"><Clock className="h-3 w-3 text-sky-500" /> Same Day</span>
             {!hideHomeCollection && <span className="flex items-center gap-1"><Home className="h-3 w-3 text-green-500" /> Home Collection</span>}
