@@ -3,8 +3,8 @@
 import React, { Suspense, useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
-  Search, X, TestTube, Clock, Shield, Award, Users, Calendar, Star,
-  SlidersHorizontal, TrendingUp, Home, Building2, Zap, Filter,
+  Search, X, TestTube, Clock, Shield, Award, Users, Calendar,
+  SlidersHorizontal, TrendingUp, Zap, Filter,
   ArrowUpDown, Grid3x3, List, Package,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -208,24 +208,6 @@ function TestCardGrid({ test }: { test: Product }) {
                 <p className="text-[10px] text-slate-400">+ Free Home Collection</p>
               )}
             </div>
-            <div className="flex items-center gap-0.5 bg-amber-50 px-2 py-1 rounded-lg border border-amber-100">
-              <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-              <span className="text-xs font-bold text-amber-700">{test.average_rating || "4.8"}</span>
-            </div>
-          </div>
-
-          {/* Collection type chips */}
-          <div className="flex gap-1.5">
-            <div className="flex-1 flex items-center justify-center gap-1 bg-sky-50 py-1.5 rounded-lg border border-sky-100">
-              <Building2 className="h-3 w-3 text-sky-600" />
-              <span className="text-[10px] text-sky-700 font-bold">Center</span>
-            </div>
-            {!hideHomeCollection && (
-              <div className="flex-1 flex items-center justify-center gap-1 bg-green-50 py-1.5 rounded-lg border border-green-100">
-                <Home className="h-3 w-3 text-green-600" />
-                <span className="text-[10px] text-green-700 font-bold">Home</span>
-              </div>
-            )}
           </div>
         </div>
       </Link>
@@ -248,7 +230,6 @@ function TestCardGrid({ test }: { test: Product }) {
 function TestCardList({ test }: { test: Product }) {
   const isPopular = test.total_sales && parseInt(test.total_sales) > 50;
   const hasDiscount = test.regular_price && test.regular_price !== test.price;
-  const hideHomeCollection = isNoHomeCollection(test);
 
   return (
     <div className="group bg-white rounded-xl border border-slate-200 hover:border-sky-300 hover:shadow-lg transition-all duration-200 flex items-center gap-0 overflow-hidden">
@@ -283,8 +264,6 @@ function TestCardList({ test }: { test: Product }) {
           />
           <div className="flex items-center gap-3 mt-1.5 text-xs text-slate-500">
             <span className="flex items-center gap-1"><Clock className="h-3 w-3 text-sky-500" /> Same Day</span>
-            {!hideHomeCollection && <span className="flex items-center gap-1"><Home className="h-3 w-3 text-green-500" /> Home Collection</span>}
-            <span className="flex items-center gap-1"><Building2 className="h-3 w-3 text-sky-500" /> Center Visit</span>
           </div>
         </div>
       </Link>
@@ -294,10 +273,6 @@ function TestCardList({ test }: { test: Product }) {
         <div className="text-right hidden sm:block">
           {hasDiscount && <p className="text-slate-400 text-[10px] line-through">{formatPrice(test.regular_price)}</p>}
           <p className="text-sky-600 font-bold text-base">{formatPrice(test.price)}</p>
-          <div className="flex items-center justify-end gap-0.5 mt-0.5">
-            <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-            <span className="text-[10px] text-amber-700 font-bold">{test.average_rating || "4.8"}</span>
-          </div>
         </div>
         <Link href={`/book-test?test=${encodeURIComponent(test.name)}`}>
           <Button className="bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl text-xs px-4 h-9 whitespace-nowrap">

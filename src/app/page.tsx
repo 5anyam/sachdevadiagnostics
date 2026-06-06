@@ -4,7 +4,7 @@ import { Badge } from "../../components/ui/badge";
 import {
   ArrowRight, Clock, Phone, Shield,
   Activity, Zap, Users, Star, Download,
-  ChevronRight, TestTube, Microscope, Building2, Home,
+  ChevronRight, TestTube, Microscope, Home,
   Heart, MapPin, Calendar, Award,
   Stethoscope, Mail
 } from "lucide-react";
@@ -177,18 +177,6 @@ function ProductCard({ product }: { product: Product }) {
               </Button>
             </div>
 
-            <div className="flex gap-2">
-              <div className="flex-1 flex items-center justify-center gap-1 bg-sky-50 px-2 py-1.5 rounded-lg border border-sky-100">
-                <Building2 className="w-3 h-3 text-sky-600" />
-                <span className="text-[10px] text-sky-700 font-semibold">Center Visit</span>
-              </div>
-              {!hideHomeCollection && (
-                <div className="flex-1 flex items-center justify-center gap-1 bg-green-50 px-2 py-1.5 rounded-lg border border-green-100">
-                  <Home className="w-3 h-3 text-green-600" />
-                  <span className="text-[10px] text-green-700 font-semibold">Home</span>
-                </div>
-              )}
-            </div>
           </div>
 
         </div>

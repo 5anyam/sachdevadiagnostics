@@ -4,7 +4,7 @@ import { useEffect, useState, Suspense, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, ArrowLeft, FileText, Package, Clock, Star, Activity, Shield, Building2, Home } from 'lucide-react';
+import { Search, ArrowLeft, FileText, Package, Clock, Activity, Shield } from 'lucide-react';
 import Head from 'next/head';
 import { Button } from '../../../components/ui/button';
 import { Input } from '../../../components/ui/input';
@@ -276,28 +276,6 @@ const SearchContent = () => {
                                         </span>
                                       )}
                                     </div>
-                                    {product.average_rating && Number(product.average_rating) > 0 && (
-                                      <div className="flex items-center gap-1 bg-gradient-to-r from-yellow-50 to-orange-50 px-2.5 py-1.5 rounded-lg border border-yellow-200">
-                                        <Star className="h-3.5 w-3.5 text-yellow-600 fill-yellow-500" />
-                                        <span className="text-xs font-bold text-yellow-700">
-                                          {Number(product.average_rating).toFixed(1)}
-                                        </span>
-                                      </div>
-                                    )}
-                                  </div>
-
-                                  {/* ✅ Collection Type Badges — conditional */}
-                                  <div className="flex gap-2">
-                                    <div className="flex-1 flex items-center justify-center gap-1.5 bg-blue-50 px-3 py-2 rounded-lg border border-blue-200">
-                                      <Building2 className="h-3.5 w-3.5 text-blue-700" />
-                                      <span className="text-xs text-blue-700 font-bold">Center Visit</span>
-                                    </div>
-                                    {!hideHomeCollection && (
-                                      <div className="flex-1 flex items-center justify-center gap-1.5 bg-green-50 px-3 py-2 rounded-lg border border-green-200">
-                                        <Home className="h-3.5 w-3.5 text-green-700" />
-                                        <span className="text-xs text-green-700 font-bold">Home</span>
-                                      </div>
-                                    )}
                                   </div>
                                 </div>
                               </CardContent>

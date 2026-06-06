@@ -4,8 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import {
-  Search, ChevronRight, X, Star, Clock, Shield, Award, TrendingUp,
-  Home as HomeIcon, Building2, TestTube, Calendar, CheckCircle2
+  Search, ChevronRight, X, Clock, Shield, Award, TrendingUp,
+  Home as HomeIcon, TestTube, Calendar, CheckCircle2, Sparkles
 } from "lucide-react";
 
 import { Button } from "../../../../components/ui/button";
@@ -59,7 +59,16 @@ export default function CategoryProductsPage() {
     return (
       <Link href={`/test/${product.slug}`} className="block group h-full">
         <Card className="relative overflow-hidden border-2 border-slate-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-300 h-full flex flex-col bg-white group-hover:-translate-y-1">
-          {isPopular && (
+          {product.featured && (
+            <div className="absolute top-3 left-3">
+              <Badge className="bg-amber-500 text-white font-bold text-xs shadow-lg border-0">
+                <Sparkles className="h-3 w-3 mr-1" />
+                Featured
+              </Badge>
+            </div>
+          )}
+
+          {!product.featured && isPopular && (
             <div className="absolute top-3 left-3">
               <Badge className="bg-orange-500 text-white font-bold text-xs shadow-lg border-0">
                 <TrendingUp className="h-3 w-3 mr-1" />
@@ -120,23 +129,6 @@ export default function CategoryProductsPage() {
                     )}
                   </div>
                   <span className="text-xs text-slate-500 font-medium">+ Free Home Collection</span>
-                </div>
-                <div className="flex items-center gap-1 bg-gradient-to-r from-yellow-50 to-orange-50 px-2.5 py-1.5 rounded-lg border border-yellow-200">
-                  <Star className="h-3.5 w-3.5 text-yellow-600 fill-yellow-500" />
-                  <span className="text-xs font-bold text-yellow-700">
-                    {product.average_rating || "4.8"}
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex gap-2">
-                <div className="flex-1 flex items-center justify-center gap-1.5 bg-blue-50 px-3 py-2 rounded-lg border border-blue-200">
-                  <Building2 className="h-3.5 w-3.5 text-blue-700" />
-                  <span className="text-xs text-blue-700 font-bold">Center</span>
-                </div>
-                <div className="flex-1 flex items-center justify-center gap-1.5 bg-green-50 px-3 py-2 rounded-lg border border-green-200">
-                  <HomeIcon className="h-3.5 w-3.5 text-green-700" />
-                  <span className="text-xs text-green-700 font-bold">Home</span>
                 </div>
               </div>
             </div>
