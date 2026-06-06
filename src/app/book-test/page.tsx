@@ -335,7 +335,7 @@ function TestBookingFormContent() {
               <span className="hidden sm:block text-blue-300">|</span>
               <span>Home collection: ₹100 + distance charges</span>
               <span className="hidden sm:block text-blue-300">|</span>
-              <span>Slots: 6:00 AM – 10:00 AM</span>
+              <span>Slots: 7:30 AM – 10:00 AM</span>
             </div>
             {testParam && (
               <div className="mt-3 inline-block bg-green-50 border border-green-200 rounded-lg px-4 py-2 text-sm text-green-800">
