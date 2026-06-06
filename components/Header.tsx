@@ -115,7 +115,7 @@ const Header = () => {
                   alt='Sachdeva Diagnostics' 
                   height={240} 
                   width={240}
-                  className="h-24 w-24 sm:h-36 sm:w-40 object-contain"
+                  className="h-28 w-28 sm:h-36 sm:w-40 object-contain"
                   priority
                 />
               </div>
