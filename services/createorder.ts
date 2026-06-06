@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { OrderData } from './orders';
 
-const API_URL = 'https://thesiswriting.xyz/wp-json/wc/v3';
-const CONSUMER_KEY = 'ck_f3db9c54ccb91204a281d11979881bae4beae33c';
-const CONSUMER_SECRET = 'cs_91203108604f58127b42d9478d97412e766ec658';
+const BASE_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_URL || 'https://navajowhite-turkey-121983.hostingersite.com/wp-json/wc/v3';
+const CONSUMER_KEY = process.env.NEXT_PUBLIC_WC_CONSUMER_KEY || 'ck_f3db9c54ccb91204a281d11979881bae4beae33c';
+const CONSUMER_SECRET = process.env.NEXT_PUBLIC_WC_CONSUMER_SECRET || 'cs_91203108604f58127b42d9478d97412e766ec658';
 
 export async function createOrder(orderData: OrderData) {
-  const response = await axios.post(API_URL, orderData, {
+  const response = await axios.post(`${BASE_URL}/orders`, orderData, {
     params: { consumer_key: CONSUMER_KEY, consumer_secret: CONSUMER_SECRET },
     headers: { 'Content-Type': 'application/json' },
   });
@@ -16,7 +16,7 @@ export async function createOrder(orderData: OrderData) {
 // Returns count of bookings per time slot for a given date (YYYY-MM-DD)
 export async function getSlotCountsForDate(date: string): Promise<Record<string, number>> {
   try {
-    const response = await axios.get(`${API_URL}/orders`, {
+    const response = await axios.get(`${BASE_URL}/orders`, {
       params: {
         consumer_key: CONSUMER_KEY,
         consumer_secret: CONSUMER_SECRET,

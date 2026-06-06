@@ -396,7 +396,7 @@ export default async function Index() {
                 </Button>
               </Link>
               <a href="tel:+919911380288">
-                <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-sky-600 font-bold px-6 py-2.5 rounded-xl">
+                <Button variant="outline" className="border-2 border-white bg-white text-sky-600 font-bold px-6 py-2.5 rounded-xl">
                   <Phone className="w-4 h-4 mr-2" />
                   +91 9911-380288
                 </Button>
