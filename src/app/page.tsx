@@ -144,10 +144,9 @@ function ProductCard({ product }: { product: Product }) {
             {product.name}
           </h3>
 
-          <div
-            className="text-slate-500 text-xs mb-3 line-clamp-2 flex-1"
-            dangerouslySetInnerHTML={{ __html: product.short_description || product.description }}
-          />
+          <p className="text-slate-500 text-xs mb-3 line-clamp-2 min-h-[2.5rem]">
+            {(product.short_description || product.description || '').replace(/<[^>]*>/g, '')}
+          </p>
 
           <div className="flex gap-3 mb-3 text-xs">
             <div className="flex items-center gap-1.5 text-slate-600">
@@ -482,7 +481,16 @@ export default async function Index() {
                   {
                     Icon: Clock, bg: "bg-purple-100", color: "text-purple-600",
                     label: "Working Hours",
-                    content: <p className="text-slate-600 text-sm">Mon – Sat: 7:00 AM – 8:00 PM<br />Sunday: 8:00 AM – 2:00 PM</p>
+                    content: (
+                      <div className="text-slate-600 text-sm space-y-0.5">
+                        <p><span className="font-medium text-slate-700">Mon – Sat:</span> 7:00 AM – 8:00 PM</p>
+                        <p><span className="font-medium text-slate-700">Sunday:</span> 8:00 AM – 2:00 PM</p>
+                        <p className="text-sky-600 font-semibold text-xs pt-1">Ultrasound Timings:</p>
+                        <p><span className="font-medium text-slate-700">Mon – Sat:</span> 9:30 AM – 3:00 PM</p>
+                        <p><span className="font-medium text-slate-700">Evenings (Mon/Tue/Wed/Fri):</span> 6:00 – 7:00 PM <span className="text-slate-400 text-[10px]">(Appt. preferred)</span></p>
+                        <p><span className="font-medium text-slate-700">Sunday:</span> 11:00 AM – 12:00 PM <span className="text-slate-400 text-[10px]">(Appt. preferred)</span></p>
+                      </div>
+                    )
                   },
                 ].map(({ Icon, bg, color, label, content }, i) => (
                   <div key={i} className="flex gap-4">

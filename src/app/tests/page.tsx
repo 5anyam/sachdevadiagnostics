@@ -674,7 +674,7 @@ function TestsPageContent() {
         <div className="mt-10 bg-gradient-to-r from-sky-500 to-sky-600 text-white rounded-2xl p-7 sm:p-10 text-center shadow-lg">
           <h2 className="text-xl sm:text-2xl font-bold mb-2">Not Sure Which Test You Need?</h2>
           <p className="text-sky-100 text-sm mb-5">
-            Call our experts Mon–Sat 7 AM–8 PM for a free consultation and guidance.
+            Call our experts Mon–Sat 7 AM–8 PM for a free consultation. Ultrasound: 9:30 AM–3 PM (evenings Mon/Tue/Wed/Fri 6–7 PM).
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href="tel:+919811582086">

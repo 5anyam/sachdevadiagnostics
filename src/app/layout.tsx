@@ -4,6 +4,7 @@ import "./globals.css";
 import ReactQueryProvider from "../../components/ReactQueryProvider";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import PageLoader from "../../components/PageLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-       <ReactQueryProvider><Header/>{children}<Footer/></ReactQueryProvider> 
+       <ReactQueryProvider><PageLoader /><Header/>{children}<Footer/></ReactQueryProvider>
       </body>
     </html>
   );

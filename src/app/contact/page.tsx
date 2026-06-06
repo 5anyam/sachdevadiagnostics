@@ -125,6 +125,10 @@ const CONTACT_DETAILS = [
       <div className="text-slate-600 text-sm space-y-0.5">
         <p><span className="font-medium text-slate-700">Mon – Sat:</span> 7:00 AM – 8:00 PM</p>
         <p><span className="font-medium text-slate-700">Sunday:</span> 8:00 AM – 2:00 PM</p>
+        <p className="text-sky-600 font-semibold text-xs pt-1">Ultrasound Timings:</p>
+        <p><span className="font-medium text-slate-700">Mon – Sat:</span> 9:30 AM – 3:00 PM</p>
+        <p><span className="font-medium text-slate-700">Evenings (Mon/Tue/Wed/Fri):</span> 6:00 – 7:00 PM <span className="text-slate-400 text-[10px]">(Appt. preferred)</span></p>
+        <p><span className="font-medium text-slate-700">Sunday:</span> 11:00 AM – 12:00 PM <span className="text-slate-400 text-[10px]">(Appt. preferred)</span></p>
       </div>
     ),
   },
@@ -141,7 +145,7 @@ const FAQS = [
   },
   {
     q: "Do I need an appointment for ultrasound?",
-    a: "Walk-ins are welcome, but an appointment ensures minimal wait time. You can call or book online.",
+    a: "Appointments are preferred for ultrasound. Timings — Mon–Sat: 9:30 AM–3:00 PM; Evenings (Mon/Tue/Wed/Fri): 6:00–7:00 PM; Sunday: 11:00 AM–12:00 PM. Walk-ins are welcome but may experience a wait.",
   },
   {
     q: "Do you accept health insurance?",

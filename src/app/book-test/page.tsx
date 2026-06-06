@@ -37,10 +37,11 @@ const CONTROL_BASE =
 const INPUT_STYLES = CONTROL_BASE;
 const TRIGGER_STYLES = `${CONTROL_BASE} flex justify-between items-center`;
 
-// Morning slots only: 6:00 AM – 10:00 AM, every 30 minutes
+// Ultrasound slots: Mon–Sat 9:30 AM–3:00 PM, Evenings (Mon/Tue/Wed/Fri) 6–7 PM, Sun 11 AM–12 PM
 const TIMES = [
-  '06:00', '06:30', '07:00', '07:30', '08:00',
-  '08:30', '09:00', '09:30', '10:00',
+  '09:30', '10:00', '10:30', '11:00', '11:30', '12:00',
+  '12:30', '13:00', '13:30', '14:00', '14:30', '15:00',
+  '18:00', '18:30',
 ] as const;
 
 type TimeValue = typeof TIMES[number];
@@ -536,7 +537,8 @@ function TestBookingFormContent() {
                 {/* Schedule */}
                 <div className="bg-white rounded-xl p-6">
                   <h3 className="text-lg font-semibold text-[#194b8c] mb-1">Schedule Appointment</h3>
-                  <p className="text-xs text-gray-500 mb-4">Morning slots: 6:00 AM – 10:00 AM · Max 2 bookings per slot</p>
+                  <p className="text-xs text-gray-500 mb-1">Mon–Sat: 9:30 AM – 3:00 PM · Eves (Mon/Tue/Wed/Fri): 6:00–7:00 PM · Sun: 11:00 AM–12:00 PM</p>
+                  <p className="text-xs text-[#194b8c] font-medium mb-4">Appointment preferred · Max 2 bookings per slot</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
                     {/* Date */}

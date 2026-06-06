@@ -65,14 +65,20 @@ import {
 // 🔧  Utilities
 // -----------------------------------------------------------------------------
 
-const formatTimeLabel = (hour) => {
-  const period = hour >= 12 ? 'PM' : 'AM';
-  const displayHour = hour % 12 || 12;
-  return `${displayHour}:00 ${period}`;
+const formatTimeLabel = (slot: string) => {
+  const [hStr, mStr] = slot.split(':');
+  const h = parseInt(hStr, 10);
+  const period = h >= 12 ? 'PM' : 'AM';
+  const h12 = h % 12 || 12;
+  return `${h12}:${mStr} ${period}`;
 };
 
-// Medical time slots (7 AM to 8 PM)
-const MEDICAL_HOURS = Array.from({ length: 14 }, (_, i) => 7 + i);
+// Ultrasound slots: Mon–Sat 9:30 AM–3:00 PM, Evenings (Mon/Tue/Wed/Fri) 6:00–7:00 PM, Sun 11:00 AM–12:00 PM
+const MEDICAL_HOURS = [
+  '09:30', '10:00', '10:30', '11:00', '11:30', '12:00',
+  '12:30', '13:00', '13:30', '14:00', '14:30', '15:00',
+  '18:00', '18:30',
+];
 
 // -----------------------------------------------------------------------------
 // 🧩  MAIN COMPONENT
@@ -790,9 +796,9 @@ export default function TestDetailPage() {
                           </div>
                         </SelectTrigger>
                         <SelectContent className="bg-white border border-gray-300 shadow-lg">
-                          {MEDICAL_HOURS.map((hour) => (
-                            <SelectItem key={hour} value={`${hour}:00`} className="text-black hover:bg-gray-100 font-medium">
-                              {formatTimeLabel(hour)}
+                          {MEDICAL_HOURS.map((slot) => (
+                            <SelectItem key={slot} value={slot} className="text-black hover:bg-gray-100 font-medium">
+                              {formatTimeLabel(slot)}
                             </SelectItem>
                           ))}
                         </SelectContent>
@@ -836,14 +842,21 @@ export default function TestDetailPage() {
                 <Card className="border border-gray-200">
                   <CardContent className="p-4">
                     <h3 className="font-bold mb-3 text-black">Need Help?</h3>
-                    <div className="space-y-2">
-                      <a href="tel:+919990048085" className="flex items-center gap-2 text-[#194b8c] hover:underline">
+                    <div className="space-y-2 mb-4">
+                      <a href="tel:+919911380288" className="flex items-center gap-2 text-[#194b8c] hover:underline">
                         <Phone className="w-4 h-4" />
-                        <span className="text-sm font-medium">+91 99900 48085</span>
+                        <span className="text-sm font-medium">+91 9911-380288</span>
                       </a>
-                      <div className="flex items-center gap-2 text-gray-800">
-                        <Clock className="w-4 h-4" />
-                        <span className="text-sm font-medium">Mon-Sat: 7 AM - 9 PM</span>
+                    </div>
+                    <div className="bg-blue-50 rounded-lg p-3 border border-blue-100">
+                      <p className="text-xs font-bold text-[#194b8c] mb-1.5 flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5" /> Ultrasound Timings
+                      </p>
+                      <div className="text-xs text-gray-700 space-y-0.5">
+                        <p><span className="font-semibold">Mon–Sat:</span> 9:30 AM – 3:00 PM</p>
+                        <p><span className="font-semibold">Eves (Mon/Tue/Wed/Fri):</span> 6:00 – 7:00 PM</p>
+                        <p><span className="font-semibold">Sunday:</span> 11:00 AM – 12:00 PM</p>
+                        <p className="text-[#194b8c] font-medium pt-0.5">Appointment preferred</p>
                       </div>
                     </div>
                   </CardContent>

@@ -449,6 +449,7 @@ export default function AboutUsPage() {
               <div className="text-left">
                 <div className="font-semibold text-sm">Working Hours</div>
                 <div className="text-sky-200 text-xs">Mon–Sat 7AM–8PM | Sun 8AM–2PM</div>
+                <div className="text-sky-300 text-[10px] mt-0.5">Ultrasound: Mon–Sat 9:30AM–3PM | Eves 6–7PM | Sun 11AM–12PM</div>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3">
