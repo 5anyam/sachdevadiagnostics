@@ -87,7 +87,7 @@ export default function PromoPopup() {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
-            <Link href="/tests" className="flex-1" onClick={dismiss}>
+            <Link href="/category/health-checkups" className="flex-1" onClick={dismiss}>
               <Button className="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl">
                 Book Health Package
               </Button>
