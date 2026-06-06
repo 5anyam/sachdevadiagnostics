@@ -71,7 +71,7 @@ const BROCHURE_SERVICES = [
   { name: "Bone Densitometry (Dexa)",   icon: Shield,       href: "/category/bone-densitometry-dexa",                              iconBg: "bg-green-100",  iconColor: "text-green-600",  border: "hover:border-green-400"  },
   { name: "Digital X-Ray & OPG",        icon: Zap,          href: "/category/x-ray",                iconBg: "bg-cyan-100",   iconColor: "text-cyan-600",   border: "hover:border-cyan-400"   },
   { name: "ECG & Fibro Scan",           icon: Activity,     href: "/category/ecg-fibroscan",                              iconBg: "bg-yellow-100", iconColor: "text-yellow-700", border: "hover:border-yellow-400" },
-  { name: "Pathology Lab (mfine)",      icon: TestTube,     href: "/category/blood-tests",                 iconBg: "bg-indigo-100", iconColor: "text-indigo-600", border: "hover:border-indigo-400" },
+  { name: "Pathology Lab (LifeCell)",      icon: TestTube,     href: "/tests",                 iconBg: "bg-indigo-100", iconColor: "text-indigo-600", border: "hover:border-indigo-400" },
   { name: "Home Sample Collection",     icon: Home,         href: "/book-test",                          iconBg: "bg-teal-100",   iconColor: "text-teal-600",   border: "hover:border-teal-400"   },
 ];
 

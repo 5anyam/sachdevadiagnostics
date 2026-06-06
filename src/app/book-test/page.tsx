@@ -329,10 +329,9 @@ function TestBookingFormContent() {
               Book Home Sample Collection
             </h1>
             <p className="text-gray-600 mb-4">
-              Sachdeva Diagnostics — 30+ years of trusted healthcare
+              Sachdeva Diagnostics - Professional blood sample collection at your Doorstep.
             </p>
             <div className="inline-flex flex-col sm:flex-row gap-3 bg-blue-50 border border-blue-200 rounded-xl px-6 py-3 text-sm text-[#194b8c]">
-              <span className="font-semibold">Booking Fee: ₹100</span>
               <span className="hidden sm:block text-blue-300">|</span>
               <span>Home collection: ₹100 + distance charges</span>
               <span className="hidden sm:block text-blue-300">|</span>
