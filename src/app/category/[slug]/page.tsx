@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import {
-  Search, ChevronRight, X, Clock, Shield, Award, TrendingUp,
+  Search, ChevronRight, X, Clock, Shield, TrendingUp,
   Home as HomeIcon, TestTube, Calendar, CheckCircle2, Sparkles
 } from "lucide-react";
 
@@ -207,7 +207,6 @@ export default function CategoryProductsPage() {
                 {[
                   { icon: TestTube, text: `${products.length} Tests`, color: "text-blue-300" },
                   { icon: Clock, text: "Same Day Reports", color: "text-green-300" },
-                  { icon: Award, text: "NABL Certified", color: "text-yellow-300" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg">
                     <item.icon className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${item.color}`} />

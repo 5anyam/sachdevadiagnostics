@@ -1,64 +1,53 @@
 import Link from "next/link";
 import { Button } from "../../components/ui/button";
-import { Badge } from "../../components/ui/badge";
+
 import {
-  ArrowRight, Clock, Phone, Shield,
+  Clock, Phone, Shield,
   Activity, Zap, Users, Star, Download,
-  ChevronRight, TestTube, Microscope, Home,
+  ChevronRight, TestTube, Home,
   Heart, MapPin, Calendar, Award,
-  Stethoscope, Mail
+  Stethoscope, Mail, ArrowRight
 } from "lucide-react";
 import HeroCarousel from "../../components/HeroCarousel";
 import CircularCategoriesCarousel from "../../components/CircularCategoriesCarousel";
 import {
-  getProductsByCategory,
   getProductCategories,
-  formatPrice,
-  getProductMetaValue,
-  Product,
   Category
 } from "../../services/wordpress";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const CATEGORY_GROUPS = [
+const HOME_CATEGORY_CARDS = [
   {
-    title: "Health Packages",
-    description: "Comprehensive diagnostic and health screening packages",
-    slugs: ["health-packages", "special-ultrasound"],
-    icon: TestTube,
-    gradient: "from-emerald-500 to-teal-500"
-  },
-  {
-    title: "Ultrasound Services",
-    description: "Advanced 3D/4D ultrasound imaging with expert radiologists",
-    slugs: ["3d-4d-ultrasound", "pregnancy-ultrasound", "color-doppler-ultrasound", "routine-ultrasound"],
+    slug: "ecg-fibroscan",
+    name: "ECG & Fibro Scan",
+    description: "12-lead ECG and FibroScan for cardiac and liver health assessment",
     icon: Activity,
-    gradient: "from-sky-500 to-blue-500"
+    iconBg: "bg-yellow-50",
+    iconColor: "text-yellow-600",
+    border: "hover:border-yellow-400",
+    tag: "bg-yellow-100 text-yellow-700",
   },
   {
-    title: "X-Ray Services",
-    description: "Digital X-ray imaging with same-day reports",
-    slugs: ["x-ray-test"],
-    icon: Zap,
-    gradient: "from-violet-500 to-purple-500"
+    slug: "ultrasound",
+    name: "Ultrasound",
+    description: "High-resolution B-mode and 3D/4D ultrasound imaging by expert radiologists",
+    icon: Stethoscope,
+    iconBg: "bg-sky-50",
+    iconColor: "text-sky-600",
+    border: "hover:border-sky-400",
+    tag: "bg-sky-100 text-sky-700",
   },
   {
-    title: "Lab Tests",
-    description: "Complete blood tests and pathology services",
-    slugs: ["lab-tests", "blood-tests", "pathology"],
-    icon: Microscope,
-    gradient: "from-orange-500 to-amber-500"
-  }
-];
-
-const NO_HOME_COLLECTION_SLUGS = [
-  "3d-4d-ultrasound",
-  "pregnancy-ultrasound",
-  "color-doppler-ultrasound",
-  "routine-ultrasound",
-  "special-ultrasound",
-  "x-ray-test",
+    slug: "color-doppler-ultrasound",
+    name: "Color Doppler",
+    description: "Advanced colour Doppler studies for vascular, cardiac and obstetric evaluation",
+    icon: Heart,
+    iconBg: "bg-red-50",
+    iconColor: "text-red-500",
+    border: "hover:border-red-300",
+    tag: "bg-red-100 text-red-700",
+  },
 ];
 
 // Services matching the brochure exactly
@@ -77,29 +66,6 @@ const BROCHURE_SERVICES = [
 
 // ─── Data fetching ─────────────────────────────────────────────────────────────
 
-function isNoHomeCollection(product: Product): boolean {
-  return product.categories?.some(cat =>
-    NO_HOME_COLLECTION_SLUGS.includes(cat.slug)
-  ) ?? false;
-}
-
-async function getCategoryGroupProducts(slugs: string[]): Promise<Product[]> {
-  try {
-    const categories = await getProductCategories({ per_page: 100 });
-    const categoryProducts = await Promise.all(
-      slugs.map(async (slug) => {
-        const category = categories.find(cat => cat.slug === slug);
-        if (!category) return [];
-        const products = await getProductsByCategory(category.id, { per_page: 20 });
-        return products.filter(p => p.featured === true);
-      })
-    );
-    return categoryProducts.flat().filter(p => p.featured).slice(0, 4);
-  } catch {
-    return [];
-  }
-}
-
 async function getFeaturedCategories(): Promise<Category[]> {
   try {
     const categories = await getProductCategories({ per_page: 50, orderby: 'count', order: 'desc' });
@@ -109,122 +75,62 @@ async function getFeaturedCategories(): Promise<Category[]> {
   }
 }
 
-function getCategorySlug(products: Product[]): string {
-  const slug = products[0]?.categories?.[0]?.slug;
-  return slug ? `/category/${slug}` : "/tests";
-}
-
-function getCategoryTitle(products: Product[]): string {
-  return products[0]?.categories?.[0]?.name || "";
+async function getHomeCategoryCounts(): Promise<Record<string, number>> {
+  try {
+    const all = await getProductCategories({ per_page: 100 });
+    const slugs = HOME_CATEGORY_CARDS.map(c => c.slug);
+    return Object.fromEntries(
+      all.filter(c => slugs.includes(c.slug)).map(c => [c.slug, c.count ?? 0])
+    );
+  } catch {
+    return {};
+  }
 }
 
 // ─── Components ───────────────────────────────────────────────────────────────
 
-function ProductCard({ product }: { product: Product }) {
-  const reportTat = getProductMetaValue(product, 'report_tat') || 'Same Day';
-  const hasDiscount = product.regular_price && product.regular_price !== product.price;
-  const hideHomeCollection = isNoHomeCollection(product);
-
+function HomeCategoryCard({
+  card, count,
+}: {
+  card: typeof HOME_CATEGORY_CARDS[number];
+  count: number;
+}) {
+  const Icon = card.icon;
   return (
-    <Link href={`/test/${product.slug}`} className="group block h-full">
-      <div className="bg-white rounded-2xl border border-slate-200 hover:border-sky-300 hover:shadow-xl transition-all duration-300 h-full flex flex-col group-hover:-translate-y-0.5">
-        <div className="p-4 sm:p-5 flex-1 flex flex-col">
-
-          <div className="flex flex-wrap items-center gap-1.5 mb-3">
-            <Badge variant="outline" className="bg-sky-50 text-sky-700 border-sky-200 font-semibold text-[10px] sm:text-xs">
-              {product.categories?.[0]?.name || 'Diagnostic'}
-            </Badge>
-            <Badge className="bg-amber-50 text-amber-700 border-0 font-bold text-[10px] sm:text-xs shadow-none">
-              <Star className="w-2.5 h-2.5 mr-0.5 fill-amber-600" />
-              Featured
-            </Badge>
+    <Link href={`/category/${card.slug}`} className="group block h-full">
+      <div className={`bg-white rounded-2xl border border-slate-200 ${card.border} hover:shadow-xl transition-all duration-300 h-full flex flex-col group-hover:-translate-y-0.5 overflow-hidden`}>
+        <div className="p-6 flex-1 flex flex-col">
+          <div className={`w-12 h-12 ${card.iconBg} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+            <Icon className={`w-6 h-6 ${card.iconColor}`} />
           </div>
-
-          <h3 className="text-sm sm:text-base font-bold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors leading-snug line-clamp-2 min-h-[2.5rem]">
-            {product.name}
+          <h3 className="text-base sm:text-lg font-bold text-slate-800 mb-1.5 group-hover:text-sky-600 transition-colors">
+            {card.name}
           </h3>
-
-          <p className="text-slate-500 text-xs mb-3 line-clamp-2 min-h-[2.5rem]">
-            {(product.short_description || product.description || '').replace(/<[^>]*>/g, '')}
+          <p className="text-slate-500 text-xs sm:text-sm leading-relaxed line-clamp-2 flex-1">
+            {card.description}
           </p>
-
-          <div className="flex gap-3 mb-3 text-xs">
-            <div className="flex items-center gap-1.5 text-slate-600">
-              <div className="bg-green-100 p-1 rounded">
-                <Clock className="w-3 h-3 text-green-700" />
-              </div>
-              <span className="font-medium">{reportTat}</span>
-            </div>
+          {count > 0 && (
+            <span className={`mt-3 inline-flex w-fit items-center text-[11px] font-semibold px-2 py-0.5 rounded-full ${card.tag}`}>
+              {count} tests available
+            </span>
+          )}
+        </div>
+        <div className="px-6 pb-5">
+          <div className="flex items-center gap-1 text-sky-600 font-semibold text-sm group-hover:gap-2 transition-all">
+            View Tests <ArrowRight className="w-4 h-4" />
           </div>
-
-          <div className="pt-3 border-t border-slate-100">
-            <div className="flex items-center justify-between mb-2.5">
-              <div>
-                {hasDiscount && (
-                  <div className="text-slate-400 text-[10px] line-through">
-                    {formatPrice(product.regular_price)}
-                  </div>
-                )}
-                <div className="text-sky-600 font-bold text-lg sm:text-xl">
-                  {formatPrice(product.price)}
-                </div>
-                {!hideHomeCollection && (
-                  <span className="text-[10px] text-slate-400">+ Free Home Collection</span>
-                )}
-              </div>
-              <Button size="sm" className="bg-sky-500 hover:bg-sky-600 text-white text-xs px-4 py-2 rounded-lg shadow-sm">
-                Book <ArrowRight className="ml-1 w-3 h-3" />
-              </Button>
-            </div>
-
-          </div>
-
         </div>
       </div>
     </Link>
   );
 }
 
-function CategorySection({
-  title, description, products
-}: {
-  title: string;
-  description: string;
-  products: Product[];
-}) {
-  if (products.length === 0) return null;
-
-  const label = getCategoryTitle(products) || title;
-  const href = getCategorySlug(products);
-
-  return (
-    <section className="py-10 sm:py-14 border-b border-slate-100">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-6 sm:mb-8 gap-4">
-          <div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-800">{label}</h2>
-            <p className="text-slate-500 text-xs sm:text-sm mt-0.5">{description}</p>
-          </div>
-          <Link href={href} className="flex-shrink-0">
-            <Button variant="outline" className="border border-sky-300 text-sky-600 hover:bg-sky-50 font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-1 transition-all">
-              View All <ChevronRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          {products.map(product => <ProductCard key={product.id} product={product} />)}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function Index() {
-  const [allGroupProducts, categories] = await Promise.all([
-    Promise.all(CATEGORY_GROUPS.map(group => getCategoryGroupProducts(group.slugs))),
-    getFeaturedCategories()
+  const [categoryCounts, categories] = await Promise.all([
+    getHomeCategoryCounts(),
+    getFeaturedCategories(),
   ]);
 
   return (
@@ -292,17 +198,31 @@ export default async function Index() {
         </div>
       </section>
 
-      {/* ── FEATURED TESTS FROM BACKEND ── */}
-      <div className="bg-slate-50">
-        {CATEGORY_GROUPS.map((group, index) => (
-          <CategorySection
-            key={group.title}
-            title={group.title}
-            description={group.description}
-            products={allGroupProducts[index]}
-          />
-        ))}
-      </div>
+      {/* ── FEATURED CATEGORIES ── */}
+      <section className="py-10 sm:py-14 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-6 sm:mb-8 gap-4">
+            <div>
+              <p className="text-sky-600 text-sm font-semibold tracking-wide uppercase mb-1">Our Specialities</p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-800">Featured Services</h2>
+            </div>
+            <Link href="/tests" className="flex-shrink-0">
+              <Button variant="outline" className="border border-sky-300 text-sky-600 hover:bg-sky-50 font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-1">
+                All Tests <ChevronRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            {HOME_CATEGORY_CARDS.map(card => (
+              <HomeCategoryCard
+                key={card.slug}
+                card={card}
+                count={categoryCounts[card.slug] ?? 0}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── WHY CHOOSE US ── */}
       <section className="py-10 sm:py-14 bg-white">
@@ -313,7 +233,6 @@ export default async function Index() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {[
-              { icon: Award,       color: "bg-sky-50 text-sky-600",     title: "NABL Certified",      desc: "Nationally accredited testing laboratory with international quality standards." },
               { icon: Activity,    color: "bg-emerald-50 text-emerald-600", title: "Latest Equipment", desc: "High-resolution 3D/4D ultrasound machines & digital X-ray technology." },
               { icon: Clock,       color: "bg-amber-50 text-amber-600",  title: "Same Day Reports",    desc: "Fast turnaround — digital reports delivered the same day." },
               { icon: Users,       color: "bg-violet-50 text-violet-600",title: "Expert Radiologists", desc: "Experienced radiologists & pathologists with 20+ years of expertise." },
