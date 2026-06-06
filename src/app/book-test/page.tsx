@@ -335,7 +335,7 @@ function TestBookingFormContent() {
               <span className="hidden sm:block text-blue-300">|</span>
               <span>Home collection: ₹100 + distance charges</span>
               <span className="hidden sm:block text-blue-300">|</span>
-              <span>Slots: 7:30 AM – 10:00 AM</span>
+              <span>Slots: 7:30 AM – Onwards</span>
             </div>
             {testParam && (
               <div className="mt-3 inline-block bg-green-50 border border-green-200 rounded-lg px-4 py-2 text-sm text-green-800">
@@ -443,7 +443,7 @@ function TestBookingFormContent() {
                               <Building className="h-5 w-5 text-[#194b8c] mr-3 flex-shrink-0" />
                               <div>
                                 <div className="font-semibold text-gray-900">Visit Center</div>
-                                <div className="text-xs text-gray-500">All tests available • ₹100 booking fee</div>
+                                <div className="text-xs text-gray-500">All tests available • ₹100 booking fee(Ajusted Later)</div>
                               </div>
                             </label>
                           </div>
@@ -660,7 +660,7 @@ function TestBookingFormContent() {
                       {watchCollectionType === 'home' ? (
                         <div className="text-sm opacity-80 mt-0.5">₹100 booking fee + distance charges (confirmed by phlebotomist)</div>
                       ) : (
-                        <div className="text-sm opacity-80 mt-0.5">Booking fee only — test charges payable at center</div>
+                        <div className="text-sm opacity-80 mt-0.5">Booking fee only(Adjusted Later) — test charges payable at center</div>
                       )}
                     </div>
                     <div className="text-right">
