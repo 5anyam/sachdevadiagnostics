@@ -311,7 +311,7 @@ export default function CategoryProductsPage() {
               </h3>
               <p className="text-slate-700 leading-relaxed">
                 {category?.description?.replace(/<[^>]*>/g, '') ||
-                 `Our tests are conducted using state-of-the-art equipment with NABL certification. We ensure accurate results with quick turnaround times, all performed by experienced medical professionals.`}
+                 `Our tests are conducted using state-of-the-art equipment. We ensure accurate results with quick turnaround times, all performed by experienced medical professionals.`}
               </p>
               <div className="flex flex-wrap justify-center gap-4 mt-6">
                 {[
