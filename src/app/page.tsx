@@ -67,7 +67,7 @@ const BROCHURE_SERVICES = [
   { name: "Color Doppler",             icon: Heart,        href: "/category/color-doppler-ultrasound",  iconBg: "bg-red-100",    iconColor: "text-red-600",    border: "hover:border-red-400"    },
   { name: "Thyroid & Breast Ultrasound",icon: Stethoscope,  href: "/category/routine-ultrasound",        iconBg: "bg-purple-100", iconColor: "text-purple-600", border: "hover:border-purple-400" },
   { name: "MSK / Joint / Muscle",       icon: Zap,          href: "/tests",                              iconBg: "bg-orange-100", iconColor: "text-orange-600", border: "hover:border-orange-400" },
-  { name: "Fetal Echo/ Adult Echo",      icon: Heart,        href: "/category/echo",                              iconBg: "bg-pink-100",   iconColor: "text-pink-600",   border: "hover:border-pink-400"   },
+  { name: "Echo",      icon: Heart,        href: "/category/echo",                              iconBg: "bg-pink-100",   iconColor: "text-pink-600",   border: "hover:border-pink-400"   },
   { name: "Bone Densitometry (Dexa)",   icon: Shield,       href: "/tests",                              iconBg: "bg-green-100",  iconColor: "text-green-600",  border: "hover:border-green-400"  },
   { name: "Digital X-Ray & OPG",        icon: Zap,          href: "/category/x-ray-test",                iconBg: "bg-cyan-100",   iconColor: "text-cyan-600",   border: "hover:border-cyan-400"   },
   { name: "ECG & Fibro Scan",           icon: Activity,     href: "/tests",                              iconBg: "bg-yellow-100", iconColor: "text-yellow-700", border: "hover:border-yellow-400" },
