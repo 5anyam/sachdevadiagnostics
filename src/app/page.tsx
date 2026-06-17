@@ -233,7 +233,7 @@ export default async function Index() {
             {[
               { icon: Activity,    color: "bg-emerald-50 text-emerald-600", title: "Latest Equipment", desc: "High-resolution 3D/4D ultrasound machines & digital X-ray technology." },
               { icon: Clock,       color: "bg-amber-50 text-amber-600",  title: "Same Day Reports",    desc: "Fast turnaround — digital reports delivered the same day." },
-              { icon: Users,       color: "bg-violet-50 text-violet-600",title: "Expert Radiologists", desc: "Experienced radiologists & pathologists with 20+ years of expertise." },
+              { icon: Users,       color: "bg-violet-50 text-violet-600",title: "Expert Radiologists", desc: "Experienced radiologists & pathologists with 30+ years of expertise." },
               { icon: Home,        color: "bg-teal-50 text-teal-600",    title: "Home Collection",     desc: "Convenient home sample collection facility for all lab tests." },
               { icon: Shield,      color: "bg-rose-50 text-rose-600",    title: "30 Years of Trust",   desc: "Trusted by 5 lakh+ patients — a healthcare landmark in Delhi since 1993." },
             ].map((f, i) => (
@@ -430,7 +430,6 @@ export default async function Index() {
           </div>
         </div>
       </section>
-
       {/* ── CTA ── */}
       <section className="bg-sky-600 text-white py-10 sm:py-14">
         <div className="container mx-auto px-4">
