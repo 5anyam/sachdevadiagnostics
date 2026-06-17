@@ -23,7 +23,7 @@ import {
 
 const CATEGORY_GROUPS = [
   { slug: "ultrasound",             title: "Ultrasound",               description: "High-resolution 3D/4D ultrasound imaging" },
-  { slug: "ecg-fibroscan",          title: "ECG & Fibro Scan",        description: "Cardiac ECG and liver FibroScan services" },
+  { slug: "ecg-fibroscan",          title: "ECG & FibroScan",        description: "Cardiac ECG and liver FibroScan services" },
   { slug: "color-doppler-ultrasound", title: "Color Doppler",          description: "Advanced colour Doppler for vascular and cardiac evaluation" },
 ];
 
