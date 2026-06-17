@@ -58,7 +58,12 @@ async function getCategoryGroupProducts(slug: string): Promise<Product[]> {
     const category = categories.find(cat => cat.slug === slug);
     if (!category) return [];
     const products = await getProductsByCategory(category.id, { per_page: 20 });
-    return products.slice(0, 4);
+    const sorted = [...products].sort((a, b) => {
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      return 0;
+    });
+    return sorted.slice(0, 4);
   } catch {
     return [];
   }
