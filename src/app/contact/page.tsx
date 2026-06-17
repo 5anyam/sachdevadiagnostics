@@ -194,8 +194,8 @@ export default function ContactPage() {
               >
                 <action.icon className="w-8 h-8" />
                 <span className="font-extrabold text-xl">{action.label}</span>
-                <span className="text-white/90 text-sm font-semibold">{action.value}</span>
-                <span className="text-white/70 text-xs font-medium">{action.desc}</span>
+                <span className="text-white/90 text-sm font-bold">{action.value}</span>
+                <span className="text-white/70 text-xs font-bold">{action.desc}</span>
               </a>
             ))}
           </div>
