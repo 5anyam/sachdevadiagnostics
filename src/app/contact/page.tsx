@@ -145,8 +145,8 @@ const FAQS = [
     a: "Appointments are preferred for ultrasound. Timings — Mon–Sat: 9:30 AM–3:00 PM; Evenings (Mon/Tue/Wed/Fri): 6:00–7:00PM; Sunday: 11:00AM–12:00PM. Walk-ins are welcome but may experience a wait.",
   },
   {
-    q: "Do you accept health insurance?",
-    a: "Yes, we are empanelled with major insurance providers and TPA. Please call us to confirm coverage for your specific plan.",
+    q: "When is the best time to do a 4D ultrasound in pregnancy?",
+    a: "The best time is usually 24 to 32 weeks, especially 26 to 30 weeks. At this stage, the baby’s features are clearer, and there’s enough space and fluid for good images. Before 24 weeks, the face may look less developed; after 34 weeks, the view may be less clear.",
   },
 ];
 
