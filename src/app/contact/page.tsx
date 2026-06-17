@@ -87,9 +87,6 @@ const CONTACT_DETAILS = [
         {[
           "+91 9911-380288",
           "+91 9811-582086",
-          "011 4572 5538",
-          "011 2701 4326",
-          "011 2701 3174",
         ].map((n) => (
           <a
             key={n}
@@ -123,11 +120,11 @@ const CONTACT_DETAILS = [
     label: "Working Hours",
     content: (
       <div className="text-slate-600 text-sm space-y-0.5">
-        <p><span className="font-medium text-slate-700">Mon – Sat:</span> 7:00 AM – 8:00 PM</p>
-        <p><span className="font-medium text-slate-700">Sunday:</span> 8:00 AM – 2:00 PM</p>
+        <p><span className="font-medium text-slate-700">Mon – Sat:</span> 8:00 AM – 6:00 PM</p>
+        <p><span className="font-medium text-slate-700">Sunday:</span> 8:30 AM – 1:00 PM</p>
         <p className="text-sky-600 font-semibold text-xs pt-1">Ultrasound Timings:</p>
         <p><span className="font-medium text-slate-700">Mon – Sat:</span> 9:30 AM – 3:00 PM</p>
-        <p><span className="font-medium text-slate-700">Evenings (Mon/Tue/Wed/Fri):</span> 6:00 – 7:00 PM <span className="text-slate-400 text-[10px]">(Appt. preferred)</span></p>
+        <p><span className="font-medium text-slate-700">Evenings (Mon/Tue/Wed/Fri):</span> 6:00 – 7:00PM <span className="text-slate-400 text-[10px]">(Appt. preferred)</span></p>
         <p><span className="font-medium text-slate-700">Sunday:</span> 11:00 AM – 12:00 PM <span className="text-slate-400 text-[10px]">(Appt. preferred)</span></p>
       </div>
     ),
@@ -145,7 +142,7 @@ const FAQS = [
   },
   {
     q: "Do I need an appointment for ultrasound?",
-    a: "Appointments are preferred for ultrasound. Timings — Mon–Sat: 9:30 AM–3:00 PM; Evenings (Mon/Tue/Wed/Fri): 6:00–7:00 PM; Sunday: 11:00 AM–12:00 PM. Walk-ins are welcome but may experience a wait.",
+    a: "Appointments are preferred for ultrasound. Timings — Mon–Sat: 9:30 AM–3:00 PM; Evenings (Mon/Tue/Wed/Fri): 6:00–7:00PM; Sunday: 11:00AM–12:00PM. Walk-ins are welcome but may experience a wait.",
   },
   {
     q: "Do you accept health insurance?",
@@ -182,7 +179,7 @@ export default function ContactPage() {
           <p className="text-sky-200 text-sm font-semibold tracking-widest uppercase mb-2">Reach Out to Us</p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Contact Sachdeva Diagnostics</h1>
           <p className="text-sky-100 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Have a question about tests, reports, or home collection? Our team is here to help — Mon to Sat, 7 AM to 8 PM.
+            Have a question about tests, reports, or home collection? Our team is here to help — Mon to Sat, 8 AM to 8 PM.
           </p>
 
           {/* Quick action cards */}
