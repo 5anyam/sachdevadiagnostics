@@ -36,7 +36,7 @@ const BROCHURE_SERVICES = [
   { name: "Echo",                       icon: Heart,        href: "/category/echo",                              iconBg: "bg-pink-100",   iconColor: "text-pink-600",   border: "hover:border-pink-400"   },
   { name: "Bone Densitometry (Dexa)",   icon: Shield,       href: "/category/bone-densitometry-dexa",                              iconBg: "bg-green-100",  iconColor: "text-green-600",  border: "hover:border-green-400"  },
   { name: "Digital X-Ray & OPG",        icon: Zap,          href: "/category/x-ray",                iconBg: "bg-cyan-100",   iconColor: "text-cyan-600",   border: "hover:border-cyan-400"   },
-  { name: "ECG & Fibro Scan",           icon: Activity,     href: "/category/ecg-fibroscan",                              iconBg: "bg-yellow-100", iconColor: "text-yellow-700", border: "hover:border-yellow-400" },
+  { name: "ECG & FibroScan",           icon: Activity,     href: "/category/ecg-fibroscan",                              iconBg: "bg-yellow-100", iconColor: "text-yellow-700", border: "hover:border-yellow-400" },
   { name: "Pathology Lab (LifeCell)",      icon: TestTube,     href: "/tests",                 iconBg: "bg-indigo-100", iconColor: "text-indigo-600", border: "hover:border-indigo-400" },
   { name: "Home Sample Collection",     icon: Home,         href: "/book-test",                          iconBg: "bg-teal-100",   iconColor: "text-teal-600",   border: "hover:border-teal-400"   },
 ];
@@ -372,7 +372,7 @@ export default async function Index() {
                     label: "Phone & Mobile",
                     content: (
                       <div className="space-y-0.5">
-                        {["+91 9911-380288", "+91 9811-582086", "011 4572 5538", "011 2701 4326"].map(n => (
+                        {["+91 9911-380288", "+91 9811-582086"].map(n => (
                           <a key={n} href={`tel:${n.replace(/\s|-/g, '')}`} className="block text-slate-600 text-sm hover:text-sky-600 transition-colors">{n}</a>
                         ))}
                       </div>
