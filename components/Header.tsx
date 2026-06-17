@@ -240,24 +240,22 @@ const Header = () => {
             <div className="container mx-auto px-4 py-4">
               <div className="space-y-1">
                 {navItems.map((item) => (
-                  <Link 
+                  <Link
                     key={item.href}
-                    href={item.href} 
-                    className={`flex items-center gap-3 px-4 py-3 font-semibold rounded-xl transition-all duration-200 ${
-                      pathname === item.href 
-                        ? 'text-sky-600 bg-sky-50 border-l-4 border-sky-500' 
-                        : 'text-slate-700 hover:text-blue-700 hover:bg-slate-50'
+                    href={item.href}
+                    className={`flex items-center px-4 py-3 font-semibold rounded-xl transition-all duration-200 ${
+                      pathname === item.href
+                        ? 'text-sky-600 bg-sky-100 border-l-4 border-sky-500'
+                        : 'text-slate-700 hover:text-sky-600 hover:bg-sky-50 hover:border-l-4 hover:border-sky-300 border-l-4 border-transparent'
                     }`}
                   >
-                    {item.icon && <item.icon className="h-5 w-5" />}
                     {item.label}
                   </Link>
                 ))}
-                <Link 
+                <Link
                   href="/contact"
-                  className="flex items-center gap-3 px-4 py-3 font-semibold rounded-xl transition-all duration-200 text-slate-700 hover:text-blue-700 hover:bg-slate-50"
+                  className="flex items-center px-4 py-3 font-semibold rounded-xl transition-all duration-200 text-slate-700 hover:text-sky-600 hover:bg-sky-50 hover:border-l-4 hover:border-sky-300 border-l-4 border-transparent"
                 >
-                  <Phone className="h-5 w-5" />
                   Contact
                 </Link>
               </div>
