@@ -3,7 +3,7 @@ import { Button } from "../../components/ui/button";
 
 import {
   Clock, Phone, Shield,
-  Activity, Zap, Users, Star, Download,
+  Activity, Zap, Users, Star,
   ChevronRight, TestTube, Home,
   Heart, MapPin, Calendar, Award,
   Stethoscope, Mail, ArrowRight
@@ -447,11 +447,6 @@ export default async function Index() {
                   <Phone className="mr-2 h-5 w-5" /> Call: +91 9811-582086
                 </Button>
               </a>
-              <Link href="/reports">
-                <Button variant="outline" className="w-full sm:w-auto border-2 border-white text-white hover:bg-white/10 px-7 py-5 text-base font-bold rounded-xl">
-                  <Download className="mr-2 h-5 w-5" /> Download Reports
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
