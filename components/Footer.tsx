@@ -111,9 +111,6 @@ const Footer = () => {
                 <span className="flex items-center gap-1.5 bg-sky-700/60 text-sky-200 px-3 py-1.5 rounded-lg text-xs font-medium">
                   <Award className="w-3.5 h-3.5" /> NABL Accredited
                 </span>
-                <span className="flex items-center gap-1.5 bg-green-700/50 text-green-200 px-3 py-1.5 rounded-lg text-xs font-medium">
-                  <Shield className="w-3.5 h-3.5" /> ISO Certified
-                </span>
               </div>
 
               {/* Social icons */}
@@ -145,7 +142,6 @@ const Footer = () => {
                   { name: "All Tests", href: "/tests" },
                   { name: "Health Packages", href: "/category/health-packages" },
                   { name: "Book a Test", href: "/book-test" },
-                  { name: "Download Reports", href: "/reports" },
                   { name: "About Us", href: "/about" },
                   { name: "Contact Us", href: "/contact" },
                 ].map((item) => (
@@ -171,7 +167,7 @@ const Footer = () => {
                   { name: "Fetal Echo & Color Doppler", href: "/category/color-doppler-ultrasound" },
                   { name: "Pregnancy Ultrasound", href: "/category/pregnancy-ultrasound" },
                   { name: "Digital X-Ray & OPG", href: "/category/x-ray-test" },
-                  { name: "ECG & Fibro Scan", href: "/tests" },
+                  { name: "ECG & FibroScan", href: "/tests" },
                   { name: "Pathology Lab", href: "/category/lab-tests" },
                   { name: "Bone Densitometry (DEXA)", href: "/tests" },
                   { name: "Home Sample Collection", href: "/book-test" },
