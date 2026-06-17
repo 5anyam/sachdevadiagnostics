@@ -388,8 +388,8 @@ export default async function Index() {
                     label: "Working Hours",
                     content: (
                       <div className="text-slate-600 text-sm space-y-0.5">
-                        <p><span className="font-medium text-slate-700">Mon – Sat:</span> 7:00 AM – 8:00 PM</p>
-                        <p><span className="font-medium text-slate-700">Sunday:</span> 8:00 AM – 2:00 PM</p>
+                        <p><span className="font-medium text-slate-700">Mon – Sat:</span> 8:00 AM – 8:00 PM</p>
+                        <p><span className="font-medium text-slate-700">Sunday:</span> 8:30 AM – 1:00 PM</p>
                         <p className="text-sky-600 font-semibold text-xs pt-1">Ultrasound Timings:</p>
                         <p><span className="font-medium text-slate-700">Mon – Sat:</span> 9:30 AM – 3:00 PM</p>
                         <p><span className="font-medium text-slate-700">Evenings (Mon/Tue/Wed/Fri):</span> 6:00 – 7:00 PM <span className="text-slate-400 text-[10px]">(Appt. preferred)</span></p>
