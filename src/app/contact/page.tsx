@@ -34,7 +34,7 @@ const QUICK_ACTIONS = [
   {
     icon: PhoneCall,
     label: "Call Now",
-    desc: "Mon–Sat 7AM–8PM",
+    desc: "Mon–Sat 8AM–8PM",
     href: "tel:+919911380288",
     value: "+91 9911-380288",
     bg: "bg-sky-500",
@@ -192,10 +192,10 @@ export default function ContactPage() {
                 rel={action.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className={`${action.bg} ${action.hoverBg} text-white rounded-2xl p-5 flex flex-col items-center gap-2 transition-all hover:-translate-y-0.5 hover:shadow-xl`}
               >
-                <action.icon className="w-7 h-7" />
-                <span className="font-bold text-base">{action.label}</span>
-                <span className="text-white/80 text-xs">{action.value}</span>
-                <span className="text-white/60 text-[11px]">{action.desc}</span>
+                <action.icon className="w-8 h-8" />
+                <span className="font-extrabold text-xl">{action.label}</span>
+                <span className="text-white/90 text-sm font-semibold">{action.value}</span>
+                <span className="text-white/70 text-xs font-medium">{action.desc}</span>
               </a>
             ))}
           </div>
