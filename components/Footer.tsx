@@ -199,8 +199,8 @@ const Footer = () => {
                   <span className="text-sm font-semibold text-white">Working Hours</span>
                 </div>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  Mon – Sat: 7:00 AM – 8:00 PM<br />
-                  Sunday: 8:00 AM – 2:00 PM
+                  Mon – Sat: 8:00 AM – 8:00 PM<br />
+                  Sunday: 8:30 AM – 1:00 PM
                 </p>
               </div>
 
@@ -219,7 +219,7 @@ const Footer = () => {
                 <li className="flex items-start gap-3">
                   <Phone className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
                   <div className="space-y-1">
-                    {["+91 9911-380288", "+91 9811-582086", "011 4572 5538", "011 2701 4326"].map((n) => (
+                    {["+91 9911-380288", "+91 9811-582086"].map((n) => (
                       <a key={n} href={`tel:${n.replace(/[\s\-]/g, "")}`} className="block text-slate-400 hover:text-white transition-colors text-sm">
                         {n}
                       </a>
