@@ -60,6 +60,7 @@ import {
   getProductBySlug,
   getRelatedProducts,
 } from '../../../../services/wordpress';
+import { submitToGoogleSheet } from '../../../../services/googlesheet';
 
 // -----------------------------------------------------------------------------
 // 🔧  Utilities
@@ -261,6 +262,27 @@ export default function TestDetailPage() {
 
     try {
       const order = await createOrder(orderData);
+
+      // Send to Google Sheet
+      await submitToGoogleSheet({
+        timestamp:       new Date().toISOString(),
+        source:          'test-detail-page',
+        name:            form.patientName,
+        age:             form.age,
+        gender:          form.gender,
+        phone:           form.phoneNumber,
+        whatsapp:        '',
+        email:           '',
+        testCategory:    test.categories?.[0]?.name || '',
+        testName:        test.name,
+        collectionType:  form.collectionType,
+        date:            format(form.date, 'yyyy-MM-dd'),
+        time:            form.time,
+        address:         form.address || '',
+        requirements:    '',
+        emergencyContact:'',
+      });
+
       toast({
         title: "Test Booked Successfully!",
         description: `Your test has been booked! Order ID: ${order.id}`,
