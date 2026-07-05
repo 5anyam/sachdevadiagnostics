@@ -292,7 +292,7 @@ export default function TestDetailPage() {
         testName:       test.name,
         date:           format(form.date, 'dd MMM yyyy'),
         time:           form.time,
-        collectionType: form.collectionType,
+        collectionType: form.collectionType as 'home' | 'center',
         phone:          form.phoneNumber,
       });
     } catch (err) {
