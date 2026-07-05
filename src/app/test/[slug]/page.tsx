@@ -61,6 +61,7 @@ import {
   getRelatedProducts,
 } from '../../../../services/wordpress';
 import { submitToGoogleSheet } from '../../../../services/googlesheet';
+import BookingConfirmationModal, { BookingConfirmationDetails } from '../../../../components/BookingConfirmationModal';
 
 // -----------------------------------------------------------------------------
 // 🔧  Utilities
@@ -98,6 +99,8 @@ export default function TestDetailPage() {
   const [error, setError] = useState(null);
 
   // ----------------------  FORM  ---------------------- //
+  const [confirmation, setConfirmation] = useState<BookingConfirmationDetails | null>(null);
+
   const [form, setForm] = useState({
     selectedImage: '',
     date: null,
@@ -283,19 +286,15 @@ export default function TestDetailPage() {
         emergencyContact:'',
       });
 
-      toast({
-        title: "Test Booked Successfully!",
-        description: `Your test has been booked! Order ID: ${order.id}`,
+      setConfirmation({
+        orderId:        order.id,
+        patientName:    form.patientName,
+        testName:       test.name,
+        date:           format(form.date, 'dd MMM yyyy'),
+        time:           form.time,
+        collectionType: form.collectionType,
+        phone:          form.phoneNumber,
       });
-
-      router.push(
-        `/booking?test=${encodeURIComponent(test.name)}&date=${format(
-          form.date,
-          'yyyy-MM-dd',
-        )}&time=${form.time}&patient=${encodeURIComponent(form.patientName)}&phone=${
-          form.phoneNumber
-        }&order_id=${order.id}&collection=${form.collectionType}`
-      );
     } catch (err) {
       console.error('[createOrder]', err);
       toast({
@@ -356,6 +355,13 @@ export default function TestDetailPage() {
   // ---------------------------------------------------------------------------
   return (
     <>
+      {confirmation && (
+        <BookingConfirmationModal
+          details={confirmation}
+          onClose={() => setConfirmation(null)}
+        />
+      )}
+
       <Head>
         <title>{`${test.name} in Delhi | Cost ₹${getTestPrice} Onwards | Sachdeva Diagnostics`}</title>
         <meta

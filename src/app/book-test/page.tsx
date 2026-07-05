@@ -6,7 +6,6 @@ import { CalendarIcon, Clock, Home, Building, CheckCircle } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 
 import { Button } from '../../../components/ui/button';
@@ -33,6 +32,7 @@ import {
   formatPrice, Product, Category,
 } from '../../../services/wordpress';
 import { submitToGoogleSheet } from '../../../services/googlesheet';
+import BookingConfirmationModal, { BookingConfirmationDetails } from '../../../components/BookingConfirmationModal';
 
 /* --------------------------------------------------
    Constants
@@ -108,7 +108,6 @@ function useSearchParamsSafe() {
    Main form component
 ---------------------------------------------------*/
 function TestBookingFormContent() {
-  const router = useRouter();
   const searchParams = useSearchParamsSafe();
 
   const testParam = searchParams?.get('test') ?? '';
@@ -139,6 +138,7 @@ function TestBookingFormContent() {
   const [isSubmitting,  setIsSubmitting]  = useState(false);
   const [slotCounts,    setSlotCounts]    = useState<Record<string, number>>({});
   const [loadingSlots,  setLoadingSlots]  = useState(false);
+  const [confirmation,  setConfirmation]  = useState<BookingConfirmationDetails | null>(null);
 
   // WordPress categories + tests
   const [wpCategories,  setWpCategories]  = useState<Category[]>([]);
@@ -316,17 +316,18 @@ function TestBookingFormContent() {
         emergencyContact:values.emergencyContact || '',
       });
 
-      toast.success('Booking confirmed!', {
-        description: `Order #${order.id} created. ${
-          values.collectionType === 'home'
-            ? 'Our phlebotomist will call to confirm distance charges before visit.'
-            : 'Please visit our center at the scheduled time.'
-        }`,
+      setConfirmation({
+        orderId:        order.id,
+        patientName:    values.name,
+        testName:       values.product || values.testType || 'Diagnostic Test',
+        date:           format(values.date, 'dd MMM yyyy'),
+        time:           formatTime(values.time),
+        collectionType: values.collectionType,
+        phone:          values.phone,
       });
 
       form.reset();
       setSelectedTest(null);
-      setTimeout(() => router.push('/'), 3000);
     } catch (err) {
       console.error('Booking error:', err);
       toast.error('Booking failed', { description: 'Please try again or call us at +91 9911-380288.' });
@@ -337,6 +338,13 @@ function TestBookingFormContent() {
 
   return (
     <>
+      {confirmation && (
+        <BookingConfirmationModal
+          details={confirmation}
+          onClose={() => setConfirmation(null)}
+        />
+      )}
+
       <style jsx global>{`
         [data-radix-select-content] {
           background-color: white !important; color: black !important;
