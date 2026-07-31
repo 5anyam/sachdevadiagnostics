@@ -54,11 +54,25 @@ type TimeValue = typeof TIMES[number];
 const MAX_PER_SLOT = 2;
 const BASE_PRICE = 100;
 
-// These categories require center visit (no home collection)
+// All imaging / radiology categories — center visit only, no home collection
 const CENTER_ONLY_SLUGS = new Set([
-  'ultrasound', 'x-ray', 'ecg-fibroscan', 'bone-densitometry-dexa',
-  '3d-4d-ultrasound', 'color-doppler-ultrasound', 'echo',
-  'routine-ultrasound', 'special-ultrasound', 'cardiac-profile',
+  // Ultrasound family
+  'ultrasound', '3d-4d-ultrasound', 'pregnancy-ultrasound',
+  'routine-ultrasound', 'special-ultrasound', 'fetal-ultrasound',
+  'obstetric-ultrasound', 'abdominal-ultrasound', 'pelvic-ultrasound',
+  'breast-ultrasound', 'thyroid-ultrasound', 'msk-ultrasound',
+  'small-parts-ultrasound', 'musculoskeletal-ultrasound',
+  // Doppler
+  'color-doppler-ultrasound', 'color-doppler', 'doppler',
+  'carotid-doppler', 'venous-doppler', 'arterial-doppler',
+  // Cardiac / ECG
+  'echo', 'echocardiography', 'cardiac-profile', 'ecg', 'ecg-fibroscan',
+  'tmt', 'holter', 'electrocardiogram',
+  // Radiology / X-Ray
+  'x-ray', 'x-ray-test', 'digital-x-ray', 'opg', 'dental-x-ray',
+  // Scans
+  'fibroscan', 'bone-densitometry-dexa', 'dexa-scan', 'bone-density',
+  'mri', 'ct-scan', 'ct',
 ]);
 
 function formatTime(t: string): string {

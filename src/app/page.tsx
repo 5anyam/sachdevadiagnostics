@@ -11,7 +11,7 @@ import {
 import HeroCarousel from "../../components/HeroCarousel";
 import CircularCategoriesCarousel from "../../components/CircularCategoriesCarousel";
 import {
-  getProductsByCategory,
+  getFeaturedProducts,
   getProductCategories,
   formatPrice,
   getProductMetaValue,
@@ -20,12 +20,6 @@ import {
 } from "../../services/wordpress";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-
-const CATEGORY_GROUPS = [
-  { slug: "ultrasound",             title: "Ultrasound",               description: "High-resolution 3D/4D ultrasound imaging" },
-  { slug: "ecg-fibroscan",          title: "ECG & FibroScan",        description: "Cardiac ECG and liver FibroScan services" },
-  { slug: "color-doppler-ultrasound", title: "Color Doppler",          description: "Advanced colour Doppler for vascular and cardiac evaluation" },
-];
 
 // Services matching the brochure exactly
 const BROCHURE_SERVICES = [
@@ -52,18 +46,9 @@ async function getFeaturedCategories(): Promise<Category[]> {
   }
 }
 
-async function getCategoryGroupProducts(slug: string): Promise<Product[]> {
+async function fetchFeaturedTests(): Promise<Product[]> {
   try {
-    const categories = await getProductCategories({ per_page: 100 });
-    const category = categories.find(cat => cat.slug === slug);
-    if (!category) return [];
-    const products = await getProductsByCategory(category.id, { per_page: 20 });
-    const sorted = [...products].sort((a, b) => {
-      if (a.featured && !b.featured) return -1;
-      if (!a.featured && b.featured) return 1;
-      return 0;
-    });
-    return sorted.slice(0, 4);
+    return await getFeaturedProducts(8);
   } catch {
     return [];
   }
@@ -110,37 +95,11 @@ function ProductCard({ product }: { product: Product }) {
   );
 }
 
-function CategorySection({ slug, title, description, products }: {
-  slug: string; title: string; description: string; products: Product[];
-}) {
-  if (products.length === 0) return null;
-  return (
-    <section className="py-10 sm:py-14 border-b border-slate-100">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-6 sm:mb-8 gap-4">
-          <div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-800">{title}</h2>
-            <p className="text-slate-500 text-xs sm:text-sm mt-0.5">{description}</p>
-          </div>
-          <Link href={`/category/${slug}`} className="flex-shrink-0">
-            <Button variant="outline" className="border border-sky-300 text-sky-600 hover:bg-sky-50 font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-1">
-              View All <ChevronRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          {products.map(p => <ProductCard key={p.id} product={p} />)}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function Index() {
-  const [allGroupProducts, categories] = await Promise.all([
-    Promise.all(CATEGORY_GROUPS.map(g => getCategoryGroupProducts(g.slug))),
+  const [featuredTests, categories] = await Promise.all([
+    fetchFeaturedTests(),
     getFeaturedCategories(),
   ]);
 
@@ -210,17 +169,26 @@ export default async function Index() {
       </section>
 
       {/* ── FEATURED TESTS ── */}
-      <div className="bg-slate-50">
-        {CATEGORY_GROUPS.map((group, index) => (
-          <CategorySection
-            key={group.slug}
-            slug={group.slug}
-            title={group.title}
-            description={group.description}
-            products={allGroupProducts[index]}
-          />
-        ))}
-      </div>
+      {featuredTests.length > 0 && (
+        <section className="py-10 sm:py-14 bg-slate-50">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-6 sm:mb-8 gap-4">
+              <div>
+                <p className="text-sky-600 text-sm font-semibold tracking-wide uppercase mb-1">Top Picks</p>
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-800">Featured Tests</h2>
+              </div>
+              <Link href="/tests" className="flex-shrink-0">
+                <Button variant="outline" className="border border-sky-300 text-sky-600 hover:bg-sky-50 font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-1">
+                  View All <ChevronRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+              {featuredTests.map(p => <ProductCard key={p.id} product={p} />)}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── WHY CHOOSE US ── */}
       <section className="py-10 sm:py-14 bg-white">
