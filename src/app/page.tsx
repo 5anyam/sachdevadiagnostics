@@ -12,8 +12,8 @@ import HeroCarousel from "../../components/HeroCarousel";
 import CircularCategoriesCarousel from "../../components/CircularCategoriesCarousel";
 import {
   getFeaturedProducts,
-  getProductsByCategory,
   getProductCategories,
+  getProductsWithFilters,
   formatPrice,
   getProductMetaValue,
   Product,
@@ -63,11 +63,15 @@ async function fetchFeaturedTests(): Promise<Product[]> {
 
 async function getCategoryGroupProducts(slug: string): Promise<Product[]> {
   try {
-    // Pass slug directly — getProductsByCategory handles slug→ID lookup internally
-    const products = await getProductsByCategory(slug, { per_page: 20, status: 'publish' });
-    return [...products]
-      .sort((a, b) => (a.featured === b.featured ? 0 : a.featured ? -1 : 1))
-      .slice(0, 4);
+    const cats = await getProductCategories({ slug });
+    if (!cats.length) return [];
+    return await getProductsWithFilters({
+      categories: [String(cats[0].id)],
+      featured: true,
+      status: 'publish',
+      per_page: 4,
+      page: 1,
+    });
   } catch {
     return [];
   }
