@@ -52,7 +52,7 @@ const TIMES = [
 type TimeValue = typeof TIMES[number];
 
 const MAX_PER_SLOT = 2;
-const BASE_PRICE = 100;
+const BASE_PRICE = 0;
 
 // All imaging / radiology categories — center visit only, no home collection
 const CENTER_ONLY_SLUGS = new Set([
@@ -327,7 +327,8 @@ function TestBookingFormContent() {
         time:            values.time,
         address:         values.address || '',
         requirements:    values.requirements || '',
-        emergencyContact:values.emergencyContact || '',
+        emergencyContact:    values.emergencyContact || '',
+        homeCollectionCharge: values.collectionType === 'home' ? '₹100 + distance charges' : '',
       });
 
       setConfirmation({
@@ -399,7 +400,7 @@ function TestBookingFormContent() {
               Sachdeva Diagnostics — Select your test and fill in your details below.
             </p>
             <div className="inline-flex flex-col sm:flex-row gap-3 bg-blue-50 border border-blue-200 rounded-xl px-6 py-3 text-sm text-[#194b8c]">
-              <span>Home collection: ₹100 + distance charges</span>
+              <span>Home collection: ₹100 + distance charges (phlebotomist confirms)</span>
               <span className="hidden sm:block text-blue-300">|</span>
               <span>Slots: 9:30 AM – 3:00 PM & 6:00 PM – 7:00 PM</span>
             </div>
@@ -510,7 +511,7 @@ function TestBookingFormContent() {
                               <Building className="h-5 w-5 text-[#194b8c] mr-3 flex-shrink-0" />
                               <div>
                                 <div className="font-semibold text-gray-900">Visit Center</div>
-                                <div className="text-xs text-gray-500">All tests available · ₹100 booking fee (adjusted later)</div>
+                                <div className="text-xs text-gray-500">All tests available · Free booking · Charges payable at center</div>
                               </div>
                             </label>
                           </div>
@@ -520,7 +521,7 @@ function TestBookingFormContent() {
                               <Home className="h-5 w-5 text-[#194b8c] mr-3 flex-shrink-0" />
                               <div>
                                 <div className="font-semibold text-gray-900">Home Collection</div>
-                                <div className="text-xs text-gray-500">Blood/lab tests only · ₹100 + distance charges</div>
+                                <div className="text-xs text-gray-500">Blood/lab tests only · ₹100 + distance charges (noted in booking)</div>
                               </div>
                             </label>
                           </div>
@@ -790,15 +791,15 @@ function TestBookingFormContent() {
                         <div className="text-sm opacity-90 mt-0.5 font-medium">{testParam}</div>
                       )}
                       {watchCollectionType === 'home' ? (
-                        <div className="text-xs opacity-75 mt-1">₹100 booking fee + distance charges (confirmed by phlebotomist)</div>
+                        <div className="text-xs opacity-75 mt-1">Home collection charge: ₹100 + distance charges (confirmed by phlebotomist)</div>
                       ) : (
-                        <div className="text-xs opacity-75 mt-1">Booking fee only (adjusted later) — test charges payable at center</div>
+                        <div className="text-xs opacity-75 mt-1">Test charges payable at center — free booking</div>
                       )}
                     </div>
                     <div className="text-right">
-                      <div className="text-3xl font-extrabold">₹{BASE_PRICE}</div>
+                      <div className="text-3xl font-extrabold">Free</div>
                       {watchCollectionType === 'home' && (
-                        <div className="text-xs opacity-70">+ distance</div>
+                        <div className="text-xs opacity-70">+ ₹100 collection</div>
                       )}
                     </div>
                   </div>
@@ -820,7 +821,7 @@ function TestBookingFormContent() {
                     ? 'Booking…'
                     : watchTime && isSlotFull(watchTime)
                     ? 'Slot Full — Choose Another Time'
-                    : `Confirm Booking — ₹${BASE_PRICE}`}
+                    : 'Confirm Booking'}
                 </Button>
 
               </form>

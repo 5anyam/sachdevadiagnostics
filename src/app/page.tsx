@@ -12,6 +12,7 @@ import HeroCarousel from "../../components/HeroCarousel";
 import CircularCategoriesCarousel from "../../components/CircularCategoriesCarousel";
 import {
   getFeaturedProducts,
+  getProductsByCategory,
   getProductCategories,
   formatPrice,
   getProductMetaValue,
@@ -20,6 +21,12 @@ import {
 } from "../../services/wordpress";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
+
+const CATEGORY_GROUPS = [
+  { slug: "ultrasound",               title: "Ultrasound",       description: "High-resolution B-mode, 3D/4D ultrasound imaging" },
+  { slug: "ecg-fibroscan",            title: "ECG & FibroScan",  description: "Cardiac ECG and liver FibroScan services" },
+  { slug: "color-doppler-ultrasound", title: "Color Doppler",    description: "Advanced colour Doppler for vascular and cardiac evaluation" },
+];
 
 // Services matching the brochure exactly
 const BROCHURE_SERVICES = [
@@ -49,6 +56,18 @@ async function getFeaturedCategories(): Promise<Category[]> {
 async function fetchFeaturedTests(): Promise<Product[]> {
   try {
     return await getFeaturedProducts(8);
+  } catch {
+    return [];
+  }
+}
+
+async function getCategoryGroupProducts(slug: string): Promise<Product[]> {
+  try {
+    // Pass slug directly — getProductsByCategory handles slug→ID lookup internally
+    const products = await getProductsByCategory(slug, { per_page: 20, status: 'publish' });
+    return [...products]
+      .sort((a, b) => (a.featured === b.featured ? 0 : a.featured ? -1 : 1))
+      .slice(0, 4);
   } catch {
     return [];
   }
@@ -98,8 +117,9 @@ function ProductCard({ product }: { product: Product }) {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function Index() {
-  const [featuredTests, categories] = await Promise.all([
+  const [featuredTests, allGroupProducts, categories] = await Promise.all([
     fetchFeaturedTests(),
+    Promise.all(CATEGORY_GROUPS.map(g => getCategoryGroupProducts(g.slug))),
     getFeaturedCategories(),
   ]);
 
@@ -189,6 +209,28 @@ export default async function Index() {
           </div>
         </section>
       )}
+
+      {/* ── CATEGORY SECTIONS ── */}
+      {CATEGORY_GROUPS.map((group, index) => allGroupProducts[index].length > 0 && (
+        <section key={group.slug} className="py-10 sm:py-14 bg-white border-t border-slate-100">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-6 sm:mb-8 gap-4">
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-800">{group.title}</h2>
+                <p className="text-slate-500 text-xs sm:text-sm mt-0.5">{group.description}</p>
+              </div>
+              <Link href={`/category/${group.slug}`} className="flex-shrink-0">
+                <Button variant="outline" className="border border-sky-300 text-sky-600 hover:bg-sky-50 font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-1">
+                  View All <ChevronRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+              {allGroupProducts[index].map(p => <ProductCard key={p.id} product={p} />)}
+            </div>
+          </div>
+        </section>
+      ))}
 
       {/* ── WHY CHOOSE US ── */}
       <section className="py-10 sm:py-14 bg-white">

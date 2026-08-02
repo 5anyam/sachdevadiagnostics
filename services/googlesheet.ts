@@ -19,6 +19,7 @@ export interface BookingSheetRow {
   address: string;
   requirements: string;
   emergencyContact: string;
+  homeCollectionCharge: string;
 }
 
 export async function submitToGoogleSheet(data: BookingSheetRow): Promise<void> {

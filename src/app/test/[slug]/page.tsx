@@ -283,7 +283,8 @@ export default function TestDetailPage() {
         time:            form.time,
         address:         form.address || '',
         requirements:    '',
-        emergencyContact:'',
+        emergencyContact:    '',
+        homeCollectionCharge: form.collectionType === 'home' ? '₹100 + distance charges' : '',
       });
 
       setConfirmation({
