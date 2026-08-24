@@ -3,10 +3,10 @@
 /*
   app/category/[slug]/page.tsx
   ------------------------------------------------------------------
-  ✅ Featured tests top par (server se featured IDs fetch karke)
-  ✅ Card se featured / category badge hataye
+  ✅ Featured badge aur category badge card se hata diye (title/description se clash kar rahe the)
+  ✅ Popular + discount ab inline badges hain, absolute overlay nahi
   ✅ "Free Home Collection" sirf blood / lab tests par
-  ⚠️ Neeche ek TEMP DEBUG box hai — "TEMP DEBUG" search karke hata dena jab kaam ho jaye
+  ✅ Featured tests server se alag fetch hote hain aur hamesha top par
 */
 
 import { useEffect, useState } from "react";
@@ -37,7 +37,6 @@ export default function CategoryProductsPage() {
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [featuredIds, setFeaturedIds] = useState<Set<number>>(new Set());
-  const [featuredError, setFeaturedError] = useState<string>("");
 
   const {
     data: products = [],
@@ -51,7 +50,7 @@ export default function CategoryProductsPage() {
     error: categoryError,
   } = useCategory(slug);
 
-  // ⭐ Featured tests alag se fetch — category list API `featured` field nahi bhejti
+  // ⭐ Featured tests alag se fetch — kyunki category list API `featured` field nahi bhejti
   useEffect(() => {
     if (!slug) return;
     let cancelled = false;
@@ -59,10 +58,7 @@ export default function CategoryProductsPage() {
     const loadFeatured = async (): Promise<void> => {
       try {
         const cats = await getProductCategories({ slug });
-        if (!cats || cats.length === 0) {
-          if (!cancelled) setFeaturedError("category not found for slug: " + slug);
-          return;
-        }
+        if (!cats || cats.length === 0) return;
 
         const featured = await getProductsWithFilters({
           categories: [String(cats[0].id)],
@@ -72,17 +68,11 @@ export default function CategoryProductsPage() {
           page: 1,
         });
 
-        if (!cancelled) {
-          setFeaturedIds(new Set((featured ?? []).map((p: Product) => p.id)));
-          if (!featured || featured.length === 0) {
-            setFeaturedError("API returned 0 featured products for category id " + cats[0].id);
-          }
+        if (!cancelled && featured) {
+          setFeaturedIds(new Set(featured.map((p: Product) => p.id)));
         }
       } catch (err) {
         console.error("[featured tests]", err);
-        if (!cancelled) {
-          setFeaturedError(err instanceof Error ? err.message : "featured fetch failed");
-        }
       }
     };
 
@@ -93,7 +83,7 @@ export default function CategoryProductsPage() {
     };
   }, [slug]);
 
-  // Featured hai ya nahi — pehle server wali ID list, phir product ka apna flag
+  // ID set se ya product ke apne flag se — dono me se jo mile
   const isFeatured = (product: Product): boolean => {
     if (featuredIds.has(product.id)) return true;
     const value: unknown = product.featured;
@@ -103,9 +93,10 @@ export default function CategoryProductsPage() {
     return false;
   };
 
+  // Poori category lab hai ya imaging — About section ke liye
   const categoryIsLab: boolean = isLabCategory(category?.name, slug);
 
-  const displayedProducts: Product[] = [...products]
+  const displayedProducts: Product[] = products
     .filter((p: Product) => p.name.toLowerCase().includes(searchTerm.toLowerCase()))
     .sort((a: Product, b: Product) => Number(isFeatured(b)) - Number(isFeatured(a)));
 
@@ -129,6 +120,7 @@ export default function CategoryProductsPage() {
       <Link href={`/test/${product.slug}`} className="block group h-full">
         <Card className="overflow-hidden border-2 border-slate-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-300 h-full flex flex-col bg-white group-hover:-translate-y-1">
           <CardContent className="p-5 flex-1 flex flex-col">
+            {/* Inline badges — ab overlay nahi, isliye title se clash nahi hota */}
             {(hasDiscount || isPopular) && (
               <div className="flex flex-wrap items-center gap-2 mb-3">
                 {hasDiscount && (
@@ -299,31 +291,6 @@ export default function CategoryProductsPage() {
             )}
           </div>
         </div>
-
-        {/* ─────────────────────────────────────────────────────────── */}
-        {/* TEMP DEBUG — kaam ho jaye to ye poora block delete kar dena  */}
-        {/* ─────────────────────────────────────────────────────────── */}
-        {!productsLoading && (
-          <div className="mb-5 p-3 bg-yellow-100 border border-yellow-400 rounded-lg text-xs font-mono space-y-1 break-all">
-            <div className="font-bold">TEMP DEBUG — new code is live</div>
-            <div>slug: {String(slug)}</div>
-            <div>total products: {products.length}</div>
-            <div>featuredIds fetched: {featuredIds.size}</div>
-            {featuredError && <div className="text-red-700">featuredError: {featuredError}</div>}
-            <div>
-              featured field values:{" "}
-              {products.slice(0, 6).map((p: Product) => String(p.featured)).join(" | ") || "none"}
-            </div>
-            <div>
-              first 5 sorted:{" "}
-              {displayedProducts
-                .slice(0, 5)
-                .map((p: Product) => `${p.name.slice(0, 14)}[${isFeatured(p) ? "F" : "-"}]`)
-                .join(" | ")}
-            </div>
-          </div>
-        )}
-        {/* ── TEMP DEBUG END ── */}
 
         {/* Results count */}
         <div className="flex items-center justify-between mb-5 bg-white px-4 py-3 rounded-xl border border-slate-200 shadow-sm">
