@@ -177,18 +177,16 @@ export default async function Index() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
-            {BROCHURE_SERVICES.map((svc, i) => {
-              return (
-                <Link key={i} href={svc.href}>
-                  <div className={`group bg-white rounded-xl border border-slate-200 ${svc.border} hover:shadow-md transition-all duration-200 p-4 text-center h-full flex flex-col items-center justify-center hover:-translate-y-0.5`}>
-                    <p className="font-semibold text-slate-700 text-xs leading-snug group-hover:text-sky-600 transition-colors">
-                      {svc.name}
-                    </p>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
+  {BROCHURE_SERVICES.map((svc, i) => (
+    <Link key={i} href={svc.href}>
+      <div className="group bg-sky-50 rounded-xl border border-sky-300 shadow-md hover:bg-sky-100 hover:border-sky-400 hover:shadow-lg transition-all duration-200 p-4 sm:p-5 text-center h-full flex flex-col items-center justify-center">
+        <p className="font-semibold text-sky-700 text-sm sm:text-base leading-snug">
+          {svc.name}
+        </p>
+      </div>
+    </Link>
+  ))}
+</div>
         </div>
       </section>
 
