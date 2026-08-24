@@ -19,22 +19,22 @@ const banners: Banner[] = [
   {
     image: "https://navajowhite-turkey-121983.hostingersite.com/wp-content/uploads/2026/02/Advanced-Ultrasound-Tests-1-e1770455982133.jpg",
     title: "Advanced Ultrasound Tests",
-    link: "/category/routine-ultrasound",
+    link: "/category/x-ray",
   },
   {
     image: "https://navajowhite-turkey-121983.hostingersite.com/wp-content/uploads/2026/06/Fetal-Echo-scaled.jpg",
     title: "Digital X-Ray",
-    link: "/category/x-ray-test",
+    link: "/category/echo",
   },
   {
     image: "https://navajowhite-turkey-121983.hostingersite.com/wp-content/uploads/2026/02/4.jpg",
     title: "Lab Tests",
-    link: "/category/lab-tests",
+    link: "/category/ecg-fibroscan",
   },
   {
     image: "https://navajowhite-turkey-121983.hostingersite.com/wp-content/uploads/2026/02/5.jpg",
     title: "Health Packages",
-    link: "/tests",
+    link: "/category/health-checkups",
   },
 ];
 
