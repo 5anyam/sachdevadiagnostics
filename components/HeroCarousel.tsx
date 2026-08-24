@@ -24,7 +24,7 @@ const banners: Banner[] = [
   {
     image: "https://navajowhite-turkey-121983.hostingersite.com/wp-content/uploads/2026/06/Fetal-Echo-scaled.jpg",
     title: "Digital X-Ray",
-    link: "/category/echo",
+    link: "/category/pregnancy-ultrasound",
   },
   {
     image: "https://navajowhite-turkey-121983.hostingersite.com/wp-content/uploads/2026/02/4.jpg",
