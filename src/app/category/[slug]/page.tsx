@@ -1,11 +1,19 @@
 "use client";
 
+/*
+  app/category/[slug]/page.tsx
+  ------------------------------------------------------------------
+  ✅ Featured badge aur category badge card se hata diye (title/description se clash kar rahe the)
+  ✅ Popular + discount ab inline badges hain, absolute overlay nahi
+  ✅ "Free Home Collection" sirf blood / lab tests par
+*/
+
 import { useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import {
   Search, ChevronRight, X, Clock, Shield, TrendingUp,
-  Home as HomeIcon, TestTube, Calendar, CheckCircle2, Sparkles
+  Home as HomeIcon, TestTube, Calendar, CheckCircle2, Building2
 } from "lucide-react";
 
 import { Button } from "../../../../components/ui/button";
@@ -16,6 +24,7 @@ import { Badge } from "../../../../components/ui/badge";
 
 import { useProductsByCategory, useCategory } from "../../../../hooks/useWordPress";
 import type { Product } from "../../../../services/wordpress";
+import { isLabTest, isLabCategory } from "../../../../lib/isLabTest";
 
 export default function CategoryProductsPage() {
   const params = useParams();
@@ -34,6 +43,9 @@ export default function CategoryProductsPage() {
     isLoading: categoryLoading,
     error: categoryError,
   } = useCategory(slug);
+
+  // Poori category lab hai ya imaging — About section ke liye
+  const categoryIsLab: boolean = isLabCategory(category?.name, slug);
 
   const displayedProducts: Product[] = products
     .filter((p: Product) => p.name.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -56,42 +68,30 @@ export default function CategoryProductsPage() {
       product.total_sales && parseInt(product.total_sales) > 50
     );
 
+    // 🩸 Home collection sirf blood / lab tests par
+    const showHomeCollection: boolean = isLabTest(product, slug);
+
     return (
       <Link href={`/test/${product.slug}`} className="block group h-full">
-        <Card className="relative overflow-hidden border-2 border-slate-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-300 h-full flex flex-col bg-white group-hover:-translate-y-1">
-          {product.featured && (
-            <div className="absolute top-3 left-3">
-              <Badge className="bg-amber-500 text-white font-bold text-xs shadow-lg border-0">
-                <Sparkles className="h-3 w-3 mr-1" />
-                Featured
-              </Badge>
-            </div>
-          )}
-
-          {!product.featured && isPopular && (
-            <div className="absolute top-3 left-3">
-              <Badge className="bg-orange-500 text-white font-bold text-xs shadow-lg border-0">
-                <TrendingUp className="h-3 w-3 mr-1" />
-                Popular
-              </Badge>
-            </div>
-          )}
-
-          {hasDiscount && (
-            <div className="absolute top-3 right-3">
-              <Badge className="bg-red-500 text-white font-bold shadow-lg border-0">
-                {discountPercent}% OFF
-              </Badge>
-            </div>
-          )}
-
-          <div className="absolute bottom-3 right-3">
-            <Badge className="bg-white/95 backdrop-blur-sm text-blue-700 font-semibold text-xs shadow-md border border-blue-200">
-              {product.categories?.[0]?.name || category?.name}
-            </Badge>
-          </div>
-
+        <Card className="overflow-hidden border-2 border-slate-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-300 h-full flex flex-col bg-white group-hover:-translate-y-1">
           <CardContent className="p-5 flex-1 flex flex-col">
+            {/* Inline badges — ab overlay nahi, isliye title se clash nahi hota */}
+            {(hasDiscount || isPopular) && (
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                {hasDiscount && (
+                  <Badge className="bg-red-500 hover:bg-red-500 text-white font-bold text-xs border-0">
+                    {discountPercent}% OFF
+                  </Badge>
+                )}
+                {isPopular && (
+                  <Badge className="bg-orange-500 hover:bg-orange-500 text-white font-bold text-xs border-0">
+                    <TrendingUp className="h-3 w-3 mr-1" />
+                    Popular
+                  </Badge>
+                )}
+              </div>
+            )}
+
             <h3 className="font-bold text-lg text-slate-900 group-hover:text-blue-700 transition-colors mb-2 line-clamp-2 min-h-[3.5rem]">
               {product.name}
             </h3>
@@ -128,7 +128,10 @@ export default function CategoryProductsPage() {
                       </span>
                     )}
                   </div>
-                  <span className="text-xs text-slate-500 font-medium">+ Free Home Collection</span>
+                  {/* 🩸 sirf lab tests par */}
+                  <span className="text-xs text-slate-500 font-medium">
+                    {showHomeCollection ? '+ Free Home Collection' : 'At our centre'}
+                  </span>
                 </div>
               </div>
             </div>
@@ -261,7 +264,6 @@ export default function CategoryProductsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {productPlaceholders.map((_, index) => (
               <Card key={`skeleton-${index}`} className="overflow-hidden border border-slate-200 h-full">
-                <Skeleton className="h-56 w-full" />
                 <CardContent className="p-5 space-y-3">
                   <Skeleton className="h-4 w-24 rounded-full" />
                   <Skeleton className="h-6 w-full rounded" />
@@ -314,14 +316,21 @@ export default function CategoryProductsPage() {
                  `Our tests are conducted using state-of-the-art equipment. We ensure accurate results with quick turnaround times, all performed by experienced medical professionals.`}
               </p>
               <div className="flex flex-wrap justify-center gap-4 mt-6">
-                {[
-                  "Free Home Collection",
-                  "Digital Reports",
-                  "Expert Consultation",
-                ].map((label) => (
+                {(categoryIsLab
+                  ? [
+                      { label: "Free Home Collection", Icon: CheckCircle2 },
+                      { label: "Digital Reports", Icon: CheckCircle2 },
+                      { label: "Expert Consultation", Icon: CheckCircle2 },
+                    ]
+                  : [
+                      { label: "Performed At Our Centre", Icon: Building2 },
+                      { label: "Digital Reports", Icon: CheckCircle2 },
+                      { label: "Expert Radiologists", Icon: CheckCircle2 },
+                    ]
+                ).map(({ label, Icon }) => (
                   <div key={label} className="bg-white px-6 py-3 rounded-xl shadow-sm border border-blue-200">
                     <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-green-600" />
+                      <Icon className="h-5 w-5 text-green-600" />
                       <span className="font-semibold text-slate-900">{label}</span>
                     </div>
                   </div>
