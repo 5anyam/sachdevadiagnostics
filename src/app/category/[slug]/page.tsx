@@ -6,6 +6,7 @@
   ✅ Featured badge aur category badge card se hata diye (title/description se clash kar rahe the)
   ✅ Popular + discount ab inline badges hain, absolute overlay nahi
   ✅ "Free Home Collection" sirf blood / lab tests par
+  ✅ Featured tests hamesha top par
 */
 
 import { useState } from "react";
@@ -25,6 +26,15 @@ import { Badge } from "../../../../components/ui/badge";
 import { useProductsByCategory, useCategory } from "../../../../hooks/useWordPress";
 import type { Product } from "../../../../services/wordpress";
 import { isLabTest, isLabCategory } from "../../../../lib/isLabTest";
+
+// WooCommerce kabhi true (boolean) bhejta hai, kabhi "true" ya 1
+const isFeatured = (product: Product): boolean => {
+  const value: unknown = product.featured;
+  if (typeof value === "boolean") return value;
+  if (typeof value === "number") return value === 1;
+  if (typeof value === "string") return value.toLowerCase() === "true" || value === "1";
+  return false;
+};
 
 export default function CategoryProductsPage() {
   const params = useParams();
@@ -47,13 +57,10 @@ export default function CategoryProductsPage() {
   // Poori category lab hai ya imaging — About section ke liye
   const categoryIsLab: boolean = isLabCategory(category?.name, slug);
 
+  // ⭐ Featured tests hamesha top par
   const displayedProducts: Product[] = products
     .filter((p: Product) => p.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    .sort((a: Product, b: Product) => {
-      if (a.featured && !b.featured) return -1;
-      if (!a.featured && b.featured) return 1;
-      return 0;
-    });
+    .sort((a: Product, b: Product) => Number(isFeatured(b)) - Number(isFeatured(a)));
 
   const productPlaceholders = Array.from({ length: 12 });
 
