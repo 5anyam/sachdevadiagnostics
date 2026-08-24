@@ -140,7 +140,7 @@ const Footer = () => {
                 {[
                   { name: "Home", href: "/" },
                   { name: "All Tests", href: "/tests" },
-                  { name: "Health Packages", href: "/category/health-packages" },
+                  { name: "Health Packages", href: "/category/health-checkups" },
                   { name: "Book a Test", href: "/book-test" },
                   { name: "About Us", href: "/about" },
                   { name: "Contact Us", href: "/contact" },
