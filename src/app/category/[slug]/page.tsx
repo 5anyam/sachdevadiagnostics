@@ -6,10 +6,10 @@
   ✅ Featured badge aur category badge card se hata diye (title/description se clash kar rahe the)
   ✅ Popular + discount ab inline badges hain, absolute overlay nahi
   ✅ "Free Home Collection" sirf blood / lab tests par
-  ✅ Featured tests hamesha top par
+  ✅ Featured tests server se alag fetch hote hain aur hamesha top par
 */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import {
@@ -24,23 +24,19 @@ import { Skeleton } from "../../../../components/ui/skeleton";
 import { Badge } from "../../../../components/ui/badge";
 
 import { useProductsByCategory, useCategory } from "../../../../hooks/useWordPress";
+import {
+  getProductCategories,
+  getProductsWithFilters,
+} from "../../../../services/wordpress";
 import type { Product } from "../../../../services/wordpress";
 import { isLabTest, isLabCategory } from "../../../../lib/isLabTest";
-
-// WooCommerce kabhi true (boolean) bhejta hai, kabhi "true" ya 1
-const isFeatured = (product: Product): boolean => {
-  const value: unknown = product.featured;
-  if (typeof value === "boolean") return value;
-  if (typeof value === "number") return value === 1;
-  if (typeof value === "string") return value.toLowerCase() === "true" || value === "1";
-  return false;
-};
 
 export default function CategoryProductsPage() {
   const params = useParams();
   const slug = params?.slug as string | undefined;
 
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [featuredIds, setFeaturedIds] = useState<Set<number>>(new Set());
 
   const {
     data: products = [],
@@ -54,10 +50,52 @@ export default function CategoryProductsPage() {
     error: categoryError,
   } = useCategory(slug);
 
+  // ⭐ Featured tests alag se fetch — kyunki category list API `featured` field nahi bhejti
+  useEffect(() => {
+    if (!slug) return;
+    let cancelled = false;
+
+    const loadFeatured = async (): Promise<void> => {
+      try {
+        const cats = await getProductCategories({ slug });
+        if (!cats || cats.length === 0) return;
+
+        const featured = await getProductsWithFilters({
+          categories: [String(cats[0].id)],
+          featured: true,
+          status: "publish",
+          per_page: 100,
+          page: 1,
+        });
+
+        if (!cancelled && featured) {
+          setFeaturedIds(new Set(featured.map((p: Product) => p.id)));
+        }
+      } catch (err) {
+        console.error("[featured tests]", err);
+      }
+    };
+
+    void loadFeatured();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [slug]);
+
+  // ID set se ya product ke apne flag se — dono me se jo mile
+  const isFeatured = (product: Product): boolean => {
+    if (featuredIds.has(product.id)) return true;
+    const value: unknown = product.featured;
+    if (typeof value === "boolean") return value;
+    if (typeof value === "number") return value === 1;
+    if (typeof value === "string") return value.toLowerCase() === "true" || value === "1";
+    return false;
+  };
+
   // Poori category lab hai ya imaging — About section ke liye
   const categoryIsLab: boolean = isLabCategory(category?.name, slug);
 
-  // ⭐ Featured tests hamesha top par
   const displayedProducts: Product[] = products
     .filter((p: Product) => p.name.toLowerCase().includes(searchTerm.toLowerCase()))
     .sort((a: Product, b: Product) => Number(isFeatured(b)) - Number(isFeatured(a)));
